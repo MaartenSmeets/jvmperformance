@@ -8,10 +8,10 @@
 # 4 make sure the files / directories from the below variables are reachable
 # 5 start this script
 
-jarfile_reactiverest=reactive-rest-service.jar
+jarfile_reactiverest=`pwd`/reactive-rest-service.jar
 soapui_bin=/home/developer/SmartBear/SoapUI-5.4.0/bin
 soapui_outputdir=`pwd`/jdktest
-soapui_testproject=/home/developer/REST-Project-1-soapui-project.xml
+soapui_testproject=`pwd`/REST-Project-1-soapui-project.xml
 
 function clean_image() {
 	docker stop spring-boot-jdk
@@ -41,7 +41,7 @@ function get_start_time() {
 function run_test() {
 	echo STARTED AT: `date`
 	sleep 5
-	mkdir -p /home/developer/jdktest/$1
+	mkdir -p $soapui_outputdir/$1
 	$soapui_bin/loadtestrunner.sh -s"TestSuite 1" -c"TestCase 1" -l"LoadTest 0 primer" -r -f$soapui_outputdir/$1 $soapui_testproject  > /dev/null 2>&1
 	$soapui_bin/loadtestrunner.sh -s"TestSuite 1" -c"TestCase 1" -l"LoadTest 1" -r -f$soapui_outputdir/$1 $soapui_testproject  > /dev/null 2>&1
 	echo COMPLETED AT: `date`
