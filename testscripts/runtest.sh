@@ -8,10 +8,13 @@
 # 4 make sure the files / directories from the below variables are reachable
 # 5 start this script
 
-jarfile_reactiverest=`pwd`/reactive-rest-service.jar
+DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null && pwd )"
+echo Running from $DIR
+
+jarfile_reactiverest=reactive-rest-service.jar
 soapui_bin=/home/developer/SmartBear/SoapUI-5.4.0/bin
-soapui_outputdir=`pwd`/jdktest
-soapui_testproject=`pwd`/REST-Project-1-soapui-project.xml
+soapui_outputdir=$DIR/jdktest
+soapui_testproject=$DIR/REST-Project-1-soapui-project.xml
 
 function clean_image() {
 	docker stop spring-boot-jdk
@@ -22,7 +25,7 @@ function clean_image() {
 function rebuild() {
 	clean_image
 	docker build -t spring-boot-jdk -f Dockerfile --build-arg JAR_FILE=$jarfile_reactiverest .
-	docker run -d --name spring-boot-jdk -p 8080:8080 --network complete_dockernet spring-boot-jdk
+	docker run -d --name spring-boot-jdk -p 8080:8080 --network testscripts_dockernet spring-boot-jdk
 }
 
 #update the Dockerfile so it can be rebuild with a new JVM
