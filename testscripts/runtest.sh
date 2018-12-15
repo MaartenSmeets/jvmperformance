@@ -1,11 +1,11 @@
 #!/bin/bash
 
-# 1 make sure spring-boot-jdk exists. for example with: docker build -t spring-boot-jdk -f Dockerfile --build-arg JAR_FILE=reactive-rest-service.jar .
+# 1 make sure you have a new version of docker-compose, for example version 1.23.2. 1.21.0 doesn't work with the docker-compose.yml file
 # 2 start process-exporter: docker run -d --rm -p 9256:9256 --privileged -v /proc:/host/proc -v `pwd`/proc-exp:/config ncabatoff/process-exporter --procfs /host/proc -config.path /config/process-exporter.yml 
 # for additional information on process exporter see: https://github.com/ncabatoff/process-exporter
 # 3 next do docker-compose up
 # this starts the containers for monitoring and creates the network
-# 4 make sure the files / directories from the below variables are reachable
+# 4 make sure the files / directories from the below variables are reachable and you have SOAP UI installed
 # 5 start this script
 
 DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null && pwd )"
@@ -13,7 +13,7 @@ echo Running from $DIR
 
 jarfile_reactiverest=reactive-rest-service.jar
 soapui_bin=/home/developer/SmartBear/SoapUI-5.4.0/bin
-soapui_outputdir=$DIR/jdktest
+soapui_outputdir=$DIR/jdktest`date +"%Y%m%d%H%M%S"`
 soapui_testproject=$DIR/REST-Project-1-soapui-project.xml
 
 function clean_image() {

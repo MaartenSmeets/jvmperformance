@@ -1,6 +1,10 @@
 version: '2'
 services:
   spring-boot-jdk:
+    build:
+        context: .
+        args:
+            JAR_FILE: "reactive-rest-service.jar"
     image: "spring-boot-jdk"
     container_name: spring-boot-jdk
     ports:
