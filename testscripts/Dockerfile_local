@@ -1,0 +1,8 @@
+FROM ubuntu:bionic
+RUN apt-get update && apt-get install -y locales openjdk-8-jdk && rm -rf /var/lib/apt/lists/* \
+    && localedef -i en_US -c -f UTF-8 -A /usr/share/locale/locale.alias en_US.UTF-8
+ENV LANG en_US.utf8
+VOLUME /tmp
+ARG JAR_FILE
+COPY ${JAR_FILE} app.jar
+ENTRYPOINT ["java","-Djava.security.egd=file:/dev/./urandom","-XX:+UnlockExperimentalVMOptions","-Xmx2G","-Xms2G","-jar","/app.jar"]
