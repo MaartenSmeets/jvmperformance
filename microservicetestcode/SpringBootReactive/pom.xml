@@ -25,14 +25,15 @@
             <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
         </dependency>
+
         <dependency>
             <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-actuator</artifactId>
-        </dependency>        
+            <artifactId>spring-boot-starter-actuator</artifactId>
+        </dependency>
         <dependency>
-             <groupId>io.micrometer</groupId>
-             <artifactId>micrometer-registry-prometheus</artifactId>
-        </dependency>             
+            <groupId>io.micrometer</groupId>
+            <artifactId>micrometer-registry-prometheus</artifactId>
+        </dependency>
 
     </dependencies>
 
@@ -45,9 +46,6 @@
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
-                <configuration>
-                    <addResources>true</addResources>
-                </configuration>                     
             </plugin>
             <plugin>
                 <groupId>com.spotify</groupId>
