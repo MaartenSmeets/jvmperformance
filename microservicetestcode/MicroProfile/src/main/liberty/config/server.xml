@@ -1,7 +1,8 @@
 <server description="Sample Liberty server">
 
     <featureManager>
-        <feature>microProfile-2.0</feature>
+        <feature>microProfile-2.1</feature>
+        <feature>mpMetrics-1.1</feature>
     </featureManager>
 
     <applicationManager autoExpand="true" />
