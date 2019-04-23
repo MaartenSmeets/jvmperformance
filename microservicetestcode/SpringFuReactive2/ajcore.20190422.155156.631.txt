@@ -1,0 +1,197 @@
+---- AspectJ Properties ---
+AspectJ Compiler 1.8.6 built on Friday Jun 5, 2015 at 23:41:42 GMT
+---- Dump Properties ---
+Dump file: ajcore.20190422.155156.631.txt
+Dump reason: org.aspectj.apache.bcel.classfile.ClassFormatException
+Dump on exception: true
+Dump at exit condition: abort
+---- Exception Information ---
+org.aspectj.apache.bcel.classfile.ClassFormatException: File: 'META-INF/versions/9/module-info.class': Invalid byte tag in constant pool: 19
+	at org.aspectj.apache.bcel.classfile.ClassParser.readConstantPool(ClassParser.java:192)
+	at org.aspectj.apache.bcel.classfile.ClassParser.parse(ClassParser.java:131)
+	at org.aspectj.weaver.bcel.BcelWeaver.addAspectsFromJarFile(BcelWeaver.java:260)
+	at org.aspectj.weaver.bcel.BcelWeaver.addLibraryJarFile(BcelWeaver.java:236)
+	at org.aspectj.ajdt.internal.core.builder.AjBuildManager.initBcelWorld(AjBuildManager.java:874)
+	at org.aspectj.ajdt.internal.core.builder.AjBuildManager.performBuild(AjBuildManager.java:249)
+	at org.aspectj.ajdt.internal.core.builder.AjBuildManager.batchBuild(AjBuildManager.java:185)
+	at org.aspectj.ajdt.ajc.AjdtCommand.doCommand(AjdtCommand.java:112)
+	at org.aspectj.ajdt.ajc.AjdtCommand.runCommand(AjdtCommand.java:60)
+	at org.aspectj.tools.ajc.Main.run(Main.java:371)
+	at com.jcabi.maven.plugin.AjcMojo.executeAJC(AjcMojo.java:285)
+	at com.jcabi.maven.plugin.AjcMojo.execute_aroundBody2(AjcMojo.java:264)
+	at com.jcabi.maven.plugin.AjcMojo$AjcClosure3.run(AjcMojo.java:1)
+	at org.aspectj.runtime.reflect.JoinPointImpl.proceed(JoinPointImpl.java:149)
+	at com.jcabi.aspects.aj.MethodLogger.wrap(MethodLogger.java:208)
+	at com.jcabi.aspects.aj.MethodLogger.ajc$inlineAccessMethod$com_jcabi_aspects_aj_MethodLogger$com_jcabi_aspects_aj_MethodLogger$wrap(MethodLogger.java:1)
+	at com.jcabi.aspects.aj.MethodLogger.wrapMethod(MethodLogger.java:164)
+	at com.jcabi.maven.plugin.AjcMojo.execute_aroundBody4(AjcMojo.java:245)
+	at com.jcabi.maven.plugin.AjcMojo$AjcClosure5.run(AjcMojo.java:1)
+	at org.aspectj.runtime.reflect.JoinPointImpl.proceed(JoinPointImpl.java:149)
+	at com.jcabi.aspects.aj.MethodLogger.wrapClass(MethodLogger.java:134)
+	at com.jcabi.maven.plugin.AjcMojo.execute(AjcMojo.java:245)
+	at org.apache.maven.plugin.DefaultBuildPluginManager.executeMojo(DefaultBuildPluginManager.java:137)
+	at org.apache.maven.lifecycle.internal.MojoExecutor.execute(MojoExecutor.java:210)
+	at org.apache.maven.lifecycle.internal.MojoExecutor.execute(MojoExecutor.java:156)
+	at org.apache.maven.lifecycle.internal.MojoExecutor.execute(MojoExecutor.java:148)
+	at org.apache.maven.lifecycle.internal.LifecycleModuleBuilder.buildProject(LifecycleModuleBuilder.java:117)
+	at org.apache.maven.lifecycle.internal.LifecycleModuleBuilder.buildProject(LifecycleModuleBuilder.java:81)
+	at org.apache.maven.lifecycle.internal.builder.singlethreaded.SingleThreadedBuilder.build(SingleThreadedBuilder.java:56)
+	at org.apache.maven.lifecycle.internal.LifecycleStarter.execute(LifecycleStarter.java:128)
+	at org.apache.maven.DefaultMaven.doExecute(DefaultMaven.java:305)
+	at org.apache.maven.DefaultMaven.doExecute(DefaultMaven.java:192)
+	at org.apache.maven.DefaultMaven.execute(DefaultMaven.java:105)
+	at org.apache.maven.cli.MavenCli.execute(MavenCli.java:956)
+	at org.apache.maven.cli.MavenCli.doMain(MavenCli.java:288)
+	at org.apache.maven.cli.MavenCli.main(MavenCli.java:192)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:566)
+	at org.codehaus.plexus.classworlds.launcher.Launcher.launchEnhanced(Launcher.java:289)
+	at org.codehaus.plexus.classworlds.launcher.Launcher.launch(Launcher.java:229)
+	at org.codehaus.plexus.classworlds.launcher.Launcher.mainWithExitCode(Launcher.java:415)
+	at org.codehaus.plexus.classworlds.launcher.Launcher.main(Launcher.java:356)
+---- System Properties ---
+sun.desktop=gnome
+awt.toolkit=sun.awt.X11.XToolkit
+java.specification.version=11
+sun.cpu.isalist=
+sun.jnu.encoding=UTF-8
+java.class.path=/usr/share/maven/boot/plexus-classworlds-2.x.jar
+java.vm.vendor=Oracle Corporation
+sun.arch.data.model=64
+java.vendor.url=http://java.oracle.com/
+user.timezone=Europe/Amsterdam
+maven.conf=/usr/share/maven/conf
+os.name=Linux
+java.vm.specification.version=11
+sun.java.launcher=SUN_STANDARD
+user.country=US
+sun.boot.library.path=/usr/lib/jvm/java-11-openjdk-amd64/lib
+sun.java.command=org.codehaus.plexus.classworlds.launcher.Launcher clean package
+jdk.debug=release
+maven.home=/usr/share/maven
+sun.cpu.endian=little
+user.home=/home/maarten
+user.language=en
+java.specification.vendor=Oracle Corporation
+java.version.date=2019-01-15
+java.home=/usr/lib/jvm/java-11-openjdk-amd64
+file.separator=/
+java.vm.compressedOopsMode=Zero based
+line.separator=
+
+java.specification.name=Java Platform API Specification
+java.vm.specification.vendor=Oracle Corporation
+java.awt.graphicsenv=sun.awt.X11GraphicsEnvironment
+sun.management.compiler=HotSpot 64-Bit Tiered Compilers
+java.runtime.version=11.0.2+9-Ubuntu-3ubuntu118.04.3
+user.name=maarten
+path.separator=:
+securerandom.source=file:/dev/./urandom
+os.version=4.15.0-47-generic
+java.runtime.name=OpenJDK Runtime Environment
+file.encoding=UTF-8
+guice.disable.misplaced.annotation.check=true
+java.vm.name=OpenJDK 64-Bit Server VM
+java.vendor.url.bug=http://bugreport.java.com/bugreport/
+java.io.tmpdir=/tmp
+java.version=11.0.2
+user.dir=/home/maarten/IdeaProjects/SpringFuReactive
+os.arch=amd64
+maven.multiModuleProjectDirectory=/home/maarten/IdeaProjects/SpringFuReactive
+java.vm.specification.name=Java Virtual Machine Specification
+java.awt.printerjob=sun.print.PSPrinterJob
+sun.os.patch.level=unknown
+java.library.path=/usr/java/packages/lib:/usr/lib/x86_64-linux-gnu/jni:/lib/x86_64-linux-gnu:/usr/lib/x86_64-linux-gnu:/usr/lib/jni:/lib:/usr/lib
+java.vendor=Oracle Corporation
+java.vm.info=mixed mode, sharing
+java.vm.version=11.0.2+9-Ubuntu-3ubuntu118.04.3
+classworlds.conf=/usr/share/maven/bin/m2.conf
+sun.io.unicode.encoding=UnicodeLittle
+library.jansi.path=/usr/share/maven/lib/jansi-native
+java.class.version=55.0
+---- Command Line ---
+-Xset:avoidFinal=true
+-Xlint:warning
+-inpath
+/home/maarten/IdeaProjects/SpringFuReactive/target/classes
+-sourceroots
+/tmp/1555941116233-0
+-d
+/home/maarten/IdeaProjects/SpringFuReactive/target/jcabi-ajc
+-classpath
+/home/maarten/IdeaProjects/SpringFuReactive/target/classes:/home/maarten/.m2/repository/org/springframework/boot/spring-boot-starter-webflux/2.1.4.RELEASE/spring-boot-starter-webflux-2.1.4.RELEASE.jar:/home/maarten/.m2/repository/org/springframework/boot/spring-boot-starter/2.1.4.RELEASE/spring-boot-starter-2.1.4.RELEASE.jar:/home/maarten/.m2/repository/org/springframework/boot/spring-boot-autoconfigure/2.1.4.RELEASE/spring-boot-autoconfigure-2.1.4.RELEASE.jar:/home/maarten/.m2/repository/org/springframework/boot/spring-boot-starter-logging/2.1.4.RELEASE/spring-boot-starter-logging-2.1.4.RELEASE.jar:/home/maarten/.m2/repository/ch/qos/logback/logback-classic/1.2.3/logback-classic-1.2.3.jar:/home/maarten/.m2/repository/ch/qos/logback/logback-core/1.2.3/logback-core-1.2.3.jar:/home/maarten/.m2/repository/org/apache/logging/log4j/log4j-to-slf4j/2.11.2/log4j-to-slf4j-2.11.2.jar:/home/maarten/.m2/repository/org/apache/logging/log4j/log4j-api/2.11.2/log4j-api-2.11.2.jar:/home/maarten/.m2/repository/org/slf4j/jul-to-slf4j/1.7.26/jul-to-slf4j-1.7.26.jar:/home/maarten/.m2/repository/javax/annotation/javax.annotation-api/1.3.2/javax.annotation-api-1.3.2.jar:/home/maarten/.m2/repository/org/yaml/snakeyaml/1.23/snakeyaml-1.23.jar:/home/maarten/.m2/repository/org/springframework/boot/spring-boot-starter-json/2.1.4.RELEASE/spring-boot-starter-json-2.1.4.RELEASE.jar:/home/maarten/.m2/repository/com/fasterxml/jackson/core/jackson-databind/2.9.8/jackson-databind-2.9.8.jar:/home/maarten/.m2/repository/com/fasterxml/jackson/core/jackson-annotations/2.9.0/jackson-annotations-2.9.0.jar:/home/maarten/.m2/repository/com/fasterxml/jackson/core/jackson-core/2.9.8/jackson-core-2.9.8.jar:/home/maarten/.m2/repository/com/fasterxml/jackson/datatype/jackson-datatype-jdk8/2.9.8/jackson-datatype-jdk8-2.9.8.jar:/home/maarten/.m2/repository/com/fasterxml/jackson/datatype/jackson-datatype-jsr310/2.9.8/jackson-datatype-jsr310-2.9.8.jar:/home/maarten/.m2/repository/com/fasterxml/jackson/module/jackson-module-parameter-names/2.9.8/jackson-module-parameter-names-2.9.8.jar:/home/maarten/.m2/repository/org/springframework/boot/spring-boot-starter-reactor-netty/2.1.4.RELEASE/spring-boot-starter-reactor-netty-2.1.4.RELEASE.jar:/home/maarten/.m2/repository/io/projectreactor/netty/reactor-netty/0.8.6.RELEASE/reactor-netty-0.8.6.RELEASE.jar:/home/maarten/.m2/repository/io/netty/netty-codec-http/4.1.34.Final/netty-codec-http-4.1.34.Final.jar:/home/maarten/.m2/repository/io/netty/netty-common/4.1.34.Final/netty-common-4.1.34.Final.jar:/home/maarten/.m2/repository/io/netty/netty-buffer/4.1.34.Final/netty-buffer-4.1.34.Final.jar:/home/maarten/.m2/repository/io/netty/netty-transport/4.1.34.Final/netty-transport-4.1.34.Final.jar:/home/maarten/.m2/repository/io/netty/netty-resolver/4.1.34.Final/netty-resolver-4.1.34.Final.jar:/home/maarten/.m2/repository/io/netty/netty-codec/4.1.34.Final/netty-codec-4.1.34.Final.jar:/home/maarten/.m2/repository/io/netty/netty-codec-http2/4.1.34.Final/netty-codec-http2-4.1.34.Final.jar:/home/maarten/.m2/repository/io/netty/netty-handler/4.1.34.Final/netty-handler-4.1.34.Final.jar:/home/maarten/.m2/repository/io/netty/netty-handler-proxy/4.1.34.Final/netty-handler-proxy-4.1.34.Final.jar:/home/maarten/.m2/repository/io/netty/netty-codec-socks/4.1.34.Final/netty-codec-socks-4.1.34.Final.jar:/home/maarten/.m2/repository/io/netty/netty-transport-native-epoll/4.1.34.Final/netty-transport-native-epoll-4.1.34.Final-linux-x86_64.jar:/home/maarten/.m2/repository/io/netty/netty-transport-native-unix-common/4.1.34.Final/netty-transport-native-unix-common-4.1.34.Final.jar:/home/maarten/.m2/repository/org/hibernate/validator/hibernate-validator/6.0.16.Final/hibernate-validator-6.0.16.Final.jar:/home/maarten/.m2/repository/org/jboss/logging/jboss-logging/3.3.2.Final/jboss-logging-3.3.2.Final.jar:/home/maarten/.m2/repository/com/fasterxml/classmate/1.4.0/classmate-1.4.0.jar:/home/maarten/.m2/repository/org/springframework/spring-web/5.1.6.RELEASE/spring-web-5.1.6.RELEASE.jar:/home/maarten/.m2/repository/org/springframework/spring-beans/5.1.6.RELEASE/spring-beans-5.1.6.RELEASE.jar:/home/maarten/.m2/repository/org/springframework/spring-webflux/5.1.6.RELEASE/spring-webflux-5.1.6.RELEASE.jar:/home/maarten/.m2/repository/io/projectreactor/reactor-core/3.2.8.RELEASE/reactor-core-3.2.8.RELEASE.jar:/home/maarten/.m2/repository/org/reactivestreams/reactive-streams/1.0.2/reactive-streams-1.0.2.jar:/home/maarten/.m2/repository/org/synchronoss/cloud/nio-multipart-parser/1.1.0/nio-multipart-parser-1.1.0.jar:/home/maarten/.m2/repository/org/slf4j/slf4j-api/1.7.26/slf4j-api-1.7.26.jar:/home/maarten/.m2/repository/org/synchronoss/cloud/nio-stream-storage/1.1.3/nio-stream-storage-1.1.3.jar:/home/maarten/.m2/repository/org/springframework/fu/spring-fu-jafu/0.0.5/spring-fu-jafu-0.0.5.jar:/home/maarten/.m2/repository/org/springframework/boot/spring-boot/2.1.4.RELEASE/spring-boot-2.1.4.RELEASE.jar:/home/maarten/.m2/repository/org/springframework/spring-context/5.1.6.RELEASE/spring-context-5.1.6.RELEASE.jar:/home/maarten/.m2/repository/org/springframework/spring-aop/5.1.6.RELEASE/spring-aop-5.1.6.RELEASE.jar:/home/maarten/.m2/repository/org/springframework/spring-expression/5.1.6.RELEASE/spring-expression-5.1.6.RELEASE.jar:/home/maarten/.m2/repository/org/springframework/fu/spring-fu-autoconfigure-adapter/0.0.5/spring-fu-autoconfigure-adapter-0.0.5.jar:/home/maarten/.m2/repository/com/jcabi/jcabi-aspects/0.22.6/jcabi-aspects-0.22.6.jar:/home/maarten/.m2/repository/com/jcabi/jcabi-log/0.17/jcabi-log-0.17.jar:/home/maarten/.m2/repository/javax/validation/validation-api/2.0.1.Final/validation-api-2.0.1.Final.jar:/home/maarten/.m2/repository/org/aspectj/aspectjrt/1.6.12/aspectjrt-1.6.12.jar:/home/maarten/IdeaProjects/SpringFuReactive/target/classes:/home/maarten/.m2/repository/org/springframework/boot/spring-boot-starter-webflux/2.1.4.RELEASE/spring-boot-starter-webflux-2.1.4.RELEASE.jar:/home/maarten/.m2/repository/org/springframework/boot/spring-boot-starter/2.1.4.RELEASE/spring-boot-starter-2.1.4.RELEASE.jar:/home/maarten/.m2/repository/org/springframework/boot/spring-boot-autoconfigure/2.1.4.RELEASE/spring-boot-autoconfigure-2.1.4.RELEASE.jar:/home/maarten/.m2/repository/org/springframework/boot/spring-boot-starter-logging/2.1.4.RELEASE/spring-boot-starter-logging-2.1.4.RELEASE.jar:/home/maarten/.m2/repository/ch/qos/logback/logback-classic/1.2.3/logback-classic-1.2.3.jar:/home/maarten/.m2/repository/ch/qos/logback/logback-core/1.2.3/logback-core-1.2.3.jar:/home/maarten/.m2/repository/org/apache/logging/log4j/log4j-to-slf4j/2.11.2/log4j-to-slf4j-2.11.2.jar:/home/maarten/.m2/repository/org/apache/logging/log4j/log4j-api/2.11.2/log4j-api-2.11.2.jar:/home/maarten/.m2/repository/org/slf4j/jul-to-slf4j/1.7.26/jul-to-slf4j-1.7.26.jar:/home/maarten/.m2/repository/javax/annotation/javax.annotation-api/1.3.2/javax.annotation-api-1.3.2.jar:/home/maarten/.m2/repository/org/springframework/boot/spring-boot-starter-json/2.1.4.RELEASE/spring-boot-starter-json-2.1.4.RELEASE.jar:/home/maarten/.m2/repository/com/fasterxml/jackson/core/jackson-databind/2.9.8/jackson-databind-2.9.8.jar:/home/maarten/.m2/repository/com/fasterxml/jackson/core/jackson-annotations/2.9.0/jackson-annotations-2.9.0.jar:/home/maarten/.m2/repository/com/fasterxml/jackson/core/jackson-core/2.9.8/jackson-core-2.9.8.jar:/home/maarten/.m2/repository/com/fasterxml/jackson/datatype/jackson-datatype-jdk8/2.9.8/jackson-datatype-jdk8-2.9.8.jar:/home/maarten/.m2/repository/com/fasterxml/jackson/datatype/jackson-datatype-jsr310/2.9.8/jackson-datatype-jsr310-2.9.8.jar:/home/maarten/.m2/repository/com/fasterxml/jackson/module/jackson-module-parameter-names/2.9.8/jackson-module-parameter-names-2.9.8.jar:/home/maarten/.m2/repository/org/springframework/boot/spring-boot-starter-reactor-netty/2.1.4.RELEASE/spring-boot-starter-reactor-netty-2.1.4.RELEASE.jar:/home/maarten/.m2/repository/io/projectreactor/netty/reactor-netty/0.8.6.RELEASE/reactor-netty-0.8.6.RELEASE.jar:/home/maarten/.m2/repository/io/netty/netty-codec-http/4.1.34.Final/netty-codec-http-4.1.34.Final.jar:/home/maarten/.m2/repository/io/netty/netty-common/4.1.34.Final/netty-common-4.1.34.Final.jar:/home/maarten/.m2/repository/io/netty/netty-buffer/4.1.34.Final/netty-buffer-4.1.34.Final.jar:/home/maarten/.m2/repository/io/netty/netty-transport/4.1.34.Final/netty-transport-4.1.34.Final.jar:/home/maarten/.m2/repository/io/netty/netty-resolver/4.1.34.Final/netty-resolver-4.1.34.Final.jar:/home/maarten/.m2/repository/io/netty/netty-codec/4.1.34.Final/netty-codec-4.1.34.Final.jar:/home/maarten/.m2/repository/io/netty/netty-codec-http2/4.1.34.Final/netty-codec-http2-4.1.34.Final.jar:/home/maarten/.m2/repository/io/netty/netty-handler/4.1.34.Final/netty-handler-4.1.34.Final.jar:/home/maarten/.m2/repository/io/netty/netty-handler-proxy/4.1.34.Final/netty-handler-proxy-4.1.34.Final.jar:/home/maarten/.m2/repository/io/netty/netty-codec-socks/4.1.34.Final/netty-codec-socks-4.1.34.Final.jar:/home/maarten/.m2/repository/io/netty/netty-transport-native-epoll/4.1.34.Final/netty-transport-native-epoll-4.1.34.Final-linux-x86_64.jar:/home/maarten/.m2/repository/io/netty/netty-transport-native-unix-common/4.1.34.Final/netty-transport-native-unix-common-4.1.34.Final.jar:/home/maarten/.m2/repository/org/hibernate/validator/hibernate-validator/6.0.16.Final/hibernate-validator-6.0.16.Final.jar:/home/maarten/.m2/repository/org/jboss/logging/jboss-logging/3.3.2.Final/jboss-logging-3.3.2.Final.jar:/home/maarten/.m2/repository/com/fasterxml/classmate/1.4.0/classmate-1.4.0.jar:/home/maarten/.m2/repository/org/springframework/spring-web/5.1.6.RELEASE/spring-web-5.1.6.RELEASE.jar:/home/maarten/.m2/repository/org/springframework/spring-beans/5.1.6.RELEASE/spring-beans-5.1.6.RELEASE.jar:/home/maarten/.m2/repository/org/springframework/spring-webflux/5.1.6.RELEASE/spring-webflux-5.1.6.RELEASE.jar:/home/maarten/.m2/repository/io/projectreactor/reactor-core/3.2.8.RELEASE/reactor-core-3.2.8.RELEASE.jar:/home/maarten/.m2/repository/org/reactivestreams/reactive-streams/1.0.2/reactive-streams-1.0.2.jar:/home/maarten/.m2/repository/org/synchronoss/cloud/nio-multipart-parser/1.1.0/nio-multipart-parser-1.1.0.jar:/home/maarten/.m2/repository/org/slf4j/slf4j-api/1.7.26/slf4j-api-1.7.26.jar:/home/maarten/.m2/repository/org/synchronoss/cloud/nio-stream-storage/1.1.3/nio-stream-storage-1.1.3.jar:/home/maarten/.m2/repository/org/springframework/fu/spring-fu-jafu/0.0.5/spring-fu-jafu-0.0.5.jar:/home/maarten/.m2/repository/org/springframework/boot/spring-boot/2.1.4.RELEASE/spring-boot-2.1.4.RELEASE.jar:/home/maarten/.m2/repository/org/springframework/spring-context/5.1.6.RELEASE/spring-context-5.1.6.RELEASE.jar:/home/maarten/.m2/repository/org/springframework/spring-aop/5.1.6.RELEASE/spring-aop-5.1.6.RELEASE.jar:/home/maarten/.m2/repository/org/springframework/spring-expression/5.1.6.RELEASE/spring-expression-5.1.6.RELEASE.jar:/home/maarten/.m2/repository/org/springframework/spring-core/5.1.6.RELEASE/spring-core-5.1.6.RELEASE.jar:/home/maarten/.m2/repository/org/springframework/spring-jcl/5.1.6.RELEASE/spring-jcl-5.1.6.RELEASE.jar:/home/maarten/.m2/repository/com/jcabi/jcabi-aspects/0.22.6/jcabi-aspects-0.22.6.jar:/home/maarten/.m2/repository/com/jcabi/jcabi-log/0.17/jcabi-log-0.17.jar:/home/maarten/.m2/repository/javax/validation/validation-api/2.0.1.Final/validation-api-2.0.1.Final.jar
+-aspectpath
+/home/maarten/IdeaProjects/SpringFuReactive/target/classes:/home/maarten/.m2/repository/org/springframework/boot/spring-boot-starter-webflux/2.1.4.RELEASE/spring-boot-starter-webflux-2.1.4.RELEASE.jar:/home/maarten/.m2/repository/org/springframework/boot/spring-boot-starter/2.1.4.RELEASE/spring-boot-starter-2.1.4.RELEASE.jar:/home/maarten/.m2/repository/org/springframework/boot/spring-boot-autoconfigure/2.1.4.RELEASE/spring-boot-autoconfigure-2.1.4.RELEASE.jar:/home/maarten/.m2/repository/org/springframework/boot/spring-boot-starter-logging/2.1.4.RELEASE/spring-boot-starter-logging-2.1.4.RELEASE.jar:/home/maarten/.m2/repository/ch/qos/logback/logback-classic/1.2.3/logback-classic-1.2.3.jar:/home/maarten/.m2/repository/ch/qos/logback/logback-core/1.2.3/logback-core-1.2.3.jar:/home/maarten/.m2/repository/org/apache/logging/log4j/log4j-to-slf4j/2.11.2/log4j-to-slf4j-2.11.2.jar:/home/maarten/.m2/repository/org/apache/logging/log4j/log4j-api/2.11.2/log4j-api-2.11.2.jar:/home/maarten/.m2/repository/org/slf4j/jul-to-slf4j/1.7.26/jul-to-slf4j-1.7.26.jar:/home/maarten/.m2/repository/javax/annotation/javax.annotation-api/1.3.2/javax.annotation-api-1.3.2.jar:/home/maarten/.m2/repository/org/yaml/snakeyaml/1.23/snakeyaml-1.23.jar:/home/maarten/.m2/repository/org/springframework/boot/spring-boot-starter-json/2.1.4.RELEASE/spring-boot-starter-json-2.1.4.RELEASE.jar:/home/maarten/.m2/repository/com/fasterxml/jackson/core/jackson-databind/2.9.8/jackson-databind-2.9.8.jar:/home/maarten/.m2/repository/com/fasterxml/jackson/core/jackson-annotations/2.9.0/jackson-annotations-2.9.0.jar:/home/maarten/.m2/repository/com/fasterxml/jackson/core/jackson-core/2.9.8/jackson-core-2.9.8.jar:/home/maarten/.m2/repository/com/fasterxml/jackson/datatype/jackson-datatype-jdk8/2.9.8/jackson-datatype-jdk8-2.9.8.jar:/home/maarten/.m2/repository/com/fasterxml/jackson/datatype/jackson-datatype-jsr310/2.9.8/jackson-datatype-jsr310-2.9.8.jar:/home/maarten/.m2/repository/com/fasterxml/jackson/module/jackson-module-parameter-names/2.9.8/jackson-module-parameter-names-2.9.8.jar:/home/maarten/.m2/repository/org/springframework/boot/spring-boot-starter-reactor-netty/2.1.4.RELEASE/spring-boot-starter-reactor-netty-2.1.4.RELEASE.jar:/home/maarten/.m2/repository/io/projectreactor/netty/reactor-netty/0.8.6.RELEASE/reactor-netty-0.8.6.RELEASE.jar:/home/maarten/.m2/repository/io/netty/netty-codec-http/4.1.34.Final/netty-codec-http-4.1.34.Final.jar:/home/maarten/.m2/repository/io/netty/netty-common/4.1.34.Final/netty-common-4.1.34.Final.jar:/home/maarten/.m2/repository/io/netty/netty-buffer/4.1.34.Final/netty-buffer-4.1.34.Final.jar:/home/maarten/.m2/repository/io/netty/netty-transport/4.1.34.Final/netty-transport-4.1.34.Final.jar:/home/maarten/.m2/repository/io/netty/netty-resolver/4.1.34.Final/netty-resolver-4.1.34.Final.jar:/home/maarten/.m2/repository/io/netty/netty-codec/4.1.34.Final/netty-codec-4.1.34.Final.jar:/home/maarten/.m2/repository/io/netty/netty-codec-http2/4.1.34.Final/netty-codec-http2-4.1.34.Final.jar:/home/maarten/.m2/repository/io/netty/netty-handler/4.1.34.Final/netty-handler-4.1.34.Final.jar:/home/maarten/.m2/repository/io/netty/netty-handler-proxy/4.1.34.Final/netty-handler-proxy-4.1.34.Final.jar:/home/maarten/.m2/repository/io/netty/netty-codec-socks/4.1.34.Final/netty-codec-socks-4.1.34.Final.jar:/home/maarten/.m2/repository/io/netty/netty-transport-native-epoll/4.1.34.Final/netty-transport-native-epoll-4.1.34.Final-linux-x86_64.jar:/home/maarten/.m2/repository/io/netty/netty-transport-native-unix-common/4.1.34.Final/netty-transport-native-unix-common-4.1.34.Final.jar:/home/maarten/.m2/repository/org/hibernate/validator/hibernate-validator/6.0.16.Final/hibernate-validator-6.0.16.Final.jar:/home/maarten/.m2/repository/org/jboss/logging/jboss-logging/3.3.2.Final/jboss-logging-3.3.2.Final.jar:/home/maarten/.m2/repository/com/fasterxml/classmate/1.4.0/classmate-1.4.0.jar:/home/maarten/.m2/repository/org/springframework/spring-web/5.1.6.RELEASE/spring-web-5.1.6.RELEASE.jar:/home/maarten/.m2/repository/org/springframework/spring-beans/5.1.6.RELEASE/spring-beans-5.1.6.RELEASE.jar:/home/maarten/.m2/repository/org/springframework/spring-webflux/5.1.6.RELEASE/spring-webflux-5.1.6.RELEASE.jar:/home/maarten/.m2/repository/io/projectreactor/reactor-core/3.2.8.RELEASE/reactor-core-3.2.8.RELEASE.jar:/home/maarten/.m2/repository/org/reactivestreams/reactive-streams/1.0.2/reactive-streams-1.0.2.jar:/home/maarten/.m2/repository/org/synchronoss/cloud/nio-multipart-parser/1.1.0/nio-multipart-parser-1.1.0.jar:/home/maarten/.m2/repository/org/slf4j/slf4j-api/1.7.26/slf4j-api-1.7.26.jar:/home/maarten/.m2/repository/org/synchronoss/cloud/nio-stream-storage/1.1.3/nio-stream-storage-1.1.3.jar:/home/maarten/.m2/repository/org/springframework/fu/spring-fu-jafu/0.0.5/spring-fu-jafu-0.0.5.jar:/home/maarten/.m2/repository/org/springframework/boot/spring-boot/2.1.4.RELEASE/spring-boot-2.1.4.RELEASE.jar:/home/maarten/.m2/repository/org/springframework/spring-context/5.1.6.RELEASE/spring-context-5.1.6.RELEASE.jar:/home/maarten/.m2/repository/org/springframework/spring-aop/5.1.6.RELEASE/spring-aop-5.1.6.RELEASE.jar:/home/maarten/.m2/repository/org/springframework/spring-expression/5.1.6.RELEASE/spring-expression-5.1.6.RELEASE.jar:/home/maarten/.m2/repository/org/springframework/fu/spring-fu-autoconfigure-adapter/0.0.5/spring-fu-autoconfigure-adapter-0.0.5.jar:/home/maarten/.m2/repository/com/jcabi/jcabi-aspects/0.22.6/jcabi-aspects-0.22.6.jar:/home/maarten/.m2/repository/com/jcabi/jcabi-log/0.17/jcabi-log-0.17.jar:/home/maarten/.m2/repository/javax/validation/validation-api/2.0.1.Final/validation-api-2.0.1.Final.jar:/home/maarten/.m2/repository/org/aspectj/aspectjrt/1.6.12/aspectjrt-1.6.12.jar:/home/maarten/IdeaProjects/SpringFuReactive/target/classes:/home/maarten/.m2/repository/org/springframework/boot/spring-boot-starter-webflux/2.1.4.RELEASE/spring-boot-starter-webflux-2.1.4.RELEASE.jar:/home/maarten/.m2/repository/org/springframework/boot/spring-boot-starter/2.1.4.RELEASE/spring-boot-starter-2.1.4.RELEASE.jar:/home/maarten/.m2/repository/org/springframework/boot/spring-boot-autoconfigure/2.1.4.RELEASE/spring-boot-autoconfigure-2.1.4.RELEASE.jar:/home/maarten/.m2/repository/org/springframework/boot/spring-boot-starter-logging/2.1.4.RELEASE/spring-boot-starter-logging-2.1.4.RELEASE.jar:/home/maarten/.m2/repository/ch/qos/logback/logback-classic/1.2.3/logback-classic-1.2.3.jar:/home/maarten/.m2/repository/ch/qos/logback/logback-core/1.2.3/logback-core-1.2.3.jar:/home/maarten/.m2/repository/org/apache/logging/log4j/log4j-to-slf4j/2.11.2/log4j-to-slf4j-2.11.2.jar:/home/maarten/.m2/repository/org/apache/logging/log4j/log4j-api/2.11.2/log4j-api-2.11.2.jar:/home/maarten/.m2/repository/org/slf4j/jul-to-slf4j/1.7.26/jul-to-slf4j-1.7.26.jar:/home/maarten/.m2/repository/javax/annotation/javax.annotation-api/1.3.2/javax.annotation-api-1.3.2.jar:/home/maarten/.m2/repository/org/springframework/boot/spring-boot-starter-json/2.1.4.RELEASE/spring-boot-starter-json-2.1.4.RELEASE.jar:/home/maarten/.m2/repository/com/fasterxml/jackson/core/jackson-databind/2.9.8/jackson-databind-2.9.8.jar:/home/maarten/.m2/repository/com/fasterxml/jackson/core/jackson-annotations/2.9.0/jackson-annotations-2.9.0.jar:/home/maarten/.m2/repository/com/fasterxml/jackson/core/jackson-core/2.9.8/jackson-core-2.9.8.jar:/home/maarten/.m2/repository/com/fasterxml/jackson/datatype/jackson-datatype-jdk8/2.9.8/jackson-datatype-jdk8-2.9.8.jar:/home/maarten/.m2/repository/com/fasterxml/jackson/datatype/jackson-datatype-jsr310/2.9.8/jackson-datatype-jsr310-2.9.8.jar:/home/maarten/.m2/repository/com/fasterxml/jackson/module/jackson-module-parameter-names/2.9.8/jackson-module-parameter-names-2.9.8.jar:/home/maarten/.m2/repository/org/springframework/boot/spring-boot-starter-reactor-netty/2.1.4.RELEASE/spring-boot-starter-reactor-netty-2.1.4.RELEASE.jar:/home/maarten/.m2/repository/io/projectreactor/netty/reactor-netty/0.8.6.RELEASE/reactor-netty-0.8.6.RELEASE.jar:/home/maarten/.m2/repository/io/netty/netty-codec-http/4.1.34.Final/netty-codec-http-4.1.34.Final.jar:/home/maarten/.m2/repository/io/netty/netty-common/4.1.34.Final/netty-common-4.1.34.Final.jar:/home/maarten/.m2/repository/io/netty/netty-buffer/4.1.34.Final/netty-buffer-4.1.34.Final.jar:/home/maarten/.m2/repository/io/netty/netty-transport/4.1.34.Final/netty-transport-4.1.34.Final.jar:/home/maarten/.m2/repository/io/netty/netty-resolver/4.1.34.Final/netty-resolver-4.1.34.Final.jar:/home/maarten/.m2/repository/io/netty/netty-codec/4.1.34.Final/netty-codec-4.1.34.Final.jar:/home/maarten/.m2/repository/io/netty/netty-codec-http2/4.1.34.Final/netty-codec-http2-4.1.34.Final.jar:/home/maarten/.m2/repository/io/netty/netty-handler/4.1.34.Final/netty-handler-4.1.34.Final.jar:/home/maarten/.m2/repository/io/netty/netty-handler-proxy/4.1.34.Final/netty-handler-proxy-4.1.34.Final.jar:/home/maarten/.m2/repository/io/netty/netty-codec-socks/4.1.34.Final/netty-codec-socks-4.1.34.Final.jar:/home/maarten/.m2/repository/io/netty/netty-transport-native-epoll/4.1.34.Final/netty-transport-native-epoll-4.1.34.Final-linux-x86_64.jar:/home/maarten/.m2/repository/io/netty/netty-transport-native-unix-common/4.1.34.Final/netty-transport-native-unix-common-4.1.34.Final.jar:/home/maarten/.m2/repository/org/hibernate/validator/hibernate-validator/6.0.16.Final/hibernate-validator-6.0.16.Final.jar:/home/maarten/.m2/repository/org/jboss/logging/jboss-logging/3.3.2.Final/jboss-logging-3.3.2.Final.jar:/home/maarten/.m2/repository/com/fasterxml/classmate/1.4.0/classmate-1.4.0.jar:/home/maarten/.m2/repository/org/springframework/spring-web/5.1.6.RELEASE/spring-web-5.1.6.RELEASE.jar:/home/maarten/.m2/repository/org/springframework/spring-beans/5.1.6.RELEASE/spring-beans-5.1.6.RELEASE.jar:/home/maarten/.m2/repository/org/springframework/spring-webflux/5.1.6.RELEASE/spring-webflux-5.1.6.RELEASE.jar:/home/maarten/.m2/repository/io/projectreactor/reactor-core/3.2.8.RELEASE/reactor-core-3.2.8.RELEASE.jar:/home/maarten/.m2/repository/org/reactivestreams/reactive-streams/1.0.2/reactive-streams-1.0.2.jar:/home/maarten/.m2/repository/org/synchronoss/cloud/nio-multipart-parser/1.1.0/nio-multipart-parser-1.1.0.jar:/home/maarten/.m2/repository/org/slf4j/slf4j-api/1.7.26/slf4j-api-1.7.26.jar:/home/maarten/.m2/repository/org/synchronoss/cloud/nio-stream-storage/1.1.3/nio-stream-storage-1.1.3.jar:/home/maarten/.m2/repository/org/springframework/fu/spring-fu-jafu/0.0.5/spring-fu-jafu-0.0.5.jar:/home/maarten/.m2/repository/org/springframework/boot/spring-boot/2.1.4.RELEASE/spring-boot-2.1.4.RELEASE.jar:/home/maarten/.m2/repository/org/springframework/spring-context/5.1.6.RELEASE/spring-context-5.1.6.RELEASE.jar:/home/maarten/.m2/repository/org/springframework/spring-aop/5.1.6.RELEASE/spring-aop-5.1.6.RELEASE.jar:/home/maarten/.m2/repository/org/springframework/spring-expression/5.1.6.RELEASE/spring-expression-5.1.6.RELEASE.jar:/home/maarten/.m2/repository/org/springframework/spring-core/5.1.6.RELEASE/spring-core-5.1.6.RELEASE.jar:/home/maarten/.m2/repository/org/springframework/spring-jcl/5.1.6.RELEASE/spring-jcl-5.1.6.RELEASE.jar:/home/maarten/.m2/repository/com/jcabi/jcabi-aspects/0.22.6/jcabi-aspects-0.22.6.jar:/home/maarten/.m2/repository/com/jcabi/jcabi-log/0.17/jcabi-log-0.17.jar:/home/maarten/.m2/repository/javax/validation/validation-api/2.0.1.Final/validation-api-2.0.1.Final.jar:/usr/share/maven/boot/plexus-classworlds-2.x.jar
+-source
+1.6
+-target
+1.6
+-g:none
+-encoding
+UTF-8
+-time
+-log
+/home/maarten/IdeaProjects/SpringFuReactive/target/jcabi-ajc.log
+-showWeaveInfo
+-warn:constructorName
+-warn:packageDefaultMethod
+-warn:deprecation
+-warn:maskedCatchBlocks
+-warn:unusedLocals
+-warn:unusedArguments
+-warn:unusedImports
+-warn:syntheticAccess
+-warn:assertIdentifier
+---- Full Classpath ---
+Empty
+---- Compiler Messages ---
+abort ABORT -- (ClassFormatException) File: 'META-INF/versions/9/module-info.class': Invalid byte tag in constant pool: 19
+File: 'META-INF/versions/9/module-info.class': Invalid byte tag in constant pool: 19
+org.aspectj.apache.bcel.classfile.ClassFormatException: File: 'META-INF/versions/9/module-info.class': Invalid byte tag in constant pool: 19
+	at org.aspectj.apache.bcel.classfile.ClassParser.readConstantPool(ClassParser.java:192)
+	at org.aspectj.apache.bcel.classfile.ClassParser.parse(ClassParser.java:131)
+	at org.aspectj.weaver.bcel.BcelWeaver.addAspectsFromJarFile(BcelWeaver.java:260)
+	at org.aspectj.weaver.bcel.BcelWeaver.addLibraryJarFile(BcelWeaver.java:236)
+	at org.aspectj.ajdt.internal.core.builder.AjBuildManager.initBcelWorld(AjBuildManager.java:874)
+	at org.aspectj.ajdt.internal.core.builder.AjBuildManager.performBuild(AjBuildManager.java:249)
+	at org.aspectj.ajdt.internal.core.builder.AjBuildManager.batchBuild(AjBuildManager.java:185)
+	at org.aspectj.ajdt.ajc.AjdtCommand.doCommand(AjdtCommand.java:112)
+	at org.aspectj.ajdt.ajc.AjdtCommand.runCommand(AjdtCommand.java:60)
+	at org.aspectj.tools.ajc.Main.run(Main.java:371)
+	at com.jcabi.maven.plugin.AjcMojo.executeAJC(AjcMojo.java:285)
+	at com.jcabi.maven.plugin.AjcMojo.execute_aroundBody2(AjcMojo.java:264)
+	at com.jcabi.maven.plugin.AjcMojo$AjcClosure3.run(AjcMojo.java:1)
+	at org.aspectj.runtime.reflect.JoinPointImpl.proceed(JoinPointImpl.java:149)
+	at com.jcabi.aspects.aj.MethodLogger.wrap(MethodLogger.java:208)
+	at com.jcabi.aspects.aj.MethodLogger.ajc$inlineAccessMethod$com_jcabi_aspects_aj_MethodLogger$com_jcabi_aspects_aj_MethodLogger$wrap(MethodLogger.java:1)
+	at com.jcabi.aspects.aj.MethodLogger.wrapMethod(MethodLogger.java:164)
+	at com.jcabi.maven.plugin.AjcMojo.execute_aroundBody4(AjcMojo.java:245)
+	at com.jcabi.maven.plugin.AjcMojo$AjcClosure5.run(AjcMojo.java:1)
+	at org.aspectj.runtime.reflect.JoinPointImpl.proceed(JoinPointImpl.java:149)
+	at com.jcabi.aspects.aj.MethodLogger.wrapClass(MethodLogger.java:134)
+	at com.jcabi.maven.plugin.AjcMojo.execute(AjcMojo.java:245)
+	at org.apache.maven.plugin.DefaultBuildPluginManager.executeMojo(DefaultBuildPluginManager.java:137)
+	at org.apache.maven.lifecycle.internal.MojoExecutor.execute(MojoExecutor.java:210)
+	at org.apache.maven.lifecycle.internal.MojoExecutor.execute(MojoExecutor.java:156)
+	at org.apache.maven.lifecycle.internal.MojoExecutor.execute(MojoExecutor.java:148)
+	at org.apache.maven.lifecycle.internal.LifecycleModuleBuilder.buildProject(LifecycleModuleBuilder.java:117)
+	at org.apache.maven.lifecycle.internal.LifecycleModuleBuilder.buildProject(LifecycleModuleBuilder.java:81)
+	at org.apache.maven.lifecycle.internal.builder.singlethreaded.SingleThreadedBuilder.build(SingleThreadedBuilder.java:56)
+	at org.apache.maven.lifecycle.internal.LifecycleStarter.execute(LifecycleStarter.java:128)
+	at org.apache.maven.DefaultMaven.doExecute(DefaultMaven.java:305)
+	at org.apache.maven.DefaultMaven.doExecute(DefaultMaven.java:192)
+	at org.apache.maven.DefaultMaven.execute(DefaultMaven.java:105)
+	at org.apache.maven.cli.MavenCli.execute(MavenCli.java:956)
+	at org.apache.maven.cli.MavenCli.doMain(MavenCli.java:288)
+	at org.apache.maven.cli.MavenCli.main(MavenCli.java:192)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:566)
+	at org.codehaus.plexus.classworlds.launcher.Launcher.launchEnhanced(Launcher.java:289)
+	at org.codehaus.plexus.classworlds.launcher.Launcher.launch(Launcher.java:229)
+	at org.codehaus.plexus.classworlds.launcher.Launcher.mainWithExitCode(Launcher.java:415)
+	at org.codehaus.plexus.classworlds.launcher.Launcher.main(Launcher.java:356)
+
