@@ -4,17 +4,18 @@
   "description": "",
   "main": "client.js",
   "dependencies": {
-    "body-parser": "^1.15.2",
-    "express": "^4.14.0",
-    "randomstring": "^1.1.5",
+    "async": "^2.6.2",
+    "cluster": "^0.7.7",
+    "fs": "0.0.1-security",
+    "process": "^0.11.10",
     "request": "^2.74.0",
     "url": "^0.11.0"
   },
   "devDependencies": {},
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node client.js"
+    "start": "node client.js $URL $LOGFILEDIR"
   },
-  "author": "",
+  "author": "Maarten Smeets",
   "license": "ISC"
 }
