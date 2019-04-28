@@ -5,8 +5,6 @@ import org.springframework.web.reactive.function.BodyInserters;
 import org.springframework.web.reactive.function.server.ServerRequest;
 import org.springframework.web.reactive.function.server.ServerResponse;
 import reactor.core.publisher.Mono;
-import com.jcabi.aspects.Loggable;
-
 
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.atomic.AtomicLong;
@@ -16,7 +14,6 @@ public class GreetingHandler {
     private static final String template = "Hello, %s!";
     private final AtomicLong counter = new AtomicLong();
 
-    @Loggable(unit=TimeUnit.NANOSECONDS,skipResult=true,skipArgs=true,value=Loggable.INFO)
     public Mono<ServerResponse> hello(ServerRequest request) {
         return ServerResponse.ok().contentType(MediaType.APPLICATION_JSON).body(BodyInserters.fromObject(new Greeting(counter.incrementAndGet(), String.format(template, request.queryParam("name").get()))));
     }
