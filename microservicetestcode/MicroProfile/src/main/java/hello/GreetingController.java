@@ -9,6 +9,8 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.UriInfo;
 import java.util.concurrent.atomic.AtomicLong;
 import java.lang.management.ManagementFactory;
+import org.eclipse.microprofile.metrics.MetricUnits;
+import org.eclipse.microprofile.metrics.annotation.Timed;
 
 /**
  *
@@ -20,6 +22,10 @@ public class GreetingController {
     private final AtomicLong counter = new AtomicLong();
     private static Boolean first = true;
     
+    @Timed(name = "MessagesProcessed",
+            description = "Monitor the time sayHello Method takes",
+            unit = MetricUnits.MILLISECONDS,
+            absolute = true)
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     public Greeting sayHello(@Context UriInfo info) {
