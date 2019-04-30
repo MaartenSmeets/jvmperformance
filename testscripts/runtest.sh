@@ -1,18 +1,14 @@
 #!/bin/bash
 
-# 1 make sure you have a new version of docker-compose, for example version 1.23.2. 1.21.0 doesn't work with the docker-compose.yml file
-# 2 start process-exporter: docker run -d --rm -p 9256:9256 --privileged -v /proc:/host/proc -v `pwd`/proc-exp:/config ncabatoff/process-exporter --procfs /host/proc -config.path /config/process-exporter.yml 
+#make sure you have a new version of docker-compose, for example version 1.23.2. 1.21.0 doesn't work with the docker-compose.yml file
+#optional. start process-exporter: docker run -d --rm -p 9256:9256 --privileged -v /proc:/host/proc -v `pwd`/proc-exp:/config ncabatoff/process-exporter --procfs /host/proc -config.path /config/process-exporter.yml 
 # for additional information on process exporter see: https://github.com/ncabatoff/process-exporter
-# 3 next do docker-compose up -d
-# this starts the containers for monitoring and creates the network
-# 4 make sure node is installed and npm install has been executed in the directory of client.js
-# 5 start this script
 
 #Mind that the below line requires the bash shell
 DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null && pwd )"
 echo Running from $DIR
 
-jarfilelist=("mp-rest-service-8.jar" "sb-rest-service-8.jar" "sb-rest-service-reactive-8.jar" "sb-rest-service-reactive-fu-8.jar" "sb-rest-service-reactive-fu2-8.jar")
+jarfilelist=("sb-rest-service-8.jar" "sb-rest-service-reactive-8.jar" "sb-rest-service-reactive-fu-8.jar" "sb-rest-service-reactive-fu2-8.jar" "mp-rest-service-8.jar")
 #jarfilelist=("mp-rest-service-8.jar")
 test_outputdir=$DIR/jdktest`date +"%Y%m%d%H%M%S"`
 primerduration=10
@@ -90,24 +86,24 @@ function start_loadgen() {
 }
 
 function get_prom_stats() {
+    echo $1 Starting get prom stats from $2
     PROM_REQUESTS=`wget -qO- $2 | egrep 'http_server_requests_seconds_count.*status\=\"200\",\uri\=\"\/greeting' | awk '{print $2}'`
     PROM_TOTALTIME=`wget -qO- $2 | egrep 'http_server_requests_seconds_sum.*status\=\"200\",\uri\=\"\/greeting' | awk '{print $2}'`
-    PROM_AVERAGE=$(expr $PROM_TOTALTIME / $PROM_REQUESTS)
+    PROM_AVERAGE=`awk "BEGIN {printf \"%.5f\n\", 1000*$PROM_TOTALTIME/$PROM_REQUESTS}"`
     echo $1 PROM_REQUESTS: $PROM_REQUESTS
-    echo $1 PROM_TOTALTIME: $PROM_TOTALTIME
-    echo $1 PROM_AVERAGE: $PROM_AVERAGE
+    echo $1 PROM_TOTALTIME_S: $PROM_TOTALTIME
+    echo $1 PROM_AVERAGE_MS: $PROM_AVERAGE
 }
 
 #single parameter indicating the outputdir
 function run_test() {
     echo $1 STARTED AT: `date`
     mkdir -p $test_outputdir/$1
-    start_loadgen http://spring-boot-jdk:8080/greeting?name=Maarten $test_outputdir/$1/primer.txt $primerduration
     start_loadgen http://spring-boot-jdk:8080/greeting?name=Maarten $test_outputdir/$1/results.txt $loadgenduration
     get_prom_stats $1 http://localhost:8080/prometheus
     echo $1 COMPLETED_AT: `date`
     echo $1 REQUESTS_PROCESSED: `cat $test_outputdir/$1/results.txt | grep MEASURE | wc -l`
-    echo $1 AVERAGE_PROCESSING_TIME: `cat $test_outputdir/$1/results.txt | grep MEASURE | awk -F " " '{ total += $3 } END { print total/NR }'`
+    echo $1 AVERAGE_PROCESSING_TIME_MS: `cat $test_outputdir/$1/results.txt | grep MEASURE | awk -F " " '{ total += $3 } END { print total/NR }'`
 }
 
 counter=0
