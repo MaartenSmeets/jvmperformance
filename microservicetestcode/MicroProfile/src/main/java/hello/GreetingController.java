@@ -18,7 +18,8 @@ import java.lang.management.ManagementFactory;
 public class GreetingController {
     private static final String template = "Hello, %s!";
     private final AtomicLong counter = new AtomicLong();
-
+    private static Boolean first = true;
+    
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     public Greeting sayHello(@Context UriInfo info) {
@@ -27,8 +28,11 @@ public class GreetingController {
     
     public GreetingController() {
         super();
-        long currentTime = System.currentTimeMillis();
-        long vmStartTime = ManagementFactory.getRuntimeMXBean().getStartTime();
-        System.out.println("STARTED Controller started: "+ (currentTime - vmStartTime));
+        if (first) {
+            long currentTime = System.currentTimeMillis();
+            long vmStartTime = ManagementFactory.getRuntimeMXBean().getStartTime();
+            System.out.println("STARTED Controller started: "+ (currentTime - vmStartTime));
+            first=false;
+        }
     }
 }
