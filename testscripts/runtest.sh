@@ -12,11 +12,25 @@
 DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null && pwd )"
 echo Running from $DIR
 
-jarfilelist=("mp-rest-service-8.jar" "sb-rest-service-8.jar" "sb-rest-service-reactive-8.jar" "sb-rest-service-reactive-fu-8.jar")
+#jarfilelist=("mp-rest-service-8.jar" "sb-rest-service-8.jar" "sb-rest-service-reactive-8.jar" "sb-rest-service-reactive-fu-8.jar" "sb-rest-service-reactive-fu2-8.jar")
+jarfilelist=("mp-rest-service-8.jar")
 test_outputdir=$DIR/jdktest`date +"%Y%m%d%H%M%S"`
-primerduration=30
-loadgenduration=300
+primerduration=10
+loadgenduration=10
 
+function init() {
+docker stop perftest > /dev/null 2>&1
+docker rm perftest > /dev/null 2>&1
+docker stop spring-boot-jdk > /dev/null 2>&1
+docker rm spring-boot-jdk > /dev/null 2>&1
+docker rmi spring-boot-jdk > /dev/null 2>&1
+docker-compose stop > /dev/null 2>&1
+docker-compose rm -f > /dev/null 2>&1
+docker-compose up -d > /dev/null 2>&1
+}
+
+echo Initializing: cleaning up, starting Prometheus and Grafana
+init
 echo Redirecting output to $test_outputdir
 mkdir -p $test_outputdir
 exec > $test_outputdir/outputfile.txt
@@ -53,75 +67,83 @@ function get_start_time() {
 	docker logs spring-boot-jdk | grep "Started Application"
 }
 
-function start_primer() {
-    var="$@"
-    taskset -c 1,2,3,4 node ../nodejsperftest/client.js > $var &
-    pid=$!
-    sleep $primerduration
-    kill $pid
-}
-
 function start_loadgen() {
-    var="$@"
-    taskset -c 1,2,3,4 node ../nodejsperftest/client.js > $var &
-    pid=$!
-    sleep $loadgenduration
-    kill $pid
+    docker run -d --name perftest --network testscripts_dockernet -e URL=$1 perftest
+    for mypid in `ps -e -o pid,comm,cgroup | grep "/docker/${cid}" | awk '$2=="node" {print $1}'`
+    do
+        echo Setting CPU affinity for $mypid        
+        taskset -a -cp 1,2,3,4 $mypid
+    done
+    sleep $3
+    docker exec --user node perftest "/bin/sh" -c "cat /home/node/app/*.log > /home/node/app/combined.log"
+    docker cp perftest:/home/node/app/combined.log $2
+    docker stop perftest
+    docker rm perftest
 }
 
 #single parameter indicating the outputdir
 function run_test() {
     echo $1 STARTED AT: `date`
     mkdir -p $test_outputdir/$1
-    start_primer $test_outputdir/$1/primer.txt
-    start_loadgen $test_outputdir/$1/results.txt
+    start_loadgen http://spring-boot-jdk:8080/greeting?name=Maarten $test_outputdir/$1/primer.txt $primerduration
+    start_loadgen http://spring-boot-jdk:8080/greeting?name=Maarten $test_outputdir/$1/results.txt $loadgenduration
     echo $1 COMPLETED AT: `date`
     echo $1 REQUESTS PROCESSED: `cat $test_outputdir/$1/results.txt | grep MEASURE | wc -l`
     echo $1 AVERAGE PROCESSING TIME: `cat $test_outputdir/$1/results.txt | grep MEASURE | awk -F " " '{ total += $2 } END { print total/NR }'`
     #SOAPUI resultfile parsing: echo REQUESTS PROCESSED: `awk -F, 'NR == 3 { print $6 }' $soapui_outputdir/$1/LoadTest_1-statistics.txt`
 }
 
+counter=0
 for jarfilename in ${jarfilelist[@]}
 do
+counter=$(( $counter + 1 ))
 replacer "FROM oracle\/graalvm-ce:1.0.0-rc14"
 rebuild $jarfilename
-run_test graalvm
+run_test graalvm$counter
 get_start_time
 sleep 20
 done
 
+counter=0
 for jarfilename in ${jarfilelist[@]}
 do
+counter=$(( $counter + 1 ))
 replacer "FROM adoptopenjdk\/openjdk8:jdk8u202-b08"
 rebuild $jarfilename
-run_test adoptopenjdk
+run_test adoptopenjdk$counter
 get_start_time
 sleep 20
 done
 
+counter=0
 for jarfilename in ${jarfilelist[@]}
 do
+counter=$(( $counter + 1 ))
 replacer "FROM adoptopenjdk\/openjdk8-openj9:jdk8u202-b08_openj9-0.12.1"
 rebuild $jarfilename
-run_test openj9
+run_test openj9$counter
 get_start_time
 sleep 20
 done
 
+counter=0
 for jarfilename in ${jarfilelist[@]}
 do
+counter=$(( $counter + 1 ))
 replacer "FROM azul\/zulu-openjdk:8u202"
 rebuild $jarfilename
-run_test zuluopenjdk
+run_test zuluopenjdk$counter
 get_start_time
 sleep 20
 done
 
+counter=0
 for jarfilename in ${jarfilelist[@]}
 do
+counter=$(( $counter + 1 ))
 replacer "FROM store\/oracle\/serverjre:8"
 rebuild $jarfilename
-run_test oraclejdk
+run_test oraclejdk$counter
 get_start_time
 sleep 20
-done
+#done

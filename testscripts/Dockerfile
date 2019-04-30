@@ -1,4 +1,4 @@
-FROM store/oracle/serverjre:8
+FROM azul/zulu-openjdk:8u202
 VOLUME /tmp
 ARG JAR_FILE
 COPY ${JAR_FILE} app.jar
