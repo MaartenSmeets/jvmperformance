@@ -69,7 +69,7 @@ function replacer() {
 	sed -i "1s/.*/$var/" Dockerfile
 }
 
-#get the spring boot start time
+#get the start time
 function get_start_time() {
     echo $1 `docker logs spring-boot-jdk | grep "STARTED Controller started"`
     echo $1 `docker logs spring-boot-jdk | grep "STARTED Application started"`
@@ -89,15 +89,25 @@ function start_loadgen() {
     docker rm perftest
 }
 
+function get_prom_stats() {
+    PROM_REQUESTS=`wget -qO- $2 | egrep 'http_server_requests_seconds_count.*status\=\"200\",\uri\=\"\/greeting' | awk '{print $2}'`
+    PROM_TOTALTIME=`wget -qO- $2 | egrep 'http_server_requests_seconds_sum.*status\=\"200\",\uri\=\"\/greeting' | awk '{print $2}'`
+    PROM_AVERAGE=$(expr $PROM_TOTALTIME / $PROM_REQUESTS)
+    echo $1 PROM_REQUESTS: $PROM_REQUESTS
+    echo $1 PROM_TOTALTIME: $PROM_TOTALTIME
+    echo $1 PROM_AVERAGE: $PROM_AVERAGE
+}
+
 #single parameter indicating the outputdir
 function run_test() {
     echo $1 STARTED AT: `date`
     mkdir -p $test_outputdir/$1
     start_loadgen http://spring-boot-jdk:8080/greeting?name=Maarten $test_outputdir/$1/primer.txt $primerduration
     start_loadgen http://spring-boot-jdk:8080/greeting?name=Maarten $test_outputdir/$1/results.txt $loadgenduration
-    echo $1 COMPLETED AT: `date`
-    echo $1 REQUESTS PROCESSED: `cat $test_outputdir/$1/results.txt | grep MEASURE | wc -l`
-    echo $1 AVERAGE PROCESSING TIME: `cat $test_outputdir/$1/results.txt | grep MEASURE | awk -F " " '{ total += $3 } END { print total/NR }'`
+    get_prom_stats $1 http://localhost:8080/prometheus
+    echo $1 COMPLETED_AT: `date`
+    echo $1 REQUESTS_PROCESSED: `cat $test_outputdir/$1/results.txt | grep MEASURE | wc -l`
+    echo $1 AVERAGE_PROCESSING_TIME: `cat $test_outputdir/$1/results.txt | grep MEASURE | awk -F " " '{ total += $3 } END { print total/NR }'`
 }
 
 counter=0
