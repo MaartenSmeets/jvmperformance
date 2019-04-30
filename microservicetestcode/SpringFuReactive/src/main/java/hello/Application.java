@@ -7,6 +7,7 @@ import java.util.function.Consumer;
 
 import static org.springframework.fu.jafu.Jafu.webApplication;
 import static org.springframework.fu.jafu.web.WebFluxServerDsl.server;
+import java.lang.management.ManagementFactory;
 
 public class Application {
 
@@ -27,5 +28,8 @@ public class Application {
         JafuApplication jafu = webApplication(app -> app.enable(webFluxConfig));
 
         jafu.run(args);
+        long currentTime = System.currentTimeMillis();
+        long vmStartTime = ManagementFactory.getRuntimeMXBean().getStartTime();
+        System.out.println("STARTED Application started: "+ (currentTime - vmStartTime));
     }
 }
