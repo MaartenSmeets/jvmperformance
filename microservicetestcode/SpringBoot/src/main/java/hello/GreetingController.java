@@ -17,4 +17,11 @@ public class GreetingController {
         return new Greeting(counter.incrementAndGet(),
                 String.format(template, name));
     }
+    
+    public GreetingController() {
+        super();
+        long currentTime = System.currentTimeMillis();
+        long vmStartTime = ManagementFactory.getRuntimeMXBean().getStartTime();
+        System.out.println("STARTED Controller started: "+ (currentTime - vmStartTime));
+    }
 }
