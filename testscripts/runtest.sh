@@ -71,7 +71,8 @@ function replacer() {
 
 #get the spring boot start time
 function get_start_time() {
-	docker logs spring-boot-jdk | grep "Started Application"
+	docker logs spring-boot-jdk | grep "STARTED Controller started"
+        docker logs spring-boot-jdk | grep "STARTED Application started"
 }
 
 function start_loadgen() {
