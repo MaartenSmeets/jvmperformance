@@ -12,8 +12,8 @@
 DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null && pwd )"
 echo Running from $DIR
 
-#jarfilelist=("mp-rest-service-8.jar" "sb-rest-service-8.jar" "sb-rest-service-reactive-8.jar" "sb-rest-service-reactive-fu-8.jar" "sb-rest-service-reactive-fu2-8.jar")
-jarfilelist=("mp-rest-service-8.jar")
+jarfilelist=("mp-rest-service-8.jar" "sb-rest-service-8.jar" "sb-rest-service-reactive-8.jar" "sb-rest-service-reactive-fu-8.jar" "sb-rest-service-reactive-fu2-8.jar")
+#jarfilelist=("mp-rest-service-8.jar")
 test_outputdir=$DIR/jdktest`date +"%Y%m%d%H%M%S"`
 primerduration=10
 loadgenduration=10
@@ -97,7 +97,7 @@ counter=0
 for jarfilename in ${jarfilelist[@]}
 do
 counter=$(( $counter + 1 ))
-replacer "FROM oracle\/graalvm-ce:1.0.0-rc14"
+replacer "FROM oracle\/graalvm-ce:1.0.0-rc16"
 rebuild $jarfilename
 run_test graalvm$counter
 get_start_time
@@ -146,4 +146,4 @@ rebuild $jarfilename
 run_test oraclejdk$counter
 get_start_time
 sleep 20
-#done
+done
