@@ -71,8 +71,8 @@ function replacer() {
 
 #get the spring boot start time
 function get_start_time() {
-	docker logs spring-boot-jdk | grep "STARTED Controller started"
-        docker logs spring-boot-jdk | grep "STARTED Application started"
+    echo $1 `docker logs spring-boot-jdk | grep "STARTED Controller started"`
+    echo $1 `docker logs spring-boot-jdk | grep "STARTED Application started"`
 }
 
 function start_loadgen() {
@@ -97,8 +97,7 @@ function run_test() {
     start_loadgen http://spring-boot-jdk:8080/greeting?name=Maarten $test_outputdir/$1/results.txt $loadgenduration
     echo $1 COMPLETED AT: `date`
     echo $1 REQUESTS PROCESSED: `cat $test_outputdir/$1/results.txt | grep MEASURE | wc -l`
-    echo $1 AVERAGE PROCESSING TIME: `cat $test_outputdir/$1/results.txt | grep MEASURE | awk -F " " '{ total += $2 } END { print total/NR }'`
-    #SOAPUI resultfile parsing: echo REQUESTS PROCESSED: `awk -F, 'NR == 3 { print $6 }' $soapui_outputdir/$1/LoadTest_1-statistics.txt`
+    echo $1 AVERAGE PROCESSING TIME: `cat $test_outputdir/$1/results.txt | grep MEASURE | awk -F " " '{ total += $3 } END { print total/NR }'`
 }
 
 counter=0
@@ -108,7 +107,7 @@ counter=$(( $counter + 1 ))
 replacer "FROM oracle\/graalvm-ce:1.0.0-rc16"
 rebuild $jarfilename
 run_test graalvm$counter
-get_start_time
+get_start_time graalvm$counter
 sleep 20
 done
 
@@ -119,7 +118,7 @@ counter=$(( $counter + 1 ))
 replacer "FROM adoptopenjdk\/openjdk8:jdk8u202-b08"
 rebuild $jarfilename
 run_test adoptopenjdk$counter
-get_start_time
+get_start_time adoptopenjdk$counter
 sleep 20
 done
 
@@ -130,7 +129,7 @@ counter=$(( $counter + 1 ))
 replacer "FROM adoptopenjdk\/openjdk8-openj9:jdk8u202-b08_openj9-0.12.1"
 rebuild $jarfilename
 run_test openj9$counter
-get_start_time
+get_start_time openj9$counter
 sleep 20
 done
 
@@ -141,7 +140,7 @@ counter=$(( $counter + 1 ))
 replacer "FROM azul\/zulu-openjdk:8u202"
 rebuild $jarfilename
 run_test zuluopenjdk$counter
-get_start_time
+get_start_time zuluopenjdk$counter
 sleep 20
 done
 
@@ -152,6 +151,6 @@ counter=$(( $counter + 1 ))
 replacer "FROM store\/oracle\/serverjre:8"
 rebuild $jarfilename
 run_test oraclejdk$counter
-get_start_time
+get_start_time oraclejdk$counter
 sleep 20
 done
