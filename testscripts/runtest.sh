@@ -17,6 +17,13 @@ jarfilelist=("mp-rest-service-8.jar" "sb-rest-service-8.jar" "sb-rest-service-re
 test_outputdir=$DIR/jdktest`date +"%Y%m%d%H%M%S"`
 primerduration=10
 loadgenduration=10
+echo Isolated CPUs `cat /sys/devices/system/cpu/isolated`
+cpulistperftest=4,5,6,7
+cpulistjava=8,9,10,11
+
+echo CPUs used for Performance test $cpulistperftest
+echo CPUs used for Java process $cpulistjava
+
 
 function init() {
 docker stop perftest > /dev/null 2>&1
@@ -49,8 +56,8 @@ function rebuild() {
     docker build -t spring-boot-jdk -f Dockerfile --build-arg JAR_FILE=$var .
     docker run -d --name spring-boot-jdk -p 8080:8080 --network testscripts_dockernet spring-boot-jdk
     export mypid=`ps -o pid,sess,cmd afx | egrep "( |/)java.*app.jar.*( -f)?$" | awk '{print $1}'`
-    echo Java process PID: $mypid setting CPU affinity
-    sudo taskset -pc 5,6,7,8 $mypid
+    echo Java process PID: $mypid setting CPU affinity to $cpulistjava
+    sudo taskset -pc $cpulistjava $mypid
     #give it some time to startup
     sleep 10
 }
@@ -71,8 +78,8 @@ function start_loadgen() {
     docker run -d --name perftest --network testscripts_dockernet -e URL=$1 perftest
     for mypid in `ps -e -o pid,comm,cgroup | grep "/docker/${cid}" | awk '$2=="node" {print $1}'`
     do
-        echo Setting CPU affinity for $mypid        
-        taskset -a -cp 1,2,3,4 $mypid
+        echo Setting CPU affinity for $mypid to $cpulistperftest       
+        taskset -a -cp $cpulistperftest $mypid
     done
     sleep $3
     docker exec --user node perftest "/bin/sh" -c "cat /home/node/app/*.log > /home/node/app/combined.log"
