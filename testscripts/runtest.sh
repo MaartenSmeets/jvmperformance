@@ -8,8 +8,8 @@
 DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null && pwd )"
 echo Running from $DIR
 
-jarfilelist=("sb-rest-service-8.jar" "sb-rest-service-reactive-8.jar" "sb-rest-service-reactive-fu-8.jar" "sb-rest-service-reactive-fu2-8.jar" "mp-rest-service-8.jar")
-#jarfilelist=("mp-rest-service-8.jar")
+#jarfilelist=("mp-rest-service-8.jar" "sb-rest-service-8.jar" "sb-rest-service-reactive-8.jar" "sb-rest-service-reactive-fu-8.jar" "sb-rest-service-reactive-fu2-8.jar")
+jarfilelist=("mp-rest-service-8.jar")
 test_outputdir=$DIR/jdktest`date +"%Y%m%d%H%M%S"`
 primerduration=10
 loadgenduration=10
@@ -85,37 +85,61 @@ function start_loadgen() {
     docker rm perftest
 }
 
-function get_prom_stats() {
+function get_prom_stats_sb() {
     echo $1 Starting get prom stats from $2
     PROM_REQUESTS=`wget -qO- $2 | egrep 'http_server_requests_seconds_count.*status\=\"200\",\uri\=\"\/greeting' | awk '{print $2}'`
-    PROM_TOTALTIME=`wget -qO- $2 | egrep 'http_server_requests_seconds_sum.*status\=\"200\",\uri\=\"\/greeting' | awk '{print $2}'`
-    PROM_AVERAGE=`awk "BEGIN {printf \"%.5f\n\", 1000*$PROM_TOTALTIME/$PROM_REQUESTS}"`
+    PROM_TOTALTIME_S=`wget -qO- $2 | egrep 'http_server_requests_seconds_sum.*status\=\"200\",\uri\=\"\/greeting' | awk '{print $2}'`
+    PROM_AVERAGE_MS=`awk "BEGIN {printf \"%.5f\n\", 1000*$PROM_TOTALTIME_S/$PROM_REQUESTS}"`
     echo $1 PROM_REQUESTS: $PROM_REQUESTS
-    echo $1 PROM_TOTALTIME_S: $PROM_TOTALTIME
-    echo $1 PROM_AVERAGE_MS: $PROM_AVERAGE
+    echo $1 PROM_TOTALTIME_S: $PROM_TOTALTIME_S
+    echo $1 PROM_AVERAGE_MS: $PROM_AVERAGE_MS
 }
+
+function get_prom_stats_mp() {
+    echo $1 Starting get prom stats from $2
+    PROM_AVERAGE_S=`wget -qO- $2 | egrep '^application:messages_processed_mean_seconds' | awk '{print $2}'`
+    PROM_AVERAGE_MS=`awk "BEGIN {printf \"%.5f\n\", 1000*$PROM_AVERAGE_S}"`
+    PROM_REQUESTS=`wget -qO- $2 | egrep '^application:messages_processed_seconds_count' | awk '{print $2}'`
+    PROM_TOTALTIME_S=`awk "BEGIN {printf \"%.5f\n\", $PROM_AVERAGE_S*$PROM_REQUESTS}"`
+    echo $1 PROM_REQUESTS: $PROM_REQUESTS
+    echo $1 PROM_TOTALTIME_S: $PROM_TOTALTIME_S
+    echo $1 PROM_AVERAGE_MS: $PROM_AVERAGE_MS
+}
+
+function check_sb_prom() {
+    return `wget -qO- http://localhost:8080/prometheus | egrep 'http_server_requests_seconds_count.*status\=\"200\",\uri\=\"\/greeting' | wc -l`
+}
+
+function check_mp_prom() {
+    return `wget -qO- http://localhost:8080/metrics | egrep '^application:messages_processed_seconds_count' | wc -l`
+}
+
 
 #single parameter indicating the outputdir
 function run_test() {
     echo $1 STARTED AT: `date`
     mkdir -p $test_outputdir/$1
     start_loadgen http://spring-boot-jdk:8080/greeting?name=Maarten $test_outputdir/$1/results.txt $loadgenduration
-    get_prom_stats $1 http://localhost:8080/prometheus
+    check_sb_prom
+    valResult=$?
+    if [[ $valResult -gt 0 ]] 
+    then   
+        get_prom_stats_sb $1 http://localhost:8080/prometheus
+    else
+        echo $1 No Spring Boot Prometheus available
+    fi
+    check_mp_prom
+    valResult=$?
+    if [[ $valResult -gt 0 ]] 
+    then
+        get_prom_stats_mp $1 http://localhost:8080/metrics
+    else
+        echo $1 No MicroProfile Prometheus available
+    fi
     echo $1 COMPLETED_AT: `date`
     echo $1 REQUESTS_PROCESSED: `cat $test_outputdir/$1/results.txt | grep MEASURE | wc -l`
     echo $1 AVERAGE_PROCESSING_TIME_MS: `cat $test_outputdir/$1/results.txt | grep MEASURE | awk -F " " '{ total += $3 } END { print total/NR }'`
 }
-
-counter=0
-for jarfilename in ${jarfilelist[@]}
-do
-counter=$(( $counter + 1 ))
-replacer "FROM oracle\/graalvm-ce:1.0.0-rc16"
-rebuild $jarfilename
-run_test graalvm$counter
-get_start_time graalvm$counter
-sleep 20
-done
 
 counter=0
 for jarfilename in ${jarfilelist[@]}
@@ -160,3 +184,15 @@ run_test oraclejdk$counter
 get_start_time oraclejdk$counter
 sleep 20
 done
+
+counter=0
+for jarfilename in ${jarfilelist[@]}
+do
+counter=$(( $counter + 1 ))
+replacer "FROM oracle\/graalvm-ce:1.0.0-rc16"
+rebuild $jarfilename
+run_test graalvm$counter
+get_start_time graalvm$counter
+sleep 20
+done
+
