@@ -8,6 +8,7 @@ import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.UriInfo;
 import java.util.concurrent.atomic.AtomicLong;
+import java.lang.management.ManagementFactory;
 
 /**
  *
@@ -22,5 +23,12 @@ public class GreetingController {
     @Produces(MediaType.APPLICATION_JSON)
     public Greeting sayHello(@Context UriInfo info) {
         return new Greeting(counter.incrementAndGet(),String.format(template, info.getQueryParameters().get("name").get(0)));
+    }
+    
+    public GreetingController() {
+        super();
+        long currentTime = System.currentTimeMillis();
+        long vmStartTime = ManagementFactory.getRuntimeMXBean().getStartTime();
+        System.out.println("STARTED Controller started: "+ (currentTime - vmStartTime));
     }
 }
