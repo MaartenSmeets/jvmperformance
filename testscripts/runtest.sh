@@ -8,11 +8,12 @@
 DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null && pwd )"
 echo Running from $DIR
 
-#jarfilelist=("mp-rest-service-8.jar" "sb-rest-service-8.jar" "sb-rest-service-reactive-8.jar" "sb-rest-service-reactive-fu-8.jar" "sb-rest-service-reactive-fu2-8.jar")
-jarfilelist=("mp-rest-service-8.jar")
+jarfilelist=("mp-rest-service-8.jar" "sb-rest-service-8.jar" "sb-rest-service-reactive-8.jar" "sb-rest-service-reactive-fu-8.jar" "sb-rest-service-reactive-fu2-8.jar")
+indicator=("_mp" "_sb" "_sbreactive" "_sbfu1" "_sbfu2")
+
+#jarfilelist=("mp-rest-service-8.jar")
 test_outputdir=$DIR/jdktest`date +"%Y%m%d%H%M%S"`
-primerduration=10
-loadgenduration=10
+loadgenduration=30
 echo Isolated CPUs `cat /sys/devices/system/cpu/isolated`
 cpulistperftest=4,5,6,7
 cpulistjava=8,9,10,11
@@ -147,8 +148,8 @@ do
 counter=$(( $counter + 1 ))
 replacer "FROM adoptopenjdk\/openjdk8:jdk8u202-b08"
 rebuild $jarfilename
-run_test adoptopenjdk$counter
-get_start_time adoptopenjdk$counter
+run_test adoptopenjdk${indicator[$counter]}
+get_start_time adoptopenjdk${indicator[$counter]}
 sleep 20
 done
 
@@ -158,8 +159,8 @@ do
 counter=$(( $counter + 1 ))
 replacer "FROM adoptopenjdk\/openjdk8-openj9:jdk8u202-b08_openj9-0.12.1"
 rebuild $jarfilename
-run_test openj9$counter
-get_start_time openj9$counter
+run_test openj9${indicator[$counter]}
+get_start_time openj9${indicator[$counter]}
 sleep 20
 done
 
@@ -169,8 +170,8 @@ do
 counter=$(( $counter + 1 ))
 replacer "FROM azul\/zulu-openjdk:8u202"
 rebuild $jarfilename
-run_test zuluopenjdk$counter
-get_start_time zuluopenjdk$counter
+run_test zuluopenjdk${indicator[$counter]}
+get_start_time zuluopenjdk${indicator[$counter]}
 sleep 20
 done
 
@@ -180,8 +181,8 @@ do
 counter=$(( $counter + 1 ))
 replacer "FROM store\/oracle\/serverjre:8"
 rebuild $jarfilename
-run_test oraclejdk$counter
-get_start_time oraclejdk$counter
+run_test oraclejdk${indicator[$counter]}
+get_start_time oraclejdk${indicator[$counter]}
 sleep 20
 done
 
@@ -191,8 +192,8 @@ do
 counter=$(( $counter + 1 ))
 replacer "FROM oracle\/graalvm-ce:1.0.0-rc16"
 rebuild $jarfilename
-run_test graalvm$counter
-get_start_time graalvm$counter
+run_test graalvm${indicator[$counter]}
+get_start_time graalvm${indicator[$counter]}
 sleep 20
 done
 
