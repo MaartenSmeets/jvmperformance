@@ -23,6 +23,13 @@ df1[['jvm','framework']] = df1['jvm_framework_ident'].str.split('_',expand=True)
 frameworks=['MicroProfile','Spring Boot','Spring Boot Reactive','Spring Fu','Spring Fu alt']
 jvms=['graalvm', 'openj9', 'adoptopenjdk', 'oraclejdk', 'zuluopenjdk']
 
+#check data
+for jvm in jvms:
+    averages=df1.loc[df1['jvm'] == jvm, 'average']
+    if (len(averages) < len(frameworks)):
+        print ('Dataset for '+jvm+' incomplete! Found '+str(len(averages))+' averaged but expected '+str(len(frameworks)))
+        exit(1)
+
 #based on https://python-graph-gallery.com/11-grouped-barplot/
 #calculate bar location. rowloc[0] is the location for the first bar in every group (group=framework)
 rowloc=[]
