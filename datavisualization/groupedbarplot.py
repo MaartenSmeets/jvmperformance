@@ -34,7 +34,7 @@ for jvm in jvms:
 #calculate bar location. rowloc[0] is the location for the first bar in every group (group=framework)
 rowloc=[]
 rowloc.append(np.arange(5))
-for item in range(1,(len(frameworks)-1)):
+for item in range(1,(len(frameworks))):
     rowloc.append([x + barWidth for x in rowloc[item-1]])
 
 data=[]
@@ -43,10 +43,12 @@ for jvm in jvms:
     data.append(df1.loc[df1['jvm']==jvm,'average'])
 
 # Make the plot
-for item in range(0,len(rowloc)):
+for item in range(0,len(jvms)):
     plt.bar(rowloc[item], data[item], width=barWidth, edgecolor='white', label=jvms[item])
 
-plt.xticks([r + barWidth for r in range(len(frameworks))], frameworks)
+#plt.xticks([r + (barWidth*(len(jvms)/2)) for r in range(len(frameworks))], frameworks)
+plt.xticks(rowloc[int(len(rowloc)/2)], frameworks)
+
 
 plt.legend(jvms)
 
