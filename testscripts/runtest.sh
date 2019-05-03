@@ -13,14 +13,13 @@ indicator=("_mp" "_sb" "_sbreactive" "_sbfu1" "_sbfu2")
 
 #jarfilelist=("mp-rest-service-8.jar")
 test_outputdir=$DIR/jdktest`date +"%Y%m%d%H%M%S"`
-loadgenduration=30
+loadgenduration=1800
 echo Isolated CPUs `cat /sys/devices/system/cpu/isolated`
 cpulistperftest=4,5,6,7
 cpulistjava=8,9,10,11
 
 echo CPUs used for Performance test $cpulistperftest
 echo CPUs used for Java process $cpulistjava
-
 
 function init() {
 docker stop perftest > /dev/null 2>&1
@@ -56,7 +55,7 @@ function rebuild() {
     echo Java process PID: $mypid setting CPU affinity to $cpulistjava
     sudo taskset -pc $cpulistjava $mypid
     #give it some time to startup
-    sleep 10
+    sleep 60
 }
 
 #update the Dockerfile so it can be rebuild with a new JVM
@@ -114,7 +113,6 @@ function check_sb_prom() {
 function check_mp_prom() {
     return `wget -qO- http://localhost:8080/metrics | egrep '^application:messages_processed_seconds_count' | wc -l`
 }
-
 
 #single parameter indicating the outputdir
 function run_test() {
