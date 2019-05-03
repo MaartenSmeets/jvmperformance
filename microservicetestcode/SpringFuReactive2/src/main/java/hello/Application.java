@@ -18,7 +18,7 @@ public class Application {
                                 server -> server
                                         .router(router -> {
                                             GreetingHandler greetingHandler = c.ref(GreetingHandler.class);
-                                            router.GET("/greeting", greetingHandler::hello);
+                                            router.GET("/greeting", greetingHandler::sayHello);
                                         }).codecs(codecs -> codecs.string().jackson())
                         )
                 );
