@@ -30,7 +30,7 @@ public class GreetingHandler {
         return new Greeting(counter.incrementAndGet(),String.format(template, info.getQueryParameters().get("name").get(0)));
     }
     
-    public GreetingController() {
+    public GreetingHandler() {
         super();
         if (first) {
             long currentTime = System.currentTimeMillis();
