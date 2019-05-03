@@ -142,7 +142,7 @@ function run_test() {
     echo $1 AVERAGE_PROCESSING_TIME_MS: `cat $test_outputdir/$1/results.txt | grep MEASURE | awk -F " " '{ total += $3 } END { print total/NR }'`
 }
 
-counter=0
+counter=-1
 for jarfilename in ${jarfilelist[@]}
 do
 counter=$(( $counter + 1 ))
@@ -153,7 +153,7 @@ get_start_time adoptopenjdk${indicator[$counter]}
 sleep 20
 done
 
-counter=0
+counter=-1
 for jarfilename in ${jarfilelist[@]}
 do
 counter=$(( $counter + 1 ))
@@ -164,7 +164,7 @@ get_start_time openj9${indicator[$counter]}
 sleep 20
 done
 
-counter=0
+counter=-1
 for jarfilename in ${jarfilelist[@]}
 do
 counter=$(( $counter + 1 ))
@@ -175,7 +175,7 @@ get_start_time zuluopenjdk${indicator[$counter]}
 sleep 20
 done
 
-counter=0
+counter=-1
 for jarfilename in ${jarfilelist[@]}
 do
 counter=$(( $counter + 1 ))
@@ -186,7 +186,7 @@ get_start_time oraclejdk${indicator[$counter]}
 sleep 20
 done
 
-counter=0
+counter=-1
 for jarfilename in ${jarfilelist[@]}
 do
 counter=$(( $counter + 1 ))
