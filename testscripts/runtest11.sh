@@ -11,7 +11,7 @@ echo Running from $DIR
 jarfilelist=("mp-rest-service-11.jar" "sb-rest-service-11.jar" "sb-rest-service-reactive-11.jar" "sb-rest-service-reactive-fu-11.jar" "sb-rest-service-reactive-fu2-11.jar")
 indicator=("_mp" "_sb" "_sbreactive" "_sbfu1" "_sbfu2")
 
-test_outputdir=$DIR/jdktest`date +"%Y%m%d%H%M%S"`
+test_outputdir=$DIR/jdktest_11_`date +"%Y%m%d%H%M%S"`
 loadgenduration=1800
 echo Isolated CPUs `cat /sys/devices/system/cpu/isolated`
 cpulistperftest=4,5,6,7
@@ -138,6 +138,21 @@ function run_test() {
     echo $1 REQUESTS_PROCESSED: `cat $test_outputdir/$1/results.txt | grep MEASURE | wc -l`
     echo $1 AVERAGE_PROCESSING_TIME_MS: `cat $test_outputdir/$1/results.txt | grep MEASURE | awk -F " " '{ total += $3 } END { print total/NR }'`
 }
+
+counter=-1
+for jarfilename in ${jarfilelist[@]}
+do
+counter=$(( $counter + 1 ))
+rm Dockerfile.orig
+mv Dockerfile Dockerfile.orig
+cp Dockerfile.ojdk11 Dockerfile
+rebuild $jarfilename
+run_test openjdk${indicator[$counter]}
+get_start_time openjdk${indicator[$counter]}
+sleep 20
+rm Dockerfile
+mv Dockerfile.orig Dockerfile
+done
 
 counter=-1
 for jarfilename in ${jarfilelist[@]}
