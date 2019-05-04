@@ -147,8 +147,8 @@ rm Dockerfile.orig
 mv Dockerfile Dockerfile.orig
 cp Dockerfile.ojdk11 Dockerfile
 rebuild $jarfilename
-run_test openjdk${indicator[$counter]}
-get_start_time openjdk${indicator[$counter]}
+run_test oraclejdk${indicator[$counter]}
+get_start_time oraclejdk${indicator[$counter]}
 sleep 20
 rm Dockerfile
 mv Dockerfile.orig Dockerfile
