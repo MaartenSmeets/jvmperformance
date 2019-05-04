@@ -1,0 +1,17 @@
+FROM ubuntu:18.04
+VOLUME /tmp
+RUN mkdir /app
+COPY ./jdk-11.0.3_linux-x64_bin.deb /app/jdk-11_linux-x64_bin.deb
+RUN apt-get update  && \
+apt-get -y install libasound2 && \
+dpkg -i /app/jdk-11_linux-x64_bin.deb
+ENV LANG en_US.utf8
+ENV J2SDKDIR /usr/lib/jvm/java-11.0.3
+ENV J2REDIR /usr/lib/jvm/java-11.0.3
+ENV PATH "${PATH}:/usr/lib/jvm/java-11.0.3/bin:/usr/lib/jvm/java-11.0.3/db/bin"
+ENV JAVA_HOME /usr/lib/jvm/java-11.0.3
+ENV DERBY_HOME /usr/lib/jvm/java-11.0.3/db
+ARG JAR_FILE
+COPY ${JAR_FILE} app.jar
+ENTRYPOINT ["/usr/lib/jvm/jdk-11.0.3/bin/java","-Djava.security.egd=file:/dev/./urandom","-XX:+UnlockExperimentalVMOptions","-Xmx2G","-Xms2G","-jar","/app.jar"]
+
