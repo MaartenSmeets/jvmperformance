@@ -8,8 +8,8 @@
 DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null && pwd )"
 echo Running from $DIR
 
-jarfilelist=("mp-rest-service-11.jar" "sb-rest-service-11.jar" "sb-rest-service-reactive-11.jar" "sb-rest-service-reactive-fu-11.jar" "sb-rest-service-reactive-fu2-11.jar")
-indicator=("_mp" "_sb" "_sbreactive" "_sbfu1" "_sbfu2")
+jarfilelist=("mp-rest-service-11.jar" "sb-rest-service-11.jar" "sb-rest-service-reactive-11.jar" "sb-rest-service-reactive-fu-11.jar" "sb-rest-service-reactive-fu2-11.jar" "vertx-rest-service-11.jar")
+indicator=("_mp" "_sb" "_sbreactive" "_sbfu1" "_sbfu2" "_vertx")
 
 test_outputdir=$DIR/jdktest_11_`date +"%Y%m%d%H%M%S"`
 loadgenduration=1800
@@ -94,6 +94,16 @@ function get_prom_stats_sb() {
     echo $1 PROM_AVERAGE_MS: $PROM_AVERAGE_MS
 }
 
+function get_prom_stats_vertx() {
+    echo $1 Starting get prom stats from $2
+    PROM_REQUESTS=`wget -qO- $2 | egrep 'http_server_responseTime_seconds_count.*code\=\"200\",\path\=\"\/greeting' | awk '{print $2}'`
+    PROM_TOTALTIME_S=`wget -qO- $2 | egrep 'http_server_responseTime_seconds_sum.*code\=\"200\",\path\=\"\/greeting' | awk '{print $2}'`
+    PROM_AVERAGE_MS=`awk "BEGIN {printf \"%.5f\n\", 1000*$PROM_TOTALTIME_S/$PROM_REQUESTS}"`
+    echo $1 PROM_REQUESTS: $PROM_REQUESTS
+    echo $1 PROM_TOTALTIME_S: $PROM_TOTALTIME_S
+    echo $1 PROM_AVERAGE_MS: $PROM_AVERAGE_MS
+}
+
 function get_prom_stats_mp() {
     echo $1 Starting get prom stats from $2
     PROM_AVERAGE_S=`wget -qO- $2 | egrep '^application:messages_processed_mean_seconds' | awk '{print $2}'`
@@ -107,6 +117,10 @@ function get_prom_stats_mp() {
 
 function check_sb_prom() {
     return `wget -qO- http://localhost:8080/prometheus | egrep 'http_server_requests_seconds_count.*status\=\"200\",\uri\=\"\/greeting' | wc -l`
+}
+
+function check_vertx_prom() {
+    return `wget -qO- http://localhost:8080/metrics | egrep 'http_server_responseTime_seconds_count.*code\=\"200\",\path\=\"\/greeting' | wc -l`
 }
 
 function check_mp_prom() {
@@ -134,6 +148,15 @@ function run_test() {
     else
         echo $1 No MicroProfile Prometheus available
     fi
+    check_vertx_prom
+    valResult=$?
+    if [[ $valResult -gt 0 ]] 
+    then
+        get_prom_stats_vertx $1 http://localhost:8080/metrics
+    else
+        echo $1 No Vert.X Prometheus available
+    fi
+
     echo $1 COMPLETED_AT: `date`
     echo $1 REQUESTS_PROCESSED: `cat $test_outputdir/$1/results.txt | grep MEASURE | wc -l`
     echo $1 AVERAGE_PROCESSING_TIME_MS: `cat $test_outputdir/$1/results.txt | grep MEASURE | awk -F " " '{ total += $3 } END { print total/NR }'`
