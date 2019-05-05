@@ -1,5 +1,10 @@
 export JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64
 
+cd VertX
+mvn clean package -Dmaven.compiler.source=8 -Dmaven.compiler.target=8
+cp target/vertx-rest-service-0.1.0-app.jar ../vertx-rest-service-8.jar
+cd ..
+
 cd MicroProfile
 mvn clean package -Dmaven.compiler.source=8 -Dmaven.compiler.target=8
 cp target/mp-rest-service.jar ../mp-rest-service-8.jar
@@ -26,6 +31,11 @@ cp target/sb-rest-service-reactive-fu-0.1.0-jar-with-dependencies.jar ../sb-rest
 cd ..
 
 export JAVA_HOME=/usr/lib/jvm/java-11-openjdk-amd64
+
+cd VertX
+mvn clean package -Dmaven.compiler.source=11 -Dmaven.compiler.target=11
+cp target/vertx-rest-service-0.1.0-app.jar ../vertx-rest-service-11.jar
+cd ..
 
 cd MicroProfile
 mvn clean package -Dmaven.compiler.source=11 -Dmaven.compiler.target=11
