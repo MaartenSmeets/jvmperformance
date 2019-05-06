@@ -33,12 +33,12 @@ docker-compose rm -f > /dev/null 2>&1
 docker-compose up -d > /dev/null 2>&1
 }
 
-echo Initializing: cleaning up, starting Prometheus and Grafana
-init
 echo Redirecting output to $test_outputdir
 mkdir -p $test_outputdir
 exec > $test_outputdir/outputfile.txt
 exec 2>&1
+echo Initializing: cleaning up
+init
 
 function clean_image() {
 	docker stop spring-boot-jdk
