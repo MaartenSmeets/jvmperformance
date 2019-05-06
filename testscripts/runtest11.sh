@@ -21,6 +21,7 @@ echo CPUs used for Performance test $cpulistperftest
 echo CPUs used for Java process $cpulistjava
 
 function init() {
+git checkout -- Dockerfile
 docker stop perftest > /dev/null 2>&1
 docker rm perftest > /dev/null 2>&1
 docker stop spring-boot-jdk > /dev/null 2>&1
