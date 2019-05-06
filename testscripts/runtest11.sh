@@ -8,11 +8,11 @@
 DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null && pwd )"
 echo Running from $DIR
 
-jarfilelist=("mp-rest-service-11.jar" "sb-rest-service-11.jar" "sb-rest-service-reactive-11.jar" "sb-rest-service-reactive-fu-11.jar" "sb-rest-service-reactive-fu2-11.jar" "vertx-rest-service-11.jar")
-indicator=("_mp" "_sb" "_sbreactive" "_sbfu1" "_sbfu2" "_vertx")
+jarfilelist=("mp-rest-service-11.jar" "sb-rest-service-11.jar" "sb-rest-service-reactive-11.jar" "sb-rest-service-reactive-fu2-11.jar" "vertx-rest-service-11.jar")
+indicator=("_mp" "_sb" "_sbreactive" "_sbfu" "_vertx")
 
 test_outputdir=$DIR/jdktest_11_`date +"%Y%m%d%H%M%S"`
-loadgenduration=1800
+loadgenduration=900
 echo Isolated CPUs `cat /sys/devices/system/cpu/isolated`
 cpulistperftest=4,5,6,7
 cpulistjava=8,9,10,11
