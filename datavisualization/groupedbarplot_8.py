@@ -48,7 +48,7 @@ jvm_dict={'graalvm':'GraalVM','openj9':'OpenJ9','adoptopenjdk':'AdoptOpenJDK','o
 #Add descriptions and sort
 df1['jvm_descr'] = df1['jvm'].map(jvm_dict)
 df1['framework_descr'] = df1['framework'].map(framework_dict)
-df1.sort_values(['jvm_descr', 'framework_descr'], ascending=[True, True])
+df1.sort_values(['jvm', 'framework'], ascending=[True, True])
 
 #check data
 for jvm in jvms:
@@ -87,6 +87,6 @@ plt.legend([jvm_dict[x] for x in jvms])
 
 plt.ylabel('Average response time [ms]')
 plt.xlabel('Framework')
-plt.title('Microservice framework average response time per JVM')
+plt.title('Microservice framework average response time per JVM 8u202')
 plt.tight_layout()
 plt.savefig('java8barplot.png', dpi=100)
