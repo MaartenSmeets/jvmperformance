@@ -10,7 +10,7 @@ plt.close('all')
 barWidth = 0.15
 
 #point the below line to the test output directory
-processdir='/home/maarten/t/jvmperformance/testscripts/jdktest_8_20190506214155'
+processdir='/home/maarten/t/jvmperformance/testscripts/jdktest_8_20190508175957'
 
 averagecmd='cat '+processdir+'/outputfile.txt | grep AVERAGE_PROC | awk \'{print $1","$3}\' > '+processdir+'/average.txt'
 stddevcmd='cat '+processdir+'/outputfile.txt | grep STANDARD_DEVIATION_MS | awk \'{print $1","$3}\' > '+processdir+'/stddev.txt'
@@ -54,14 +54,14 @@ df1.sort_values(['jvm', 'framework'], ascending=[True, True])
 for jvm in jvms:
     averages=df1.loc[df1['jvm'] == jvm, 'average']
     if (len(averages) < len(frameworks)):
-        print ('Dataset for '+jvm+' incomplete! Found '+str(len(averages))+' averaged but expected '+str(len(framework_dict)))
+        print ('Dataset for '+jvm+' incomplete! Found '+str(len(averages))+' averaged but expected '+str(len(frameworks)))
         exit(1)
 
 #based on https://python-graph-gallery.com/11-grouped-barplot/
 #calculate bar location. rowloc[0] is the location for the first bar in every group (group=keys from framework_dict)
 rowloc=[]
-rowloc.append(np.arange(5))
-for item in range(1,(len(framework_dict))):
+rowloc.append(np.arange(len(frameworks)))
+for item in range(1,(len(frameworks))):
     rowloc.append([x + barWidth for x in rowloc[item-1]])
 
 averages=[]
@@ -79,7 +79,6 @@ figure(num=None, figsize=(8, 6))
 for item in range(0,len(jvms)):
     plt.bar(rowloc[item], averages[item],yerr=stddevs[item], width=barWidth, edgecolor='white', label=jvm_dict[jvms[item]],capsize=2)
 
-#plt.xticks([r + (barWidth*(len(jvms)/2)) for r in range(len(frameworks))], frameworks)
 plt.xticks(rowloc[int(len(rowloc)/2)], [framework_dict[x] for x in frameworks])
 
 
