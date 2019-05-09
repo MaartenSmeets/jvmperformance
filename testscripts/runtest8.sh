@@ -13,7 +13,7 @@ indicator=("_mp" "_sb" "_sbreactive" "_sbfu" "_vertx")
 
 #jarfilelist=("mp-rest-service-8.jar")
 test_outputdir=$DIR/jdktest_8_`date +"%Y%m%d%H%M%S"`
-loadgenduration=300
+loadgenduration=600
 echo Isolated CPUs `cat /sys/devices/system/cpu/isolated`
 cpulistperftest=4,5,6,7
 cpulistjava=8,9,10,11
@@ -209,14 +209,14 @@ get_start_time oraclejdk${indicator[$counter]}
 sleep 20
 done
 
-counter=-1
-for jarfilename in ${jarfilelist[@]}
-do
-counter=$(( $counter + 1 ))
-replacer "FROM oracle\/graalvm-ce:1.0.0-rc16"
-rebuild $jarfilename
-run_test graalvm${indicator[$counter]}
-get_start_time graalvm${indicator[$counter]}
-sleep 20
-done
+#counter=-1
+#for jarfilename in ${jarfilelist[@]}
+#do
+#counter=$(( $counter + 1 ))
+#replacer "FROM oracle\/graalvm-ce:1.0.0-rc16"
+#rebuild $jarfilename
+#run_test graalvm${indicator[$counter]}
+#get_start_time graalvm${indicator[$counter]}
+#sleep 20
+#done
 
