@@ -11,7 +11,7 @@ plt.close('all')
 barWidth = 0.75
 
 #point the below line to the test output directory
-processdir8='/home/maarten/t/jvmperformance/testscripts/jdktest_8_20190509150008'
+processdir8='/home/maarten/t/jvmperformance/testscripts/jdktest_11_20190509180601'
 
 averagecmd8='cat '+processdir8+'/outputfile.txt | grep AVERAGE_PROC | awk \'{print $1","$3}\' > '+processdir8+'/average.txt'
 stddevcmd8='cat '+processdir8+'/outputfile.txt | grep STANDARD_DEVIATION_MS | awk \'{print $1","$3}\' > '+processdir8+'/stddev.txt'
@@ -26,8 +26,6 @@ df2 = pd.read_csv(processdir8+'/stddev.txt', sep=',', header=None)
 
 df1.columns = ['jvm_framework_ident','average']
 df2.columns = ['jvm_framework_ident','stddev']
-df3.columns = ['jvm_framework_ident','average']
-df4.columns = ['jvm_framework_ident','stddev']
 
 df5 = pd.merge(df1,df2,on="jvm_framework_ident")
 df5['version']=8
@@ -45,7 +43,7 @@ rowloc.append(np.arange(len(jvms)))
 
 # Make the plot
 figure(num=None, figsize=(16, 6))
-plt.bar(rowloc[0], df_new['average'], yerr=df_new['stddev'],edgecolor='white', label=df_average_per_jvm['jvm'],width=barWidth,capsize=2)
+plt.bar(rowloc[0], df_new['average'], yerr=df_new['stddev'],edgecolor='white', label=df_new['jvm'],width=barWidth,capsize=2)
 
 #plt.xticks([r + (barWidth*(len(jvms)/2)) for r in range(len(frameworks))], frameworks)
 plt.xticks(rowloc[int(len(rowloc)/2)], jvms)
@@ -54,4 +52,4 @@ plt.ylabel('Average response time [ms]')
 plt.xlabel('JVM')
 plt.title('Average response time per JVM')
 plt.tight_layout()
-plt.savefig('java_barplot_perjdk.png', dpi=100)
+plt.savefig('java_barplot_gen.png', dpi=100)

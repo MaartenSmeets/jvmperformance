@@ -12,7 +12,7 @@ jarfilelist=("mp-rest-service-11.jar" "sb-rest-service-11.jar" "sb-rest-service-
 indicator=("_mp" "_sb" "_sbreactive" "_sbfu" "_vertx")
 
 test_outputdir=$DIR/jdktest_11_`date +"%Y%m%d%H%M%S"`
-loadgenduration=600
+loadgenduration=900
 echo Isolated CPUs `cat /sys/devices/system/cpu/isolated`
 cpulistperftest=4,5,6,7
 cpulistjava=8,9,10,11
@@ -180,16 +180,27 @@ rm Dockerfile
 mv Dockerfile.orig Dockerfile
 done
 
-#counter=-1
-#for jarfilename in ${jarfilelist[@]}
-#do
-#counter=$(( $counter + 1 ))
-#replacer "FROM openjdk:11.0.3-jdk"
-#rebuild $jarfilename
-#run_test openjdk${indicator[$counter]}
-#get_start_time openjdk${indicator[$counter]}
-#sleep 20
-#done
+counter=-1
+for jarfilename in ${jarfilelist[@]}
+do
+counter=$(( $counter + 1 ))
+replacer "FROM openjdk:11.0.3-jdk"
+rebuild $jarfilename
+run_test openjdk${indicator[$counter]}
+get_start_time openjdk${indicator[$counter]}
+sleep 20
+done
+
+counter=-1
+for jarfilename in ${jarfilelist[@]}
+do
+counter=$(( $counter + 1 ))
+replacer "FROM amazoncorretto:11.0.3"
+rebuild $jarfilename
+run_test corretto${indicator[$counter]}
+get_start_time corretto${indicator[$counter]}
+sleep 20
+done
 
 counter=-1
 for jarfilename in ${jarfilelist[@]}
