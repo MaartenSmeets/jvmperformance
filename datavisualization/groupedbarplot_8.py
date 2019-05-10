@@ -10,7 +10,7 @@ plt.close('all')
 barWidth = 0.15
 
 #point the below line to the test output directory
-processdir='/home/maarten/t/jvmperformance/testscripts/jdktest_8_20190508175957'
+processdir='/home/maarten/t/jvmperformance/testscripts/test_8_11_15m_2gb/jdktest_8_20190509214852'
 
 averagecmd='cat '+processdir+'/outputfile.txt | grep AVERAGE_PROC | awk \'{print $1","$3}\' > '+processdir+'/average.txt'
 stddevcmd='cat '+processdir+'/outputfile.txt | grep STANDARD_DEVIATION_MS | awk \'{print $1","$3}\' > '+processdir+'/stddev.txt'
@@ -61,7 +61,7 @@ for jvm in jvms:
 #calculate bar location. rowloc[0] is the location for the first bar in every group (group=keys from framework_dict)
 rowloc=[]
 rowloc.append(np.arange(len(frameworks)))
-for item in range(1,(len(frameworks))):
+for item in range(1,(len(jvms))):
     rowloc.append([x + barWidth for x in rowloc[item-1]])
 
 averages=[]
@@ -80,7 +80,7 @@ for item in range(0,len(jvms)):
     plt.bar(rowloc[item], averages[item],yerr=stddevs[item], width=barWidth, edgecolor='white', label=jvm_dict[jvms[item]],capsize=2)
 
 plt.xticks(rowloc[int(len(rowloc)/2)], [framework_dict[x] for x in frameworks])
-
+plt.ylim(0, 8)
 
 plt.legend([jvm_dict[x] for x in jvms])
 

@@ -10,7 +10,7 @@ plt.close('all')
 barWidth = 0.15
 
 #point the below line to the test output directory
-processdir='/home/maarten/t/jvmperformance/testscripts/jdktest_11_20190508214950'
+processdir='/home/maarten/t/jvmperformance/testscripts/test_8_11_15m_2gb/jdktest_11_20190510044402'
 
 averagecmd='cat '+processdir+'/outputfile.txt | grep AVERAGE_PROC | awk \'{print $1","$3}\' > '+processdir+'/average.txt'
 stddevcmd='cat '+processdir+'/outputfile.txt | grep STANDARD_DEVIATION_MS | awk \'{print $1","$3}\' > '+processdir+'/stddev.txt'
@@ -43,7 +43,7 @@ if len(list(set(jvms) & set(jvms2)))!=len(jvms):
     exit(1)
 
 framework_dict={'mp':'MicroProfile','sb':'Spring Boot','sbreactive':'Spring Boot Reactive','sbfu':'Spring Fu','vertx':'VertX'}
-jvm_dict={'openj9':'OpenJ9','adoptopenjdk':'AdoptOpenJDK','oraclejdk':'Oracle JDK','zuluopenjdk':'Azul Zulu','openjdk':'OpenJDK'}
+jvm_dict={'corretto':'Amazon Corretto','openj9':'OpenJ9','adoptopenjdk':'AdoptOpenJDK','oraclejdk':'Oracle JDK','zuluopenjdk':'Azul Zulu','openjdk':'OpenJDK'}
 
 #Add descriptions and sort
 df1['jvm_descr'] = df1['jvm'].map(jvm_dict)
@@ -61,7 +61,7 @@ for jvm in jvms:
 #calculate bar location. rowloc[0] is the location for the first bar in every group (group=keys from framework_dict)
 rowloc=[]
 rowloc.append(np.arange(len(frameworks)))
-for item in range(1,(len(frameworks))):
+for item in range(1,(len(jvms))):
     rowloc.append([x + barWidth for x in rowloc[item-1]])
 
 averages=[]
@@ -75,13 +75,19 @@ for jvm in jvms:
     stddevs.append(df1.loc[df1['jvm']==jvm,'stddev'])
 
 # Make the plot
+print(str(averages))
+print(str(rowloc))
+print(str(stddevs))
+
+print (str(len(rowloc))+' '+str(len(averages))+' '+str(len(stddevs)))
 figure(num=None, figsize=(8, 6))
 for item in range(0,len(jvms)):
-    plt.bar(rowloc[item], averages[item],yerr=stddevs[item], width=barWidth, edgecolor='white', label=jvm_dict[jvms[item]],capsize=2)
+    plt.bar(rowloc[item], averages[item],yerr=stddevs[item], width=barWidth, edgecolor='white',capsize=2)
 
 #plt.xticks([r + (barWidth*(len(jvms)/2)) for r in range(len(frameworks))], frameworks)
-plt.xticks(rowloc[int(len(rowloc)/2)], [framework_dict[x] for x in frameworks])
 
+plt.xticks(rowloc[int(len(rowloc)/2)], [framework_dict[x] for x in frameworks])
+plt.ylim(0,8)
 
 plt.legend([jvm_dict[x] for x in jvms])
 
