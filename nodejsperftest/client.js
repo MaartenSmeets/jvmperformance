@@ -3,7 +3,8 @@ var async = require('async');
 var cluster = require('cluster');
 var process = require('process');
 var pid = process.pid;
-var numCPUs = require('os').cpus().length / 2;
+//var numCPUs = require('os').cpus().length / 2;
+var numCPUs = 4;
 var fs = require('fs');
 
 //Example call: node client.js http://9292ov.nl .
@@ -19,7 +20,7 @@ if (LOGFILEDIR) {
 var fileStream;
 var lineBuffer = '';
 var lineBufferCounter = 0;
-var lineBufferSize = 100;
+var lineBufferSize = 100000000;
 
 function cleanup() {
     if (LOGFILE) {
@@ -42,6 +43,12 @@ process.on('SIGTERM', (error, next) => {
 process.on('SIGINT', (error, next) => {
     cleanup();
     console.log("INFO\t"+pid+"\tSIGINT received");
+    process.exit();
+});
+
+process.on('SIGKILL', (error, next) => {
+    cleanup();
+    console.log("INFO\t"+pid+"\tSIGKILL received");
     process.exit();
 });
 

@@ -16,13 +16,14 @@ loadgenduration=900
 echo Isolated CPUs `cat /sys/devices/system/cpu/isolated`
 cpulistperftest=4,5,6,7
 cpulistjava=8,9,10,11
+stoptimeout=180
 
 echo CPUs used for Performance test $cpulistperftest
 echo CPUs used for Java process $cpulistjava
 
 function init() {
 git checkout -- Dockerfile
-docker stop perftest > /dev/null 2>&1
+docker stop -t $stoptimeout perftest > /dev/null 2>&1
 docker rm perftest > /dev/null 2>&1
 docker stop spring-boot-jdk > /dev/null 2>&1
 docker rm spring-boot-jdk > /dev/null 2>&1
@@ -82,7 +83,7 @@ function start_loadgen() {
     sleep $3
     docker exec --user node perftest "/bin/sh" -c "cat /home/node/app/*.log > /home/node/app/combined.log"
     docker cp perftest:/home/node/app/combined.log $2
-    docker stop perftest
+    docker stop -t $stoptimeout perftest
     docker rm perftest
 }
 
