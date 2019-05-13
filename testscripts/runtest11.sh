@@ -11,7 +11,8 @@ echo Running from $DIR
 jarfilelist=("mp-rest-service-11.jar" "sb-rest-service-11.jar" "sb-rest-service-reactive-11.jar" "sb-rest-service-reactive-fu2-11.jar" "vertx-rest-service-11.jar")
 indicator=("_mp" "_sb" "_sbreactive" "_sbfu" "_vertx")
 
-test_outputdir=$DIR/jdktest_11_`date +"%Y%m%d%H%M%S"`
+#jarfilelist=("mp-rest-service-8.jar")
+test_outputdir=$DIR/jdktest_8_`date +"%Y%m%d%H%M%S"`
 loadgenduration=900
 echo Isolated CPUs `cat /sys/devices/system/cpu/isolated`
 cpulistperftest=4,5,6,7
@@ -37,7 +38,6 @@ echo Redirecting output to $test_outputdir
 mkdir -p $test_outputdir
 exec > $test_outputdir/outputfile.txt
 exec 2>&1
-
 echo Initializing: cleaning up
 init
 
@@ -52,7 +52,7 @@ function rebuild() {
     var="$@"
     echo USING JARFILE: $var
     docker build -t spring-boot-jdk -f Dockerfile --build-arg JAR_FILE=$var .
-    docker run -d --name spring-boot-jdk -p 8080:8080 --network testscripts_dockernet spring-boot-jdk
+    docker run --cpuset-cpus $cpulistjava -d --name spring-boot-jdk -p 8080:8080 --network testscripts_dockernet spring-boot-jdk
     export mypid=`ps -o pid,sess,cmd afx | egrep "( |/)java.*app.jar.*( -f)?$" | awk '{print $1}'`
     echo Java process PID: $mypid setting CPU affinity to $cpulistjava
     sudo taskset -pc $cpulistjava $mypid
@@ -74,17 +74,24 @@ function get_start_time() {
 }
 
 function start_loadgen() {
-    docker run -d --name perftest --network testscripts_dockernet -e URL=$1 perftest
-    for mypid in `ps -e -o pid,comm,cgroup | grep "/docker/${cid}" | awk '$2=="node" {print $1}'`
+    mkdir $2/logs
+    mygroup=`groups | awk '{print $1}'`
+    docker run -u `id -u`:`id -g $mygroup` -v $2/logs:/logs --cpuset-cpus $cpulistperftest -d --name perftest --network testscripts_dockernet -e URL=$1 -e LOGFILEDIR=/logs perftest
+    for mypid in `ps -e -o pid,comm,cgroup | grep "/docker/${cid}" | awk '$2=="python" {print $1}'`
     do
         echo Setting CPU affinity for $mypid to $cpulistperftest       
         taskset -a -cp $cpulistperftest $mypid
     done
     sleep $3
-    docker exec --user node perftest "/bin/sh" -c "cat /home/node/app/*.log > /home/node/app/combined.log"
-    docker cp perftest:/home/node/app/combined.log $2
+    #docker exec --user node perftest "/bin/sh" -c "cat /home/node/app/*.log > /home/node/app/combined.log"
+    #docker cp perftest:/home/node/app/combined.log $2
     docker stop -t $stoptimeout perftest
     docker rm perftest
+    cat $2/logs/*.log > $2/results.txt
+    if [ -f $2/results.txt ]; then
+        rm $2/logs/*.log
+        rmdir $2/logs
+    fi
 }
 
 function get_prom_stats_sb() {
@@ -134,7 +141,7 @@ function check_mp_prom() {
 function run_test() {
     echo $1 STARTED AT: `date`
     mkdir -p $test_outputdir/$1
-    start_loadgen http://spring-boot-jdk:8080/greeting?name=Maarten $test_outputdir/$1/results.txt $loadgenduration
+    start_loadgen http://spring-boot-jdk:8080/greeting?name=Maarten $test_outputdir/$1 $loadgenduration
     check_sb_prom
     valResult=$?
     if [[ $valResult -gt 0 ]] 
@@ -165,6 +172,7 @@ function run_test() {
     echo $1 AVERAGE_PROCESSING_TIME_MS: `cat $test_outputdir/$1/results.txt | grep MEASURE | awk -F " " '{ total += $3 } END { print total/NR }'`
     echo $1 STANDARD_DEVIATION_MS: `cat $test_outputdir/$1/results.txt | grep MEASURE | awk '{delta = $3 - avg; avg += delta / NR; mean2 += delta * ($3 - avg); } END { print sqrt(mean2 / NR); }'`
 }
+
 
 counter=-1
 for jarfilename in ${jarfilelist[@]}
