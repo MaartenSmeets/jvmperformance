@@ -30,6 +30,7 @@ def exit_signal_handler(sig, frame):
             log("INFO\t{}\tKILLING PID {}".format(os.getpid(), child_pid))
             try:
                 os.kill(child_pid, signal.SIGINT)
+                finished = os.waitpid(child_pid, 0)
             except Exception as e:
                 log("CLEANUP_ERROR\t{}\tKILLING PID {} failed: {}".format(os.getpid(), child_pid, str(e)))
     fh.writelines(lines_of_text)
@@ -60,6 +61,7 @@ for i in range(forks):
                 response = requests.get(
                     URL,
                     params={'name': 'Maarten'},
+                    headers={"Connection": "close"}
                 )
                 stop = time.process_time()
                 request_time = stop - start
