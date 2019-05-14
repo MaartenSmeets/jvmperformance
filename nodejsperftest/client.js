@@ -32,14 +32,15 @@ function mylogger(msg) {
 
 function cleanup() {
     if (LOGFILE) {
-        mylogger("INFO\t"+pid+"\tCleanup called\n");
-        fileStream.write(lineBuffer);
-        fileStream.end();
+        mylogger("INFO\t"+pid+"\tCleanup called");
         if (cluster.isMaster) {
             for (const id in cluster.workers) {
-                cluster.workers[id].kill(signal='SIGINT');
+                mylogger("INFO\t"+pid+"\tSending SIGINT to worker with id: "+String(id));
+                cluster.workers[id].process.kill();
             }
         }
+        fileStream.write(lineBuffer);
+        fileStream.end();
     }
     return;
 }
@@ -52,12 +53,6 @@ process.on('SIGTERM', (error, next) => {
 
 process.on('SIGINT', (error, next) => {
     mylogger("INFO\t"+pid+"\tSIGINT received");
-    cleanup();
-    process.exit();
-});
-
-process.on('SIGKILL', (error, next) => {
-    mylogger("INFO\t"+pid+"\tSIGKILL received");
     cleanup();
     process.exit();
 });
