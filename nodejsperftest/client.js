@@ -4,6 +4,7 @@ var cluster = require('cluster');
 var process = require('process');
 var pid = process.pid;
 var forks = 4;
+var killedcounter=0;
 var fs = require('fs');
 
 //Example call: node client.js http://9292ov.nl .
@@ -48,13 +49,11 @@ function cleanup() {
 process.on('SIGTERM', (error, next) => {
     mylogger("INFO\t"+pid+"\tSIGTERM received");
     cleanup();
-    process.exit();
 });
 
 process.on('SIGINT', (error, next) => {
     mylogger("INFO\t"+pid+"\tSIGINT received");
     cleanup();
-    process.exit();
 });
 
 if (cluster.isMaster) {
@@ -65,6 +64,12 @@ if (cluster.isMaster) {
         mylogger("INFO\t" + pid + "\tMaster: creating fork: " + i);
         cluster.fork();
     };
+    cluster.on('exit', (worker, code, signal) => {
+        killedcounter=killedcounter+1;
+        if (killedcounter==forks) {
+            process.exit();
+        }
+    });
 } else {
     mylogger("WORKER\t" + pid);        
     mylogger("URL\t" + pid+"\t"+String(URL));
