@@ -12,7 +12,7 @@ jarfilelist=("mp-rest-service-11.jar" "sb-rest-service-11.jar" "sb-rest-service-
 indicator=("_mp" "_sb" "_sbreactive" "_sbfu" "_vertx")
 
 #jarfilelist=("mp-rest-service-8.jar")
-test_outputdir=$DIR/jdktest_8_`date +"%Y%m%d%H%M%S"`
+test_outputdir=$DIR/jdktest_11_`date +"%Y%m%d%H%M%S"`
 loadgenduration=900
 echo Isolated CPUs `cat /sys/devices/system/cpu/isolated`
 cpulistperftest=4,5,6,7
