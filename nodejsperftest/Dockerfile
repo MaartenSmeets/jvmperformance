@@ -7,4 +7,4 @@ COPY package*.json ./
 USER node
 RUN npm install
 COPY --chown=node:node . .
-CMD [ "npm","start" ]
+ENTRYPOINT [ "node","./client.js" ]
