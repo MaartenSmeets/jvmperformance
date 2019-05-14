@@ -77,7 +77,7 @@ function start_loadgen() {
     mkdir $2/logs
     mygroup=`groups | awk '{print $1}'`
     docker run -u `id -u`:`id -g $mygroup` -v $2/logs:/logs --cpuset-cpus $cpulistperftest -d --name perftest --network testscripts_dockernet -e URL=$1 -e LOGFILEDIR=/logs perftest
-    for mypid in `ps -e -o pid,comm,cgroup | grep "/docker/${cid}" | awk '$2=="python" {print $1}'`
+    for mypid in `ps -e -o pid,comm,cgroup | grep "/docker/${cid}" | awk '$2=="python" || $2=="node" {print $1}'`
     do
         echo Setting CPU affinity for $mypid to $cpulistperftest       
         taskset -a -cp $cpulistperftest $mypid
