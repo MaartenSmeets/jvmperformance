@@ -39,5 +39,4 @@ public class GreetingApplication extends ResourceConfig {
         system.shutdown();
         system.awaitTermination(Duration.create(15, TimeUnit.SECONDS));
     }
-
 }
