@@ -81,7 +81,7 @@ if (cluster.isMaster) {
                 time: true
             }, function(error, response, body) {
                 if (!error && response.statusCode == 200) {
-                    mylogger("MEASURE\t" + pid+"\t"+String(response.elapsedTime));
+                    mylogger("MEASURE\t" + pid+"\t"+String(response.timings.end));
                     next();
                 } else {
                     if (error && response) {
