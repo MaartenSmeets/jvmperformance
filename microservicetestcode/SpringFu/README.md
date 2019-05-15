@@ -9,7 +9,7 @@ Build the project using gradle:
 
 # Build GraalVM Native image
 
-Run `build.sh`, which will yield a file called `com.sample.applicationkt`.
+Run `build.sh`, which will yield a file called `hello.applicationkt`.
 
 # Run application
 
