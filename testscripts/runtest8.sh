@@ -16,7 +16,7 @@ for f in "${jarfilelist[@]}" ; do
         echo "$f: found"
     else
         echo "$f: not found"
-        exit(0)
+        exit 0
     fi
 done 
 
