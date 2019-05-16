@@ -1,0 +1,89 @@
+<!-- #build-sample -->
+<project>
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>com.example</groupId>
+    <artifactId>akka-http-seed-java</artifactId>
+    <version>1.0</version>
+
+    <dependencies>
+        <dependency>
+            <groupId>com.typesafe.akka</groupId>
+            <artifactId>akka-http_2.12</artifactId>
+            <version>10.1.8</version>
+        </dependency>
+        <dependency>
+            <groupId>com.typesafe.akka</groupId>
+            <artifactId>akka-stream_2.12</artifactId>
+            <version>2.6.0-M1</version>
+        </dependency>
+        <dependency>
+            <groupId>com.typesafe.akka</groupId>
+            <artifactId>akka-http-jackson_2.12</artifactId>
+            <version>10.1.8</version>
+        </dependency>
+        <dependency>
+            <groupId>com.typesafe.akka</groupId>
+            <artifactId>akka-http-testkit_2.12</artifactId>
+            <version>10.1.8</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>4.12</version>
+            <scope>test</scope>
+        </dependency>
+    </dependencies>
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.5.1</version>
+                <configuration>
+                    <source>1.8</source>
+                    <target>1.8</target>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>exec-maven-plugin</artifactId>
+                <version>1.6.0</version>
+                <configuration>
+                    <mainClass>hello.QuickstartServer</mainClass>
+                </configuration>
+            </plugin>
+<plugin>
+   <groupId>org.apache.maven.plugins</groupId>
+   <artifactId>maven-shade-plugin</artifactId>
+   <version>2.4.1</version>
+   <executions>
+      <execution>
+         <phase>package</phase>
+         <goals>
+            <goal>shade</goal>
+         </goals>
+         <configuration>
+            <shadedArtifactAttached>true</shadedArtifactAttached>
+            <shadedClassifierName>allinone</shadedClassifierName>
+            <artifactSet>
+               <includes>
+                  <include>*:*</include>
+               </includes>
+            </artifactSet>
+            <transformers>
+               <transformer implementation="org.apache.maven.plugins.shade.resource.AppendingTransformer">
+                  <resource>reference.conf</resource>
+               </transformer>
+               <transformer implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
+                  <main-Class>hello.QuickstartServer</main-Class>
+               </transformer>
+            </transformers>
+         </configuration>
+      </execution>
+   </executions>
+</plugin>
+        </plugins>
+    </build>
+</project>
