@@ -25,6 +25,11 @@ cd SpringFu
 cp build/libs/SpringFu.jar ../sb-rest-service-fu-8.jar
 cd ..
 
+cd Akka
+mvn clean package -Dmaven.compiler.source=8 -Dmaven.compiler.target=8
+cp target/akka-http-seed-java-1.0-allinone.jar ../akka-rest-service-8.jar
+cd ..
+
 export JAVA_HOME=/usr/lib/jvm/java-11-openjdk-amd64
 
 cd VertX
@@ -52,6 +57,9 @@ cd SpringFu
 cp build/libs/SpringFu.jar ../sb-rest-service-fu-11.jar
 cd ..
 
-
+cd Akka
+mvn clean package -Dmaven.compiler.source=11 -Dmaven.compiler.target=11
+cp target/akka-http-seed-java-1.0-allinone.jar ../akka-rest-service-11.jar
+cd ..
 
 
