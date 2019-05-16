@@ -41,9 +41,9 @@ public class QuickstartServer extends AllDirectives {
         QuickstartServer app = new QuickstartServer();
 
         final Flow<HttpRequest, HttpResponse, NotUsed> routeFlow = app.createRoute(greetingActor, system).flow(system, materializer);
-        http.bindAndHandle(routeFlow, ConnectHttp.toHost("localhost", 8080), materializer);
+        http.bindAndHandle(routeFlow, ConnectHttp.toHost("0.0.0.0", 8080), materializer);
 
-        System.out.println("Server online at http://localhost:8080/");
+        System.out.println("Server online at http://0.0.0.0:8080/");
         //#http-server
     }
 
