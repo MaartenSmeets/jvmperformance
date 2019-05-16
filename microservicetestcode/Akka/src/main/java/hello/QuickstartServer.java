@@ -63,17 +63,16 @@ public class QuickstartServer extends AllDirectives {
                                 public void onComplete(Throwable failure, Object result) {
                                     if (failure != null) {
                                         if (failure.getMessage() != null) {
-                                            result=new Greeting(java.lang.System.currentTimeMillis(),failure.getMessage());
+                                            result=failure.getMessage();
 
                                         } else {
-                                            result=new Greeting(java.lang.System.currentTimeMillis(),"Something went wrong");
+                                            result="Something went wrong";
                                         }
                                     }
                                 }
                             }, actorSystem.dispatcher());
                             try {
-                                Greeting res = ((Greeting)Await.result(future, timeout.duration()));
-                                return complete(StatusCodes.OK(), res, Jackson.marshaller());
+                                return complete(StatusCodes.OK(), Await.result(future, timeout.duration()), Jackson.marshaller());
                             } catch (Exception E) {
                                 return complete(StatusCodes.InternalServerError(),E,Jackson.marshaller());
                             }
