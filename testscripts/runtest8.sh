@@ -8,10 +8,18 @@
 DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null && pwd )"
 echo Running from $DIR
 
-jarfilelist=("mp-rest-service-8.jar" "sb-rest-service-8.jar" "sb-rest-service-reactive-8.jar" "sb-rest-service-reactive-fu2-8.jar" "vertx-rest-service-8.jar")
-indicator=("_mp" "_sb" "_sbreactive" "_sbfu" "_vertx")
+jarfilelist=("mp-rest-service-8.jar" "sb-rest-service-8.jar" "sb-rest-service-reactive-8.jar" "sb-rest-service-fu-8.jar" "vertx-rest-service-8.jar" "akka-rest-service-8.jar")
+indicator=("_mp" "_sb" "_sbreactive" "_sbfu" "_vertx" "_akka")
 
-#jarfilelist=("mp-rest-service-8.jar")
+for f in "${jarfilelist[@]}" ; do 
+    if [ -f "$f" ]; then
+        echo "$f: found"
+    else
+        echo "$f: not found"
+        exit(0)
+    fi
+done 
+
 test_outputdir=$DIR/jdktest_8_`date +"%Y%m%d%H%M%S"`
 loadgenduration=900
 echo Isolated CPUs `cat /sys/devices/system/cpu/isolated`
