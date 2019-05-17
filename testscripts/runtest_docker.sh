@@ -109,10 +109,10 @@ function start_loadgen() {
 function start_loadgen_local() {
     export URL=$1
     export LOGFILEDIR=$2
-    taskset -a -c $cpulistperftest node ../pyperftest/client.js &
+    taskset -a -c $cpulistperftest python3 ../pythonperftest/perftest.py &
     mypid=$!
     sleep $3
-    kill -9 $mypid
+    kill $mypid
     cat $2/*.log > $2/results.txt
 }
 
