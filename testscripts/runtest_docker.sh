@@ -60,7 +60,7 @@ function rebuild() {
     var="$@"
     echo USING JARFILE: $var
     docker build -t spring-boot-jdk -f Dockerfile --build-arg JAR_FILE=$var .
-    docker run --cpuset-cpus $cpulistjava -d --name spring-boot-jdk -p 8080:8080 --network testscripts_dockernet --device /dev/zing_mm0:/dev/zing_mm0 spring-boot-jdk
+    docker run --cpuset-cpus $cpulistjava -d --name spring-boot-jdk -p 8080:8080 --network testscripts_dockernet spring-boot-jdk
     export mypid=`ps -o pid,sess,cmd afx | egrep "( |/)java.*app.jar.*( -f)?$" | awk '{print $1}'`
     echo Java process PID: $mypid setting CPU affinity to $cpulistjava
     sudo taskset -pc $cpulistjava $mypid
@@ -84,7 +84,11 @@ function get_start_time() {
 function start_loadgen() {
     mkdir $2/logs
     mygroup=`groups | awk '{print $1}'`
-    docker run -u `id -u`:`id -g $mygroup` -v $2/logs:/logs --cpuset-cpus $cpulistperftest -d --name perftest --network testscripts_dockernet -e URL=$1 -e LOGFILEDIR=/logs perftest
+    if [ -e "/dev/zing_mm0" ]; then
+        docker run -u `id -u`:`id -g $mygroup` -v $2/logs:/logs --cpuset-cpus $cpulistperftest -d --name perftest --network testscripts_dockernet -e URL=$1 -e LOGFILEDIR=/logs --device /dev/zing_mm0:/dev/zing_mm0 perftest
+    else
+        docker run -u `id -u`:`id -g $mygroup` -v $2/logs:/logs --cpuset-cpus $cpulistperftest -d --name perftest --network testscripts_dockernet -e URL=$1 -e LOGFILEDIR=/logs perftest
+    fi
     for mypid in `ps -e -o pid,comm,cgroup | grep "/docker/${cid}" | awk '$2=="python" || $2=="node" {print $1}'`
     do
         echo Setting CPU affinity for $mypid to $cpulistperftest       
