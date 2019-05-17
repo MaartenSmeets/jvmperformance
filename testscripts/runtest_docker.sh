@@ -23,8 +23,8 @@ done
 test_outputdir=$DIR/jdktest_8_`date +"%Y%m%d%H%M%S"`
 loadgenduration=900
 echo Isolated CPUs `cat /sys/devices/system/cpu/isolated`
-cpulistperftest=4,5,6,7
-cpulistjava=8,9,10,11
+cpulistperftest=3
+cpulistjava=1,2
 stoptimeout=180
 
 echo CPUs used for Performance test $cpulistperftest
@@ -103,7 +103,9 @@ function start_loadgen() {
 }
 
 function start_loadgen_local() {
-    taskset -a -c $cpulistperftest node ../pyperftest/client.js $1 $2 &
+    export URL=$1
+    export LOGFILEDIR=$2
+    taskset -a -c $cpulistperftest node ../pyperftest/client.js &
     mypid=$!
     sleep $3
     kill -9 $mypid
@@ -261,6 +263,13 @@ function run_test_local() {
     echo $1 STANDARD_DEVIATION_MS: `cat $test_outputdir/$1/results.txt | grep MEASURE | awk '{delta = $3 - avg; avg += delta / NR; mean2 += delta * ($3 - avg); } END { print sqrt(mean2 / NR); }'`
 }
 
+#SetJVMParams
+function setjvmparams() {
+        var="$@"
+        echo REPLACE LINE WITH $var
+    sed -i '$ d' Dockerfile
+        echo $var >> Dockerfile
+}
 
 counter=-1
 for jarfilename in ${jarfilelist[@]}
@@ -280,7 +289,7 @@ counter=-1
 for jarfilename in ${jarfilelist[@]}
 do
 counter=$(( $counter + 1 ))
-taskset -a -c $cpulistjava /usr/lib/jvm/jdk-11.0.3/bin/java -Djava.security.egd=file:/dev/./urandom -XX:+UnlockExperimentalVMOptions -Xmx100m -Xms100m -jar $jarfilename &
+taskset -a -c $cpulistjava /usr/lib/jvm/java-11-openjdk-amd64/bin/java -Djava.security.egd=file:/dev/./urandom -XX:+UnlockExperimentalVMOptions -Xmx100m -Xms100m -jar $jarfilename &
 pid=$!
 sleep 60
 run_test_docker_gw adoptopenjdkld${indicator[$counter]}
