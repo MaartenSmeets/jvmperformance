@@ -50,7 +50,7 @@ jvm_dict={'corretto':'Amazon Corretto','graalvm':'GraalVM','openj9':'OpenJ9','ad
 df1['jvm_descr'] = df1['jvm'].map(jvm_dict)
 df1['framework_descr'] = df1['framework'].map(framework_dict)
 df1.sort_values(['jvm', 'framework'], ascending=[True, True])
-
+print (df1)
 #check data
 for jvm in jvms:
     averages=df1.loc[df1['jvm'] == jvm, 'average']
@@ -78,12 +78,13 @@ for jvm in jvms:
 # Make the plot
 figure(num=None, figsize=(8, 6))
 for item in range(0,len(jvms)):
-    plt.bar(rowloc[item], averages[item],yerr=stddevs[item], width=barWidth, edgecolor='white', label=jvm_dict[jvms[item]],capsize=2)
+    # plt.bar(rowloc[item], averages[item],yerr=stddevs[item], width=barWidth, edgecolor='white', label=jvm_dict[jvms[item]],capsize=2)
+    plt.bar(rowloc[item], averages[item], width=barWidth, edgecolor='white', label=jvm_dict[jvms[item]],capsize=2)
 
 plt.xticks(rowloc[int(len(rowloc)/2)], [framework_dict[x] for x in frameworks])
-plt.ylim(0, 8)
+plt.ylim(2, 3)
 
-plt.legend([jvm_dict[x] for x in jvms])
+plt.legend([jvm_dict[x] for x in jvms],loc=2)
 
 plt.ylabel('Average response time [ms]')
 plt.xlabel('Framework')
