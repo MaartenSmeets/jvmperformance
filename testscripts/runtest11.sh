@@ -181,6 +181,20 @@ function run_test() {
     echo $1 STANDARD_DEVIATION_MS: `cat $test_outputdir/$1/results.txt | grep MEASURE | awk '{delta = $3 - avg; avg += delta / NR; mean2 += delta * ($3 - avg); } END { print sqrt(mean2 / NR); }'`
 }
 
+counter=-1
+for jarfilename in ${jarfilelist[@]}
+do
+counter=$(( $counter + 1 ))
+rm Dockerfile.orig
+mv Dockerfile Dockerfile.orig
+cp Dockerfile.zing11 Dockerfile
+rebuild $jarfilename
+run_test zing${indicator[$counter]}
+get_start_time zing${indicator[$counter]}
+sleep 20
+rm Dockerfile
+mv Dockerfile.orig Dockerfile
+done
 
 counter=-1
 for jarfilename in ${jarfilelist[@]}
@@ -201,43 +215,10 @@ counter=-1
 for jarfilename in ${jarfilelist[@]}
 do
 counter=$(( $counter + 1 ))
-replacer "FROM openjdk:11.0.3-jdk"
-rebuild $jarfilename
-run_test openjdk${indicator[$counter]}
-get_start_time openjdk${indicator[$counter]}
-sleep 20
-done
-
-counter=-1
-for jarfilename in ${jarfilelist[@]}
-do
-counter=$(( $counter + 1 ))
-replacer "FROM amazoncorretto:11.0.3"
-rebuild $jarfilename
-run_test corretto${indicator[$counter]}
-get_start_time corretto${indicator[$counter]}
-sleep 20
-done
-
-counter=-1
-for jarfilename in ${jarfilelist[@]}
-do
-counter=$(( $counter + 1 ))
 replacer "FROM adoptopenjdk\/openjdk11-openj9:jdk-11.0.3.7_openj9-0.14.0"
 rebuild $jarfilename
 run_test openj9${indicator[$counter]}
 get_start_time openj9${indicator[$counter]}
-sleep 20
-done
-
-counter=-1
-for jarfilename in ${jarfilelist[@]}
-do
-counter=$(( $counter + 1 ))
-replacer "FROM azul\/zulu-openjdk:11.0.3"
-rebuild $jarfilename
-run_test zuluopenjdk${indicator[$counter]}
-get_start_time zuluopenjdk${indicator[$counter]}
 sleep 20
 done
 

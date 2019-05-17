@@ -60,7 +60,7 @@ function rebuild() {
     var="$@"
     echo USING JARFILE: $var
     docker build -t spring-boot-jdk -f Dockerfile --build-arg JAR_FILE=$var .
-    docker run --cpuset-cpus $cpulistjava -d --name spring-boot-jdk -p 8080:8080 --network testscripts_dockernet spring-boot-jdk
+    docker run --cpuset-cpus $cpulistjava -d --name spring-boot-jdk -p 8080:8080 --network testscripts_dockernet --device /dev/zing_mm0:/dev/zing_mm0 spring-boot-jdk
     export mypid=`ps -o pid,sess,cmd afx | egrep "( |/)java.*app.jar.*( -f)?$" | awk '{print $1}'`
     echo Java process PID: $mypid setting CPU affinity to $cpulistjava
     sudo taskset -pc $cpulistjava $mypid
@@ -185,6 +185,21 @@ counter=-1
 for jarfilename in ${jarfilelist[@]}
 do
 counter=$(( $counter + 1 ))
+rm Dockerfile.orig
+mv Dockerfile Dockerfile.orig
+cp Dockerfile.zing8 Dockerfile
+rebuild $jarfilename
+run_test zing${indicator[$counter]}
+get_start_time zing${indicator[$counter]}
+sleep 20
+rm Dockerfile
+mv Dockerfile.orig Dockerfile
+done
+
+counter=-1
+for jarfilename in ${jarfilelist[@]}
+do
+counter=$(( $counter + 1 ))
 replacer "FROM adoptopenjdk\/openjdk8:jdk8u202-b08"
 rebuild $jarfilename
 run_test adoptopenjdk${indicator[$counter]}
@@ -207,32 +222,10 @@ counter=-1
 for jarfilename in ${jarfilelist[@]}
 do
 counter=$(( $counter + 1 ))
-replacer "FROM azul\/zulu-openjdk:8u202"
-rebuild $jarfilename
-run_test zuluopenjdk${indicator[$counter]}
-get_start_time zuluopenjdk${indicator[$counter]}
-sleep 20
-done
-
-counter=-1
-for jarfilename in ${jarfilelist[@]}
-do
-counter=$(( $counter + 1 ))
 replacer "FROM store\/oracle\/serverjre:8"
 rebuild $jarfilename
 run_test oraclejdk${indicator[$counter]}
 get_start_time oraclejdk${indicator[$counter]}
-sleep 20
-done
-
-counter=-1
-for jarfilename in ${jarfilelist[@]}
-do
-counter=$(( $counter + 1 ))
-replacer "FROM oracle\/graalvm-ce:1.0.0-rc16"
-rebuild $jarfilename
-run_test graalvm${indicator[$counter]}
-get_start_time graalvm${indicator[$counter]}
 sleep 20
 done
 
