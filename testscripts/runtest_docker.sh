@@ -163,7 +163,7 @@ function check_mp_prom() {
 function run_test_docker() {
     echo $1 STARTED AT: `date`
     mkdir -p $test_outputdir/$1
-    start_loadgen http://spring-boot-jdk:8080/greeting?name=Maarten $test_outputdir/$1/results.txt $loadgenduration
+    start_loadgen http://spring-boot-jdk:8080/greeting?name=Maarten $test_outputdir/$1 $loadgenduration
     check_sb_prom
     valResult=$?
     if [[ $valResult -gt 0 ]] 
@@ -199,7 +199,7 @@ function run_test_docker() {
 function run_test_docker_gw() {
     echo $1 STARTED AT: `date`
     mkdir -p $test_outputdir/$1
-    start_loadgen http://192.168.0.1:8080/greeting?name=Maarten $test_outputdir/$1/results.txt $loadgenduration
+    start_loadgen http://192.168.0.1:8080/greeting?name=Maarten $test_outputdir/$1 $loadgenduration
     check_sb_prom
     valResult=$?
     if [[ $valResult -gt 0 ]] 
