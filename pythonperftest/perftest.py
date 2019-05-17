@@ -4,7 +4,7 @@ import sys
 import time
 import requests
 
-forks = 4
+forks = 16
 URL = os.getenv('URL', "http://localhost:8080/greeting")
 LOGFILEDIR = os.getenv('LOGFILEDIR', "/logs")
 
@@ -57,14 +57,14 @@ for i in range(forks):
         fh = open(LOGFILEDIR + '/' + str(mypid) + '.log', "w")
         while True:
             try:
-                start = time.process_time()
+                start = time.time()
                 response = requests.get(
                     URL,
                     params={'name': 'Maarten'},
                     headers={"Connection": "close"}
                 )
-                stop = time.process_time()
-                request_time = stop - start
+                stop = time.time()
+                request_time = (stop - start)*1000
                 log("MEASURE\t{}\t{}".format(mypid, request_time))
             except Exception as e:
                 log("REQUEST_ERROR\t{}\t{}".format(mypid, str(e)))
