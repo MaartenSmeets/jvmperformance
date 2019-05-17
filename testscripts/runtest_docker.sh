@@ -8,22 +8,31 @@
 DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null && pwd )"
 echo Running from $DIR
 
-jarfilelist=("sb-rest-service-11.jar")
+jarfilelist=("sb-rest-service-8.jar")
 indicator=("_sb")
 
-#jarfilelist=("mp-rest-service-8.jar")
-test_outputdir=$DIR/jdktest_11_`date +"%Y%m%d%H%M%S"`
+for f in "${jarfilelist[@]}" ; do 
+    if [ -f "$f" ]; then
+        echo "$f: found"
+    else
+        echo "$f: not found"
+        exit 0
+    fi
+done 
+
+test_outputdir=$DIR/jdktest_8_`date +"%Y%m%d%H%M%S"`
 loadgenduration=900
 echo Isolated CPUs `cat /sys/devices/system/cpu/isolated`
 cpulistperftest=4,5,6,7
 cpulistjava=8,9,10,11
+stoptimeout=180
 
 echo CPUs used for Performance test $cpulistperftest
 echo CPUs used for Java process $cpulistjava
 
 function init() {
 git checkout -- Dockerfile
-docker stop perftest > /dev/null 2>&1
+docker stop -t $stoptimeout perftest > /dev/null 2>&1
 docker rm perftest > /dev/null 2>&1
 docker stop spring-boot-jdk > /dev/null 2>&1
 docker rm spring-boot-jdk > /dev/null 2>&1
@@ -51,7 +60,7 @@ function rebuild() {
     var="$@"
     echo USING JARFILE: $var
     docker build -t spring-boot-jdk -f Dockerfile --build-arg JAR_FILE=$var .
-    docker run -d --name spring-boot-jdk -p 8080:8080 --network testscripts_dockernet spring-boot-jdk
+    docker run --cpuset-cpus $cpulistjava -d --name spring-boot-jdk -p 8080:8080 --network testscripts_dockernet --device /dev/zing_mm0:/dev/zing_mm0 spring-boot-jdk
     export mypid=`ps -o pid,sess,cmd afx | egrep "( |/)java.*app.jar.*( -f)?$" | awk '{print $1}'`
     echo Java process PID: $mypid setting CPU affinity to $cpulistjava
     sudo taskset -pc $cpulistjava $mypid
@@ -66,14 +75,6 @@ function replacer() {
 	sed -i "1s/.*/$var/" Dockerfile
 }
 
-#SetJVMParams
-function setjvmparams() {
-	var="$@"
-	echo REPLACE LINE WITH $var
-    sed -i '$ d' Dockerfile
-	echo $var >> Dockerfile
-}
-
 #get the start time
 function get_start_time() {
     echo $1 `docker logs spring-boot-jdk | grep "STARTED Controller started"`
@@ -81,21 +82,28 @@ function get_start_time() {
 }
 
 function start_loadgen() {
-    docker run -d --name perftest --network testscripts_dockernet -e URL=$1 perftest
-    for mypid in `ps -e -o pid,comm,cgroup | grep "/docker/${cid}" | awk '$2=="node" {print $1}'`
+    mkdir $2/logs
+    mygroup=`groups | awk '{print $1}'`
+    docker run -u `id -u`:`id -g $mygroup` -v $2/logs:/logs --cpuset-cpus $cpulistperftest -d --name perftest --network testscripts_dockernet -e URL=$1 -e LOGFILEDIR=/logs perftest
+    for mypid in `ps -e -o pid,comm,cgroup | grep "/docker/${cid}" | awk '$2=="python" || $2=="node" {print $1}'`
     do
         echo Setting CPU affinity for $mypid to $cpulistperftest       
         taskset -a -cp $cpulistperftest $mypid
     done
     sleep $3
-    docker exec --user node perftest "/bin/sh" -c "cat /home/node/app/*.log > /home/node/app/combined.log"
-    docker cp perftest:/home/node/app/combined.log $2
-    docker stop perftest
+    #docker exec --user node perftest "/bin/sh" -c "cat /home/node/app/*.log > /home/node/app/combined.log"
+    #docker cp perftest:/home/node/app/combined.log $2
+    docker stop -t $stoptimeout perftest
     docker rm perftest
+    cat $2/logs/*.log > $2/results.txt
+    if [ -f $2/results.txt ]; then
+        rm $2/logs/*.log
+        rmdir $2/logs
+    fi
 }
 
 function start_loadgen_local() {
-    taskset -a -c $cpulistperftest node ../nodejsperftest/client.js $1 $2 &
+    taskset -a -c $cpulistperftest node ../pyperftest/client.js $1 $2 &
     mypid=$!
     sleep $3
     kill -9 $mypid
@@ -253,6 +261,7 @@ function run_test_local() {
     echo $1 STANDARD_DEVIATION_MS: `cat $test_outputdir/$1/results.txt | grep MEASURE | awk '{delta = $3 - avg; avg += delta / NR; mean2 += delta * ($3 - avg); } END { print sqrt(mean2 / NR); }'`
 }
 
+
 counter=-1
 for jarfilename in ${jarfilelist[@]}
 do
@@ -278,5 +287,4 @@ run_test_docker_gw adoptopenjdkld${indicator[$counter]}
 run_test_local adoptopenjdkll${indicator[$counter]}
 kill -9 $pid
 done
-
 
