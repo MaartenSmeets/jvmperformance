@@ -10,8 +10,8 @@ jarfilelist11=("mp-rest-service-11.jar" "sb-rest-service-11.jar" "sb-rest-servic
 test_outputdir11=$DIR/$1/jdktest_11_`date +"%Y%m%d%H%M%S"`
 
 indicator=("_mp" "_sb" "_sbreactive" "_sbfu" "_vertx" "_akka")
-
-for f in ( "${jarfilelist8[@]}" "${jarfilelist11[@]}" ) ; do 
+combined=( "${jarfilelist8[@]}" "${jarfilelist11[@]}" )
+for f in "${combined[@]}" ; do 
     if [ -f "$f" ]; then
         echo "$f: found"
     else
@@ -178,7 +178,7 @@ function run_test() {
 }
 
 jarfilelist=${jarfilelist8[@]}
-test_outputdir=$testoutputdir8
+test_outputdir=$test_outputdir8
 
 echo Redirecting output to $test_outputdir
 mkdir -p $test_outputdir
@@ -236,7 +236,7 @@ sleep 20
 done
 
 jarfilelist=${jarfilelist11[@]}
-test_outputdir=$testoutputdir11
+test_outputdir=$test_outputdir11
 
 echo Redirecting output to $test_outputdir
 mkdir -p $test_outputdir
