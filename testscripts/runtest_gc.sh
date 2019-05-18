@@ -1,29 +1,33 @@
 #!/bin/bash
 
-#make sure you have a new version of docker-compose, for example version 1.23.2. 1.21.0 doesn't work with the docker-compose.yml file
-#optional. start process-exporter: docker run -d --rm -p 9256:9256 --privileged -v /proc:/host/proc -v `pwd`/proc-exp:/config ncabatoff/process-exporter --procfs /host/proc -config.path /config/process-exporter.yml 
-# for additional information on process exporter see: https://github.com/ncabatoff/process-exporter
-
-#Mind that the below line requires the bash shell
 DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null && pwd )"
 echo Running from $DIR
 
-jarfilelist=("sb-rest-service-8.jar")
-indicator=("_sb")
+jarfilelist8=("sb-rest-service-8.jar")
+test_outputdir8=$DIR/$1/jdktest_8_`date +"%Y%m%d%H%M%S"`
 
-#jarfilelist=("mp-rest-service-8.jar")
-test_outputdir=$DIR/jdktest_8_`date +"%Y%m%d%H%M%S"`
-loadgenduration=600
+indicator=("_sb")
+for f in "${jarfilelist8[@]}" ; do 
+    if [ -f "$f" ]; then
+        echo "$f: found"
+    else
+        echo "$f: not found"
+        exit 0
+    fi
+done 
+
+loadgenduration=900
 echo Isolated CPUs `cat /sys/devices/system/cpu/isolated`
 cpulistperftest=4,5,6,7
 cpulistjava=8,9,10,11
+stoptimeout=180
 
 echo CPUs used for Performance test $cpulistperftest
 echo CPUs used for Java process $cpulistjava
 
 function init() {
 git checkout -- Dockerfile
-docker stop perftest > /dev/null 2>&1
+docker stop -t $stoptimeout perftest > /dev/null 2>&1
 docker rm perftest > /dev/null 2>&1
 docker stop spring-boot-jdk > /dev/null 2>&1
 docker rm spring-boot-jdk > /dev/null 2>&1
@@ -32,13 +36,6 @@ docker-compose stop > /dev/null 2>&1
 docker-compose rm -f > /dev/null 2>&1
 docker-compose up -d > /dev/null 2>&1
 }
-
-echo Redirecting output to $test_outputdir
-mkdir -p $test_outputdir
-exec > $test_outputdir/outputfile.txt
-exec 2>&1
-echo Initializing: cleaning up
-init
 
 function clean_image() {
 	docker stop spring-boot-jdk
@@ -51,7 +48,7 @@ function rebuild() {
     var="$@"
     echo USING JARFILE: $var
     docker build -t spring-boot-jdk -f Dockerfile --build-arg JAR_FILE=$var .
-    docker run -d --name spring-boot-jdk -p 8080:8080 --network testscripts_dockernet spring-boot-jdk
+    docker run --cpuset-cpus $cpulistjava -d --name spring-boot-jdk -p 8080:8080 --network testscripts_dockernet --device /dev/zing_mm0:/dev/zing_mm0 spring-boot-jdk
     export mypid=`ps -o pid,sess,cmd afx | egrep "( |/)java.*app.jar.*( -f)?$" | awk '{print $1}'`
     echo Java process PID: $mypid setting CPU affinity to $cpulistjava
     sudo taskset -pc $cpulistjava $mypid
@@ -66,33 +63,43 @@ function replacer() {
 	sed -i "1s/.*/$var/" Dockerfile
 }
 
-#SetJVMParams
-function setjvmparams() {
-	var="$@"
-	echo REPLACE LINE WITH $var
-    sed -i '$ d' Dockerfile
-	echo $var >> Dockerfile
-}
-
-
 #get the start time
 function get_start_time() {
     echo $1 `docker logs spring-boot-jdk | grep "STARTED Controller started"`
     echo $1 `docker logs spring-boot-jdk | grep "STARTED Application started"`
 }
 
+#SetJVMParams
+function setjvmparams() {
+        var="$@"
+        echo REPLACE LINE WITH $var
+    sed -i '$ d' Dockerfile
+        echo $var >> Dockerfile
+}
+
 function start_loadgen() {
-    docker run -d --name perftest --network testscripts_dockernet -e URL=$1 perftest
-    for mypid in `ps -e -o pid,comm,cgroup | grep "/docker/${cid}" | awk '$2=="node" {print $1}'`
+    mkdir $2/logs
+    mygroup=`groups | awk '{print $1}'`
+    if [ -e "/dev/zing_mm0" ]; then
+        docker run -u `id -u`:`id -g $mygroup` -v $2/logs:/logs --cpuset-cpus $cpulistperftest -d --name perftest --network testscripts_dockernet -e URL=$1 -e LOGFILEDIR=/logs --device /dev/zing_mm0:/dev/zing_mm0 perftest
+    else
+        docker run -u `id -u`:`id -g $mygroup` -v $2/logs:/logs --cpuset-cpus $cpulistperftest -d --name perftest --network testscripts_dockernet -e URL=$1 -e LOGFILEDIR=/logs perftest
+    fi
+    for mypid in `ps -e -o pid,comm,cgroup | grep "/docker/${cid}" | awk '$2=="python" || $2=="node" {print $1}'`
     do
         echo Setting CPU affinity for $mypid to $cpulistperftest       
         taskset -a -cp $cpulistperftest $mypid
     done
     sleep $3
-    docker exec --user node perftest "/bin/sh" -c "cat /home/node/app/*.log > /home/node/app/combined.log"
-    docker cp perftest:/home/node/app/combined.log $2
-    docker stop perftest
+    #docker exec --user node perftest "/bin/sh" -c "cat /home/node/app/*.log > /home/node/app/combined.log"
+    #docker cp perftest:/home/node/app/combined.log $2
+    docker stop -t $stoptimeout perftest
     docker rm perftest
+    cat $2/logs/*.log > $2/results.txt
+    if [ -f $2/results.txt ]; then
+        rm $2/logs/*.log
+        rmdir $2/logs
+    fi
 }
 
 function get_prom_stats_sb() {
@@ -142,7 +149,7 @@ function check_mp_prom() {
 function run_test() {
     echo $1 STARTED AT: `date`
     mkdir -p $test_outputdir/$1
-    start_loadgen http://spring-boot-jdk:8080/greeting?name=Maarten $test_outputdir/$1/results.txt $loadgenduration
+    start_loadgen http://spring-boot-jdk:8080/greeting?name=Maarten $test_outputdir/$1 $loadgenduration
     check_sb_prom
     valResult=$?
     if [[ $valResult -gt 0 ]] 
@@ -173,6 +180,32 @@ function run_test() {
     echo $1 AVERAGE_PROCESSING_TIME_MS: `cat $test_outputdir/$1/results.txt | grep MEASURE | awk -F " " '{ total += $3 } END { print total/NR }'`
     echo $1 STANDARD_DEVIATION_MS: `cat $test_outputdir/$1/results.txt | grep MEASURE | awk '{delta = $3 - avg; avg += delta / NR; mean2 += delta * ($3 - avg); } END { print sqrt(mean2 / NR); }'`
 }
+
+jarfilelist=${jarfilelist8[@]}
+test_outputdir=$test_outputdir8
+
+echo Redirecting output to $test_outputdir
+mkdir -p $test_outputdir
+exec > $test_outputdir/outputfile.txt
+exec 2>&1
+echo Initializing: cleaning up
+init
+
+counter=-1
+for jarfilename in ${jarfilelist[@]}
+do
+counter=$(( $counter + 1 ))
+rm Dockerfile.orig
+mv Dockerfile Dockerfile.orig
+cp Dockerfile.zing8 Dockerfile
+setjvmparams 'ENTRYPOINT ["/opt/zing/zing-jdk8/bin/java","-Djava.security.egd=file:/dev/./urandom","-XX:+UnlockExperimentalVMOptions","-Xmx20m","-Xms20m","-jar","/app.jar"]'
+rebuild $jarfilename
+run_test zing${indicator[$counter]}
+get_start_time zing${indicator[$counter]}
+sleep 20
+rm Dockerfile
+mv Dockerfile.orig Dockerfile
+done
 
 counter=-1
 for jarfilename in ${jarfilelist[@]}
@@ -282,3 +315,14 @@ get_start_time openj9optthrupu${indicator[$counter]}
 sleep 20
 done
 
+counter=-1
+for jarfilename in ${jarfilelist[@]}
+do
+counter=$(( $counter + 1 ))
+replacer "FROM adoptopenjdk\/openjdk12:jdk-12.0.1_12"
+setjvmparams 'ENTRYPOINT ["java","-Djava.security.egd=file:/dev/./urandom","-XX:+UnlockExperimentalVMOptions","-XX:+UseShenandoahGC","-Xmx20m","-Xms20m","-jar","/app.jar"]'
+rebuild $jarfilename
+run_test adoptopenjdkshenandoahgc${indicator[$counter]}
+get_start_time adoptopenjdkshenandoahgc${indicator[$counter]}
+sleep 20
+done
