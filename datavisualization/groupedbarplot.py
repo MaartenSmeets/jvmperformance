@@ -44,8 +44,7 @@ if len(list(set(jvms) & set(jvms2)))!=len(jvms):
     exit(1)
 
 framework_dict={'mp':'Microprofile','sb':'Spring Boot','sbreactive':'WebFlux','sbfu':'Spring Fu','vertx':'Vert.x','akka':'Akka'}
-jvm_dict={'zing':'Azul Zing','corretto':'Amazon Corretto','graalvm':'GraalVM','openj9':'OpenJ9','adoptopenjdk':'AdoptOpenJDK','oraclejdk':'Oracle JDK','zuluopenjdk':'Azul Zulu','openjdk':'OpenJDK','adoptopenjdkdd':'AdoptOpenJDK\nDocker <- Docker','adoptopenjdkdl':'AdoptOpenJDK\nDocker <- Local','adoptopenjdkll':'AdoptOpenJDK\nLocal <- Local','adoptopenjdkld':'AdoptOpenJDK\nLocal <- Docker','adoptopenjdkserial':'AdoptOpenJDK\nSerial GC','adoptopenjdkcms':'AdoptOpenJDK\nCMS GC','adoptopenjdkpargc': 'AdoptOpenJDK\nParallel GC','adoptopenjdkg1gc':'AdoptOpenJDK\nG1GC',
-'openj9gencon':'OpenJ9\nGencon GC','openj9balanced':'OpenJ9\nBalanced GC','openj9metronome':'OpenJ9\nMetronome GC','openj9optavgpause':'OpenJ9\nOptAvgPause GC','openj9optthrupu':'OpenJ9\nOptThruPu GC'}
+jvm_dict={'zing':'Azul Zing','corretto':'Amazon Corretto','graalvm':'GraalVM','openj9':'OpenJ9','adoptopenjdk':'AdoptOpenJDK','oraclejdk':'Oracle JDK','zuluopenjdk':'Azul Zulu','openjdk':'OpenJDK','adoptopenjdkdd':'AdoptOpenJDK\nDocker <- Docker','adoptopenjdkdl':'AdoptOpenJDK\nDocker <- Local','adoptopenjdkll':'AdoptOpenJDK\nLocal <- Local','adoptopenjdkld':'AdoptOpenJDK\nLocal <- Docker','adoptopenjdkserial':'AdoptOpenJDK\nSerial GC','adoptopenjdkcms':'AdoptOpenJDK\nCMS GC','adoptopenjdkpargc': 'AdoptOpenJDK\nParallel GC','adoptopenjdkg1gc':'AdoptOpenJDK\nG1GC','openj9gencon':'OpenJ9\nGencon GC','openj9balanced':'OpenJ9\nBalanced GC','openj9metronome':'OpenJ9\nMetronome GC','openj9optavgpause':'OpenJ9\nOptAvgPause GC','openj9optthrupu':'OpenJ9\nOptThruPu GC','adoptopenjdkshenandoahgc':'AdoptOpenJDK12\nShenandoah'}
 
 #Add descriptions and sort
 df1['jvm_descr'] = df1['jvm'].map(jvm_dict)
@@ -79,16 +78,20 @@ for jvm in jvms:
 # Make the plot
 figure(num=None, figsize=(8, 6))
 for item in range(0,len(jvms)):
-    # plt.bar(rowloc[item], averages[item],yerr=stddevs[item], width=barWidth, edgecolor='white', label=jvm_dict[jvms[item]],capsize=2)
+    #plt.bar(rowloc[item], averages[item],yerr=stddevs[item], width=barWidth, edgecolor='white', label=jvm_dict[jvms[item]],capsize=2)
     plt.bar(rowloc[item], averages[item], width=barWidth, edgecolor='white', label=jvm_dict[jvms[item]],capsize=2)
 
-plt.xticks(rowloc[int(len(rowloc)/2)], [framework_dict[x] for x in frameworks])
-plt.ylim(2, 3)
+if (len(frameworks)==1):
+    plt.xticks([rowloc[x] for x in np.arange(0,len(jvms))], [jvm_dict[x] for x in jvms])
+else:
+    plt.xticks(rowloc[int(len(rowloc)/2)], [framework_dict[x] for x in frameworks])
+    plt.legend([jvm_dict[x] for x in jvms],loc=2)
+    plt.xlabel('Framework')
 
-plt.legend([jvm_dict[x] for x in jvms],loc=2)
+#plt.ylim(1, 2)
 
 plt.ylabel('Average response time [ms]')
-plt.xlabel('Framework')
+
 plt.title('Microservice framework average response time per JVM')
 plt.tight_layout()
 plt.savefig(sys.argv[2], dpi=100)
