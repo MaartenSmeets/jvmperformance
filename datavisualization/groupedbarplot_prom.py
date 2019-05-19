@@ -13,29 +13,49 @@ barWidth = 0.15
 #point the below line to the test output directory
 processdir=sys.argv[1]
 
-averagecmd='cat '+processdir+'/outputfile.txt | grep PROM_AVERAGE_MS | awk \'{print $1","$3}\' > '+processdir+'/average.txt'
+averagecmd='cat '+processdir+'/outputfile.txt | grep AVERAGE_PROC | awk \'{print $1","$3}\' > '+processdir+'/average.txt'
+stddevcmd='cat '+processdir+'/outputfile.txt | grep STANDARD_DEVIATION_MS | awk \'{print $1","$3}\' > '+processdir+'/stddev.txt'
 print ('Executing: '+averagecmd)
 os.system(averagecmd)
 
+print ('Executing: '+stddevcmd)
+os.system(stddevcmd)
+
 df1 = pd.read_csv(processdir+'/average.txt', sep=',', header=None)
+df2 = pd.read_csv(processdir+'/stddev.txt', sep=',', header=None)
 df1.columns = ['jvm_framework_ident','average']
+df2.columns = ['jvm_framework_ident','stddev']
+
+
+df1 = pd.merge(df1,df2,on="jvm_framework_ident")
 
 df1[['jvm','framework']] = df1['jvm_framework_ident'].str.split('_',expand=True)
+df2[['jvm','framework']] = df2['jvm_framework_ident'].str.split('_',expand=True)
+
+#df1 = df1[df1.jvm != 'adoptopenjdkshenandoahgc']
+#df2 = df2[df2.jvm != 'adoptopenjdkshenandoahgc']
+#df1 = df1[df1.jvm != 'openj9metronome']
+#df2 = df2[df2.jvm != 'openj9metronome']
 
 #check data
 jvms=df1.jvm.unique()
 jvms.sort()
+jvms2=df2.jvm.unique()
+jvms2.sort()
 frameworks=df1.framework.unique()
 frameworks.sort()
+if len(list(set(jvms) & set(jvms2)))!=len(jvms):
+    print ('Averages and Standard Errors do not contain data for the same JVMs'+str(list(set(jvms) & set(jvms2))))
+    exit(1)
 
-framework_dict={'mp':'MicroProfile','sb':'Spring Boot','sbreactive':'Spring Boot Reactive','sbfu':'Spring Fu','vertx':'VertX'}
-jvm_dict={'openjdk':'OpenJDK','corretto':'Amazon Corretto','graalvm':'GraalVM','openj9':'OpenJ9','adoptopenjdk':'AdoptOpenJDK','oraclejdk':'Oracle JDK','zuluopenjdk':'Azul Zulu'}
+framework_dict={'mp':'Microprofile','sb':'Spring Boot','sbreactive':'WebFlux','sbfu':'Spring Fu','vertx':'Vert.x','akka':'Akka'}
+jvm_dict={'zing':'Azul Zing','corretto':'Amazon Corretto','graalvm':'GraalVM','openj9':'OpenJ9','adoptopenjdk':'AdoptOpenJDK','oraclejdk':'Oracle JDK','zuluopenjdk':'Azul Zulu','openjdk':'OpenJDK','adoptopenjdkdd':'AdoptOpenJDK\nDocker <- Docker','adoptopenjdkdl':'AdoptOpenJDK\nDocker <- Local','adoptopenjdkll':'AdoptOpenJDK\nLocal <- Local','adoptopenjdkld':'AdoptOpenJDK\nLocal <- Docker','adoptopenjdkserial':'OpenJDK\nSerial','adoptopenjdkcms':'OpenJDK\nCMS','adoptopenjdkpargc': 'OpenJDK\nParallel','adoptopenjdkg1gc':'OpenJDK\nG1GC','openj9gencon':'OpenJ9\nGencon','openj9balanced':'OpenJ9\nBalanced','openj9metronome':'OpenJ9\nMetronome','openj9optavgpause':'OpenJ9\nOptAvgPause','openj9optthrupu':'OpenJ9\nOptThruPu','adoptopenjdkshenandoahgc':'OpenJDK12\nShenandoah','adoptopenjdkzgc':'OpenJDK12\nZGC'}
 
 #Add descriptions and sort
 df1['jvm_descr'] = df1['jvm'].map(jvm_dict)
 df1['framework_descr'] = df1['framework'].map(framework_dict)
 df1.sort_values(['jvm', 'framework'], ascending=[True, True])
-
+print (df1)
 #check data
 for jvm in jvms:
     averages=df1.loc[df1['jvm'] == jvm, 'average']
@@ -55,18 +75,28 @@ averages=[]
 for jvm in jvms:
     averages.append(df1.loc[df1['jvm']==jvm,'average'])
 
+stddevs=[]
+#Add for each JVM averages (every average is for a specific framework)
+for jvm in jvms:
+    stddevs.append(df1.loc[df1['jvm']==jvm,'stddev'])
+
 # Make the plot
-figure(num=None, figsize=(8, 6))
+figure(num=None, figsize=(16, 6))
 for item in range(0,len(jvms)):
-    plt.bar(rowloc[item], averages[item],width=barWidth, edgecolor='white', label=jvm_dict[jvms[item]],capsize=2)
+    #plt.bar(rowloc[item], averages[item],yerr=stddevs[item], width=barWidth, edgecolor='white', label=jvm_dict[jvms[item]],capsize=2)
+    plt.bar(rowloc[item], averages[item], width=barWidth, edgecolor='white', label=jvm_dict[jvms[item]],capsize=2)
 
-plt.xticks(rowloc[int(len(rowloc)/2)], [framework_dict[x] for x in frameworks])
-plt.ylim(0, 0.2)
+if (len(frameworks)==1):
+    plt.xticks([rowloc[x] for x in np.arange(0,len(jvms))], [jvm_dict[x] for x in jvms])
+else:
+    plt.xticks(rowloc[int(len(rowloc)/2)], [framework_dict[x] for x in frameworks])
+    plt.legend([jvm_dict[x] for x in jvms],loc=2)
+    plt.xlabel('Framework')
 
-plt.legend([jvm_dict[x] for x in jvms])
+plt.ylim(1.2, 1.8)
 
 plt.ylabel('Average response time [ms]')
-plt.xlabel('Framework')
-plt.title('Microservice framework average response time per JVM')
+
+plt.title('Average response time per GC algorithm')
 plt.tight_layout()
 plt.savefig(sys.argv[2], dpi=100)
