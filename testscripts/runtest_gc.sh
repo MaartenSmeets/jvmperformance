@@ -198,7 +198,7 @@ counter=$(( $counter + 1 ))
 rm Dockerfile.orig
 mv Dockerfile Dockerfile.orig
 cp Dockerfile.zing8 Dockerfile
-setjvmparams 'ENTRYPOINT ["/opt/zing/zing-jdk8/bin/java","-Djava.security.egd=file:/dev/./urandom","-XX:+UnlockExperimentalVMOptions","-Xmx20m","-Xms20m","-jar","/app.jar"]'
+setjvmparams 'ENTRYPOINT ["/opt/zing/zing-jdk8/bin/java","-Djava.security.egd=file:/dev/./urandom","-XX:+UnlockExperimentalVMOptions","-Xmx2G","-Xms2G","-jar","/app.jar"]'
 rebuild $jarfilename
 run_test zing${indicator[$counter]}
 get_start_time zing${indicator[$counter]}
@@ -212,7 +212,7 @@ for jarfilename in ${jarfilelist[@]}
 do
 counter=$(( $counter + 1 ))
 replacer "FROM adoptopenjdk\/openjdk8:jdk8u202-b08"
-setjvmparams 'ENTRYPOINT ["java","-Djava.security.egd=file:/dev/./urandom","-XX:+UnlockExperimentalVMOptions","-XX:+UseSerialGC","-Xmx20m","-Xms20m","-jar","/app.jar"]'
+setjvmparams 'ENTRYPOINT ["java","-Djava.security.egd=file:/dev/./urandom","-XX:+UnlockExperimentalVMOptions","-XX:+UseSerialGC","-Xmx2G","-Xms2G","-jar","/app.jar"]'
 rebuild $jarfilename
 run_test adoptopenjdkserial${indicator[$counter]}
 get_start_time adoptopenjdkserial${indicator[$counter]}
@@ -224,7 +224,7 @@ for jarfilename in ${jarfilelist[@]}
 do
 counter=$(( $counter + 1 ))
 replacer "FROM adoptopenjdk\/openjdk8:jdk8u202-b08"
-setjvmparams 'ENTRYPOINT ["java","-Djava.security.egd=file:/dev/./urandom","-XX:+UnlockExperimentalVMOptions","-XX:+UseParallelGC","-Xmx20m","-Xms20m","-jar","/app.jar"]'
+setjvmparams 'ENTRYPOINT ["java","-Djava.security.egd=file:/dev/./urandom","-XX:+UnlockExperimentalVMOptions","-XX:+UseParallelGC","-Xmx2G","-Xms2G","-jar","/app.jar"]'
 rebuild $jarfilename
 run_test adoptopenjdkpargc${indicator[$counter]}
 get_start_time adoptopenjdkpargc${indicator[$counter]}
@@ -236,7 +236,7 @@ for jarfilename in ${jarfilelist[@]}
 do
 counter=$(( $counter + 1 ))
 replacer "FROM adoptopenjdk\/openjdk8:jdk8u202-b08"
-setjvmparams 'ENTRYPOINT ["java","-Djava.security.egd=file:/dev/./urandom","-XX:+UnlockExperimentalVMOptions","-XX:+UseParNewGC","-Xmx20m","-Xms20m","-jar","/app.jar"]'
+setjvmparams 'ENTRYPOINT ["java","-Djava.security.egd=file:/dev/./urandom","-XX:+UnlockExperimentalVMOptions","-XX:+UseParNewGC","-Xmx2G","-Xms2G","-jar","/app.jar"]'
 rebuild $jarfilename
 run_test adoptopenjdkcms${indicator[$counter]}
 get_start_time adoptopenjdkcms${indicator[$counter]}
@@ -248,7 +248,7 @@ for jarfilename in ${jarfilelist[@]}
 do
 counter=$(( $counter + 1 ))
 replacer "FROM adoptopenjdk\/openjdk8:jdk8u202-b08"
-setjvmparams 'ENTRYPOINT ["java","-Djava.security.egd=file:/dev/./urandom","-XX:+UnlockExperimentalVMOptions","-XX:+UseG1GC","-Xmx20m","-Xms20m","-jar","/app.jar"]'
+setjvmparams 'ENTRYPOINT ["java","-Djava.security.egd=file:/dev/./urandom","-XX:+UnlockExperimentalVMOptions","-XX:+UseG1GC","-Xmx2G","-Xms2G","-jar","/app.jar"]'
 rebuild $jarfilename
 run_test adoptopenjdkg1gc${indicator[$counter]}
 get_start_time adoptopenjdkg1gc${indicator[$counter]}
@@ -260,7 +260,7 @@ for jarfilename in ${jarfilelist[@]}
 do
 counter=$(( $counter + 1 ))
 replacer "FROM adoptopenjdk\/openjdk8-openj9:jdk8u202-b08_openj9-0.12.1"
-setjvmparams 'ENTRYPOINT ["java","-Djava.security.egd=file:/dev/./urandom","-XX:+UnlockExperimentalVMOptions","-Xgcpolicy:gencon","-Xmx20m","-Xms20m","-Xshareclasses:name=Cache1","-jar","/app.jar"]'
+setjvmparams 'ENTRYPOINT ["java","-Djava.security.egd=file:/dev/./urandom","-XX:+UnlockExperimentalVMOptions","-Xgcpolicy:gencon","-Xmx2G","-Xms2G","-jar","/app.jar"]'
 rebuild $jarfilename
 run_test openj9gencon${indicator[$counter]}
 get_start_time openj9gencon${indicator[$counter]}
@@ -272,7 +272,7 @@ for jarfilename in ${jarfilelist[@]}
 do
 counter=$(( $counter + 1 ))
 replacer "FROM adoptopenjdk\/openjdk8-openj9:jdk8u202-b08_openj9-0.12.1"
-setjvmparams 'ENTRYPOINT ["java","-Djava.security.egd=file:/dev/./urandom","-XX:+UnlockExperimentalVMOptions","-Xgcpolicy:balanced","-Xmx20m","-Xms20m","-Xshareclasses:name=Cache1","-jar","/app.jar"]'
+setjvmparams 'ENTRYPOINT ["java","-Djava.security.egd=file:/dev/./urandom","-XX:+UnlockExperimentalVMOptions","-Xgcpolicy:balanced","-Xmx2G","-Xms2G","-jar","/app.jar"]'
 rebuild $jarfilename
 run_test openj9balanced${indicator[$counter]}
 get_start_time openj9balanced${indicator[$counter]}
@@ -284,7 +284,7 @@ for jarfilename in ${jarfilelist[@]}
 do
 counter=$(( $counter + 1 ))
 replacer "FROM adoptopenjdk\/openjdk8-openj9:jdk8u202-b08_openj9-0.12.1"
-setjvmparams 'ENTRYPOINT ["java","-Djava.security.egd=file:/dev/./urandom","-XX:+UnlockExperimentalVMOptions","-Xgcpolicy:metronome","-Xmx20m","-Xms20m","-Xshareclasses:name=Cache1","-jar","/app.jar"]'
+setjvmparams 'ENTRYPOINT ["java","-Djava.security.egd=file:/dev/./urandom","-XX:+UnlockExperimentalVMOptions","-Xgcpolicy:metronome","-Xmx2G","-Xms2G","-jar","/app.jar"]'
 rebuild $jarfilename
 run_test openj9metronome${indicator[$counter]}
 get_start_time openj9metronome${indicator[$counter]}
@@ -296,7 +296,7 @@ for jarfilename in ${jarfilelist[@]}
 do
 counter=$(( $counter + 1 ))
 replacer "FROM adoptopenjdk\/openjdk8-openj9:jdk8u202-b08_openj9-0.12.1"
-setjvmparams 'ENTRYPOINT ["java","-Djava.security.egd=file:/dev/./urandom","-XX:+UnlockExperimentalVMOptions","-Xgcpolicy:optavgpause","-Xmx20m","-Xms20m","-Xshareclasses:name=Cache1","-jar","/app.jar"]'
+setjvmparams 'ENTRYPOINT ["java","-Djava.security.egd=file:/dev/./urandom","-XX:+UnlockExperimentalVMOptions","-Xgcpolicy:optavgpause","-Xmx2G","-Xms2G","-jar","/app.jar"]'
 rebuild $jarfilename
 run_test openj9optavgpause${indicator[$counter]}
 get_start_time openj9optavgpause${indicator[$counter]}
@@ -308,7 +308,7 @@ for jarfilename in ${jarfilelist[@]}
 do
 counter=$(( $counter + 1 ))
 replacer "FROM adoptopenjdk\/openjdk8-openj9:jdk8u202-b08_openj9-0.12.1"
-setjvmparams 'ENTRYPOINT ["java","-Djava.security.egd=file:/dev/./urandom","-XX:+UnlockExperimentalVMOptions","-Xgcpolicy:optthrupu","-Xmx20m","-Xms20m","-Xshareclasses:name=Cache1","-jar","/app.jar"]'
+setjvmparams 'ENTRYPOINT ["java","-Djava.security.egd=file:/dev/./urandom","-XX:+UnlockExperimentalVMOptions","-Xgcpolicy:optthrupu","-Xmx2G","-Xms2G","-jar","/app.jar"]'
 rebuild $jarfilename
 run_test openj9optthrupu${indicator[$counter]}
 get_start_time openj9optthrupu${indicator[$counter]}
@@ -320,9 +320,22 @@ for jarfilename in ${jarfilelist[@]}
 do
 counter=$(( $counter + 1 ))
 replacer "FROM adoptopenjdk\/openjdk12:jdk-12.0.1_12"
-setjvmparams 'ENTRYPOINT ["java","-Djava.security.egd=file:/dev/./urandom","-XX:+UnlockExperimentalVMOptions","-XX:+UseShenandoahGC","-Xmx20m","-Xms20m","-jar","/app.jar"]'
+setjvmparams 'ENTRYPOINT ["java","-Djava.security.egd=file:/dev/./urandom","-XX:+UnlockExperimentalVMOptions","-XX:+UseShenandoahGC","-Xmx2G","-Xms2G","-jar","/app.jar"]'
 rebuild $jarfilename
 run_test adoptopenjdkshenandoahgc${indicator[$counter]}
 get_start_time adoptopenjdkshenandoahgc${indicator[$counter]}
 sleep 20
 done
+
+counter=-1
+for jarfilename in ${jarfilelist[@]}
+do
+counter=$(( $counter + 1 ))
+replacer "FROM adoptopenjdk\/openjdk12:jdk-12.0.1_12"
+setjvmparams 'ENTRYPOINT ["java","-Djava.security.egd=file:/dev/./urandom","-XX:+UnlockExperimentalVMOptions","-XX:+UseZGC","-Xmx2G","-Xms2G","-jar","/app.jar"]'
+rebuild $jarfilename
+run_test adoptopenjdkzgc${indicator[$counter]}
+get_start_time adoptopenjdkzgc${indicator[$counter]}
+sleep 20
+done
+
