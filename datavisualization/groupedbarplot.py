@@ -32,6 +32,11 @@ df1 = pd.merge(df1,df2,on="jvm_framework_ident")
 df1[['jvm','framework']] = df1['jvm_framework_ident'].str.split('_',expand=True)
 df2[['jvm','framework']] = df2['jvm_framework_ident'].str.split('_',expand=True)
 
+#df1 = df1[df1.jvm != 'adoptopenjdkshenandoahgc']
+#df2 = df2[df2.jvm != 'adoptopenjdkshenandoahgc']
+#df1 = df1[df1.jvm != 'openj9metronome']
+#df2 = df2[df2.jvm != 'openj9metronome']
+
 #check data
 jvms=df1.jvm.unique()
 jvms.sort()
@@ -44,7 +49,7 @@ if len(list(set(jvms) & set(jvms2)))!=len(jvms):
     exit(1)
 
 framework_dict={'mp':'Microprofile','sb':'Spring Boot','sbreactive':'WebFlux','sbfu':'Spring Fu','vertx':'Vert.x','akka':'Akka'}
-jvm_dict={'zing':'Azul Zing','corretto':'Amazon Corretto','graalvm':'GraalVM','openj9':'OpenJ9','adoptopenjdk':'AdoptOpenJDK','oraclejdk':'Oracle JDK','zuluopenjdk':'Azul Zulu','openjdk':'OpenJDK','adoptopenjdkdd':'AdoptOpenJDK\nDocker <- Docker','adoptopenjdkdl':'AdoptOpenJDK\nDocker <- Local','adoptopenjdkll':'AdoptOpenJDK\nLocal <- Local','adoptopenjdkld':'AdoptOpenJDK\nLocal <- Docker','adoptopenjdkserial':'AdoptOpenJDK\nSerial GC','adoptopenjdkcms':'AdoptOpenJDK\nCMS GC','adoptopenjdkpargc': 'AdoptOpenJDK\nParallel GC','adoptopenjdkg1gc':'AdoptOpenJDK\nG1GC','openj9gencon':'OpenJ9\nGencon GC','openj9balanced':'OpenJ9\nBalanced GC','openj9metronome':'OpenJ9\nMetronome GC','openj9optavgpause':'OpenJ9\nOptAvgPause GC','openj9optthrupu':'OpenJ9\nOptThruPu GC','adoptopenjdkshenandoahgc':'AdoptOpenJDK12\nShenandoah'}
+jvm_dict={'zing':'Azul Zing','corretto':'Amazon Corretto','graalvm':'GraalVM','openj9':'OpenJ9','adoptopenjdk':'AdoptOpenJDK','oraclejdk':'Oracle JDK','zuluopenjdk':'Azul Zulu','openjdk':'OpenJDK','adoptopenjdkdd':'AdoptOpenJDK\nDocker <- Docker','adoptopenjdkdl':'AdoptOpenJDK\nDocker <- Local','adoptopenjdkll':'AdoptOpenJDK\nLocal <- Local','adoptopenjdkld':'AdoptOpenJDK\nLocal <- Docker','adoptopenjdkserial':'OpenJDK\nSerial','adoptopenjdkcms':'OpenJDK\nCMS','adoptopenjdkpargc': 'OpenJDK\nParallel','adoptopenjdkg1gc':'OpenJDK\nG1GC','openj9gencon':'OpenJ9\nGencon','openj9balanced':'OpenJ9\nBalanced','openj9metronome':'OpenJ9\nMetronome','openj9optavgpause':'OpenJ9\nOptAvgPause','openj9optthrupu':'OpenJ9\nOptThruPu','adoptopenjdkshenandoahgc':'OpenJDK12\nShenandoah'}
 
 #Add descriptions and sort
 df1['jvm_descr'] = df1['jvm'].map(jvm_dict)
@@ -76,7 +81,7 @@ for jvm in jvms:
     stddevs.append(df1.loc[df1['jvm']==jvm,'stddev'])
 
 # Make the plot
-figure(num=None, figsize=(8, 6))
+figure(num=None, figsize=(12, 6))
 for item in range(0,len(jvms)):
     #plt.bar(rowloc[item], averages[item],yerr=stddevs[item], width=barWidth, edgecolor='white', label=jvm_dict[jvms[item]],capsize=2)
     plt.bar(rowloc[item], averages[item], width=barWidth, edgecolor='white', label=jvm_dict[jvms[item]],capsize=2)
@@ -92,6 +97,6 @@ else:
 
 plt.ylabel('Average response time [ms]')
 
-plt.title('Microservice framework average response time per JVM')
+plt.title('Average response time per GC algorithm')
 plt.tight_layout()
 plt.savefig(sys.argv[2], dpi=100)
