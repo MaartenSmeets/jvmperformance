@@ -1,5 +1,10 @@
 export JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64
 
+cd Quarkus
+mvn clean package -Dmaven.compiler.source=8 -Dmaven.compiler.target=8
+cp target/quarkus-rest-service-1.0-SNAPSHOT-runner.jar ../quarkus-rest-service-8.jar
+cd ..
+
 cd VertX
 mvn clean package -Dmaven.compiler.source=8 -Dmaven.compiler.target=8
 cp target/vertx-rest-service-0.1.0-app.jar ../vertx-rest-service-8.jar
@@ -31,6 +36,11 @@ cp target/akka-http-seed-java-1.0-allinone.jar ../akka-rest-service-8.jar
 cd ..
 
 export JAVA_HOME=/usr/lib/jvm/java-11-openjdk-amd64
+
+cd Quarkus
+mvn clean package -Dmaven.compiler.source=11 -Dmaven.compiler.target=11
+cp target/quarkus-rest-service-1.0-SNAPSHOT-runner.jar ../quarkus-rest-service-11.jar
+cd ..
 
 cd VertX
 mvn clean package -Dmaven.compiler.source=11 -Dmaven.compiler.target=11
