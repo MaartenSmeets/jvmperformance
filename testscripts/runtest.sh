@@ -3,13 +3,13 @@
 DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null && pwd )"
 echo Running from $DIR
 
-jarfilelist8=("mp-rest-service-8.jar" "sb-rest-service-8.jar" "sb-rest-service-reactive-8.jar" "sb-rest-service-fu-8.jar" "vertx-rest-service-8.jar" "akka-rest-service-8.jar")
+jarfilelist8=("mp-rest-service-8.jar" "sb-rest-service-8.jar" "sb-rest-service-reactive-8.jar" "sb-rest-service-fu-8.jar" "vertx-rest-service-8.jar" "akka-rest-service-8.jar" "quarkus-rest-service-8.jar")
 test_outputdir8=$DIR/$1/jdktest_8_`date +"%Y%m%d%H%M%S"`
 
-jarfilelist11=("mp-rest-service-11.jar" "sb-rest-service-11.jar" "sb-rest-service-reactive-11.jar" "sb-rest-service-fu-11.jar" "vertx-rest-service-11.jar" "akka-rest-service-11.jar")
+jarfilelist11=("mp-rest-service-11.jar" "sb-rest-service-11.jar" "sb-rest-service-reactive-11.jar" "sb-rest-service-fu-11.jar" "vertx-rest-service-11.jar" "akka-rest-service-11.jar" "quarkus-rest-service-11.jar")
 test_outputdir11=$DIR/$1/jdktest_11_`date +"%Y%m%d%H%M%S"`
 
-indicator=("_mp" "_sb" "_sbreactive" "_sbfu" "_vertx" "_akka")
+indicator=("_mp" "_sb" "_sbreactive" "_sbfu" "_vertx" "_akka" "_qs")
 combined=( "${jarfilelist8[@]}" "${jarfilelist11[@]}" )
 for f in "${combined[@]}" ; do 
     if [ -f "$f" ]; then
@@ -195,6 +195,21 @@ exec 2>&1
 echo Initializing: cleaning up
 init
 
+rm Dockerfile.orig
+mv Dockerfile Dockerfile.orig
+cp Dockerfile.native Dockerfile
+setjvmparams 'ENTRYPOINT ["./application", "-Dquarkus.http.host=0.0.0.0", "-Xmx2g", "-Xms2g"]'
+clean_image
+docker build -t spring-boot-jdk -f Dockerfile .
+docker run --cpuset-cpus $cpulistjava -d --name spring-boot-jdk -p 8080:8080 --network testscripts_dockernet --device /dev/zing_mm0:/dev/zing_mm0 spring-boot-jdk
+#give it some time to startup
+sleep 60
+run_test native_qs
+get_start_time native_qs
+sleep 20
+rm Dockerfile
+mv Dockerfile.orig Dockerfile
+
 counter=-1
 for jarfilename in ${jarfilelist[@]}
 do
@@ -202,7 +217,7 @@ counter=$(( $counter + 1 ))
 rm Dockerfile.orig
 mv Dockerfile Dockerfile.orig
 cp Dockerfile.zing8 Dockerfile
-setjvmparams 'ENTRYPOINT ["/opt/zing/zing-jdk8/bin/java","-Djava.security.egd=file:/dev/./urandom","-XX:+UnlockExperimentalVMOptions","-Xmx20m","-Xms20m","-jar","/app.jar"]'
+setjvmparams 'ENTRYPOINT ["/opt/zing/zing-jdk8/bin/java","-Djava.security.egd=file:/dev/./urandom","-XX:+UnlockExperimentalVMOptions","-Xmx2g","-Xms2g","-jar","/app.jar"]'
 rebuild $jarfilename
 run_test zing${indicator[$counter]}
 get_start_time zing${indicator[$counter]}
@@ -216,7 +231,7 @@ for jarfilename in ${jarfilelist[@]}
 do
 counter=$(( $counter + 1 ))
 replacer "FROM adoptopenjdk\/openjdk8:jdk8u202-b08"
-setjvmparams 'ENTRYPOINT ["java","-Djava.security.egd=file:/dev/./urandom","-XX:+UnlockExperimentalVMOptions","-Xmx20m","-Xms20m","-jar","/app.jar"]'
+setjvmparams 'ENTRYPOINT ["java","-Djava.security.egd=file:/dev/./urandom","-XX:+UnlockExperimentalVMOptions","-Xmx2g","-Xms2g","-jar","/app.jar"]'
 rebuild $jarfilename
 run_test adoptopenjdk${indicator[$counter]}
 get_start_time adoptopenjdk${indicator[$counter]}
@@ -228,7 +243,7 @@ for jarfilename in ${jarfilelist[@]}
 do
 counter=$(( $counter + 1 ))
 replacer "FROM adoptopenjdk\/openjdk8-openj9:jdk8u202-b08_openj9-0.12.1"
-setjvmparams 'ENTRYPOINT ["java","-Djava.security.egd=file:/dev/./urandom","-XX:+UnlockExperimentalVMOptions","-Xmx20m","-Xms20m","-jar","/app.jar"]'
+setjvmparams 'ENTRYPOINT ["java","-Djava.security.egd=file:/dev/./urandom","-XX:+UnlockExperimentalVMOptions","-Xmx2g","-Xms2g","-jar","/app.jar"]'
 rebuild $jarfilename
 run_test openj9${indicator[$counter]}
 get_start_time openj9${indicator[$counter]}
@@ -240,7 +255,7 @@ for jarfilename in ${jarfilelist[@]}
 do
 counter=$(( $counter + 1 ))
 replacer "FROM store\/oracle\/serverjre:8"
-setjvmparams 'ENTRYPOINT ["java","-Djava.security.egd=file:/dev/./urandom","-XX:+UnlockExperimentalVMOptions","-Xmx20m","-Xms20m","-jar","/app.jar"]'
+setjvmparams 'ENTRYPOINT ["java","-Djava.security.egd=file:/dev/./urandom","-XX:+UnlockExperimentalVMOptions","-Xmx2g","-Xms2g","-jar","/app.jar"]'
 rebuild $jarfilename
 run_test oraclejdk${indicator[$counter]}
 get_start_time oraclejdk${indicator[$counter]}
@@ -264,7 +279,7 @@ counter=$(( $counter + 1 ))
 rm Dockerfile.orig
 mv Dockerfile Dockerfile.orig
 cp Dockerfile.zing11 Dockerfile
-setjvmparams 'ENTRYPOINT ["/opt/zing/zing-jdk11/bin/java","-Djava.security.egd=file:/dev/./urandom","-XX:+UnlockExperimentalVMOptions","-Xmx20m","-Xms20m","-jar","/app.jar"]'
+setjvmparams 'ENTRYPOINT ["/opt/zing/zing-jdk11/bin/java","-Djava.security.egd=file:/dev/./urandom","-XX:+UnlockExperimentalVMOptions","-Xmx2g","-Xms2g","-jar","/app.jar"]'
 rebuild $jarfilename
 run_test zing${indicator[$counter]}
 get_start_time zing${indicator[$counter]}
@@ -280,7 +295,7 @@ counter=$(( $counter + 1 ))
 rm Dockerfile.orig
 mv Dockerfile Dockerfile.orig
 cp Dockerfile.ojdk11 Dockerfile
-setjvmparams 'ENTRYPOINT ["java","-Djava.security.egd=file:/dev/./urandom","-XX:+UnlockExperimentalVMOptions","-Xmx20m","-Xms20m","-jar","/app.jar"]'
+setjvmparams 'ENTRYPOINT ["java","-Djava.security.egd=file:/dev/./urandom","-XX:+UnlockExperimentalVMOptions","-Xmx2g","-Xms2g","-jar","/app.jar"]'
 rebuild $jarfilename
 run_test oraclejdk${indicator[$counter]}
 get_start_time oraclejdk${indicator[$counter]}
@@ -294,7 +309,7 @@ for jarfilename in ${jarfilelist[@]}
 do
 counter=$(( $counter + 1 ))
 replacer "FROM adoptopenjdk\/openjdk11-openj9:jdk-11.0.3.7_openj9-0.14.0"
-setjvmparams 'ENTRYPOINT ["java","-Djava.security.egd=file:/dev/./urandom","-XX:+UnlockExperimentalVMOptions","-Xmx20m","-Xms20m","-jar","/app.jar"]'
+setjvmparams 'ENTRYPOINT ["java","-Djava.security.egd=file:/dev/./urandom","-XX:+UnlockExperimentalVMOptions","-Xmx2g","-Xms2g","-jar","/app.jar"]'
 rebuild $jarfilename
 run_test openj9${indicator[$counter]}
 get_start_time openj9${indicator[$counter]}
@@ -306,7 +321,7 @@ for jarfilename in ${jarfilelist[@]}
 do
 counter=$(( $counter + 1 ))
 replacer "FROM adoptopenjdk\/openjdk11:jdk-11.0.3.7"
-setjvmparams 'ENTRYPOINT ["java","-Djava.security.egd=file:/dev/./urandom","-XX:+UnlockExperimentalVMOptions","-Xmx20m","-Xms20m","-jar","/app.jar"]'
+setjvmparams 'ENTRYPOINT ["java","-Djava.security.egd=file:/dev/./urandom","-XX:+UnlockExperimentalVMOptions","-Xmx2g","-Xms2g","-jar","/app.jar"]'
 rebuild $jarfilename
 run_test adoptopenjdk${indicator[$counter]}
 get_start_time adoptopenjdk${indicator[$counter]}
