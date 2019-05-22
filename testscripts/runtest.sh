@@ -4,12 +4,15 @@ DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null && pwd )"
 echo Running from $DIR
 
 jarfilelist8=("mp-rest-service-8.jar" "sb-rest-service-8.jar" "sb-rest-service-reactive-8.jar" "sb-rest-service-fu-8.jar" "vertx-rest-service-8.jar" "akka-rest-service-8.jar" "quarkus-rest-service-8.jar")
+#jarfilelist8=("quarkus-rest-service-8.jar")
+#jarfilelist11=("quarkus-rest-service-8.jar")
+
 test_outputdir8=$DIR/$1/jdktest_8_`date +"%Y%m%d%H%M%S"`
 
 jarfilelist11=("mp-rest-service-11.jar" "sb-rest-service-11.jar" "sb-rest-service-reactive-11.jar" "sb-rest-service-fu-11.jar" "vertx-rest-service-11.jar" "akka-rest-service-11.jar" "quarkus-rest-service-11.jar")
 test_outputdir11=$DIR/$1/jdktest_11_`date +"%Y%m%d%H%M%S"`
-
-indicator=("_mp" "_sb" "_sbreactive" "_sbfu" "_vertx" "_akka" "_qs")
+indicator=("_qs")
+#indicator=("_mp" "_sb" "_sbreactive" "_sbfu" "_vertx" "_akka" "_qs")
 combined=( "${jarfilelist8[@]}" "${jarfilelist11[@]}" )
 for f in "${combined[@]}" ; do 
     if [ -f "$f" ]; then
@@ -20,7 +23,7 @@ for f in "${combined[@]}" ; do
     fi
 done 
 
-loadgenduration=900
+loadgenduration=300
 echo Isolated CPUs `cat /sys/devices/system/cpu/isolated`
 cpulistperftest=4,5,6,7
 cpulistjava=8,9,10,11
@@ -77,8 +80,8 @@ function replacer() {
 
 #get the start time
 function get_start_time() {
-    echo $1 `docker logs spring-boot-jdk | grep "STARTED Controller started"`
-    echo $1 `docker logs spring-boot-jdk | grep "STARTED Application started"`
+    echo $1 `docker logs spring-boot-jdk | grep "STARTED Controller started" | tail -1`
+    echo $1 `docker logs spring-boot-jdk | grep "STARTED Application started" | tail -1`
 }
 
 function start_loadgen() {
@@ -195,20 +198,36 @@ exec 2>&1
 echo Initializing: cleaning up
 init
 
-rm Dockerfile.orig
-mv Dockerfile Dockerfile.orig
-cp Dockerfile.native Dockerfile
-setjvmparams 'ENTRYPOINT ["./application", "-Dquarkus.http.host=0.0.0.0", "-Xmx2g", "-Xms2g"]'
-clean_image
-docker build -t spring-boot-jdk -f Dockerfile .
-docker run --cpuset-cpus $cpulistjava -d --name spring-boot-jdk -p 8080:8080 --network testscripts_dockernet --device /dev/zing_mm0:/dev/zing_mm0 spring-boot-jdk
-#give it some time to startup
-sleep 60
-run_test native_qs
-get_start_time native_qs
+counter=-1
+for jarfilename in ${jarfilelist[@]}
+do
+counter=$(( $counter + 1 ))
+if [ ${indicator[$counter]} == "_qs" ]; then
+    rm Dockerfile.orig
+    mv Dockerfile Dockerfile.orig
+    cp Dockerfile.native Dockerfile
+    setjvmparams 'ENTRYPOINT ["./application", "-Dquarkus.http.host=0.0.0.0", "-Xmx2g", "-Xms2g"]'
+    clean_image
+    docker build -t spring-boot-jdk -f Dockerfile .
+    docker run --cpuset-cpus $cpulistjava -d --name spring-boot-jdk -p 8080:8080 --network testscripts_dockernet --device /dev/zing_mm0:/dev/zing_mm0 spring-boot-jdk
+    #give it some time to startup
+    sleep 60
+    run_test native_qs
+    get_start_time native_qs
+else
+    echo native${indicator[$counter]} AVERAGE_PROCESSING_TIME_MS: 0
+    echo native${indicator[$counter]} STANDARD_DEVIATION_MS: 0
+    if [ ${indicator[$counter]} == "_sb" ]; then
+        echo native${indicator[$counter]} STARTED Application started: 0
+    fi
+    if [ ${indicator[$counter]} == "_sbreactive" ]; then
+        echo native${indicator[$counter]} STARTED Application started: 0
+    fi
+fi
 sleep 20
 rm Dockerfile
 mv Dockerfile.orig Dockerfile
+done
 
 counter=-1
 for jarfilename in ${jarfilelist[@]}
