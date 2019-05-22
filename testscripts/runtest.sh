@@ -215,8 +215,10 @@ if [ "$ind" == "_qs" ]; then
     sleep 60
     run_test native_qs
     get_start_time native_qs
+    sleep 20
+    rm Dockerfile
+    mv Dockerfile.orig Dockerfile
 else
-    
     echo native${ind} AVERAGE_PROCESSING_TIME_MS: 0
     echo native${ind} STANDARD_DEVIATION_MS: 0
     if [ "$ind" == "_sb" ]; then
@@ -226,9 +228,6 @@ else
         echo native${ind} STARTED Application started: 0
     fi
 fi
-sleep 20
-rm Dockerfile
-mv Dockerfile.orig Dockerfile
 done
 
 counter=-1
