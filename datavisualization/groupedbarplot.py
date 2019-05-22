@@ -8,7 +8,7 @@ import sys
 plt.close('all')
 
 # set width of bar
-barWidth = 0.15
+barWidth = 0.18
 
 #point the below line to the test output directory
 processdir=sys.argv[1]
@@ -49,7 +49,7 @@ if len(list(set(jvms) & set(jvms2)))!=len(jvms):
     exit(1)
 
 framework_dict={'mp':'Microprofile','sb':'Spring Boot','sbreactive':'WebFlux','sbfu':'Spring Fu','vertx':'Vert.x','akka':'Akka','qs':'Quarkus'}
-jvm_dict={'zing':'Azul Zing','corretto':'Amazon Corretto','graalvm':'GraalVM','openj9':'OpenJ9','adoptopenjdk':'AdoptOpenJDK','oraclejdk':'Oracle JDK','zuluopenjdk':'Azul Zulu','openjdk':'OpenJDK','adoptopenjdkdd':'AdoptOpenJDK\nDocker <- Docker','adoptopenjdkdl':'AdoptOpenJDK\nDocker <- Local','adoptopenjdkll':'AdoptOpenJDK\nLocal <- Local','adoptopenjdkld':'AdoptOpenJDK\nLocal <- Docker','adoptopenjdkserial':'OpenJDK\nSerial','adoptopenjdkcms':'OpenJDK\nCMS','adoptopenjdkpargc': 'OpenJDK\nParallel','adoptopenjdkg1gc':'OpenJDK\nG1GC','openj9gencon':'OpenJ9\nGencon','openj9balanced':'OpenJ9\nBalanced','openj9metronome':'OpenJ9\nMetronome','openj9optavgpause':'OpenJ9\nOptAvgPause','openj9optthrupu':'OpenJ9\nOptThruPu','adoptopenjdkshenandoahgc':'OpenJDK12\nShenandoah','adoptopenjdkzgc': 'OpenJDK12\nZGC','native':'SubstrateVM'}
+jvm_dict={'zing':'Azul Zing','corretto':'Amazon Corretto','graalvm':'GraalVM','openj9':'OpenJ9','adoptopenjdk':'AdoptOpenJDK','oraclejdk':'Oracle JDK','zuluopenjdk':'Azul Zulu','openjdk':'OpenJDK','adoptopenjdkdd':'AdoptOpenJDK\nDocker <- Docker','adoptopenjdkdl':'AdoptOpenJDK\nDocker <- Local','adoptopenjdkll':'AdoptOpenJDK\nLocal <- Local','adoptopenjdkld':'AdoptOpenJDK\nLocal <- Docker','adoptopenjdkserial':'OpenJDK\nSerial','adoptopenjdkcms':'OpenJDK\nCMS','adoptopenjdkpargc': 'OpenJDK\nParallel','adoptopenjdkg1gc':'OpenJDK\nG1GC','openj9gencon':'OpenJ9\nGencon','openj9balanced':'OpenJ9\nBalanced','openj9metronome':'OpenJ9\nMetronome','openj9optavgpause':'OpenJ9\nOptAvgPause','openj9optthrupu':'OpenJ9\nOptThruPu','adoptopenjdkshenandoahgc':'OpenJDK12\nShenandoah','adoptopenjdkzgc': 'OpenJDK12\nZGC','native':'Substrate VM'}
 
 #Add descriptions and sort
 df1['jvm_descr'] = df1['jvm'].map(jvm_dict)
@@ -57,9 +57,11 @@ df1['framework_descr'] = df1['framework'].map(framework_dict)
 df1=df1.sort_values(['jvm_descr', 'framework_descr'], ascending=[True, True])
 jvms=df1.jvm.unique()
 jvms2=df2.jvm.unique()
+frameworks=df1.framework.unique()
 
 print (df1)
 print (jvms)
+print (frameworks)
 #check data
 for jvm in jvms:
     averages=df1.loc[df1['jvm'] == jvm, 'average']
@@ -85,7 +87,7 @@ for jvm in jvms:
     stddevs.append(df1.loc[df1['jvm']==jvm,'stddev'])
 
 # Make the plot
-figure(num=None, figsize=(12, 6))
+figure(num=None, figsize=(8, 6))
 for item in range(0,len(jvms)):
     #plt.bar(rowloc[item], averages[item],yerr=stddevs[item], width=barWidth, edgecolor='white', label=jvm_dict[jvms[item]],capsize=2)
     plt.bar(rowloc[item], averages[item], width=barWidth, edgecolor='white', label=jvm_dict[jvms[item]],capsize=2)
