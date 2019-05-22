@@ -202,7 +202,8 @@ counter=-1
 for jarfilename in ${jarfilelist[@]}
 do
 counter=$(( $counter + 1 ))
-if [ ${indicator[$counter]} == "_qs" ]; then
+ind=${indicator[$counter]}
+if [ "$ind" == "_qs" ]; then
     rm Dockerfile.orig
     mv Dockerfile Dockerfile.orig
     cp Dockerfile.native Dockerfile
@@ -215,13 +216,14 @@ if [ ${indicator[$counter]} == "_qs" ]; then
     run_test native_qs
     get_start_time native_qs
 else
-    echo native${indicator[$counter]} AVERAGE_PROCESSING_TIME_MS: 0
-    echo native${indicator[$counter]} STANDARD_DEVIATION_MS: 0
-    if [ ${indicator[$counter]} == "_sb" ]; then
-        echo native${indicator[$counter]} STARTED Application started: 0
+    
+    echo native${ind} AVERAGE_PROCESSING_TIME_MS: 0
+    echo native${ind} STANDARD_DEVIATION_MS: 0
+    if [ "$ind" == "_sb" ]; then
+        echo native${ind} STARTED Application started: 0
     fi
-    if [ ${indicator[$counter]} == "_sbreactive" ]; then
-        echo native${indicator[$counter]} STARTED Application started: 0
+    if [ "$ind" == "_sbreactive" ]; then
+        echo native${ind} STARTED Application started: 0
     fi
 fi
 sleep 20
