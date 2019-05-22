@@ -11,8 +11,8 @@ test_outputdir8=$DIR/$1/jdktest_8_`date +"%Y%m%d%H%M%S"`
 
 jarfilelist11=("mp-rest-service-11.jar" "sb-rest-service-11.jar" "sb-rest-service-reactive-11.jar" "sb-rest-service-fu-11.jar" "vertx-rest-service-11.jar" "akka-rest-service-11.jar" "quarkus-rest-service-11.jar")
 test_outputdir11=$DIR/$1/jdktest_11_`date +"%Y%m%d%H%M%S"`
-indicator=("_qs")
-#indicator=("_mp" "_sb" "_sbreactive" "_sbfu" "_vertx" "_akka" "_qs")
+#indicator=("_qs")
+indicator=("_mp" "_sb" "_sbreactive" "_sbfu" "_vertx" "_akka" "_qs")
 combined=( "${jarfilelist8[@]}" "${jarfilelist11[@]}" )
 for f in "${combined[@]}" ; do 
     if [ -f "$f" ]; then
