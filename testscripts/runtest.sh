@@ -315,7 +315,7 @@ counter=$(( $counter + 1 ))
 rm Dockerfile.orig
 mv Dockerfile Dockerfile.orig
 cp Dockerfile.ojdk11 Dockerfile
-setjvmparams 'ENTRYPOINT ["java","-Djava.security.egd=file:/dev/./urandom","-XX:+UnlockExperimentalVMOptions","-Xmx2g","-Xms2g","-jar","/app.jar"]'
+setjvmparams 'ENTRYPOINT ["/usr/lib/jvm/jdk-11.0.3/bin/java","-Djava.security.egd=file:/dev/./urandom","-XX:+UnlockExperimentalVMOptions","-Xmx2g","-Xms2g","-jar","/app.jar"]'
 rebuild $jarfilename
 run_test oraclejdk${indicator[$counter]}
 get_start_time oraclejdk${indicator[$counter]}
