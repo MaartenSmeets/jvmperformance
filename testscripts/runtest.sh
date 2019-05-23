@@ -3,16 +3,13 @@
 DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null && pwd )"
 echo Running from $DIR
 
-jarfilelist8=("mp-rest-service-8.jar" "sb-rest-service-8.jar" "sb-rest-service-reactive-8.jar" "sb-rest-service-fu-8.jar" "vertx-rest-service-8.jar" "akka-rest-service-8.jar" "quarkus-rest-service-8.jar")
-#jarfilelist8=("quarkus-rest-service-8.jar")
-#jarfilelist11=("quarkus-rest-service-8.jar")
+jarfilelist8=("noframework-rest-service-8.jar" "mp-rest-service-8.jar" "sb-rest-service-8.jar" "sb-rest-service-reactive-8.jar" "sb-rest-service-fu-8.jar" "vertx-rest-service-8.jar" "akka-rest-service-8.jar" "quarkus-rest-service-8.jar")
 
 test_outputdir8=$DIR/$1/jdktest_8_`date +"%Y%m%d%H%M%S"`
 
-jarfilelist11=("mp-rest-service-11.jar" "sb-rest-service-11.jar" "sb-rest-service-reactive-11.jar" "sb-rest-service-fu-11.jar" "vertx-rest-service-11.jar" "akka-rest-service-11.jar" "quarkus-rest-service-11.jar")
+jarfilelist11=("noframework-rest-service-11.jar" "mp-rest-service-11.jar" "sb-rest-service-11.jar" "sb-rest-service-reactive-11.jar" "sb-rest-service-fu-11.jar" "vertx-rest-service-11.jar" "akka-rest-service-11.jar" "quarkus-rest-service-11.jar")
 test_outputdir11=$DIR/$1/jdktest_11_`date +"%Y%m%d%H%M%S"`
-#indicator=("_qs")
-indicator=("_mp" "_sb" "_sbreactive" "_sbfu" "_vertx" "_akka" "_qs")
+indicator=("_none" "_mp" "_sb" "_sbreactive" "_sbfu" "_vertx" "_akka" "_qs")
 combined=( "${jarfilelist8[@]}" "${jarfilelist11[@]}" )
 for f in "${combined[@]}" ; do 
     if [ -f "$f" ]; then
@@ -23,7 +20,7 @@ for f in "${combined[@]}" ; do
     fi
 done 
 
-loadgenduration=300
+loadgenduration=900
 echo Isolated CPUs `cat /sys/devices/system/cpu/isolated`
 cpulistperftest=4,5,6,7
 cpulistjava=8,9,10,11
@@ -218,6 +215,21 @@ if [ "$ind" == "_qs" ]; then
     sleep 20
     rm Dockerfile
     mv Dockerfile.orig Dockerfile
+elif [ "$ind" == "_none" ]; then
+    rm Dockerfile.orig
+    mv Dockerfile Dockerfile.orig
+    cp Dockerfile.native.none Dockerfile
+    setjvmparams 'ENTRYPOINT ["./application"]'
+    clean_image
+    docker build -t spring-boot-jdk -f Dockerfile .
+    docker run --cpuset-cpus $cpulistjava -d --name spring-boot-jdk -p 8080:8080 --network testscripts_dockernet --device /dev/zing_mm0:/dev/zing_mm0 spring-boot-jdk
+    #give it some time to startup
+    sleep 60
+    run_test native_none
+    get_start_time native_none
+    sleep 20
+    rm Dockerfile
+    mv Dockerfile.orig Dockerfile
 else
     echo native${ind} AVERAGE_PROCESSING_TIME_MS: 0
     echo native${ind} STANDARD_DEVIATION_MS: 0
@@ -315,7 +327,7 @@ counter=$(( $counter + 1 ))
 rm Dockerfile.orig
 mv Dockerfile Dockerfile.orig
 cp Dockerfile.ojdk11 Dockerfile
-setjvmparams 'ENTRYPOINT ["/usr/lib/jvm/jdk-11.0.3/bin/java","-Djava.security.egd=file:/dev/./urandom","-XX:+UnlockExperimentalVMOptions","-Xmx2g","-Xms2g","-jar","/app.jar"]'
+setjvmparams 'ENTRYPOINT ["java","-Djava.security.egd=file:/dev/./urandom","-XX:+UnlockExperimentalVMOptions","-Xmx2g","-Xms2g","-jar","/app.jar"]'
 rebuild $jarfilename
 run_test oraclejdk${indicator[$counter]}
 get_start_time oraclejdk${indicator[$counter]}
