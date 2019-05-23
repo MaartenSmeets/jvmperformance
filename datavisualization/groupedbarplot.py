@@ -30,25 +30,11 @@ df2.columns = ['jvm_framework_ident','stddev']
 df1 = pd.merge(df1,df2,on="jvm_framework_ident")
 
 df1[['jvm','framework']] = df1['jvm_framework_ident'].str.split('_',expand=True)
-df2[['jvm','framework']] = df2['jvm_framework_ident'].str.split('_',expand=True)
 
-#df1 = df1[df1.framework != 'mp']
-#df2 = df2[df2.framework != 'mp']
+#df1 = df1[df1.jvm != 'adoptopenjdkshenandoahgc']
 #df1 = df1[df1.jvm != 'openj9metronome']
-#df2 = df2[df2.jvm != 'openj9metronome']
 
-#check data
-jvms=df1.jvm.unique()
-jvms.sort()
-jvms2=df2.jvm.unique()
-jvms2.sort()
-frameworks=df1.framework.unique()
-frameworks.sort()
-if len(list(set(jvms) & set(jvms2)))!=len(jvms):
-    print ('Averages and Standard Errors do not contain data for the same JVMs'+str(list(set(jvms) & set(jvms2))))
-    exit(1)
-
-framework_dict={'mp':'Microprofile','sb':'Spring Boot','sbreactive':'WebFlux','sbfu':'Spring Fu','vertx':'Vert.x','akka':'Akka','qs':'Quarkus'}
+framework_dict={'none':'No framework','mp':'Microprofile','sb':'Spring Boot','sbreactive':'WebFlux','sbfu':'Spring Fu','vertx':'Vert.x','akka':'Akka','qs':'Quarkus'}
 jvm_dict={'zing':'Azul Zing','corretto':'Amazon Corretto','graalvm':'GraalVM','openj9':'OpenJ9','adoptopenjdk':'AdoptOpenJDK','oraclejdk':'Oracle JDK','zuluopenjdk':'Azul Zulu','openjdk':'OpenJDK','adoptopenjdkdd':'AdoptOpenJDK\nDocker <- Docker','adoptopenjdkdl':'AdoptOpenJDK\nDocker <- Local','adoptopenjdkll':'AdoptOpenJDK\nLocal <- Local','adoptopenjdkld':'AdoptOpenJDK\nLocal <- Docker','adoptopenjdkserial':'OpenJDK\nSerial','adoptopenjdkcms':'OpenJDK\nCMS','adoptopenjdkpargc': 'OpenJDK\nParallel','adoptopenjdkg1gc':'OpenJDK\nG1GC','openj9gencon':'OpenJ9\nGencon','openj9balanced':'OpenJ9\nBalanced','openj9metronome':'OpenJ9\nMetronome','openj9optavgpause':'OpenJ9\nOptAvgPause','openj9optthrupu':'OpenJ9\nOptThruPu','adoptopenjdkshenandoahgc':'OpenJDK12\nShenandoah','adoptopenjdkzgc': 'OpenJDK12\nZGC','native':'Substrate VM'}
 
 #Add descriptions and sort
@@ -56,7 +42,6 @@ df1['jvm_descr'] = df1['jvm'].map(jvm_dict)
 df1['framework_descr'] = df1['framework'].map(framework_dict)
 df1=df1.sort_values(['jvm_descr', 'framework_descr'], ascending=[True, True])
 jvms=df1.jvm.unique()
-jvms2=df2.jvm.unique()
 frameworks=df1.framework.unique()
 
 print (df1)
@@ -87,7 +72,7 @@ for jvm in jvms:
     stddevs.append(df1.loc[df1['jvm']==jvm,'stddev'])
 
 # Make the plot
-figure(num=None, figsize=(8, 6))
+figure(num=None, figsize=(12, 6))
 for item in range(0,len(jvms)):
     #plt.bar(rowloc[item], averages[item],yerr=stddevs[item], width=barWidth, edgecolor='white', label=jvm_dict[jvms[item]],capsize=2)
     plt.bar(rowloc[item], averages[item], width=barWidth, edgecolor='white', label=jvm_dict[jvms[item]],capsize=2)
@@ -99,10 +84,10 @@ else:
     plt.legend([jvm_dict[x] for x in jvms])
     plt.xlabel('Framework')
 
-plt.ylim(1.1, 1.8)
+#plt.ylim(0, 5)
 
 plt.ylabel('Average response time [ms]')
 
-plt.title('Average response time per framework')
+plt.title('Average response time per GC algorithm')
 plt.tight_layout()
 plt.savefig(sys.argv[2], dpi=100)
