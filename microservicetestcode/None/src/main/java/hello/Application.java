@@ -50,8 +50,7 @@ public class Application {
             //System.out.println("I am thread " + threadId );
             //response = response + "Thread Id = "+threadId;
             t.getResponseHeaders().add("Content-Type","application/json;charset=UTF-8");
-            t.sendResponseHeaders(200, response.length());
-
+            t.sendResponseHeaders(200, response.getBytes().length);
             OutputStream os = t.getResponseBody();
             os.write(response.getBytes());
             os.close();
