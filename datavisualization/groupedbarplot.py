@@ -12,6 +12,8 @@ barWidth = 0.18
 
 #point the below line to the test output directory
 processdir=sys.argv[1]
+pngname=sys.argv[2]
+charttitle=sys.argv[3]
 
 averagecmd='cat '+processdir+'/outputfile.txt | grep AVERAGE_PROC | awk \'{print $1","$3}\' > '+processdir+'/average.txt'
 stddevcmd='cat '+processdir+'/outputfile.txt | grep STANDARD_DEVIATION_MS | awk \'{print $1","$3}\' > '+processdir+'/stddev.txt'
@@ -28,9 +30,11 @@ df2.columns = ['jvm_framework_ident','stddev']
 
 
 df1 = pd.merge(df1,df2,on="jvm_framework_ident")
-
 df1[['jvm','framework']] = df1['jvm_framework_ident'].str.split('_',expand=True)
-
+df1c=df1.groupby(['framework'])['average']
+median_per_framework=(df1c.median().to_dict())
+df1c=df1.groupby(['jvm'])['average']
+avg_per_jvm=(df1c.mean().to_dict())
 #df1 = df1[df1.jvm != 'adoptopenjdkshenandoahgc']
 #df1 = df1[df1.jvm != 'openj9metronome']
 
@@ -39,10 +43,13 @@ jvm_dict={'zing':'Azul Zing','corretto':'Amazon Corretto','graalvm':'GraalVM','o
 
 #Add descriptions and sort
 df1['jvm_descr'] = df1['jvm'].map(jvm_dict)
+df1['median_per_framework'] = df1['framework'].map(median_per_framework)
+df1['avg_per_jvm'] = df1['jvm'].map(avg_per_jvm)
 df1['framework_descr'] = df1['framework'].map(framework_dict)
-df1=df1.sort_values(['jvm_descr', 'framework_descr'], ascending=[True, True])
+df1=df1.sort_values(['jvm_descr' ,'median_per_framework','framework'], ascending=[True, True, True])
 jvms=df1.jvm.unique()
 frameworks=df1.framework.unique()
+
 
 print (df1)
 print (jvms)
@@ -84,10 +91,10 @@ else:
     plt.legend([jvm_dict[x] for x in jvms])
     plt.xlabel('Framework')
 
-#plt.ylim(0, 5)
+plt.ylim(1.1, 1.8)
 
 plt.ylabel('Average response time [ms]')
 
-plt.title('Average response time per GC algorithm')
+plt.title(charttitle)
 plt.tight_layout()
-plt.savefig(sys.argv[2], dpi=100)
+plt.savefig(pngname, dpi=100)
