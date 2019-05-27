@@ -20,7 +20,7 @@ for f in "${combined[@]}" ; do
     fi
 done 
 
-loadgenduration=900
+loadgenduration=300
 echo Isolated CPUs `cat /sys/devices/system/cpu/isolated`
 cpulistperftest=4,5,6,7
 cpulistjava=8,9,10,11
@@ -54,10 +54,14 @@ function rebuild() {
     docker build -t spring-boot-jdk -f Dockerfile --build-arg JAR_FILE=$var .
     docker run --cpuset-cpus $cpulistjava -d --name spring-boot-jdk -p 8080:8080 --network testscripts_dockernet --device /dev/zing_mm0:/dev/zing_mm0 spring-boot-jdk
     export mypid=`ps -o pid,sess,cmd afx | egrep "( |/)java.*app.jar.*( -f)?$" | awk '{print $1}'`
-    echo Java process PID: $mypid setting CPU affinity to $cpulistjava
-    sudo taskset -pc $cpulistjava $mypid
-    #give it some time to startup
-    sleep 60
+    if [ -z "$mypid" ]; then
+        echo No PID found so no taskset
+    else
+        echo Java process PID: $mypid setting CPU affinity to $cpulistjava
+        sudo taskset -pc $cpulistjava $mypid
+        #give it some time to startup
+        sleep 60
+    fi 
 }
 
 #SetJVMParams
@@ -204,7 +208,7 @@ if [ "$ind" == "_qs" ]; then
     rm Dockerfile.orig
     mv Dockerfile Dockerfile.orig
     cp Dockerfile.native Dockerfile
-    setjvmparams 'ENTRYPOINT ["./application", "-Dquarkus.http.host=0.0.0.0", "-Xmx2g", "-Xms2g"]'
+    setjvmparams 'ENTRYPOINT ["./application", "-Dquarkus.http.host=0.0.0.0", "-Xmx25m", "-Xms25m"]'
     clean_image
     docker build -t spring-boot-jdk -f Dockerfile .
     docker run --cpuset-cpus $cpulistjava -d --name spring-boot-jdk -p 8080:8080 --network testscripts_dockernet --device /dev/zing_mm0:/dev/zing_mm0 spring-boot-jdk
@@ -249,7 +253,7 @@ counter=$(( $counter + 1 ))
 rm Dockerfile.orig
 mv Dockerfile Dockerfile.orig
 cp Dockerfile.zing8 Dockerfile
-setjvmparams 'ENTRYPOINT ["/opt/zing/zing-jdk8/bin/java","-Djava.security.egd=file:/dev/./urandom","-XX:+UnlockExperimentalVMOptions","-Xmx2g","-Xms2g","-jar","/app.jar"]'
+setjvmparams 'ENTRYPOINT ["/opt/zing/zing-jdk8/bin/java","-Djava.security.egd=file:/dev/./urandom","-XX:+UnlockExperimentalVMOptions","-Xmx25m","-Xms25m","-jar","/app.jar"]'
 rebuild $jarfilename
 run_test zing${indicator[$counter]}
 get_start_time zing${indicator[$counter]}
@@ -263,7 +267,7 @@ for jarfilename in ${jarfilelist[@]}
 do
 counter=$(( $counter + 1 ))
 replacer "FROM adoptopenjdk\/openjdk8:jdk8u202-b08"
-setjvmparams 'ENTRYPOINT ["java","-Djava.security.egd=file:/dev/./urandom","-XX:+UnlockExperimentalVMOptions","-Xmx2g","-Xms2g","-jar","/app.jar"]'
+setjvmparams 'ENTRYPOINT ["java","-Djava.security.egd=file:/dev/./urandom","-XX:+UnlockExperimentalVMOptions","-Xmx25m","-Xms25m","-jar","/app.jar"]'
 rebuild $jarfilename
 run_test adoptopenjdk${indicator[$counter]}
 get_start_time adoptopenjdk${indicator[$counter]}
@@ -275,7 +279,7 @@ for jarfilename in ${jarfilelist[@]}
 do
 counter=$(( $counter + 1 ))
 replacer "FROM adoptopenjdk\/openjdk8-openj9:jdk8u202-b08_openj9-0.12.1"
-setjvmparams 'ENTRYPOINT ["java","-Djava.security.egd=file:/dev/./urandom","-XX:+UnlockExperimentalVMOptions","-Xmx2g","-Xms2g","-jar","/app.jar"]'
+setjvmparams 'ENTRYPOINT ["java","-Djava.security.egd=file:/dev/./urandom","-XX:+UnlockExperimentalVMOptions","-Xmx25m","-Xms25m","-jar","/app.jar"]'
 rebuild $jarfilename
 run_test openj9${indicator[$counter]}
 get_start_time openj9${indicator[$counter]}
@@ -287,7 +291,7 @@ for jarfilename in ${jarfilelist[@]}
 do
 counter=$(( $counter + 1 ))
 replacer "FROM store\/oracle\/serverjre:8"
-setjvmparams 'ENTRYPOINT ["java","-Djava.security.egd=file:/dev/./urandom","-XX:+UnlockExperimentalVMOptions","-Xmx2g","-Xms2g","-jar","/app.jar"]'
+setjvmparams 'ENTRYPOINT ["java","-Djava.security.egd=file:/dev/./urandom","-XX:+UnlockExperimentalVMOptions","-Xmx25m","-Xms25m","-jar","/app.jar"]'
 rebuild $jarfilename
 run_test oraclejdk${indicator[$counter]}
 get_start_time oraclejdk${indicator[$counter]}
@@ -311,7 +315,7 @@ counter=$(( $counter + 1 ))
 rm Dockerfile.orig
 mv Dockerfile Dockerfile.orig
 cp Dockerfile.zing11 Dockerfile
-setjvmparams 'ENTRYPOINT ["/opt/zing/zing-jdk11/bin/java","-Djava.security.egd=file:/dev/./urandom","-XX:+UnlockExperimentalVMOptions","-Xmx2g","-Xms2g","-jar","/app.jar"]'
+setjvmparams 'ENTRYPOINT ["/opt/zing/zing-jdk11/bin/java","-Djava.security.egd=file:/dev/./urandom","-XX:+UnlockExperimentalVMOptions","-Xmx25m","-Xms25m","-jar","/app.jar"]'
 rebuild $jarfilename
 run_test zing${indicator[$counter]}
 get_start_time zing${indicator[$counter]}
@@ -327,7 +331,7 @@ counter=$(( $counter + 1 ))
 rm Dockerfile.orig
 mv Dockerfile Dockerfile.orig
 cp Dockerfile.ojdk11 Dockerfile
-setjvmparams 'ENTRYPOINT ["java","-Djava.security.egd=file:/dev/./urandom","-XX:+UnlockExperimentalVMOptions","-Xmx2g","-Xms2g","-jar","/app.jar"]'
+setjvmparams 'ENTRYPOINT ["java","-Djava.security.egd=file:/dev/./urandom","-XX:+UnlockExperimentalVMOptions","-Xmx25m","-Xms25m","-jar","/app.jar"]'
 rebuild $jarfilename
 run_test oraclejdk${indicator[$counter]}
 get_start_time oraclejdk${indicator[$counter]}
@@ -341,7 +345,7 @@ for jarfilename in ${jarfilelist[@]}
 do
 counter=$(( $counter + 1 ))
 replacer "FROM adoptopenjdk\/openjdk11-openj9:jdk-11.0.3.7_openj9-0.14.0"
-setjvmparams 'ENTRYPOINT ["java","-Djava.security.egd=file:/dev/./urandom","-XX:+UnlockExperimentalVMOptions","-Xmx2g","-Xms2g","-jar","/app.jar"]'
+setjvmparams 'ENTRYPOINT ["java","-Djava.security.egd=file:/dev/./urandom","-XX:+UnlockExperimentalVMOptions","-Xmx25m","-Xms25m","-jar","/app.jar"]'
 rebuild $jarfilename
 run_test openj9${indicator[$counter]}
 get_start_time openj9${indicator[$counter]}
@@ -353,7 +357,7 @@ for jarfilename in ${jarfilelist[@]}
 do
 counter=$(( $counter + 1 ))
 replacer "FROM adoptopenjdk\/openjdk11:jdk-11.0.3.7"
-setjvmparams 'ENTRYPOINT ["java","-Djava.security.egd=file:/dev/./urandom","-XX:+UnlockExperimentalVMOptions","-Xmx2g","-Xms2g","-jar","/app.jar"]'
+setjvmparams 'ENTRYPOINT ["java","-Djava.security.egd=file:/dev/./urandom","-XX:+UnlockExperimentalVMOptions","-Xmx25m","-Xms25m","-jar","/app.jar"]'
 rebuild $jarfilename
 run_test adoptopenjdk${indicator[$counter]}
 get_start_time adoptopenjdk${indicator[$counter]}
