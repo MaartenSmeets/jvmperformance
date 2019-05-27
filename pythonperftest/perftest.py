@@ -4,7 +4,7 @@ import sys
 import time
 import requests
 
-forks = 16
+forks = 1
 URL = os.getenv('URL', "http://localhost:8080/greeting")
 LOGFILEDIR = os.getenv('LOGFILEDIR', "/logs")
 
@@ -61,7 +61,8 @@ for i in range(forks):
                 response = requests.get(
                     URL,
                     params={'name': 'Maarten'},
-                    headers={"Connection": "close"}
+                    headers={"Connection": "close"},
+                    timeout=30
                 )
                 stop = time.time()
                 request_time = (stop - start)*1000
