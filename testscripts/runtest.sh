@@ -112,8 +112,8 @@ function start_loadgen() {
 
 function get_prom_stats_sb() {
     echo $1 Starting get prom stats from $2
-    PROM_REQUESTS=`wget -qO- $2 | egrep 'http_server_requests_seconds_count.*status\=\"200\",\uri\=\"\/greeting' | awk '{print $2}'`
-    PROM_TOTALTIME_S=`wget -qO- $2 | egrep 'http_server_requests_seconds_sum.*status\=\"200\",\uri\=\"\/greeting' | awk '{print $2}'`
+    PROM_REQUESTS=`wget -qO- --timeout=10 -t 1 $2 | egrep 'http_server_requests_seconds_count.*status\=\"200\",\uri\=\"\/greeting' | awk '{print $2}'`
+    PROM_TOTALTIME_S=`wget -qO- --timeout=10 -t 1 $2 | egrep 'http_server_requests_seconds_sum.*status\=\"200\",\uri\=\"\/greeting' | awk '{print $2}'`
     PROM_AVERAGE_MS=`awk "BEGIN {printf \"%.5f\n\", 1000*$PROM_TOTALTIME_S/$PROM_REQUESTS}"`
     echo $1 PROM_REQUESTS: $PROM_REQUESTS
     echo $1 PROM_TOTALTIME_S: $PROM_TOTALTIME_S
@@ -122,8 +122,8 @@ function get_prom_stats_sb() {
 
 function get_prom_stats_vertx() {
     echo $1 Starting get prom stats from $2
-    PROM_REQUESTS=`wget -qO- $2 | egrep 'http_server_responseTime_seconds_count.*code\=\"200\",\path\=\"\/greeting' | awk '{print $2}'`
-    PROM_TOTALTIME_S=`wget -qO- $2 | egrep 'http_server_responseTime_seconds_sum.*code\=\"200\",\path\=\"\/greeting' | awk '{print $2}'`
+    PROM_REQUESTS=`wget -qO- --timeout=10 -t 1 $2 | egrep 'http_server_responseTime_seconds_count.*code\=\"200\",\path\=\"\/greeting' | awk '{print $2}'`
+    PROM_TOTALTIME_S=`wget -qO- --timeout=10 -t 1 $2 | egrep 'http_server_responseTime_seconds_sum.*code\=\"200\",\path\=\"\/greeting' | awk '{print $2}'`
     PROM_AVERAGE_MS=`awk "BEGIN {printf \"%.5f\n\", 1000*$PROM_TOTALTIME_S/$PROM_REQUESTS}"`
     echo $1 PROM_REQUESTS: $PROM_REQUESTS
     echo $1 PROM_TOTALTIME_S: $PROM_TOTALTIME_S
@@ -132,9 +132,9 @@ function get_prom_stats_vertx() {
 
 function get_prom_stats_mp() {
     echo $1 Starting get prom stats from $2
-    PROM_AVERAGE_S=`wget -qO- $2 | egrep '^application:messages_processed_mean_seconds' | awk '{print $2}'`
+    PROM_AVERAGE_S=`wget -qO- --timeout=10 -t 1 $2 | egrep '^application:messages_processed_mean_seconds' | awk '{print $2}'`
     PROM_AVERAGE_MS=`awk "BEGIN {printf \"%.5f\n\", 1000*$PROM_AVERAGE_S}"`
-    PROM_REQUESTS=`wget -qO- $2 | egrep '^application:messages_processed_seconds_count' | awk '{print $2}'`
+    PROM_REQUESTS=`wget -qO- --timeout=10 -t 1 $2 | egrep '^application:messages_processed_seconds_count' | awk '{print $2}'`
     PROM_TOTALTIME_S=`awk "BEGIN {printf \"%.5f\n\", $PROM_AVERAGE_S*$PROM_REQUESTS}"`
     echo $1 PROM_REQUESTS: $PROM_REQUESTS
     echo $1 PROM_TOTALTIME_S: $PROM_TOTALTIME_S
@@ -142,15 +142,15 @@ function get_prom_stats_mp() {
 }
 
 function check_sb_prom() {
-    return `wget -qO- http://localhost:8080/prometheus | egrep 'http_server_requests_seconds_count.*status\=\"200\",\uri\=\"\/greeting' | wc -l`
+    return `wget -qO- http://localhost:8080/prometheus --timeout=10 -t 1 | egrep 'http_server_requests_seconds_count.*status\=\"200\",\uri\=\"\/greeting' | wc -l`
 }
 
 function check_vertx_prom() {
-    return `wget -qO- http://localhost:8080/metrics | egrep 'http_server_responseTime_seconds_count.*code\=\"200\",\path\=\"\/greeting' | wc -l`
+    return `wget -qO- http://localhost:8080/metrics --timeout=10 -t 1 | egrep 'http_server_responseTime_seconds_count.*code\=\"200\",\path\=\"\/greeting' | wc -l`
 }
 
 function check_mp_prom() {
-    return `wget -qO- http://localhost:8080/metrics | egrep '^application:messages_processed_seconds_count' | wc -l`
+    return `wget -qO- http://localhost:8080/metrics --timeout=10 -t 1 | egrep '^application:messages_processed_seconds_count' | wc -l`
 }
 
 #single parameter indicating the outputdir
