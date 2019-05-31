@@ -3,14 +3,17 @@
 DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null && pwd )"
 echo Running from $DIR
 
-jarfilelist8=("noframework-rest-service-8.jar" "mp-rest-service-8.jar" "sb-rest-service-8.jar" "sb-rest-service-reactive-8.jar" "sb-rest-service-fu-8.jar" "vertx-rest-service-8.jar" "akka-rest-service-8.jar" "quarkus-rest-service-8.jar")
+jarfilelist8=("micronaut-rest-service-8.jar" "noframework-rest-service-8.jar" "mp-rest-service-8.jar" "sb-rest-service-8.jar" "sb-rest-service-reactive-8.jar" "sb-rest-service-fu-8.jar" "vertx-rest-service-8.jar" "akka-rest-service-8.jar" "quarkus-rest-service-8.jar")
 
 test_outputdir8=$DIR/$1/jdktest_8_`date +"%Y%m%d%H%M%S"`
 
-jarfilelist11=("noframework-rest-service-11.jar" "mp-rest-service-11.jar" "sb-rest-service-11.jar" "sb-rest-service-reactive-11.jar" "sb-rest-service-fu-11.jar" "vertx-rest-service-11.jar" "akka-rest-service-11.jar" "quarkus-rest-service-11.jar")
+jarfilelist11=("micronaut-rest-service-11.jar" "noframework-rest-service-11.jar" "mp-rest-service-11.jar" "sb-rest-service-11.jar" "sb-rest-service-reactive-11.jar" "sb-rest-service-fu-11.jar" "vertx-rest-service-11.jar" "akka-rest-service-11.jar" "quarkus-rest-service-11.jar")
+
+nativefilelist=("micronaut-native" "quarkus-rest-service-1.0-SNAPSHOT-runner" "noframework-rest-service-8")
+
 test_outputdir11=$DIR/$1/jdktest_11_`date +"%Y%m%d%H%M%S"`
-indicator=("_none" "_mp" "_sb" "_sbreactive" "_sbfu" "_vertx" "_akka" "_qs")
-combined=( "${jarfilelist8[@]}" "${jarfilelist11[@]}" )
+indicator=("_mn" "_none" "_mp" "_sb" "_sbreactive" "_sbfu" "_vertx" "_akka" "_qs")
+combined=( "${jarfilelist8[@]}" "${jarfilelist11[@]}" "${nativefilelist[@]}")
 for f in "${combined[@]}" ; do 
     if [ -f "$f" ]; then
         echo "$f: found"
@@ -210,8 +213,8 @@ if [ "$ind" == "_qs" ]; then
     cp Dockerfile.native Dockerfile
     setjvmparams 'ENTRYPOINT ["./application", "-Dquarkus.http.host=0.0.0.0", "-Xmx25m", "-Xms25m"]'
     clean_image
-    docker build -t spring-boot-jdk -f Dockerfile .
-    docker run --cpuset-cpus $cpulistjava -d --name spring-boot-jdk -p 8080:8080 --network testscripts_dockernet --device /dev/zing_mm0:/dev/zing_mm0 spring-boot-jdk
+    docker build -t spring-boot-jdk -f Dockerfile --build-arg NATIVE_FILE=quarkus-rest-service-1.0-SNAPSHOT-runner .
+    docker run --cpuset-cpus $cpulistjava -d --name spring-boot-jdk -p 8080:8080 --network testscripts_dockernet spring-boot-jdk
     #give it some time to startup
     sleep 60
     run_test native_qs
@@ -219,14 +222,29 @@ if [ "$ind" == "_qs" ]; then
     sleep 20
     rm Dockerfile
     mv Dockerfile.orig Dockerfile
+elif [ "$ind" == "_mn" ]; then
+    rm Dockerfile.orig
+    mv Dockerfile Dockerfile.orig
+    cp Dockerfile.native Dockerfile
+    setjvmparams 'ENTRYPOINT ["./application", "-Xmx25m", "-Xms25m"]'
+    clean_image
+    docker build -t spring-boot-jdk -f Dockerfile --build-arg NATIVE_FILE=micronaut-native .
+    docker run --cpuset-cpus $cpulistjava -d --name spring-boot-jdk -p 8080:8080 --network testscripts_dockernet spring-boot-jdk
+    #give it some time to startup
+    sleep 60
+    run_test native_mn
+    get_start_time native_mn
+    sleep 20
+    rm Dockerfile
+    mv Dockerfile.orig Dockerfile
 elif [ "$ind" == "_none" ]; then
     rm Dockerfile.orig
     mv Dockerfile Dockerfile.orig
-    cp Dockerfile.native.none Dockerfile
+    cp Dockerfile.native Dockerfile
     setjvmparams 'ENTRYPOINT ["./application"]'
     clean_image
-    docker build -t spring-boot-jdk -f Dockerfile .
-    docker run --cpuset-cpus $cpulistjava -d --name spring-boot-jdk -p 8080:8080 --network testscripts_dockernet --device /dev/zing_mm0:/dev/zing_mm0 spring-boot-jdk
+    docker build -t spring-boot-jdk -f Dockerfile --build-arg NATIVE_FILE=noframework-rest-service-8 .
+    docker run --cpuset-cpus $cpulistjava -d --name spring-boot-jdk -p 8080:8080 --network testscripts_dockernet spring-boot-jdk
     #give it some time to startup
     sleep 60
     run_test native_none

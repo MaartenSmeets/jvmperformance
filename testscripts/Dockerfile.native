@@ -16,7 +16,9 @@
 ###
 FROM registry.fedoraproject.org/fedora-minimal
 WORKDIR /work/
-COPY quarkus-rest-service-1.0-SNAPSHOT-runner /work/application
+ARG NATIVE_FILE
+COPY ${NATIVE_FILE} /work/application
+#COPY quarkus-rest-service-1.0-SNAPSHOT-runner /work/application
 RUN chmod 775 /work
 EXPOSE 8080
 ENTRYPOINT ["./application", "-Dquarkus.http.host=0.0.0.0"]
