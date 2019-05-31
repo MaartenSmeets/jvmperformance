@@ -38,7 +38,7 @@ avg_per_jvm=(df1c.mean().to_dict())
 #df1 = df1[df1.jvm != 'adoptopenjdkshenandoahgc']
 #df1 = df1[df1.jvm != 'openj9metronome']
 
-framework_dict={'none':'No framework','mp':'Microprofile','sb':'Spring Boot','sbreactive':'WebFlux','sbfu':'Spring Fu','vertx':'Vert.x','akka':'Akka','qs':'Quarkus'}
+framework_dict={'mn':'Micronaut','none':'No framework','mp':'Microprofile','sb':'Spring Boot','sbreactive':'WebFlux','sbfu':'Spring Fu','vertx':'Vert.x','akka':'Akka','qs':'Quarkus'}
 jvm_dict={'zing':'Azul Zing','corretto':'Amazon Corretto','graalvm':'GraalVM','openj9':'OpenJ9','adoptopenjdk':'AdoptOpenJDK','oraclejdk':'Oracle JDK','zuluopenjdk':'Azul Zulu','openjdk':'OpenJDK','adoptopenjdkdd':'AdoptOpenJDK\nDocker <- Docker','adoptopenjdkdl':'AdoptOpenJDK\nDocker <- Local','adoptopenjdkll':'AdoptOpenJDK\nLocal <- Local','adoptopenjdkld':'AdoptOpenJDK\nLocal <- Docker','adoptopenjdkserial':'OpenJDK\nSerial','adoptopenjdkcms':'OpenJDK\nCMS','adoptopenjdkpargc': 'OpenJDK\nParallel','adoptopenjdkg1gc':'OpenJDK\nG1GC','openj9gencon':'OpenJ9\nGencon','openj9balanced':'OpenJ9\nBalanced','openj9metronome':'OpenJ9\nMetronome','openj9optavgpause':'OpenJ9\nOptAvgPause','openj9optthrupu':'OpenJ9\nOptThruPu','adoptopenjdkshenandoahgc':'OpenJDK12\nShenandoah','adoptopenjdkzgc': 'OpenJDK12\nZGC','native':'Substrate VM'}
 
 #Add descriptions and sort
@@ -91,7 +91,7 @@ else:
     plt.legend([jvm_dict[x] for x in jvms])
     plt.xlabel('Framework')
 
-plt.ylim(1.1, 1.8)
+plt.ylim(1.0, 3)
 
 plt.ylabel('Average response time [ms]')
 
