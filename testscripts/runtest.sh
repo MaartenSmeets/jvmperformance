@@ -241,7 +241,7 @@ elif [ "$ind" == "_none" ]; then
     rm Dockerfile.orig
     mv Dockerfile Dockerfile.orig
     cp Dockerfile.native Dockerfile
-    setjvmparams 'ENTRYPOINT ["./application"]'
+    setjvmparams 'ENTRYPOINT ["./application", "-Xmx2g", "-Xms2g"]'
     clean_image
     docker build -t spring-boot-jdk -f Dockerfile --build-arg NATIVE_FILE=noframework-rest-service-8 .
     docker run --cpuset-cpus $cpulistjava -d --name spring-boot-jdk -p 8080:8080 --network testscripts_dockernet spring-boot-jdk
