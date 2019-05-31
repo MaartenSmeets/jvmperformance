@@ -78,7 +78,7 @@
                     <assemblyArtifact>
                         <groupId>io.openliberty</groupId>
                         <artifactId>openliberty-runtime</artifactId>
-                        <version>19.0.0.4</version>
+                        <version>19.0.0.5</version>
                         <type>zip</type>
                     </assemblyArtifact>
                     <serverName>sampleAppServer</serverName>
