@@ -1,5 +1,8 @@
 package hello;
 
+import io.micronaut.core.annotation.Introspected;
+
+@Introspected
 public class Greeting {
 
     private final long id;
