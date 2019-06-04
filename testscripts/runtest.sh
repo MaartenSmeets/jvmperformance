@@ -3,16 +3,16 @@
 DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null && pwd )"
 echo Running from $DIR
 
-jarfilelist8=("micronaut-rest-service-8.jar" "noframework-rest-service-8.jar" "mp-rest-service-8.jar" "sb-rest-service-8.jar" "sb-rest-service-reactive-8.jar" "sb-rest-service-fu-8.jar" "vertx-rest-service-8.jar" "akka-rest-service-8.jar" "quarkus-rest-service-8.jar")
+jarfilelist8=("helidon-rest-service-8.jar" "micronaut-rest-service-8.jar" "noframework-rest-service-8.jar" "mp-rest-service-8.jar" "sb-rest-service-8.jar" "sb-rest-service-reactive-8.jar" "sb-rest-service-fu-8.jar" "vertx-rest-service-8.jar" "akka-rest-service-8.jar" "quarkus-rest-service-8.jar")
 
 test_outputdir8=$DIR/$1/jdktest_8_`date +"%Y%m%d%H%M%S"`
 
-jarfilelist11=("micronaut-rest-service-11.jar" "noframework-rest-service-11.jar" "mp-rest-service-11.jar" "sb-rest-service-11.jar" "sb-rest-service-reactive-11.jar" "sb-rest-service-fu-11.jar" "vertx-rest-service-11.jar" "akka-rest-service-11.jar" "quarkus-rest-service-11.jar")
+jarfilelist11=("helidon-rest-service-8.jar" "micronaut-rest-service-11.jar" "noframework-rest-service-11.jar" "mp-rest-service-11.jar" "sb-rest-service-11.jar" "sb-rest-service-reactive-11.jar" "sb-rest-service-fu-11.jar" "vertx-rest-service-11.jar" "akka-rest-service-11.jar" "quarkus-rest-service-11.jar")
 
-nativefilelist=("micronaut-native" "quarkus-rest-service-1.0-SNAPSHOT-runner" "noframework-rest-service-8")
+nativefilelist=("helidon-rest-service" "micronaut-native" "quarkus-rest-service-1.0-SNAPSHOT-runner" "noframework-rest-service-8")
 
 test_outputdir11=$DIR/$1/jdktest_11_`date +"%Y%m%d%H%M%S"`
-indicator=("_mn" "_none" "_mp" "_sb" "_sbreactive" "_sbfu" "_vertx" "_akka" "_qs")
+indicator=("_hse" "_mn" "_none" "_mp" "_sb" "_sbreactive" "_sbfu" "_vertx" "_akka" "_qs")
 combined=( "${jarfilelist8[@]}" "${jarfilelist11[@]}" "${nativefilelist[@]}")
 for f in "${combined[@]}" ; do 
     if [ -f "$f" ]; then
@@ -23,7 +23,7 @@ for f in "${combined[@]}" ; do
     fi
 done 
 
-loadgenduration=300
+loadgenduration=900
 echo Isolated CPUs `cat /sys/devices/system/cpu/isolated`
 cpulistperftest=4,5,6,7
 cpulistjava=8,9,10,11
@@ -234,6 +234,21 @@ elif [ "$ind" == "_mn" ]; then
     sleep 60
     run_test native_mn
     get_start_time native_mn
+    sleep 20
+    rm Dockerfile
+    mv Dockerfile.orig Dockerfile
+elif [ "$ind" == "_hse" ]; then
+    rm Dockerfile.orig
+    mv Dockerfile Dockerfile.orig
+    cp Dockerfile.native Dockerfile
+    setjvmparams 'ENTRYPOINT ["./application", "-Xmx2g", "-Xms2g"]'
+    clean_image
+    docker build -t spring-boot-jdk -f Dockerfile --build-arg NATIVE_FILE=helidon-rest-service .
+    docker run --cpuset-cpus $cpulistjava -d --name spring-boot-jdk -p 8080:8080 --network testscripts_dockernet spring-boot-jdk
+    #give it some time to startup
+    sleep 60
+    run_test native_hse
+    get_start_time native_hse
     sleep 20
     rm Dockerfile
     mv Dockerfile.orig Dockerfile
