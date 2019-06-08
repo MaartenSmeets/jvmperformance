@@ -222,7 +222,7 @@ do
 counter=$(( $counter + 1 ))
 ind=${indicator[$counter]}
 if [ "$ind" == "_qs" ]; then
-    rm Dockerfile.orig
+    rm -f Dockerfile.orig
     mv Dockerfile Dockerfile.orig
     cp Dockerfile.native Dockerfile
     setjvmparams 'ENTRYPOINT ["./application", "-Dquarkus.http.host=0.0.0.0", "-Xmx2g", "-Xms2g"]'
@@ -234,10 +234,10 @@ if [ "$ind" == "_qs" ]; then
     run_test native_qs
     get_start_time native_qs
     sleep 20
-    rm Dockerfile
+    rm -f Dockerfile
     mv Dockerfile.orig Dockerfile
 elif [ "$ind" == "_mn" ]; then
-    rm Dockerfile.orig
+    rm -f Dockerfile.orig
     mv Dockerfile Dockerfile.orig
     cp Dockerfile.native Dockerfile
     setjvmparams 'ENTRYPOINT ["./application", "-Xmx2g", "-Xms2g"]'
@@ -249,10 +249,10 @@ elif [ "$ind" == "_mn" ]; then
     run_test native_mn
     get_start_time native_mn
     sleep 20
-    rm Dockerfile
+    rm -f Dockerfile
     mv Dockerfile.orig Dockerfile
 elif [ "$ind" == "_hse" ]; then
-    rm Dockerfile.orig
+    rm -f Dockerfile.orig
     mv Dockerfile Dockerfile.orig
     cp Dockerfile.native Dockerfile
     setjvmparams 'ENTRYPOINT ["./application", "-Xmx2g", "-Xms2g"]'
@@ -264,10 +264,10 @@ elif [ "$ind" == "_hse" ]; then
     run_test native_hse
     get_start_time native_hse
     sleep 20
-    rm Dockerfile
+    rm -f Dockerfile
     mv Dockerfile.orig Dockerfile
 elif [ "$ind" == "_none" ]; then
-    rm Dockerfile.orig
+    rm -f Dockerfile.orig
     mv Dockerfile Dockerfile.orig
     cp Dockerfile.native Dockerfile
     setjvmparams 'ENTRYPOINT ["./application", "-Xmx2g", "-Xms2g"]'
@@ -279,7 +279,7 @@ elif [ "$ind" == "_none" ]; then
     run_test native_none
     get_start_time native_none
     sleep 20
-    rm Dockerfile
+    rm -f Dockerfile
     mv Dockerfile.orig Dockerfile
 else
     echo native${ind} AVERAGE_PROCESSING_TIME_MS: 0
@@ -297,7 +297,7 @@ counter=-1
 for jarfilename in ${jarfilelist[@]}
 do
 counter=$(( $counter + 1 ))
-rm Dockerfile.orig
+rm -f Dockerfile.orig
 mv Dockerfile Dockerfile.orig
 cp Dockerfile.zing8 Dockerfile
 setjvmparams 'ENTRYPOINT ["java","-Djava.security.egd=file:/dev/./urandom","-XX:+UnlockExperimentalVMOptions","-Xmx2g","-Xms2g","-jar","/app.jar"]'
@@ -305,7 +305,7 @@ rebuild $jarfilename
 run_test zing${indicator[$counter]}
 get_start_time zing${indicator[$counter]}
 sleep 20
-rm Dockerfile
+rm -f Dockerfile
 mv Dockerfile.orig Dockerfile
 done
 
@@ -359,7 +359,7 @@ counter=-1
 for jarfilename in ${jarfilelist[@]}
 do
 counter=$(( $counter + 1 ))
-rm Dockerfile.orig
+rm -f Dockerfile.orig
 mv Dockerfile Dockerfile.orig
 cp Dockerfile.zing11 Dockerfile
 setjvmparams 'ENTRYPOINT ["java","-Djava.security.egd=file:/dev/./urandom","-XX:+UnlockExperimentalVMOptions","-Xmx2g","-Xms2g","-jar","/app.jar"]'
@@ -367,7 +367,7 @@ rebuild $jarfilename
 run_test zing${indicator[$counter]}
 get_start_time zing${indicator[$counter]}
 sleep 20
-rm Dockerfile
+rm -f Dockerfile
 mv Dockerfile.orig Dockerfile
 done
 
@@ -375,7 +375,7 @@ counter=-1
 for jarfilename in ${jarfilelist[@]}
 do
 counter=$(( $counter + 1 ))
-rm Dockerfile.orig
+rm -f Dockerfile.orig
 mv Dockerfile Dockerfile.orig
 cp Dockerfile.ojdk11 Dockerfile
 setjvmparams 'ENTRYPOINT ["java","-Djava.security.egd=file:/dev/./urandom","-XX:+UnlockExperimentalVMOptions","-Xmx2g","-Xms2g","-jar","/app.jar"]'
@@ -383,7 +383,7 @@ rebuild $jarfilename
 run_test oraclejdk${indicator[$counter]}
 get_start_time oraclejdk${indicator[$counter]}
 sleep 20
-rm Dockerfile
+rm -f Dockerfile
 mv Dockerfile.orig Dockerfile
 done
 
