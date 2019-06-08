@@ -102,8 +102,6 @@ function start_loadgen() {
         taskset -a -cp $cpulistperftest $mypid
     done
     sleep $3
-    #docker exec --user node perftest "/bin/sh" -c "cat /home/node/app/*.log > /home/node/app/combined.log"
-    #docker cp perftest:/home/node/app/combined.log $2
     docker stop -t $stoptimeout perftest
     docker rm perftest
     cat $2/logs/*.log > $2/results.txt
@@ -185,7 +183,24 @@ function run_test() {
     else
         echo $1 No Vert.X Prometheus available
     fi
+    
 
+    javapid=`ps -eo pid,args | grep -E '^\ *[0-9]+\ +java' | awk '{print $1}'`
+    echo $1 JAVAPID: $javapid
+    if [[ $javapid =~ ^[0-9]+$ ]]
+    then
+        echo $1 CPUTIME_MS: `cat /proc/$javapid/stat | cut -d ' ' -f 14-17`
+    else
+        echo $1 NOJAVAPIDFOUND
+    fi
+    nativepid=`ps -eo pid,args | grep -E '^\ *[0-9]+\ +\.\/application' | awk '{print $1}'`
+    if [[ $nativepid =~ ^[0-9]+$ ]]
+    then
+        echo $1 CPUTIME_MS: `cat /proc/$nativepid/stat | cut -d ' ' -f 14-17`
+    else
+        echo $1 NONATIVEPIDFOUND
+    fi
+    echo $1 CPUTIME_MS: `cat /proc/$javapid/stat | cut -d ' ' -f 14-17`
     echo $1 COMPLETED_AT: `date`
     echo $1 REQUESTS_PROCESSED: `cat $test_outputdir/$1/results.txt | grep MEASURE | wc -l`
     echo $1 AVERAGE_PROCESSING_TIME_MS: `cat $test_outputdir/$1/results.txt | grep MEASURE | awk -F " " '{ total += $3 } END { print total/NR }'`
@@ -286,7 +301,7 @@ counter=$(( $counter + 1 ))
 rm Dockerfile.orig
 mv Dockerfile Dockerfile.orig
 cp Dockerfile.zing8 Dockerfile
-setjvmparams 'ENTRYPOINT ["/opt/zing/zing-jdk8/bin/java","-Djava.security.egd=file:/dev/./urandom","-XX:+UnlockExperimentalVMOptions","-Xmx2g","-Xms2g","-jar","/app.jar"]'
+setjvmparams 'ENTRYPOINT ["java","-Djava.security.egd=file:/dev/./urandom","-XX:+UnlockExperimentalVMOptions","-Xmx2g","-Xms2g","-jar","/app.jar"]'
 rebuild $jarfilename
 run_test zing${indicator[$counter]}
 get_start_time zing${indicator[$counter]}
@@ -348,7 +363,7 @@ counter=$(( $counter + 1 ))
 rm Dockerfile.orig
 mv Dockerfile Dockerfile.orig
 cp Dockerfile.zing11 Dockerfile
-setjvmparams 'ENTRYPOINT ["/opt/zing/zing-jdk11/bin/java","-Djava.security.egd=file:/dev/./urandom","-XX:+UnlockExperimentalVMOptions","-Xmx2g","-Xms2g","-jar","/app.jar"]'
+setjvmparams 'ENTRYPOINT ["java","-Djava.security.egd=file:/dev/./urandom","-XX:+UnlockExperimentalVMOptions","-Xmx2g","-Xms2g","-jar","/app.jar"]'
 rebuild $jarfilename
 run_test zing${indicator[$counter]}
 get_start_time zing${indicator[$counter]}

@@ -6,9 +6,14 @@ RUN apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 0xB1998361
 RUN /usr/bin/apt-add-repository "deb http://repos.azul.com/zing/ubuntu-container $(lsb_release -sc) main"
 RUN apt-get update -y
 RUN apt-get install zing-jdk11.0.0 -y
+ENV LANG en_US.utf8
+ENV J2SDKDIR /opt/zing/zing-jdk11
+ENV J2REDIR /opt/zing/zing-jdk11
+ENV PATH "${PATH}:/opt/zing/zing-jdk11/bin"
+ENV JAVA_HOME /opt/zing/zing-jdk11
 WORKDIR /temp
 ADD ./license /etc/zing/
 VOLUME /tmp
 ARG JAR_FILE
 COPY ${JAR_FILE} /app.jar
-ENTRYPOINT ["/opt/zing/zing-jdk11/bin/java","-Djava.security.egd=file:/dev/./urandom","-XX:+UnlockExperimentalVMOptions","-Xmx2G","-Xms2G","-jar","/app.jar"]
+ENTRYPOINT ["java","-Djava.security.egd=file:/dev/./urandom","-XX:+UnlockExperimentalVMOptions","-Xmx20m","-Xms20m","-jar","/app.jar"]
