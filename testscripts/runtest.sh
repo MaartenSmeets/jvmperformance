@@ -200,7 +200,6 @@ function run_test() {
     else
         echo $1 NONATIVEPIDFOUND
     fi
-    echo $1 CPUTIME_MS: `cat /proc/$javapid/stat | cut -d ' ' -f 14-17`
     echo $1 COMPLETED_AT: `date`
     echo $1 REQUESTS_PROCESSED: `cat $test_outputdir/$1/results.txt | grep MEASURE | wc -l`
     echo $1 AVERAGE_PROCESSING_TIME_MS: `cat $test_outputdir/$1/results.txt | grep MEASURE | awk -F " " '{ total += $3 } END { print total/NR }'`
