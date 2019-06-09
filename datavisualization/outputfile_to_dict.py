@@ -5,7 +5,7 @@ output_dict={}
 #the keys of the dict will be the subdirectories of that directory
 
 filepath = 'outputfile.txt' 
-list_of_measures = [ 'CPUTIME_MS', 'REQUESTS_PROCESSED', 'AVERAGE_PROCESSING_TIME_MS', 'STANDARD_DEVIATION_MS', 'PROM_REQUESTS', 'PROM_AVERAGE_MS' ,'PROM_TOTALTIME_S', 'JAVA_VERSION', 'BASE_IMAGE' ]
+list_of_measures = [ 'CPUTIME_MS', 'REQUESTS_PROCESSED', 'AVERAGE_PROCESSING_TIME_MS', 'STANDARD_DEVIATION_MS', 'PROM_REQUESTS', 'PROM_AVERAGE_MS' ,'PROM_TOTALTIME_S', 'JAVA_VERSION', 'BASE_IMAGE', 'GC_ALGORITHM' ]
 
 dirs_buffer=subprocess.Popen("ls -1 -d */", shell=True, stdout=subprocess.PIPE).stdout.read()
 
