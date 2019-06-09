@@ -296,6 +296,7 @@ else
     fi
 fi
 echo native${ind} JAVA_VERSION: 8
+echo native${ind} GC_ALGORITHM: Substrate
 done
 
 counter=-1
@@ -310,6 +311,7 @@ rebuild $jarfilename
 run_test zing${indicator[$counter]}
 get_start_time zing${indicator[$counter]}
 echo zing${indicator[$counter]} JAVA_VERSION: 8
+echo zing${indicator[$counter]} GC_ALGORITHM: Falcon
 sleep 20
 rm -f Dockerfile
 mv Dockerfile.orig Dockerfile
@@ -325,6 +327,7 @@ rebuild $jarfilename
 run_test adoptopenjdk${indicator[$counter]}
 get_start_time adoptopenjdk${indicator[$counter]}
 echo adoptopenjdk${indicator[$counter]} JAVA_VERSION: 8
+echo adoptopenjdk${indicator[$counter]} GC_ALGORITHM: Parallel
 sleep 20
 done
 
@@ -338,6 +341,7 @@ rebuild $jarfilename
 run_test openj9${indicator[$counter]}
 get_start_time openj9${indicator[$counter]}
 echo openj9${indicator[$counter]} JAVA_VERSION: 8
+echo openj9${indicator[$counter]} GC_ALGORITHM: Gencon
 sleep 20
 done
 
@@ -351,6 +355,7 @@ rebuild $jarfilename
 run_test oraclejdk${indicator[$counter]}
 get_start_time oraclejdk${indicator[$counter]}
 echo oraclejdk${indicator[$counter]} JAVA_VERSION: 8
+echo oraclejdk${indicator[$counter]} GC_ALGORITHM: Parallel
 sleep 20
 done
 
@@ -376,6 +381,7 @@ rebuild $jarfilename
 run_test zing${indicator[$counter]}
 get_start_time zing${indicator[$counter]}
 echo zing${indicator[$counter]} JAVA_VERSION: 11
+echo zing${indicator[$counter]} GC_ALGORITHM: Falcon
 sleep 20
 rm -f Dockerfile
 mv Dockerfile.orig Dockerfile
@@ -393,6 +399,7 @@ rebuild $jarfilename
 run_test oraclejdk${indicator[$counter]}
 get_start_time oraclejdk${indicator[$counter]}
 echo oraclejdk${indicator[$counter]} JAVA_VERSION: 11
+echo oraclejdk${indicator[$counter]} GC_ALGORITHM: G1
 sleep 20
 rm -f Dockerfile
 mv Dockerfile.orig Dockerfile
@@ -408,6 +415,7 @@ rebuild $jarfilename
 run_test openj9${indicator[$counter]}
 get_start_time openj9${indicator[$counter]}
 echo openj9${indicator[$counter]} JAVA_VERSION: 11
+echo openj9${indicator[$counter]} GC_ALGORITHM: Gencon
 sleep 20
 done
 
@@ -421,5 +429,6 @@ rebuild $jarfilename
 run_test adoptopenjdk${indicator[$counter]}
 get_start_time adoptopenjdk${indicator[$counter]}
 echo adoptopenjdk${indicator[$counter]} JAVA_VERSION: 11
+echo oraclejdk${indicator[$counter]} GC_ALGORITHM: G1
 sleep 20
 done
