@@ -200,6 +200,7 @@ function run_test() {
     else
         echo $1 NONATIVEPIDFOUND
     fi
+    echo $1 BASE_IMAGE: `cat Dockerfile | head -n 1`
     echo $1 COMPLETED_AT: `date`
     echo $1 REQUESTS_PROCESSED: `cat $test_outputdir/$1/results.txt | grep MEASURE | wc -l`
     echo $1 AVERAGE_PROCESSING_TIME_MS: `cat $test_outputdir/$1/results.txt | grep MEASURE | awk -F " " '{ total += $3 } END { print total/NR }'`
@@ -291,6 +292,7 @@ else
         echo native${ind} STARTED Application started: 0
     fi
 fi
+echo native${ind} JAVA_VERSION: 8
 done
 
 counter=-1
@@ -304,6 +306,7 @@ setjvmparams 'ENTRYPOINT ["java","-Djava.security.egd=file:/dev/./urandom","-XX:
 rebuild $jarfilename
 run_test zing${indicator[$counter]}
 get_start_time zing${indicator[$counter]}
+echo zing${indicator[$counter]} JAVA_VERSION: 8
 sleep 20
 rm -f Dockerfile
 mv Dockerfile.orig Dockerfile
@@ -318,6 +321,7 @@ setjvmparams 'ENTRYPOINT ["java","-Djava.security.egd=file:/dev/./urandom","-XX:
 rebuild $jarfilename
 run_test adoptopenjdk${indicator[$counter]}
 get_start_time adoptopenjdk${indicator[$counter]}
+echo adoptopenjdk${indicator[$counter]} JAVA_VERSION: 8
 sleep 20
 done
 
@@ -330,6 +334,7 @@ setjvmparams 'ENTRYPOINT ["java","-Djava.security.egd=file:/dev/./urandom","-XX:
 rebuild $jarfilename
 run_test openj9${indicator[$counter]}
 get_start_time openj9${indicator[$counter]}
+echo openj9${indicator[$counter]} JAVA_VERSION: 8
 sleep 20
 done
 
@@ -342,6 +347,7 @@ setjvmparams 'ENTRYPOINT ["java","-Djava.security.egd=file:/dev/./urandom","-XX:
 rebuild $jarfilename
 run_test oraclejdk${indicator[$counter]}
 get_start_time oraclejdk${indicator[$counter]}
+echo oraclejdk${indicator[$counter]} JAVA_VERSION: 8
 sleep 20
 done
 
@@ -366,6 +372,7 @@ setjvmparams 'ENTRYPOINT ["java","-Djava.security.egd=file:/dev/./urandom","-XX:
 rebuild $jarfilename
 run_test zing${indicator[$counter]}
 get_start_time zing${indicator[$counter]}
+echo zing${indicator[$counter]} JAVA_VERSION: 11
 sleep 20
 rm -f Dockerfile
 mv Dockerfile.orig Dockerfile
@@ -382,6 +389,7 @@ setjvmparams 'ENTRYPOINT ["java","-Djava.security.egd=file:/dev/./urandom","-XX:
 rebuild $jarfilename
 run_test oraclejdk${indicator[$counter]}
 get_start_time oraclejdk${indicator[$counter]}
+echo oraclejdk${indicator[$counter]} JAVA_VERSION: 11
 sleep 20
 rm -f Dockerfile
 mv Dockerfile.orig Dockerfile
@@ -396,6 +404,7 @@ setjvmparams 'ENTRYPOINT ["java","-Djava.security.egd=file:/dev/./urandom","-XX:
 rebuild $jarfilename
 run_test openj9${indicator[$counter]}
 get_start_time openj9${indicator[$counter]}
+echo openj9${indicator[$counter]} JAVA_VERSION: 11
 sleep 20
 done
 
@@ -408,5 +417,6 @@ setjvmparams 'ENTRYPOINT ["java","-Djava.security.egd=file:/dev/./urandom","-XX:
 rebuild $jarfilename
 run_test adoptopenjdk${indicator[$counter]}
 get_start_time adoptopenjdk${indicator[$counter]}
+echo adoptopenjdk${indicator[$counter]} JAVA_VERSION: 11
 sleep 20
 done
