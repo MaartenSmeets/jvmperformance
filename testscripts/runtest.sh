@@ -3,6 +3,8 @@
 DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null && pwd )"
 echo Running from $DIR
 
+memory_limit=25m
+
 jarfilelist8=("helidon-rest-service-8.jar" "micronaut-rest-service-8.jar" "noframework-rest-service-8.jar" "mp-rest-service-8.jar" "sb-rest-service-8.jar" "sb-rest-service-reactive-8.jar" "sb-rest-service-fu-8.jar" "vertx-rest-service-8.jar" "akka-rest-service-8.jar" "quarkus-rest-service-8.jar")
 
 test_outputdir8=$DIR/$1/jdktest_8_`date +"%Y%m%d%H%M%S"`
@@ -202,6 +204,7 @@ function run_test() {
     fi
     echo $1 BASE_IMAGE: `cat Dockerfile | head -n 1`
     echo $1 COMPLETED_AT: `date`
+	echo $1 MEMORY_LIMIT: $memory_limit
     echo $1 REQUESTS_PROCESSED: `cat $test_outputdir/$1/results.txt | grep MEASURE | wc -l`
     echo $1 AVERAGE_PROCESSING_TIME_MS: `cat $test_outputdir/$1/results.txt | grep MEASURE | awk -F " " '{ total += $3 } END { print total/NR }'`
     echo $1 STANDARD_DEVIATION_MS: `cat $test_outputdir/$1/results.txt | grep MEASURE | awk '{delta = $3 - avg; avg += delta / NR; mean2 += delta * ($3 - avg); } END { print sqrt(mean2 / NR); }'`
@@ -226,7 +229,7 @@ if [ "$ind" == "_qs" ]; then
     rm -f Dockerfile.orig
     mv Dockerfile Dockerfile.orig
     cp Dockerfile.native Dockerfile
-    setjvmparams 'ENTRYPOINT ["./application", "-Dquarkus.http.host=0.0.0.0", "-Xmx2g", "-Xms2g"]'
+    setjvmparams 'ENTRYPOINT ["./application", "-Dquarkus.http.host=0.0.0.0", "-Xmx25m", "-Xms25m"]'
     clean_image
     docker build -t spring-boot-jdk -f Dockerfile --build-arg NATIVE_FILE=quarkus-rest-service-1.0-SNAPSHOT-runner .
     docker run --cpuset-cpus $cpulistjava -d --name spring-boot-jdk -p 8080:8080 --network testscripts_dockernet spring-boot-jdk
@@ -241,7 +244,7 @@ elif [ "$ind" == "_mn" ]; then
     rm -f Dockerfile.orig
     mv Dockerfile Dockerfile.orig
     cp Dockerfile.native Dockerfile
-    setjvmparams 'ENTRYPOINT ["./application", "-Xmx2g", "-Xms2g"]'
+    setjvmparams 'ENTRYPOINT ["./application", "-Xmx25m", "-Xms25m"]'
     clean_image
     docker build -t spring-boot-jdk -f Dockerfile --build-arg NATIVE_FILE=micronaut-native .
     docker run --cpuset-cpus $cpulistjava -d --name spring-boot-jdk -p 8080:8080 --network testscripts_dockernet spring-boot-jdk
@@ -256,7 +259,7 @@ elif [ "$ind" == "_hse" ]; then
     rm -f Dockerfile.orig
     mv Dockerfile Dockerfile.orig
     cp Dockerfile.native Dockerfile
-    setjvmparams 'ENTRYPOINT ["./application", "-Xmx2g", "-Xms2g"]'
+    setjvmparams 'ENTRYPOINT ["./application", "-Xmx25m", "-Xms25m"]'
     clean_image
     docker build -t spring-boot-jdk -f Dockerfile --build-arg NATIVE_FILE=helidon-rest-service .
     docker run --cpuset-cpus $cpulistjava -d --name spring-boot-jdk -p 8080:8080 --network testscripts_dockernet spring-boot-jdk
@@ -271,7 +274,7 @@ elif [ "$ind" == "_none" ]; then
     rm -f Dockerfile.orig
     mv Dockerfile Dockerfile.orig
     cp Dockerfile.native Dockerfile
-    setjvmparams 'ENTRYPOINT ["./application", "-Xmx2g", "-Xms2g"]'
+    setjvmparams 'ENTRYPOINT ["./application", "-Xmx25m", "-Xms25m"]'
     clean_image
     docker build -t spring-boot-jdk -f Dockerfile --build-arg NATIVE_FILE=noframework-rest-service-8 .
     docker run --cpuset-cpus $cpulistjava -d --name spring-boot-jdk -p 8080:8080 --network testscripts_dockernet spring-boot-jdk
@@ -302,7 +305,7 @@ counter=$(( $counter + 1 ))
 rm -f Dockerfile.orig
 mv Dockerfile Dockerfile.orig
 cp Dockerfile.zing8 Dockerfile
-setjvmparams 'ENTRYPOINT ["java","-Djava.security.egd=file:/dev/./urandom","-XX:+UnlockExperimentalVMOptions","-Xmx2g","-Xms2g","-jar","/app.jar"]'
+setjvmparams 'ENTRYPOINT ["java","-Djava.security.egd=file:/dev/./urandom","-XX:+UnlockExperimentalVMOptions","-Xmx25m","-Xms25m","-jar","/app.jar"]'
 rebuild $jarfilename
 run_test zing${indicator[$counter]}
 get_start_time zing${indicator[$counter]}
@@ -317,7 +320,7 @@ for jarfilename in ${jarfilelist[@]}
 do
 counter=$(( $counter + 1 ))
 replacer "FROM adoptopenjdk\/openjdk8:jdk8u202-b08"
-setjvmparams 'ENTRYPOINT ["java","-Djava.security.egd=file:/dev/./urandom","-XX:+UnlockExperimentalVMOptions","-Xmx2g","-Xms2g","-jar","/app.jar"]'
+setjvmparams 'ENTRYPOINT ["java","-Djava.security.egd=file:/dev/./urandom","-XX:+UnlockExperimentalVMOptions","-Xmx25m","-Xms25m","-jar","/app.jar"]'
 rebuild $jarfilename
 run_test adoptopenjdk${indicator[$counter]}
 get_start_time adoptopenjdk${indicator[$counter]}
@@ -330,7 +333,7 @@ for jarfilename in ${jarfilelist[@]}
 do
 counter=$(( $counter + 1 ))
 replacer "FROM adoptopenjdk\/openjdk8-openj9:jdk8u202-b08_openj9-0.12.1"
-setjvmparams 'ENTRYPOINT ["java","-Djava.security.egd=file:/dev/./urandom","-XX:+UnlockExperimentalVMOptions","-Xmx2g","-Xms2g","-jar","/app.jar"]'
+setjvmparams 'ENTRYPOINT ["java","-Djava.security.egd=file:/dev/./urandom","-XX:+UnlockExperimentalVMOptions","-Xmx25m","-Xms25m","-jar","/app.jar"]'
 rebuild $jarfilename
 run_test openj9${indicator[$counter]}
 get_start_time openj9${indicator[$counter]}
@@ -343,7 +346,7 @@ for jarfilename in ${jarfilelist[@]}
 do
 counter=$(( $counter + 1 ))
 replacer "FROM store\/oracle\/serverjre:8"
-setjvmparams 'ENTRYPOINT ["java","-Djava.security.egd=file:/dev/./urandom","-XX:+UnlockExperimentalVMOptions","-Xmx2g","-Xms2g","-jar","/app.jar"]'
+setjvmparams 'ENTRYPOINT ["java","-Djava.security.egd=file:/dev/./urandom","-XX:+UnlockExperimentalVMOptions","-Xmx25m","-Xms25m","-jar","/app.jar"]'
 rebuild $jarfilename
 run_test oraclejdk${indicator[$counter]}
 get_start_time oraclejdk${indicator[$counter]}
@@ -368,7 +371,7 @@ counter=$(( $counter + 1 ))
 rm -f Dockerfile.orig
 mv Dockerfile Dockerfile.orig
 cp Dockerfile.zing11 Dockerfile
-setjvmparams 'ENTRYPOINT ["java","-Djava.security.egd=file:/dev/./urandom","-XX:+UnlockExperimentalVMOptions","-Xmx2g","-Xms2g","-jar","/app.jar"]'
+setjvmparams 'ENTRYPOINT ["java","-Djava.security.egd=file:/dev/./urandom","-XX:+UnlockExperimentalVMOptions","-Xmx25m","-Xms25m","-jar","/app.jar"]'
 rebuild $jarfilename
 run_test zing${indicator[$counter]}
 get_start_time zing${indicator[$counter]}
@@ -385,7 +388,7 @@ counter=$(( $counter + 1 ))
 rm -f Dockerfile.orig
 mv Dockerfile Dockerfile.orig
 cp Dockerfile.ojdk11 Dockerfile
-setjvmparams 'ENTRYPOINT ["java","-Djava.security.egd=file:/dev/./urandom","-XX:+UnlockExperimentalVMOptions","-Xmx2g","-Xms2g","-jar","/app.jar"]'
+setjvmparams 'ENTRYPOINT ["java","-Djava.security.egd=file:/dev/./urandom","-XX:+UnlockExperimentalVMOptions","-Xmx25m","-Xms25m","-jar","/app.jar"]'
 rebuild $jarfilename
 run_test oraclejdk${indicator[$counter]}
 get_start_time oraclejdk${indicator[$counter]}
@@ -400,7 +403,7 @@ for jarfilename in ${jarfilelist[@]}
 do
 counter=$(( $counter + 1 ))
 replacer "FROM adoptopenjdk\/openjdk11-openj9:jdk-11.0.3.7_openj9-0.14.0"
-setjvmparams 'ENTRYPOINT ["java","-Djava.security.egd=file:/dev/./urandom","-XX:+UnlockExperimentalVMOptions","-Xmx2g","-Xms2g","-jar","/app.jar"]'
+setjvmparams 'ENTRYPOINT ["java","-Djava.security.egd=file:/dev/./urandom","-XX:+UnlockExperimentalVMOptions","-Xmx25m","-Xms25m","-jar","/app.jar"]'
 rebuild $jarfilename
 run_test openj9${indicator[$counter]}
 get_start_time openj9${indicator[$counter]}
@@ -413,7 +416,7 @@ for jarfilename in ${jarfilelist[@]}
 do
 counter=$(( $counter + 1 ))
 replacer "FROM adoptopenjdk\/openjdk11:jdk-11.0.3.7"
-setjvmparams 'ENTRYPOINT ["java","-Djava.security.egd=file:/dev/./urandom","-XX:+UnlockExperimentalVMOptions","-Xmx2g","-Xms2g","-jar","/app.jar"]'
+setjvmparams 'ENTRYPOINT ["java","-Djava.security.egd=file:/dev/./urandom","-XX:+UnlockExperimentalVMOptions","-Xmx25m","-Xms25m","-jar","/app.jar"]'
 rebuild $jarfilename
 run_test adoptopenjdk${indicator[$counter]}
 get_start_time adoptopenjdk${indicator[$counter]}
