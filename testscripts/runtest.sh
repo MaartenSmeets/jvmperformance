@@ -429,6 +429,6 @@ rebuild $jarfilename
 run_test adoptopenjdk${indicator[$counter]}
 get_start_time adoptopenjdk${indicator[$counter]}
 echo adoptopenjdk${indicator[$counter]} JAVA_VERSION: 11
-echo oraclejdk${indicator[$counter]} GC_ALGORITHM: G1
+echo adoptopenjdk${indicator[$counter]} GC_ALGORITHM: G1
 sleep 20
 done
