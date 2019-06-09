@@ -202,7 +202,7 @@ function run_test() {
     else
         echo $1 NONATIVEPIDFOUND
     fi
-    echo $1 BASE_IMAGE: `cat Dockerfile | head -n 1`
+    echo $1 BASE_IMAGE: `cat Dockerfile | awk '{print $2}' | head -n 1`
     echo $1 COMPLETED_AT: `date`
     echo $1 MEMORY_LIMIT: $memory_limit
     echo $1 REQUESTS_PROCESSED: `cat $test_outputdir/$1/results.txt | grep MEASURE | wc -l`
