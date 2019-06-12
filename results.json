@@ -1,0 +1,2901 @@
+[
+  {
+    'jvm_code': 'zing',
+    'jvm_descr': 'Azul Zing',
+    'framework_code': 'hse',
+    'framework_descr': 'Helidon SE',
+    'data': {
+      'CPUTIME_MS': '12116 4641 1 0',
+      'BASE_IMAGE': 'ubuntu:18.04',
+      'MEMORY_LIMIT': '2048m',
+      'REQUESTS_PROCESSED': '562245',
+      'AVERAGE_PROCESSING_TIME_MS': '1.59523',
+      'STANDARD_DEVIATION_MS': '0.377062',
+      'JAVA_VERSION': '11',
+      'GC_ALGORITHM': 'Falcon'
+    }
+  },
+  {
+    'jvm_code': 'zing',
+    'jvm_descr': 'Azul Zing',
+    'framework_code': 'mn',
+    'framework_descr': 'Micronaut',
+    'data': {
+      'CPUTIME_MS': '17658 4496 0 0',
+      'BASE_IMAGE': 'ubuntu:18.04',
+      'MEMORY_LIMIT': '2048m',
+      'REQUESTS_PROCESSED': '539302',
+      'AVERAGE_PROCESSING_TIME_MS': '1.66344',
+      'STANDARD_DEVIATION_MS': '0.470038',
+      'JAVA_VERSION': '11',
+      'GC_ALGORITHM': 'Falcon'
+    }
+  },
+  {
+    'jvm_code': 'zing',
+    'jvm_descr': 'Azul Zing',
+    'framework_code': 'none',
+    'framework_descr': 'No framework',
+    'data': {
+      'CPUTIME_MS': '5159 3996 1 0',
+      'BASE_IMAGE': 'ubuntu:18.04',
+      'MEMORY_LIMIT': '2048m',
+      'REQUESTS_PROCESSED': '572192',
+      'AVERAGE_PROCESSING_TIME_MS': '1.56743',
+      'STANDARD_DEVIATION_MS': '0.292394',
+      'JAVA_VERSION': '11',
+      'GC_ALGORITHM': 'Falcon'
+    }
+  },
+  {
+    'jvm_code': 'zing',
+    'jvm_descr': 'Azul Zing',
+    'framework_code': 'mp',
+    'framework_descr': 'Microprofile',
+    'data': {
+      'PROM_REQUESTS': '504993',
+      'PROM_TOTALTIME_S': '1.39592',
+      'PROM_AVERAGE_MS': '0.00276',
+      'CPUTIME_MS': '35090 2929 188 2',
+      'BASE_IMAGE': 'ubuntu:18.04',
+      'MEMORY_LIMIT': '2048m',
+      'REQUESTS_PROCESSED': '504993',
+      'AVERAGE_PROCESSING_TIME_MS': '1.77646',
+      'STANDARD_DEVIATION_MS': '1.557',
+      'JAVA_VERSION': '11',
+      'GC_ALGORITHM': 'Falcon'
+    }
+  },
+  {
+    'jvm_code': 'zing',
+    'jvm_descr': 'Azul Zing',
+    'framework_code': 'sb',
+    'framework_descr': 'Spring Boot',
+    'data': {
+      'PROM_REQUESTS': '518031.0',
+      'PROM_TOTALTIME_S': '78.931304717',
+      'PROM_AVERAGE_MS': '0.15237',
+      'CPUTIME_MS': '23979 2834 1 0',
+      'BASE_IMAGE': 'ubuntu:18.04',
+      'MEMORY_LIMIT': '2048m',
+      'REQUESTS_PROCESSED': '518031',
+      'AVERAGE_PROCESSING_TIME_MS': '1.73178',
+      'STANDARD_DEVIATION_MS': '0.494524',
+      'JAVA_VERSION': '11',
+      'GC_ALGORITHM': 'Falcon'
+    }
+  },
+  {
+    'jvm_code': 'zing',
+    'jvm_descr': 'Azul Zing',
+    'framework_code': 'sbreactive',
+    'framework_descr': 'WebFlux',
+    'data': {
+      'PROM_REQUESTS': '552538.0',
+      'PROM_TOTALTIME_S': '53.780313813',
+      'PROM_AVERAGE_MS': '0.09733',
+      'CPUTIME_MS': '18584 4580 1 0',
+      'BASE_IMAGE': 'ubuntu:18.04',
+      'MEMORY_LIMIT': '2048m',
+      'REQUESTS_PROCESSED': '552538',
+      'AVERAGE_PROCESSING_TIME_MS': '1.62341',
+      'STANDARD_DEVIATION_MS': '0.45638',
+      'JAVA_VERSION': '11',
+      'GC_ALGORITHM': 'Falcon'
+    }
+  },
+  {
+    'jvm_code': 'zing',
+    'jvm_descr': 'Azul Zing',
+    'framework_code': 'sbfu',
+    'framework_descr': 'Spring Fu',
+    'data': {
+      'CPUTIME_MS': '14146 5408 1 0',
+      'BASE_IMAGE': 'ubuntu:18.04',
+      'MEMORY_LIMIT': '2048m',
+      'REQUESTS_PROCESSED': '557216',
+      'AVERAGE_PROCESSING_TIME_MS': '1.60977',
+      'STANDARD_DEVIATION_MS': '0.533171',
+      'JAVA_VERSION': '11',
+      'GC_ALGORITHM': 'Falcon'
+    }
+  },
+  {
+    'jvm_code': 'zing',
+    'jvm_descr': 'Azul Zing',
+    'framework_code': 'vertx',
+    'framework_descr': 'Vert.x',
+    'data': {
+      'PROM_REQUESTS': '572099.0',
+      'PROM_TOTALTIME_S': '8.222038913',
+      'PROM_AVERAGE_MS': '0.01437',
+      'CPUTIME_MS': '10076 3345 1 0',
+      'BASE_IMAGE': 'ubuntu:18.04',
+      'MEMORY_LIMIT': '2048m',
+      'REQUESTS_PROCESSED': '572098',
+      'AVERAGE_PROCESSING_TIME_MS': '1.56795',
+      'STANDARD_DEVIATION_MS': '0.767467',
+      'JAVA_VERSION': '11',
+      'GC_ALGORITHM': 'Falcon'
+    }
+  },
+  {
+    'jvm_code': 'zing',
+    'jvm_descr': 'Azul Zing',
+    'framework_code': 'akka',
+    'framework_descr': 'Akka',
+    'data': {
+      'CPUTIME_MS': '24219 6984 0 0',
+      'BASE_IMAGE': 'ubuntu:18.04',
+      'MEMORY_LIMIT': '2048m',
+      'REQUESTS_PROCESSED': '487413',
+      'AVERAGE_PROCESSING_TIME_MS': '1.84077',
+      'STANDARD_DEVIATION_MS': '0.937814',
+      'JAVA_VERSION': '11',
+      'GC_ALGORITHM': 'Falcon'
+    }
+  },
+  {
+    'jvm_code': 'zing',
+    'jvm_descr': 'Azul Zing',
+    'framework_code': 'qs',
+    'framework_descr': 'Quarkus',
+    'data': {
+      'PROM_REQUESTS': '558896.0',
+      'PROM_TOTALTIME_S': '1.10084',
+      'PROM_AVERAGE_MS': '0.00197',
+      'CPUTIME_MS': '16249 5478 1 0',
+      'BASE_IMAGE': 'ubuntu:18.04',
+      'MEMORY_LIMIT': '2048m',
+      'REQUESTS_PROCESSED': '558896',
+      'AVERAGE_PROCESSING_TIME_MS': '1.60495',
+      'STANDARD_DEVIATION_MS': '0.522405',
+      'JAVA_VERSION': '11',
+      'GC_ALGORITHM': 'Falcon'
+    }
+  },
+  {
+    'jvm_code': 'oraclejdk',
+    'jvm_descr': 'Oracle JDK',
+    'framework_code': 'hse',
+    'framework_descr': 'Helidon SE',
+    'data': {
+      'CPUTIME_MS': '6509 4878 0 0',
+      'BASE_IMAGE': 'ubuntu:18.04',
+      'MEMORY_LIMIT': '2048m',
+      'REQUESTS_PROCESSED': '561354',
+      'AVERAGE_PROCESSING_TIME_MS': '1.59791',
+      'STANDARD_DEVIATION_MS': '0.282248',
+      'JAVA_VERSION': '11',
+      'GC_ALGORITHM': 'G1'
+    }
+  },
+  {
+    'jvm_code': 'oraclejdk',
+    'jvm_descr': 'Oracle JDK',
+    'framework_code': 'mn',
+    'framework_descr': 'Micronaut',
+    'data': {
+      'CPUTIME_MS': '9231 4397 0 0',
+      'BASE_IMAGE': 'ubuntu:18.04',
+      'MEMORY_LIMIT': '2048m',
+      'REQUESTS_PROCESSED': '539970',
+      'AVERAGE_PROCESSING_TIME_MS': '1.66142',
+      'STANDARD_DEVIATION_MS': '0.41795',
+      'JAVA_VERSION': '11',
+      'GC_ALGORITHM': 'G1'
+    }
+  },
+  {
+    'jvm_code': 'oraclejdk',
+    'jvm_descr': 'Oracle JDK',
+    'framework_code': 'none',
+    'framework_descr': 'No framework',
+    'data': {
+      'CPUTIME_MS': '3500 4093 0 0',
+      'BASE_IMAGE': 'ubuntu:18.04',
+      'MEMORY_LIMIT': '2048m',
+      'REQUESTS_PROCESSED': '577443',
+      'AVERAGE_PROCESSING_TIME_MS': '1.55321',
+      'STANDARD_DEVIATION_MS': '0.21437',
+      'JAVA_VERSION': '11',
+      'GC_ALGORITHM': 'G1'
+    }
+  },
+  {
+    'jvm_code': 'oraclejdk',
+    'jvm_descr': 'Oracle JDK',
+    'framework_code': 'mp',
+    'framework_descr': 'Microprofile',
+    'data': {
+      'PROM_REQUESTS': '516443',
+      'PROM_TOTALTIME_S': '1.87055',
+      'PROM_AVERAGE_MS': '0.00362',
+      'CPUTIME_MS': '14810 2926 143 3',
+      'BASE_IMAGE': 'ubuntu:18.04',
+      'MEMORY_LIMIT': '2048m',
+      'REQUESTS_PROCESSED': '516443',
+      'AVERAGE_PROCESSING_TIME_MS': '1.7372',
+      'STANDARD_DEVIATION_MS': '1.26506',
+      'JAVA_VERSION': '11',
+      'GC_ALGORITHM': 'G1'
+    }
+  },
+  {
+    'jvm_code': 'oraclejdk',
+    'jvm_descr': 'Oracle JDK',
+    'framework_code': 'sb',
+    'framework_descr': 'Spring Boot',
+    'data': {
+      'PROM_REQUESTS': '523682.0',
+      'PROM_TOTALTIME_S': '74.557943911',
+      'PROM_AVERAGE_MS': '0.14237',
+      'CPUTIME_MS': '12976 2878 0 0',
+      'BASE_IMAGE': 'ubuntu:18.04',
+      'MEMORY_LIMIT': '2048m',
+      'REQUESTS_PROCESSED': '523682',
+      'AVERAGE_PROCESSING_TIME_MS': '1.71317',
+      'STANDARD_DEVIATION_MS': '0.411816',
+      'JAVA_VERSION': '11',
+      'GC_ALGORITHM': 'G1'
+    }
+  },
+  {
+    'jvm_code': 'oraclejdk',
+    'jvm_descr': 'Oracle JDK',
+    'framework_code': 'sbreactive',
+    'framework_descr': 'WebFlux',
+    'data': {
+      'PROM_REQUESTS': '547335.0',
+      'PROM_TOTALTIME_S': '60.477501085',
+      'PROM_AVERAGE_MS': '0.11049',
+      'CPUTIME_MS': '9687 4359 0 0',
+      'BASE_IMAGE': 'ubuntu:18.04',
+      'MEMORY_LIMIT': '2048m',
+      'REQUESTS_PROCESSED': '547334',
+      'AVERAGE_PROCESSING_TIME_MS': '1.63907',
+      'STANDARD_DEVIATION_MS': '0.447826',
+      'JAVA_VERSION': '11',
+      'GC_ALGORITHM': 'G1'
+    }
+  },
+  {
+    'jvm_code': 'oraclejdk',
+    'jvm_descr': 'Oracle JDK',
+    'framework_code': 'sbfu',
+    'framework_descr': 'Spring Fu',
+    'data': {
+      'CPUTIME_MS': '6557 5029 0 0',
+      'BASE_IMAGE': 'ubuntu:18.04',
+      'MEMORY_LIMIT': '2048m',
+      'REQUESTS_PROCESSED': '559908',
+      'AVERAGE_PROCESSING_TIME_MS': '1.60198',
+      'STANDARD_DEVIATION_MS': '0.402387',
+      'JAVA_VERSION': '11',
+      'GC_ALGORITHM': 'G1'
+    }
+  },
+  {
+    'jvm_code': 'oraclejdk',
+    'jvm_descr': 'Oracle JDK',
+    'framework_code': 'vertx',
+    'framework_descr': 'Vert.x',
+    'data': {
+      'PROM_REQUESTS': '572190.0',
+      'PROM_TOTALTIME_S': '9.090942288',
+      'PROM_AVERAGE_MS': '0.01589',
+      'CPUTIME_MS': '5066 3542 0 0',
+      'BASE_IMAGE': 'ubuntu:18.04',
+      'MEMORY_LIMIT': '2048m',
+      'REQUESTS_PROCESSED': '572189',
+      'AVERAGE_PROCESSING_TIME_MS': '1.5675',
+      'STANDARD_DEVIATION_MS': '0.440607',
+      'JAVA_VERSION': '11',
+      'GC_ALGORITHM': 'G1'
+    }
+  },
+  {
+    'jvm_code': 'oraclejdk',
+    'jvm_descr': 'Oracle JDK',
+    'framework_code': 'akka',
+    'framework_descr': 'Akka',
+    'data': {
+      'CPUTIME_MS': '14143 6093 0 0',
+      'BASE_IMAGE': 'ubuntu:18.04',
+      'MEMORY_LIMIT': '2048m',
+      'REQUESTS_PROCESSED': '495560',
+      'AVERAGE_PROCESSING_TIME_MS': '1.81065',
+      'STANDARD_DEVIATION_MS': '0.687653',
+      'JAVA_VERSION': '11',
+      'GC_ALGORITHM': 'G1'
+    }
+  },
+  {
+    'jvm_code': 'oraclejdk',
+    'jvm_descr': 'Oracle JDK',
+    'framework_code': 'qs',
+    'framework_descr': 'Quarkus',
+    'data': {
+      'PROM_REQUESTS': '558561.0',
+      'PROM_TOTALTIME_S': '1.29829',
+      'PROM_AVERAGE_MS': '0.00232',
+      'CPUTIME_MS': '7457 6412 0 0',
+      'BASE_IMAGE': 'ubuntu:18.04',
+      'MEMORY_LIMIT': '2048m',
+      'REQUESTS_PROCESSED': '558561',
+      'AVERAGE_PROCESSING_TIME_MS': '1.60585',
+      'STANDARD_DEVIATION_MS': '0.426436',
+      'JAVA_VERSION': '11',
+      'GC_ALGORITHM': 'G1'
+    }
+  },
+  {
+    'jvm_code': 'openj9',
+    'jvm_descr': 'OpenJ9',
+    'framework_code': 'hse',
+    'framework_descr': 'Helidon SE',
+    'data': {
+      'CPUTIME_MS': '21305 3196 0 0',
+      'BASE_IMAGE': 'adoptopenjdk/openjdk11-openj9:jdk-11.0.3.7_openj9-0.14.0',
+      'MEMORY_LIMIT': '2048m',
+      'REQUESTS_PROCESSED': '459873',
+      'AVERAGE_PROCESSING_TIME_MS': '1.95154',
+      'STANDARD_DEVIATION_MS': '0.462355',
+      'JAVA_VERSION': '11',
+      'GC_ALGORITHM': 'Gencon'
+    }
+  },
+  {
+    'jvm_code': 'openj9',
+    'jvm_descr': 'OpenJ9',
+    'framework_code': 'mn',
+    'framework_descr': 'Micronaut',
+    'data': {
+      'CPUTIME_MS': '22809 4414 0 0',
+      'BASE_IMAGE': 'adoptopenjdk/openjdk11-openj9:jdk-11.0.3.7_openj9-0.14.0',
+      'MEMORY_LIMIT': '2048m',
+      'REQUESTS_PROCESSED': '429952',
+      'AVERAGE_PROCESSING_TIME_MS': '2.08754',
+      'STANDARD_DEVIATION_MS': '0.557446',
+      'JAVA_VERSION': '11',
+      'GC_ALGORITHM': 'Gencon'
+    }
+  },
+  {
+    'jvm_code': 'openj9',
+    'jvm_descr': 'OpenJ9',
+    'framework_code': 'none',
+    'framework_descr': 'No framework',
+    'data': {
+      'CPUTIME_MS': '7029 4037 0 0',
+      'BASE_IMAGE': 'adoptopenjdk/openjdk11-openj9:jdk-11.0.3.7_openj9-0.14.0',
+      'MEMORY_LIMIT': '2048m',
+      'REQUESTS_PROCESSED': '568071',
+      'AVERAGE_PROCESSING_TIME_MS': '1.57892',
+      'STANDARD_DEVIATION_MS': '0.420393',
+      'JAVA_VERSION': '11',
+      'GC_ALGORITHM': 'Gencon'
+    }
+  },
+  {
+    'jvm_code': 'openj9',
+    'jvm_descr': 'OpenJ9',
+    'framework_code': 'mp',
+    'framework_descr': 'Microprofile',
+    'data': {
+      'PROM_REQUESTS': '456911',
+      'PROM_TOTALTIME_S': '1.81223',
+      'PROM_AVERAGE_MS': '0.00397',
+      'CPUTIME_MS': '22662 3609 477 21',
+      'BASE_IMAGE': 'adoptopenjdk/openjdk11-openj9:jdk-11.0.3.7_openj9-0.14.0',
+      'MEMORY_LIMIT': '2048m',
+      'REQUESTS_PROCESSED': '456910',
+      'AVERAGE_PROCESSING_TIME_MS': '1.96416',
+      'STANDARD_DEVIATION_MS': '1.7289',
+      'JAVA_VERSION': '11',
+      'GC_ALGORITHM': 'Gencon'
+    }
+  },
+  {
+    'jvm_code': 'openj9',
+    'jvm_descr': 'OpenJ9',
+    'framework_code': 'sb',
+    'framework_descr': 'Spring Boot',
+    'data': {
+      'PROM_REQUESTS': '482008.0',
+      'PROM_TOTALTIME_S': '96.625102692',
+      'PROM_AVERAGE_MS': '0.20046',
+      'CPUTIME_MS': '17284 3921 0 0',
+      'BASE_IMAGE': 'adoptopenjdk/openjdk11-openj9:jdk-11.0.3.7_openj9-0.14.0',
+      'MEMORY_LIMIT': '2048m',
+      'REQUESTS_PROCESSED': '482007',
+      'AVERAGE_PROCESSING_TIME_MS': '1.86149',
+      'STANDARD_DEVIATION_MS': '0.626628',
+      'JAVA_VERSION': '11',
+      'GC_ALGORITHM': 'Gencon'
+    }
+  },
+  {
+    'jvm_code': 'openj9',
+    'jvm_descr': 'OpenJ9',
+    'framework_code': 'sbreactive',
+    'framework_descr': 'WebFlux',
+    'data': {
+      'PROM_REQUESTS': '541111.0',
+      'PROM_TOTALTIME_S': '65.887668381',
+      'PROM_AVERAGE_MS': '0.12176',
+      'CPUTIME_MS': '10963 4329 0 0',
+      'BASE_IMAGE': 'adoptopenjdk/openjdk11-openj9:jdk-11.0.3.7_openj9-0.14.0',
+      'MEMORY_LIMIT': '2048m',
+      'REQUESTS_PROCESSED': '541111',
+      'AVERAGE_PROCESSING_TIME_MS': '1.65779',
+      'STANDARD_DEVIATION_MS': '0.748343',
+      'JAVA_VERSION': '11',
+      'GC_ALGORITHM': 'Gencon'
+    }
+  },
+  {
+    'jvm_code': 'openj9',
+    'jvm_descr': 'OpenJ9',
+    'framework_code': 'sbfu',
+    'framework_descr': 'Spring Fu',
+    'data': {
+      'CPUTIME_MS': '15371 4174 0 0',
+      'BASE_IMAGE': 'adoptopenjdk/openjdk11-openj9:jdk-11.0.3.7_openj9-0.14.0',
+      'MEMORY_LIMIT': '2048m',
+      'REQUESTS_PROCESSED': '489737',
+      'AVERAGE_PROCESSING_TIME_MS': '1.83231',
+      'STANDARD_DEVIATION_MS': '0.924638',
+      'JAVA_VERSION': '11',
+      'GC_ALGORITHM': 'Gencon'
+    }
+  },
+  {
+    'jvm_code': 'openj9',
+    'jvm_descr': 'OpenJ9',
+    'framework_code': 'vertx',
+    'framework_descr': 'Vert.x',
+    'data': {
+      'PROM_REQUESTS': '566589.0',
+      'PROM_TOTALTIME_S': '12.383818803',
+      'PROM_AVERAGE_MS': '0.02186',
+      'CPUTIME_MS': '6330 3585 0 0',
+      'BASE_IMAGE': 'adoptopenjdk/openjdk11-openj9:jdk-11.0.3.7_openj9-0.14.0',
+      'MEMORY_LIMIT': '2048m',
+      'REQUESTS_PROCESSED': '566589',
+      'AVERAGE_PROCESSING_TIME_MS': '1.58308',
+      'STANDARD_DEVIATION_MS': '0.804493',
+      'JAVA_VERSION': '11',
+      'GC_ALGORITHM': 'Gencon'
+    }
+  },
+  {
+    'jvm_code': 'openj9',
+    'jvm_descr': 'OpenJ9',
+    'framework_code': 'akka',
+    'framework_descr': 'Akka',
+    'data': {
+      'CPUTIME_MS': '20994 7512 0 0',
+      'BASE_IMAGE': 'adoptopenjdk/openjdk11-openj9:jdk-11.0.3.7_openj9-0.14.0',
+      'MEMORY_LIMIT': '2048m',
+      'REQUESTS_PROCESSED': '455647',
+      'AVERAGE_PROCESSING_TIME_MS': '1.96949',
+      'STANDARD_DEVIATION_MS': '1.12178',
+      'JAVA_VERSION': '11',
+      'GC_ALGORITHM': 'Gencon'
+    }
+  },
+  {
+    'jvm_code': 'openj9',
+    'jvm_descr': 'OpenJ9',
+    'framework_code': 'qs',
+    'framework_descr': 'Quarkus',
+    'data': {
+      'PROM_REQUESTS': '550875.0',
+      'PROM_TOTALTIME_S': '1.56955',
+      'PROM_AVERAGE_MS': '0.00285',
+      'CPUTIME_MS': '23189 5891 0 0',
+      'BASE_IMAGE': 'adoptopenjdk/openjdk11-openj9:jdk-11.0.3.7_openj9-0.14.0',
+      'MEMORY_LIMIT': '2048m',
+      'REQUESTS_PROCESSED': '550875',
+      'AVERAGE_PROCESSING_TIME_MS': '1.62839',
+      'STANDARD_DEVIATION_MS': '0.61438',
+      'JAVA_VERSION': '11',
+      'GC_ALGORITHM': 'Gencon'
+    }
+  },
+  {
+    'jvm_code': 'adoptopenjdk',
+    'jvm_descr': 'AdoptOpenJDK',
+    'framework_code': 'hse',
+    'framework_descr': 'Helidon SE',
+    'data': {
+      'CPUTIME_MS': '6669 4751 0 0',
+      'BASE_IMAGE': 'adoptopenjdk/openjdk11:jdk-11.0.3.7',
+      'MEMORY_LIMIT': '2048m',
+      'REQUESTS_PROCESSED': '561927',
+      'AVERAGE_PROCESSING_TIME_MS': '1.59634',
+      'STANDARD_DEVIATION_MS': '0.300718',
+      'JAVA_VERSION': '11',
+      'GC_ALGORITHM': 'G1'
+    }
+  },
+  {
+    'jvm_code': 'adoptopenjdk',
+    'jvm_descr': 'AdoptOpenJDK',
+    'framework_code': 'mn',
+    'framework_descr': 'Micronaut',
+    'data': {
+      'CPUTIME_MS': '9177 4516 0 0',
+      'BASE_IMAGE': 'adoptopenjdk/openjdk11:jdk-11.0.3.7',
+      'MEMORY_LIMIT': '2048m',
+      'REQUESTS_PROCESSED': '537931',
+      'AVERAGE_PROCESSING_TIME_MS': '1.66767',
+      'STANDARD_DEVIATION_MS': '0.456383',
+      'JAVA_VERSION': '11',
+      'GC_ALGORITHM': 'G1'
+    }
+  },
+  {
+    'jvm_code': 'adoptopenjdk',
+    'jvm_descr': 'AdoptOpenJDK',
+    'framework_code': 'none',
+    'framework_descr': 'No framework',
+    'data': {
+      'CPUTIME_MS': '3339 4135 0 0',
+      'BASE_IMAGE': 'adoptopenjdk/openjdk11:jdk-11.0.3.7',
+      'MEMORY_LIMIT': '2048m',
+      'REQUESTS_PROCESSED': '573827',
+      'AVERAGE_PROCESSING_TIME_MS': '1.56301',
+      'STANDARD_DEVIATION_MS': '0.212827',
+      'JAVA_VERSION': '11',
+      'GC_ALGORITHM': 'G1'
+    }
+  },
+  {
+    'jvm_code': 'adoptopenjdk',
+    'jvm_descr': 'AdoptOpenJDK',
+    'framework_code': 'mp',
+    'framework_descr': 'Microprofile',
+    'data': {
+      'PROM_REQUESTS': '515362',
+      'PROM_TOTALTIME_S': '1.88488',
+      'PROM_AVERAGE_MS': '0.00366',
+      'CPUTIME_MS': '14661 2933 124 4',
+      'BASE_IMAGE': 'adoptopenjdk/openjdk11:jdk-11.0.3.7',
+      'MEMORY_LIMIT': '2048m',
+      'REQUESTS_PROCESSED': '515362',
+      'AVERAGE_PROCESSING_TIME_MS': '1.74067',
+      'STANDARD_DEVIATION_MS': '1.19765',
+      'JAVA_VERSION': '11',
+      'GC_ALGORITHM': 'G1'
+    }
+  },
+  {
+    'jvm_code': 'adoptopenjdk',
+    'jvm_descr': 'AdoptOpenJDK',
+    'framework_code': 'sb',
+    'framework_descr': 'Spring Boot',
+    'data': {
+      'PROM_REQUESTS': '521672.0',
+      'PROM_TOTALTIME_S': '77.582848282',
+      'PROM_AVERAGE_MS': '0.14872',
+      'CPUTIME_MS': '13760 2289 0 0',
+      'BASE_IMAGE': 'adoptopenjdk/openjdk11:jdk-11.0.3.7',
+      'MEMORY_LIMIT': '2048m',
+      'REQUESTS_PROCESSED': '521672',
+      'AVERAGE_PROCESSING_TIME_MS': '1.71979',
+      'STANDARD_DEVIATION_MS': '0.432002',
+      'JAVA_VERSION': '11',
+      'GC_ALGORITHM': 'G1'
+    }
+  },
+  {
+    'jvm_code': 'adoptopenjdk',
+    'jvm_descr': 'AdoptOpenJDK',
+    'framework_code': 'sbreactive',
+    'framework_descr': 'WebFlux',
+    'data': {
+      'PROM_REQUESTS': '547765.0',
+      'PROM_TOTALTIME_S': '60.428338759',
+      'PROM_AVERAGE_MS': '0.11032',
+      'CPUTIME_MS': '9799 4346 0 0',
+      'BASE_IMAGE': 'adoptopenjdk/openjdk11:jdk-11.0.3.7',
+      'MEMORY_LIMIT': '2048m',
+      'REQUESTS_PROCESSED': '547765',
+      'AVERAGE_PROCESSING_TIME_MS': '1.6376',
+      'STANDARD_DEVIATION_MS': '0.390386',
+      'JAVA_VERSION': '11',
+      'GC_ALGORITHM': 'G1'
+    }
+  },
+  {
+    'jvm_code': 'adoptopenjdk',
+    'jvm_descr': 'AdoptOpenJDK',
+    'framework_code': 'sbfu',
+    'framework_descr': 'Spring Fu',
+    'data': {
+      'CPUTIME_MS': '6882 5058 0 0',
+      'BASE_IMAGE': 'adoptopenjdk/openjdk11:jdk-11.0.3.7',
+      'MEMORY_LIMIT': '2048m',
+      'REQUESTS_PROCESSED': '560944',
+      'AVERAGE_PROCESSING_TIME_MS': '1.59916',
+      'STANDARD_DEVIATION_MS': '0.383564',
+      'JAVA_VERSION': '11',
+      'GC_ALGORITHM': 'G1'
+    }
+  },
+  {
+    'jvm_code': 'adoptopenjdk',
+    'jvm_descr': 'AdoptOpenJDK',
+    'framework_code': 'vertx',
+    'framework_descr': 'Vert.x',
+    'data': {
+      'PROM_REQUESTS': '570947.0',
+      'PROM_TOTALTIME_S': '9.174706199',
+      'PROM_AVERAGE_MS': '0.01607',
+      'CPUTIME_MS': '5111 3531 0 0',
+      'BASE_IMAGE': 'adoptopenjdk/openjdk11:jdk-11.0.3.7',
+      'MEMORY_LIMIT': '2048m',
+      'REQUESTS_PROCESSED': '570946',
+      'AVERAGE_PROCESSING_TIME_MS': '1.57098',
+      'STANDARD_DEVIATION_MS': '0.472747',
+      'JAVA_VERSION': '11',
+      'GC_ALGORITHM': 'G1'
+    }
+  },
+  {
+    'jvm_code': 'adoptopenjdk',
+    'jvm_descr': 'AdoptOpenJDK',
+    'framework_code': 'akka',
+    'framework_descr': 'Akka',
+    'data': {
+      'CPUTIME_MS': '14326 6107 0 0',
+      'BASE_IMAGE': 'adoptopenjdk/openjdk11:jdk-11.0.3.7',
+      'MEMORY_LIMIT': '2048m',
+      'REQUESTS_PROCESSED': '495332',
+      'AVERAGE_PROCESSING_TIME_MS': '1.81129',
+      'STANDARD_DEVIATION_MS': '0.659219',
+      'JAVA_VERSION': '11',
+      'GC_ALGORITHM': 'G1'
+    }
+  },
+  {
+    'jvm_code': 'adoptopenjdk',
+    'jvm_descr': 'AdoptOpenJDK',
+    'framework_code': 'qs',
+    'framework_descr': 'Quarkus',
+    'data': {
+      'PROM_REQUESTS': '558480.0',
+      'PROM_TOTALTIME_S': '1.32675',
+      'PROM_AVERAGE_MS': '0.00238',
+      'CPUTIME_MS': '7369 6522 0 0',
+      'BASE_IMAGE': 'adoptopenjdk/openjdk11:jdk-11.0.3.7',
+      'MEMORY_LIMIT': '2048m',
+      'REQUESTS_PROCESSED': '558480',
+      'AVERAGE_PROCESSING_TIME_MS': '1.606',
+      'STANDARD_DEVIATION_MS': '0.458135',
+      'JAVA_VERSION': '11',
+      'GC_ALGORITHM': 'G1'
+    }
+  },
+  {
+    'jvm_code': 'zing',
+    'jvm_descr': 'Azul Zing',
+    'framework_code': 'hse',
+    'framework_descr': 'Helidon SE',
+    'data': {
+      'CPUTIME_MS': '11958 4792 1 0',
+      'BASE_IMAGE': 'ubuntu:18.04',
+      'MEMORY_LIMIT': '1024m',
+      'REQUESTS_PROCESSED': '559430',
+      'AVERAGE_PROCESSING_TIME_MS': '1.60335',
+      'STANDARD_DEVIATION_MS': '0.400047',
+      'JAVA_VERSION': '11',
+      'GC_ALGORITHM': 'Falcon'
+    }
+  },
+  {
+    'jvm_code': 'zing',
+    'jvm_descr': 'Azul Zing',
+    'framework_code': 'mn',
+    'framework_descr': 'Micronaut',
+    'data': {
+      'CPUTIME_MS': '18165 4562 1 0',
+      'BASE_IMAGE': 'ubuntu:18.04',
+      'MEMORY_LIMIT': '1024m',
+      'REQUESTS_PROCESSED': '540682',
+      'AVERAGE_PROCESSING_TIME_MS': '1.65924',
+      'STANDARD_DEVIATION_MS': '0.700501',
+      'JAVA_VERSION': '11',
+      'GC_ALGORITHM': 'Falcon'
+    }
+  },
+  {
+    'jvm_code': 'zing',
+    'jvm_descr': 'Azul Zing',
+    'framework_code': 'none',
+    'framework_descr': 'No framework',
+    'data': {
+      'CPUTIME_MS': '5347 3975 1 0',
+      'BASE_IMAGE': 'ubuntu:18.04',
+      'MEMORY_LIMIT': '1024m',
+      'REQUESTS_PROCESSED': '576102',
+      'AVERAGE_PROCESSING_TIME_MS': '1.55684',
+      'STANDARD_DEVIATION_MS': '0.321527',
+      'JAVA_VERSION': '11',
+      'GC_ALGORITHM': 'Falcon'
+    }
+  },
+  {
+    'jvm_code': 'zing',
+    'jvm_descr': 'Azul Zing',
+    'framework_code': 'mp',
+    'framework_descr': 'Microprofile',
+    'data': {
+      'PROM_REQUESTS': '499094',
+      'PROM_TOTALTIME_S': '1.49811',
+      'PROM_AVERAGE_MS': '0.00300',
+      'CPUTIME_MS': '34806 3476 254 3',
+      'BASE_IMAGE': 'ubuntu:18.04',
+      'MEMORY_LIMIT': '1024m',
+      'REQUESTS_PROCESSED': '499094',
+      'AVERAGE_PROCESSING_TIME_MS': '1.79756',
+      'STANDARD_DEVIATION_MS': '1.65787',
+      'JAVA_VERSION': '11',
+      'GC_ALGORITHM': 'Falcon'
+    }
+  },
+  {
+    'jvm_code': 'zing',
+    'jvm_descr': 'Azul Zing',
+    'framework_code': 'sb',
+    'framework_descr': 'Spring Boot',
+    'data': {
+      'PROM_REQUESTS': '514421.0',
+      'PROM_TOTALTIME_S': '82.087290924',
+      'PROM_AVERAGE_MS': '0.15957',
+      'CPUTIME_MS': '24521 3064 1 0',
+      'BASE_IMAGE': 'ubuntu:18.04',
+      'MEMORY_LIMIT': '1024m',
+      'REQUESTS_PROCESSED': '514420',
+      'AVERAGE_PROCESSING_TIME_MS': '1.74396',
+      'STANDARD_DEVIATION_MS': '0.616314',
+      'JAVA_VERSION': '11',
+      'GC_ALGORITHM': 'Falcon'
+    }
+  },
+  {
+    'jvm_code': 'zing',
+    'jvm_descr': 'Azul Zing',
+    'framework_code': 'sbreactive',
+    'framework_descr': 'WebFlux',
+    'data': {
+      'PROM_REQUESTS': '551961.0',
+      'PROM_TOTALTIME_S': '53.389650491',
+      'PROM_AVERAGE_MS': '0.09673',
+      'CPUTIME_MS': '18924 4387 1 0',
+      'BASE_IMAGE': 'ubuntu:18.04',
+      'MEMORY_LIMIT': '1024m',
+      'REQUESTS_PROCESSED': '551961',
+      'AVERAGE_PROCESSING_TIME_MS': '1.62517',
+      'STANDARD_DEVIATION_MS': '0.553932',
+      'JAVA_VERSION': '11',
+      'GC_ALGORITHM': 'Falcon'
+    }
+  },
+  {
+    'jvm_code': 'zing',
+    'jvm_descr': 'Azul Zing',
+    'framework_code': 'sbfu',
+    'framework_descr': 'Spring Fu',
+    'data': {
+      'CPUTIME_MS': '15323 4520 1 0',
+      'BASE_IMAGE': 'ubuntu:18.04',
+      'MEMORY_LIMIT': '1024m',
+      'REQUESTS_PROCESSED': '558969',
+      'AVERAGE_PROCESSING_TIME_MS': '1.60461',
+      'STANDARD_DEVIATION_MS': '0.596039',
+      'JAVA_VERSION': '11',
+      'GC_ALGORITHM': 'Falcon'
+    }
+  },
+  {
+    'jvm_code': 'zing',
+    'jvm_descr': 'Azul Zing',
+    'framework_code': 'vertx',
+    'framework_descr': 'Vert.x',
+    'data': {
+      'PROM_REQUESTS': '571087.0',
+      'PROM_TOTALTIME_S': '8.220091354',
+      'PROM_AVERAGE_MS': '0.01439',
+      'CPUTIME_MS': '10088 3329 1 0',
+      'BASE_IMAGE': 'ubuntu:18.04',
+      'MEMORY_LIMIT': '1024m',
+      'REQUESTS_PROCESSED': '571087',
+      'AVERAGE_PROCESSING_TIME_MS': '1.57043',
+      'STANDARD_DEVIATION_MS': '0.791642',
+      'JAVA_VERSION': '11',
+      'GC_ALGORITHM': 'Falcon'
+    }
+  },
+  {
+    'jvm_code': 'zing',
+    'jvm_descr': 'Azul Zing',
+    'framework_code': 'akka',
+    'framework_descr': 'Akka',
+    'data': {
+      'CPUTIME_MS': '24662 6980 0 0',
+      'BASE_IMAGE': 'ubuntu:18.04',
+      'MEMORY_LIMIT': '1024m',
+      'REQUESTS_PROCESSED': '482395',
+      'AVERAGE_PROCESSING_TIME_MS': '1.85994',
+      'STANDARD_DEVIATION_MS': '1.02455',
+      'JAVA_VERSION': '11',
+      'GC_ALGORITHM': 'Falcon'
+    }
+  },
+  {
+    'jvm_code': 'zing',
+    'jvm_descr': 'Azul Zing',
+    'framework_code': 'qs',
+    'framework_descr': 'Quarkus',
+    'data': {
+      'PROM_REQUESTS': '555896.0',
+      'PROM_TOTALTIME_S': '1.21484',
+      'PROM_AVERAGE_MS': '0.00219',
+      'CPUTIME_MS': '14794 6923 1 0',
+      'BASE_IMAGE': 'ubuntu:18.04',
+      'MEMORY_LIMIT': '1024m',
+      'REQUESTS_PROCESSED': '555896',
+      'AVERAGE_PROCESSING_TIME_MS': '1.61347',
+      'STANDARD_DEVIATION_MS': '0.575529',
+      'JAVA_VERSION': '11',
+      'GC_ALGORITHM': 'Falcon'
+    }
+  },
+  {
+    'jvm_code': 'oraclejdk',
+    'jvm_descr': 'Oracle JDK',
+    'framework_code': 'hse',
+    'framework_descr': 'Helidon SE',
+    'data': {
+      'CPUTIME_MS': '6916 4822 0 0',
+      'BASE_IMAGE': 'ubuntu:18.04',
+      'MEMORY_LIMIT': '25m',
+      'REQUESTS_PROCESSED': '559426',
+      'AVERAGE_PROCESSING_TIME_MS': '1.60324',
+      'STANDARD_DEVIATION_MS': '0.313964',
+      'JAVA_VERSION': '11',
+      'GC_ALGORITHM': 'G1'
+    }
+  },
+  {
+    'jvm_code': 'oraclejdk',
+    'jvm_descr': 'Oracle JDK',
+    'framework_code': 'mn',
+    'framework_descr': 'Micronaut',
+    'data': {
+      'CPUTIME_MS': '9590 4493 0 0',
+      'BASE_IMAGE': 'ubuntu:18.04',
+      'MEMORY_LIMIT': '25m',
+      'REQUESTS_PROCESSED': '536745',
+      'AVERAGE_PROCESSING_TIME_MS': '1.67142',
+      'STANDARD_DEVIATION_MS': '0.446447',
+      'JAVA_VERSION': '11',
+      'GC_ALGORITHM': 'G1'
+    }
+  },
+  {
+    'jvm_code': 'oraclejdk',
+    'jvm_descr': 'Oracle JDK',
+    'framework_code': 'none',
+    'framework_descr': 'No framework',
+    'data': {
+      'CPUTIME_MS': '3790 3988 0 0',
+      'BASE_IMAGE': 'ubuntu:18.04',
+      'MEMORY_LIMIT': '25m',
+      'REQUESTS_PROCESSED': '578661',
+      'AVERAGE_PROCESSING_TIME_MS': '1.55001',
+      'STANDARD_DEVIATION_MS': '0.221915',
+      'JAVA_VERSION': '11',
+      'GC_ALGORITHM': 'G1'
+    }
+  },
+  {
+    'jvm_code': 'oraclejdk',
+    'jvm_descr': 'Oracle JDK',
+    'framework_code': 'mp',
+    'framework_descr': 'Microprofile',
+    'data': {
+      'CPUTIME_MS': '3791 110 126 3',
+      'BASE_IMAGE': 'ubuntu:18.04',
+      'MEMORY_LIMIT': '25m',
+      'REQUESTS_PROCESSED': '7',
+      'AVERAGE_PROCESSING_TIME_MS': '86.7123',
+      'STANDARD_DEVIATION_MS': '186.197',
+      'JAVA_VERSION': '11',
+      'GC_ALGORITHM': 'G1'
+    }
+  },
+  {
+    'jvm_code': 'oraclejdk',
+    'jvm_descr': 'Oracle JDK',
+    'framework_code': 'sb',
+    'framework_descr': 'Spring Boot',
+    'data': {
+      'PROM_REQUESTS': '458762.0',
+      'PROM_TOTALTIME_S': '158.69858489',
+      'PROM_AVERAGE_MS': '0.34593',
+      'CPUTIME_MS': '17310 4799 0 0',
+      'BASE_IMAGE': 'ubuntu:18.04',
+      'MEMORY_LIMIT': '25m',
+      'REQUESTS_PROCESSED': '458761',
+      'AVERAGE_PROCESSING_TIME_MS': '1.95619',
+      'STANDARD_DEVIATION_MS': '1.22552',
+      'JAVA_VERSION': '11',
+      'GC_ALGORITHM': 'G1'
+    }
+  },
+  {
+    'jvm_code': 'oraclejdk',
+    'jvm_descr': 'Oracle JDK',
+    'framework_code': 'sbreactive',
+    'framework_descr': 'WebFlux',
+    'data': {
+      'PROM_REQUESTS': '536074.0',
+      'PROM_TOTALTIME_S': '71.880472444',
+      'PROM_AVERAGE_MS': '0.13409',
+      'CPUTIME_MS': '11891 4185 0 0',
+      'BASE_IMAGE': 'ubuntu:18.04',
+      'MEMORY_LIMIT': '25m',
+      'REQUESTS_PROCESSED': '536073',
+      'AVERAGE_PROCESSING_TIME_MS': '1.67343',
+      'STANDARD_DEVIATION_MS': '0.658379',
+      'JAVA_VERSION': '11',
+      'GC_ALGORITHM': 'G1'
+    }
+  },
+  {
+    'jvm_code': 'oraclejdk',
+    'jvm_descr': 'Oracle JDK',
+    'framework_code': 'sbfu',
+    'framework_descr': 'Spring Fu',
+    'data': {
+      'CPUTIME_MS': '7618 4632 0 0',
+      'BASE_IMAGE': 'ubuntu:18.04',
+      'MEMORY_LIMIT': '25m',
+      'REQUESTS_PROCESSED': '552625',
+      'AVERAGE_PROCESSING_TIME_MS': '1.62321',
+      'STANDARD_DEVIATION_MS': '0.418121',
+      'JAVA_VERSION': '11',
+      'GC_ALGORITHM': 'G1'
+    }
+  },
+  {
+    'jvm_code': 'oraclejdk',
+    'jvm_descr': 'Oracle JDK',
+    'framework_code': 'vertx',
+    'framework_descr': 'Vert.x',
+    'data': {
+      'PROM_REQUESTS': '571933.0',
+      'PROM_TOTALTIME_S': '9.358520973',
+      'PROM_AVERAGE_MS': '0.01636',
+      'CPUTIME_MS': '5316 3435 0 0',
+      'BASE_IMAGE': 'ubuntu:18.04',
+      'MEMORY_LIMIT': '25m',
+      'REQUESTS_PROCESSED': '571932',
+      'AVERAGE_PROCESSING_TIME_MS': '1.56832',
+      'STANDARD_DEVIATION_MS': '0.439176',
+      'JAVA_VERSION': '11',
+      'GC_ALGORITHM': 'G1'
+    }
+  },
+  {
+    'jvm_code': 'oraclejdk',
+    'jvm_descr': 'Oracle JDK',
+    'framework_code': 'akka',
+    'framework_descr': 'Akka',
+    'data': {
+      'CPUTIME_MS': '15141 6010 0 0',
+      'BASE_IMAGE': 'ubuntu:18.04',
+      'MEMORY_LIMIT': '25m',
+      'REQUESTS_PROCESSED': '489764',
+      'AVERAGE_PROCESSING_TIME_MS': '1.83201',
+      'STANDARD_DEVIATION_MS': '0.72092',
+      'JAVA_VERSION': '11',
+      'GC_ALGORITHM': 'G1'
+    }
+  },
+  {
+    'jvm_code': 'oraclejdk',
+    'jvm_descr': 'Oracle JDK',
+    'framework_code': 'qs',
+    'framework_descr': 'Quarkus',
+    'data': {
+      'PROM_REQUESTS': '558395.0',
+      'PROM_TOTALTIME_S': '1.36430',
+      'PROM_AVERAGE_MS': '0.00244',
+      'CPUTIME_MS': '8158 6003 0 0',
+      'BASE_IMAGE': 'ubuntu:18.04',
+      'MEMORY_LIMIT': '25m',
+      'REQUESTS_PROCESSED': '558395',
+      'AVERAGE_PROCESSING_TIME_MS': '1.60616',
+      'STANDARD_DEVIATION_MS': '0.44381',
+      'JAVA_VERSION': '11',
+      'GC_ALGORITHM': 'G1'
+    }
+  },
+  {
+    'jvm_code': 'openj9',
+    'jvm_descr': 'OpenJ9',
+    'framework_code': 'hse',
+    'framework_descr': 'Helidon SE',
+    'data': {
+      'CPUTIME_MS': '21780 3548 0 0',
+      'BASE_IMAGE': 'adoptopenjdk/openjdk11-openj9:jdk-11.0.3.7_openj9-0.14.0',
+      'MEMORY_LIMIT': '25m',
+      'REQUESTS_PROCESSED': '452358',
+      'AVERAGE_PROCESSING_TIME_MS': '1.98389',
+      'STANDARD_DEVIATION_MS': '0.54132',
+      'JAVA_VERSION': '11',
+      'GC_ALGORITHM': 'Gencon'
+    }
+  },
+  {
+    'jvm_code': 'openj9',
+    'jvm_descr': 'OpenJ9',
+    'framework_code': 'mn',
+    'framework_descr': 'Micronaut',
+    'data': {
+      'CPUTIME_MS': '23625 3823 0 0',
+      'BASE_IMAGE': 'adoptopenjdk/openjdk11-openj9:jdk-11.0.3.7_openj9-0.14.0',
+      'MEMORY_LIMIT': '25m',
+      'REQUESTS_PROCESSED': '428835',
+      'AVERAGE_PROCESSING_TIME_MS': '2.09285',
+      'STANDARD_DEVIATION_MS': '0.726454',
+      'JAVA_VERSION': '11',
+      'GC_ALGORITHM': 'Gencon'
+    }
+  },
+  {
+    'jvm_code': 'openj9',
+    'jvm_descr': 'OpenJ9',
+    'framework_code': 'none',
+    'framework_descr': 'No framework',
+    'data': {
+      'CPUTIME_MS': '7806 4111 0 0',
+      'BASE_IMAGE': 'adoptopenjdk/openjdk11-openj9:jdk-11.0.3.7_openj9-0.14.0',
+      'MEMORY_LIMIT': '25m',
+      'REQUESTS_PROCESSED': '563809',
+      'AVERAGE_PROCESSING_TIME_MS': '1.59081',
+      'STANDARD_DEVIATION_MS': '0.507294',
+      'JAVA_VERSION': '11',
+      'GC_ALGORITHM': 'Gencon'
+    }
+  },
+  {
+    'jvm_code': 'openj9',
+    'jvm_descr': 'OpenJ9',
+    'framework_code': 'mp',
+    'framework_descr': 'Microprofile',
+    'data': {
+      'CPUTIME_MS': '4020 602 0 0',
+      'BASE_IMAGE': 'adoptopenjdk/openjdk11-openj9:jdk-11.0.3.7_openj9-0.14.0',
+      'MEMORY_LIMIT': '25m',
+      'REQUESTS_PROCESSED': '0',
+      'JAVA_VERSION': '11',
+      'GC_ALGORITHM': 'Gencon'
+    }
+  },
+  {
+    'jvm_code': 'openj9',
+    'jvm_descr': 'OpenJ9',
+    'framework_code': 'sb',
+    'framework_descr': 'Spring Boot',
+    'data': {
+      'PROM_REQUESTS': '474909.0',
+      'PROM_TOTALTIME_S': '108.741128427',
+      'PROM_AVERAGE_MS': '0.22897',
+      'CPUTIME_MS': '18287 4228 0 0',
+      'BASE_IMAGE': 'adoptopenjdk/openjdk11-openj9:jdk-11.0.3.7_openj9-0.14.0',
+      'MEMORY_LIMIT': '25m',
+      'REQUESTS_PROCESSED': '474908',
+      'AVERAGE_PROCESSING_TIME_MS': '1.88943',
+      'STANDARD_DEVIATION_MS': '0.76753',
+      'JAVA_VERSION': '11',
+      'GC_ALGORITHM': 'Gencon'
+    }
+  },
+  {
+    'jvm_code': 'openj9',
+    'jvm_descr': 'OpenJ9',
+    'framework_code': 'sbreactive',
+    'framework_descr': 'WebFlux',
+    'data': {
+      'PROM_REQUESTS': '529439.0',
+      'PROM_TOTALTIME_S': '76.493542205',
+      'PROM_AVERAGE_MS': '0.14448',
+      'CPUTIME_MS': '12707 3878 0 0',
+      'BASE_IMAGE': 'adoptopenjdk/openjdk11-openj9:jdk-11.0.3.7_openj9-0.14.0',
+      'MEMORY_LIMIT': '25m',
+      'REQUESTS_PROCESSED': '529439',
+      'AVERAGE_PROCESSING_TIME_MS': '1.69459',
+      'STANDARD_DEVIATION_MS': '0.69695',
+      'JAVA_VERSION': '11',
+      'GC_ALGORITHM': 'Gencon'
+    }
+  },
+  {
+    'jvm_code': 'openj9',
+    'jvm_descr': 'OpenJ9',
+    'framework_code': 'sbfu',
+    'framework_descr': 'Spring Fu',
+    'data': {
+      'CPUTIME_MS': '16386 4298 0 0',
+      'BASE_IMAGE': 'adoptopenjdk/openjdk11-openj9:jdk-11.0.3.7_openj9-0.14.0',
+      'MEMORY_LIMIT': '25m',
+      'REQUESTS_PROCESSED': '484339',
+      'AVERAGE_PROCESSING_TIME_MS': '1.85263',
+      'STANDARD_DEVIATION_MS': '0.936388',
+      'JAVA_VERSION': '11',
+      'GC_ALGORITHM': 'Gencon'
+    }
+  },
+  {
+    'jvm_code': 'openj9',
+    'jvm_descr': 'OpenJ9',
+    'framework_code': 'vertx',
+    'framework_descr': 'Vert.x',
+    'data': {
+      'PROM_REQUESTS': '560327.0',
+      'PROM_TOTALTIME_S': '13.378321888',
+      'PROM_AVERAGE_MS': '0.02388',
+      'CPUTIME_MS': '6708 3777 0 0',
+      'BASE_IMAGE': 'adoptopenjdk/openjdk11-openj9:jdk-11.0.3.7_openj9-0.14.0',
+      'MEMORY_LIMIT': '25m',
+      'REQUESTS_PROCESSED': '560327',
+      'AVERAGE_PROCESSING_TIME_MS': '1.60072',
+      'STANDARD_DEVIATION_MS': '0.890255',
+      'JAVA_VERSION': '11',
+      'GC_ALGORITHM': 'Gencon'
+    }
+  },
+  {
+    'jvm_code': 'openj9',
+    'jvm_descr': 'OpenJ9',
+    'framework_code': 'akka',
+    'framework_descr': 'Akka',
+    'data': {
+      'CPUTIME_MS': '20969 7853 0 0',
+      'BASE_IMAGE': 'adoptopenjdk/openjdk11-openj9:jdk-11.0.3.7_openj9-0.14.0',
+      'MEMORY_LIMIT': '25m',
+      'REQUESTS_PROCESSED': '453812',
+      'AVERAGE_PROCESSING_TIME_MS': '1.97745',
+      'STANDARD_DEVIATION_MS': '1.17023',
+      'JAVA_VERSION': '11',
+      'GC_ALGORITHM': 'Gencon'
+    }
+  },
+  {
+    'jvm_code': 'openj9',
+    'jvm_descr': 'OpenJ9',
+    'framework_code': 'qs',
+    'framework_descr': 'Quarkus',
+    'data': {
+      'PROM_REQUESTS': '550316.0',
+      'PROM_TOTALTIME_S': '1.60472',
+      'PROM_AVERAGE_MS': '0.00292',
+      'CPUTIME_MS': '23617 6223 0 0',
+      'BASE_IMAGE': 'adoptopenjdk/openjdk11-openj9:jdk-11.0.3.7_openj9-0.14.0',
+      'MEMORY_LIMIT': '25m',
+      'REQUESTS_PROCESSED': '550315',
+      'AVERAGE_PROCESSING_TIME_MS': '1.63012',
+      'STANDARD_DEVIATION_MS': '0.693051',
+      'JAVA_VERSION': '11',
+      'GC_ALGORITHM': 'Gencon'
+    }
+  },
+  {
+    'jvm_code': 'adoptopenjdk',
+    'jvm_descr': 'AdoptOpenJDK',
+    'framework_code': 'hse',
+    'framework_descr': 'Helidon SE',
+    'data': {
+      'CPUTIME_MS': '7110 4763 0 0',
+      'BASE_IMAGE': 'adoptopenjdk/openjdk11:jdk-11.0.3.7',
+      'MEMORY_LIMIT': '25m',
+      'REQUESTS_PROCESSED': '560718',
+      'AVERAGE_PROCESSING_TIME_MS': '1.5996',
+      'STANDARD_DEVIATION_MS': '0.286719',
+      'JAVA_VERSION': '11',
+      'GC_ALGORITHM': 'G1'
+    }
+  },
+  {
+    'jvm_code': 'adoptopenjdk',
+    'jvm_descr': 'AdoptOpenJDK',
+    'framework_code': 'mn',
+    'framework_descr': 'Micronaut',
+    'data': {
+      'CPUTIME_MS': '9589 4431 0 0',
+      'BASE_IMAGE': 'adoptopenjdk/openjdk11:jdk-11.0.3.7',
+      'MEMORY_LIMIT': '25m',
+      'REQUESTS_PROCESSED': '536390',
+      'AVERAGE_PROCESSING_TIME_MS': '1.67228',
+      'STANDARD_DEVIATION_MS': '0.454914',
+      'JAVA_VERSION': '11',
+      'GC_ALGORITHM': 'G1'
+    }
+  },
+  {
+    'jvm_code': 'adoptopenjdk',
+    'jvm_descr': 'AdoptOpenJDK',
+    'framework_code': 'none',
+    'framework_descr': 'No framework',
+    'data': {
+      'CPUTIME_MS': '3713 3966 0 0',
+      'BASE_IMAGE': 'adoptopenjdk/openjdk11:jdk-11.0.3.7',
+      'MEMORY_LIMIT': '25m',
+      'REQUESTS_PROCESSED': '577272',
+      'AVERAGE_PROCESSING_TIME_MS': '1.55379',
+      'STANDARD_DEVIATION_MS': '0.220436',
+      'JAVA_VERSION': '11',
+      'GC_ALGORITHM': 'G1'
+    }
+  },
+  {
+    'jvm_code': 'adoptopenjdk',
+    'jvm_descr': 'AdoptOpenJDK',
+    'framework_code': 'mp',
+    'framework_descr': 'Microprofile',
+    'data': {
+      'CPUTIME_MS': '4733 109 126 4',
+      'BASE_IMAGE': 'adoptopenjdk/openjdk11:jdk-11.0.3.7',
+      'MEMORY_LIMIT': '25m',
+      'REQUESTS_PROCESSED': '0',
+      'JAVA_VERSION': '11',
+      'GC_ALGORITHM': 'G1'
+    }
+  },
+  {
+    'jvm_code': 'adoptopenjdk',
+    'jvm_descr': 'AdoptOpenJDK',
+    'framework_code': 'sb',
+    'framework_descr': 'Spring Boot',
+    'data': {
+      'PROM_REQUESTS': '448562.0',
+      'PROM_TOTALTIME_S': '114.807023143',
+      'PROM_AVERAGE_MS': '0.25594',
+      'CPUTIME_MS': '47195 3603 0 0',
+      'BASE_IMAGE': 'adoptopenjdk/openjdk11:jdk-11.0.3.7',
+      'MEMORY_LIMIT': '25m',
+      'REQUESTS_PROCESSED': '448562',
+      'AVERAGE_PROCESSING_TIME_MS': '2.00077',
+      'STANDARD_DEVIATION_MS': '1.54004',
+      'JAVA_VERSION': '11',
+      'GC_ALGORITHM': 'G1'
+    }
+  },
+  {
+    'jvm_code': 'adoptopenjdk',
+    'jvm_descr': 'AdoptOpenJDK',
+    'framework_code': 'sbreactive',
+    'framework_descr': 'WebFlux',
+    'data': {
+      'PROM_REQUESTS': '609045.0',
+      'PROM_TOTALTIME_S': '92.913994053',
+      'PROM_AVERAGE_MS': '0.15256',
+      'CPUTIME_MS': '22896 4475 0 0',
+      'BASE_IMAGE': 'adoptopenjdk/openjdk11:jdk-11.0.3.7',
+      'MEMORY_LIMIT': '25m',
+      'REQUESTS_PROCESSED': '507521',
+      'AVERAGE_PROCESSING_TIME_MS': '1.76791',
+      'STANDARD_DEVIATION_MS': '1.18155',
+      'JAVA_VERSION': '11',
+      'GC_ALGORITHM': 'G1'
+    }
+  },
+  {
+    'jvm_code': 'adoptopenjdk',
+    'jvm_descr': 'AdoptOpenJDK',
+    'framework_code': 'sbfu',
+    'framework_descr': 'Spring Fu',
+    'data': {
+      'CPUTIME_MS': '7500 4843 0 0',
+      'BASE_IMAGE': 'adoptopenjdk/openjdk11:jdk-11.0.3.7',
+      'MEMORY_LIMIT': '25m',
+      'REQUESTS_PROCESSED': '557537',
+      'AVERAGE_PROCESSING_TIME_MS': '1.60893',
+      'STANDARD_DEVIATION_MS': '0.413573',
+      'JAVA_VERSION': '11',
+      'GC_ALGORITHM': 'G1'
+    }
+  },
+  {
+    'jvm_code': 'adoptopenjdk',
+    'jvm_descr': 'AdoptOpenJDK',
+    'framework_code': 'vertx',
+    'framework_descr': 'Vert.x',
+    'data': {
+      'PROM_REQUESTS': '571171.0',
+      'PROM_TOTALTIME_S': '9.804943057',
+      'PROM_AVERAGE_MS': '0.01717',
+      'CPUTIME_MS': '5249 3456 0 0',
+      'BASE_IMAGE': 'adoptopenjdk/openjdk11:jdk-11.0.3.7',
+      'MEMORY_LIMIT': '25m',
+      'REQUESTS_PROCESSED': '571171',
+      'AVERAGE_PROCESSING_TIME_MS': '1.5701',
+      'STANDARD_DEVIATION_MS': '0.409169',
+      'JAVA_VERSION': '11',
+      'GC_ALGORITHM': 'G1'
+    }
+  },
+  {
+    'jvm_code': 'adoptopenjdk',
+    'jvm_descr': 'AdoptOpenJDK',
+    'framework_code': 'akka',
+    'framework_descr': 'Akka',
+    'data': {
+      'CPUTIME_MS': '15258 6004 0 0',
+      'BASE_IMAGE': 'adoptopenjdk/openjdk11:jdk-11.0.3.7',
+      'MEMORY_LIMIT': '25m',
+      'REQUESTS_PROCESSED': '488345',
+      'AVERAGE_PROCESSING_TIME_MS': '1.83725',
+      'STANDARD_DEVIATION_MS': '0.783847',
+      'JAVA_VERSION': '11',
+      'GC_ALGORITHM': 'G1'
+    }
+  },
+  {
+    'jvm_code': 'adoptopenjdk',
+    'jvm_descr': 'AdoptOpenJDK',
+    'framework_code': 'qs',
+    'framework_descr': 'Quarkus',
+    'data': {
+      'PROM_REQUESTS': '556140.0',
+      'PROM_TOTALTIME_S': '1.45483',
+      'PROM_AVERAGE_MS': '0.00262',
+      'CPUTIME_MS': '8098 6050 0 0',
+      'BASE_IMAGE': 'adoptopenjdk/openjdk11:jdk-11.0.3.7',
+      'MEMORY_LIMIT': '25m',
+      'REQUESTS_PROCESSED': '556139',
+      'AVERAGE_PROCESSING_TIME_MS': '1.61301',
+      'STANDARD_DEVIATION_MS': '0.420272',
+      'JAVA_VERSION': '11',
+      'GC_ALGORITHM': 'G1'
+    }
+  },
+  {
+    'jvm_code': 'native',
+    'jvm_descr': 'Substrate VM',
+    'framework_code': 'hse',
+    'framework_descr': 'Helidon SE',
+    'data': {
+      'CPUTIME_MS': '7942 4559 0 0',
+      'BASE_IMAGE': 'registry.fedoraproject.org/fedora-minimal',
+      'MEMORY_LIMIT': '2048m',
+      'REQUESTS_PROCESSED': '552438',
+      'AVERAGE_PROCESSING_TIME_MS': '1.62376',
+      'STANDARD_DEVIATION_MS': '0.0754888',
+      'JAVA_VERSION': '8',
+      'GC_ALGORITHM': 'Substrate'
+    }
+  },
+  {
+    'jvm_code': 'native',
+    'jvm_descr': 'Substrate VM',
+    'framework_code': 'mn',
+    'framework_descr': 'Micronaut',
+    'data': {
+      'CPUTIME_MS': '17639 4000 0 0',
+      'BASE_IMAGE': 'registry.fedoraproject.org/fedora-minimal',
+      'MEMORY_LIMIT': '2048m',
+      'REQUESTS_PROCESSED': '464493',
+      'AVERAGE_PROCESSING_TIME_MS': '1.932',
+      'STANDARD_DEVIATION_MS': '0.337756',
+      'JAVA_VERSION': '8',
+      'GC_ALGORITHM': 'Substrate'
+    }
+  },
+  {
+    'jvm_code': 'native',
+    'jvm_descr': 'Substrate VM',
+    'framework_code': 'none',
+    'framework_descr': 'No framework',
+    'data': {
+      'CPUTIME_MS': '4261 4088 0 0',
+      'BASE_IMAGE': 'registry.fedoraproject.org/fedora-minimal',
+      'MEMORY_LIMIT': '2048m',
+      'REQUESTS_PROCESSED': '572283',
+      'AVERAGE_PROCESSING_TIME_MS': '1.56729',
+      'STANDARD_DEVIATION_MS': '0.0950869',
+      'JAVA_VERSION': '8',
+      'GC_ALGORITHM': 'Substrate'
+    }
+  },
+  {
+    'jvm_code': 'native',
+    'jvm_descr': 'Substrate VM',
+    'framework_code': 'qs',
+    'framework_descr': 'Quarkus',
+    'data': {
+      'PROM_REQUESTS': '542318.0',
+      'PROM_TOTALTIME_S': '2.19109',
+      'PROM_AVERAGE_MS': '0.00404',
+      'CPUTIME_MS': '9793 5412 0 0',
+      'BASE_IMAGE': 'registry.fedoraproject.org/fedora-minimal',
+      'MEMORY_LIMIT': '2048m',
+      'REQUESTS_PROCESSED': '542317',
+      'AVERAGE_PROCESSING_TIME_MS': '1.65402',
+      'STANDARD_DEVIATION_MS': '0.0560737',
+      'JAVA_VERSION': '8',
+      'GC_ALGORITHM': 'Substrate'
+    }
+  },
+  {
+    'jvm_code': 'zing',
+    'jvm_descr': 'Azul Zing',
+    'framework_code': 'hse',
+    'framework_descr': 'Helidon SE',
+    'data': {
+      'CPUTIME_MS': '11971 4464 1 0',
+      'BASE_IMAGE': 'ubuntu:18.04',
+      'MEMORY_LIMIT': '2048m',
+      'REQUESTS_PROCESSED': '560879',
+      'AVERAGE_PROCESSING_TIME_MS': '1.59911',
+      'STANDARD_DEVIATION_MS': '0.488158',
+      'JAVA_VERSION': '8',
+      'GC_ALGORITHM': 'Falcon'
+    }
+  },
+  {
+    'jvm_code': 'zing',
+    'jvm_descr': 'Azul Zing',
+    'framework_code': 'mn',
+    'framework_descr': 'Micronaut',
+    'data': {
+      'CPUTIME_MS': '17259 4472 1 0',
+      'BASE_IMAGE': 'ubuntu:18.04',
+      'MEMORY_LIMIT': '2048m',
+      'REQUESTS_PROCESSED': '538028',
+      'AVERAGE_PROCESSING_TIME_MS': '1.66713',
+      'STANDARD_DEVIATION_MS': '0.411647',
+      'JAVA_VERSION': '8',
+      'GC_ALGORITHM': 'Falcon'
+    }
+  },
+  {
+    'jvm_code': 'zing',
+    'jvm_descr': 'Azul Zing',
+    'framework_code': 'none',
+    'framework_descr': 'No framework',
+    'data': {
+      'CPUTIME_MS': '4673 4144 1 0',
+      'BASE_IMAGE': 'ubuntu:18.04',
+      'MEMORY_LIMIT': '2048m',
+      'REQUESTS_PROCESSED': '575403',
+      'AVERAGE_PROCESSING_TIME_MS': '1.55867',
+      'STANDARD_DEVIATION_MS': '0.248255',
+      'JAVA_VERSION': '8',
+      'GC_ALGORITHM': 'Falcon'
+    }
+  },
+  {
+    'jvm_code': 'zing',
+    'jvm_descr': 'Azul Zing',
+    'framework_code': 'mp',
+    'framework_descr': 'Microprofile',
+    'data': {
+      'BASE_IMAGE': 'ubuntu:18.04',
+      'MEMORY_LIMIT': '2048m',
+      'REQUESTS_PROCESSED': '0',
+      'JAVA_VERSION': '8',
+      'GC_ALGORITHM': 'Falcon'
+    }
+  },
+  {
+    'jvm_code': 'zing',
+    'jvm_descr': 'Azul Zing',
+    'framework_code': 'sb',
+    'framework_descr': 'Spring Boot',
+    'data': {
+      'PROM_REQUESTS': '523889.0',
+      'PROM_TOTALTIME_S': '76.081202437',
+      'PROM_AVERAGE_MS': '0.14522',
+      'CPUTIME_MS': '21655 3843 0 0',
+      'BASE_IMAGE': 'ubuntu:18.04',
+      'MEMORY_LIMIT': '2048m',
+      'REQUESTS_PROCESSED': '523889',
+      'AVERAGE_PROCESSING_TIME_MS': '1.71242',
+      'STANDARD_DEVIATION_MS': '0.46405',
+      'JAVA_VERSION': '8',
+      'GC_ALGORITHM': 'Falcon'
+    }
+  },
+  {
+    'jvm_code': 'zing',
+    'jvm_descr': 'Azul Zing',
+    'framework_code': 'sbreactive',
+    'framework_descr': 'WebFlux',
+    'data': {
+      'PROM_REQUESTS': '552645.0',
+      'PROM_TOTALTIME_S': '54.409363733',
+      'PROM_AVERAGE_MS': '0.09845',
+      'CPUTIME_MS': '17356 5063 1 0',
+      'BASE_IMAGE': 'ubuntu:18.04',
+      'MEMORY_LIMIT': '2048m',
+      'REQUESTS_PROCESSED': '552644',
+      'AVERAGE_PROCESSING_TIME_MS': '1.62328',
+      'STANDARD_DEVIATION_MS': '0.375703',
+      'JAVA_VERSION': '8',
+      'GC_ALGORITHM': 'Falcon'
+    }
+  },
+  {
+    'jvm_code': 'zing',
+    'jvm_descr': 'Azul Zing',
+    'framework_code': 'sbfu',
+    'framework_descr': 'Spring Fu',
+    'data': {
+      'CPUTIME_MS': '14240 4669 1 0',
+      'BASE_IMAGE': 'ubuntu:18.04',
+      'MEMORY_LIMIT': '2048m',
+      'REQUESTS_PROCESSED': '561408',
+      'AVERAGE_PROCESSING_TIME_MS': '1.59782',
+      'STANDARD_DEVIATION_MS': '0.361317',
+      'JAVA_VERSION': '8',
+      'GC_ALGORITHM': 'Falcon'
+    }
+  },
+  {
+    'jvm_code': 'zing',
+    'jvm_descr': 'Azul Zing',
+    'framework_code': 'vertx',
+    'framework_descr': 'Vert.x',
+    'data': {
+      'PROM_REQUESTS': '574322.0',
+      'PROM_TOTALTIME_S': '8.055410352',
+      'PROM_AVERAGE_MS': '0.01403',
+      'CPUTIME_MS': '9462 3399 1 0',
+      'BASE_IMAGE': 'ubuntu:18.04',
+      'MEMORY_LIMIT': '2048m',
+      'REQUESTS_PROCESSED': '574322',
+      'AVERAGE_PROCESSING_TIME_MS': '1.56169',
+      'STANDARD_DEVIATION_MS': '0.571057',
+      'JAVA_VERSION': '8',
+      'GC_ALGORITHM': 'Falcon'
+    }
+  },
+  {
+    'jvm_code': 'zing',
+    'jvm_descr': 'Azul Zing',
+    'framework_code': 'akka',
+    'framework_descr': 'Akka',
+    'data': {
+      'CPUTIME_MS': '23679 6983 1 0',
+      'BASE_IMAGE': 'ubuntu:18.04',
+      'MEMORY_LIMIT': '2048m',
+      'REQUESTS_PROCESSED': '487594',
+      'AVERAGE_PROCESSING_TIME_MS': '1.84022',
+      'STANDARD_DEVIATION_MS': '0.798268',
+      'JAVA_VERSION': '8',
+      'GC_ALGORITHM': 'Falcon'
+    }
+  },
+  {
+    'jvm_code': 'zing',
+    'jvm_descr': 'Azul Zing',
+    'framework_code': 'qs',
+    'framework_descr': 'Quarkus',
+    'data': {
+      'PROM_REQUESTS': '557244.0',
+      'PROM_TOTALTIME_S': '1.38836',
+      'PROM_AVERAGE_MS': '0.00249',
+      'CPUTIME_MS': '14858 5844 1 0',
+      'BASE_IMAGE': 'ubuntu:18.04',
+      'MEMORY_LIMIT': '2048m',
+      'REQUESTS_PROCESSED': '557244',
+      'AVERAGE_PROCESSING_TIME_MS': '1.60976',
+      'STANDARD_DEVIATION_MS': '0.40283',
+      'JAVA_VERSION': '8',
+      'GC_ALGORITHM': 'Falcon'
+    }
+  },
+  {
+    'jvm_code': 'adoptopenjdk',
+    'jvm_descr': 'AdoptOpenJDK',
+    'framework_code': 'hse',
+    'framework_descr': 'Helidon SE',
+    'data': {
+      'CPUTIME_MS': '6383 4870 0 0',
+      'BASE_IMAGE': 'adoptopenjdk/openjdk8:jdk8u202-b08',
+      'MEMORY_LIMIT': '2048m',
+      'REQUESTS_PROCESSED': '562440',
+      'AVERAGE_PROCESSING_TIME_MS': '1.59478',
+      'STANDARD_DEVIATION_MS': '0.281636',
+      'JAVA_VERSION': '8',
+      'GC_ALGORITHM': 'Parallel'
+    }
+  },
+  {
+    'jvm_code': 'adoptopenjdk',
+    'jvm_descr': 'AdoptOpenJDK',
+    'framework_code': 'mn',
+    'framework_descr': 'Micronaut',
+    'data': {
+      'CPUTIME_MS': '8790 4654 0 0',
+      'BASE_IMAGE': 'adoptopenjdk/openjdk8:jdk8u202-b08',
+      'MEMORY_LIMIT': '2048m',
+      'REQUESTS_PROCESSED': '541347',
+      'AVERAGE_PROCESSING_TIME_MS': '1.65727',
+      'STANDARD_DEVIATION_MS': '0.338648',
+      'JAVA_VERSION': '8',
+      'GC_ALGORITHM': 'Parallel'
+    }
+  },
+  {
+    'jvm_code': 'adoptopenjdk',
+    'jvm_descr': 'AdoptOpenJDK',
+    'framework_code': 'none',
+    'framework_descr': 'No framework',
+    'data': {
+      'CPUTIME_MS': '3130 4090 0 0',
+      'BASE_IMAGE': 'adoptopenjdk/openjdk8:jdk8u202-b08',
+      'MEMORY_LIMIT': '2048m',
+      'REQUESTS_PROCESSED': '576075',
+      'AVERAGE_PROCESSING_TIME_MS': '1.55692',
+      'STANDARD_DEVIATION_MS': '0.112567',
+      'JAVA_VERSION': '8',
+      'GC_ALGORITHM': 'Parallel'
+    }
+  },
+  {
+    'jvm_code': 'adoptopenjdk',
+    'jvm_descr': 'AdoptOpenJDK',
+    'framework_code': 'mp',
+    'framework_descr': 'Microprofile',
+    'data': {
+      'PROM_REQUESTS': '517912',
+      'PROM_TOTALTIME_S': '1.67623',
+      'PROM_AVERAGE_MS': '0.00324',
+      'CPUTIME_MS': '13753 2797 82 0',
+      'BASE_IMAGE': 'adoptopenjdk/openjdk8:jdk8u202-b08',
+      'MEMORY_LIMIT': '2048m',
+      'REQUESTS_PROCESSED': '517911',
+      'AVERAGE_PROCESSING_TIME_MS': '1.73232',
+      'STANDARD_DEVIATION_MS': '1.42849',
+      'JAVA_VERSION': '8',
+      'GC_ALGORITHM': 'Parallel'
+    }
+  },
+  {
+    'jvm_code': 'adoptopenjdk',
+    'jvm_descr': 'AdoptOpenJDK',
+    'framework_code': 'sb',
+    'framework_descr': 'Spring Boot',
+    'data': {
+      'PROM_REQUESTS': '528250.0',
+      'PROM_TOTALTIME_S': '72.716370645',
+      'PROM_AVERAGE_MS': '0.13766',
+      'CPUTIME_MS': '10996 4102 0 0',
+      'BASE_IMAGE': 'adoptopenjdk/openjdk8:jdk8u202-b08',
+      'MEMORY_LIMIT': '2048m',
+      'REQUESTS_PROCESSED': '528250',
+      'AVERAGE_PROCESSING_TIME_MS': '1.69829',
+      'STANDARD_DEVIATION_MS': '0.424018',
+      'JAVA_VERSION': '8',
+      'GC_ALGORITHM': 'Parallel'
+    }
+  },
+  {
+    'jvm_code': 'adoptopenjdk',
+    'jvm_descr': 'AdoptOpenJDK',
+    'framework_code': 'sbreactive',
+    'framework_descr': 'WebFlux',
+    'data': {
+      'PROM_REQUESTS': '553777.0',
+      'PROM_TOTALTIME_S': '56.508477935',
+      'PROM_AVERAGE_MS': '0.10204',
+      'CPUTIME_MS': '9122 4139 0 0',
+      'BASE_IMAGE': 'adoptopenjdk/openjdk8:jdk8u202-b08',
+      'MEMORY_LIMIT': '2048m',
+      'REQUESTS_PROCESSED': '553777',
+      'AVERAGE_PROCESSING_TIME_MS': '1.61981',
+      'STANDARD_DEVIATION_MS': '0.43268',
+      'JAVA_VERSION': '8',
+      'GC_ALGORITHM': 'Parallel'
+    }
+  },
+  {
+    'jvm_code': 'adoptopenjdk',
+    'jvm_descr': 'AdoptOpenJDK',
+    'framework_code': 'sbfu',
+    'framework_descr': 'Spring Fu',
+    'data': {
+      'CPUTIME_MS': '6471 4828 0 0',
+      'BASE_IMAGE': 'adoptopenjdk/openjdk8:jdk8u202-b08',
+      'MEMORY_LIMIT': '2048m',
+      'REQUESTS_PROCESSED': '561013',
+      'AVERAGE_PROCESSING_TIME_MS': '1.59894',
+      'STANDARD_DEVIATION_MS': '0.445774',
+      'JAVA_VERSION': '8',
+      'GC_ALGORITHM': 'Parallel'
+    }
+  },
+  {
+    'jvm_code': 'adoptopenjdk',
+    'jvm_descr': 'AdoptOpenJDK',
+    'framework_code': 'vertx',
+    'framework_descr': 'Vert.x',
+    'data': {
+      'PROM_REQUESTS': '571888.0',
+      'PROM_TOTALTIME_S': '7.841442975',
+      'PROM_AVERAGE_MS': '0.01371',
+      'CPUTIME_MS': '4676 3433 0 0',
+      'BASE_IMAGE': 'adoptopenjdk/openjdk8:jdk8u202-b08',
+      'MEMORY_LIMIT': '2048m',
+      'REQUESTS_PROCESSED': '571888',
+      'AVERAGE_PROCESSING_TIME_MS': '1.56825',
+      'STANDARD_DEVIATION_MS': '0.320181',
+      'JAVA_VERSION': '8',
+      'GC_ALGORITHM': 'Parallel'
+    }
+  },
+  {
+    'jvm_code': 'adoptopenjdk',
+    'jvm_descr': 'AdoptOpenJDK',
+    'framework_code': 'akka',
+    'framework_descr': 'Akka',
+    'data': {
+      'CPUTIME_MS': '13376 6663 0 0',
+      'BASE_IMAGE': 'adoptopenjdk/openjdk8:jdk8u202-b08',
+      'MEMORY_LIMIT': '2048m',
+      'REQUESTS_PROCESSED': '497206',
+      'AVERAGE_PROCESSING_TIME_MS': '1.80462',
+      'STANDARD_DEVIATION_MS': '0.789135',
+      'JAVA_VERSION': '8',
+      'GC_ALGORITHM': 'Parallel'
+    }
+  },
+  {
+    'jvm_code': 'adoptopenjdk',
+    'jvm_descr': 'AdoptOpenJDK',
+    'framework_code': 'qs',
+    'framework_descr': 'Quarkus',
+    'data': {
+      'PROM_REQUESTS': '561277.0',
+      'PROM_TOTALTIME_S': '1.36632',
+      'PROM_AVERAGE_MS': '0.00243',
+      'CPUTIME_MS': '7723 6059 0 0',
+      'BASE_IMAGE': 'adoptopenjdk/openjdk8:jdk8u202-b08',
+      'MEMORY_LIMIT': '2048m',
+      'REQUESTS_PROCESSED': '561276',
+      'AVERAGE_PROCESSING_TIME_MS': '1.59811',
+      'STANDARD_DEVIATION_MS': '0.379524',
+      'JAVA_VERSION': '8',
+      'GC_ALGORITHM': 'Parallel'
+    }
+  },
+  {
+    'jvm_code': 'openj9',
+    'jvm_descr': 'OpenJ9',
+    'framework_code': 'hse',
+    'framework_descr': 'Helidon SE',
+    'data': {
+      'CPUTIME_MS': '21035 2989 0 0',
+      'BASE_IMAGE': 'adoptopenjdk/openjdk8-openj9:jdk8u202-b08_openj9-0.12.1',
+      'MEMORY_LIMIT': '2048m',
+      'REQUESTS_PROCESSED': '460483',
+      'AVERAGE_PROCESSING_TIME_MS': '1.94872',
+      'STANDARD_DEVIATION_MS': '0.486613',
+      'JAVA_VERSION': '8',
+      'GC_ALGORITHM': 'Gencon'
+    }
+  },
+  {
+    'jvm_code': 'openj9',
+    'jvm_descr': 'OpenJ9',
+    'framework_code': 'mn',
+    'framework_descr': 'Micronaut',
+    'data': {
+      'CPUTIME_MS': '22436 3538 0 0',
+      'BASE_IMAGE': 'adoptopenjdk/openjdk8-openj9:jdk8u202-b08_openj9-0.12.1',
+      'MEMORY_LIMIT': '2048m',
+      'REQUESTS_PROCESSED': '439411',
+      'AVERAGE_PROCESSING_TIME_MS': '2.0425',
+      'STANDARD_DEVIATION_MS': '0.507567',
+      'JAVA_VERSION': '8',
+      'GC_ALGORITHM': 'Gencon'
+    }
+  },
+  {
+    'jvm_code': 'openj9',
+    'jvm_descr': 'OpenJ9',
+    'framework_code': 'none',
+    'framework_descr': 'No framework',
+    'data': {
+      'CPUTIME_MS': '5517 4244 0 0',
+      'BASE_IMAGE': 'adoptopenjdk/openjdk8-openj9:jdk8u202-b08_openj9-0.12.1',
+      'MEMORY_LIMIT': '2048m',
+      'REQUESTS_PROCESSED': '569132',
+      'AVERAGE_PROCESSING_TIME_MS': '1.57601',
+      'STANDARD_DEVIATION_MS': '0.168418',
+      'JAVA_VERSION': '8',
+      'GC_ALGORITHM': 'Gencon'
+    }
+  },
+  {
+    'jvm_code': 'openj9',
+    'jvm_descr': 'OpenJ9',
+    'framework_code': 'mp',
+    'framework_descr': 'Microprofile',
+    'data': {
+      'PROM_REQUESTS': '458742',
+      'PROM_TOTALTIME_S': '1.94673',
+      'PROM_AVERAGE_MS': '0.00424',
+      'CPUTIME_MS': '22054 3861 295 10',
+      'BASE_IMAGE': 'adoptopenjdk/openjdk8-openj9:jdk8u202-b08_openj9-0.12.1',
+      'MEMORY_LIMIT': '2048m',
+      'REQUESTS_PROCESSED': '458742',
+      'AVERAGE_PROCESSING_TIME_MS': '1.9562',
+      'STANDARD_DEVIATION_MS': '1.82607',
+      'JAVA_VERSION': '8',
+      'GC_ALGORITHM': 'Gencon'
+    }
+  },
+  {
+    'jvm_code': 'openj9',
+    'jvm_descr': 'OpenJ9',
+    'framework_code': 'sb',
+    'framework_descr': 'Spring Boot',
+    'data': {
+      'PROM_REQUESTS': '426659.0',
+      'PROM_TOTALTIME_S': '96.092963309',
+      'PROM_AVERAGE_MS': '0.22522',
+      'CPUTIME_MS': '25074 4635 0 0',
+      'BASE_IMAGE': 'adoptopenjdk/openjdk8-openj9:jdk8u202-b08_openj9-0.12.1',
+      'MEMORY_LIMIT': '2048m',
+      'REQUESTS_PROCESSED': '426658',
+      'AVERAGE_PROCESSING_TIME_MS': '2.10374',
+      'STANDARD_DEVIATION_MS': '0.69155',
+      'JAVA_VERSION': '8',
+      'GC_ALGORITHM': 'Gencon'
+    }
+  },
+  {
+    'jvm_code': 'openj9',
+    'jvm_descr': 'OpenJ9',
+    'framework_code': 'sbreactive',
+    'framework_descr': 'WebFlux',
+    'data': {
+      'PROM_REQUESTS': '542523.0',
+      'PROM_TOTALTIME_S': '66.352846371',
+      'PROM_AVERAGE_MS': '0.12230',
+      'CPUTIME_MS': '10485 4428 0 0',
+      'BASE_IMAGE': 'adoptopenjdk/openjdk8-openj9:jdk8u202-b08_openj9-0.12.1',
+      'MEMORY_LIMIT': '2048m',
+      'REQUESTS_PROCESSED': '542523',
+      'AVERAGE_PROCESSING_TIME_MS': '1.65355',
+      'STANDARD_DEVIATION_MS': '0.774711',
+      'JAVA_VERSION': '8',
+      'GC_ALGORITHM': 'Gencon'
+    }
+  },
+  {
+    'jvm_code': 'openj9',
+    'jvm_descr': 'OpenJ9',
+    'framework_code': 'sbfu',
+    'framework_descr': 'Spring Fu',
+    'data': {
+      'CPUTIME_MS': '14749 4250 0 0',
+      'BASE_IMAGE': 'adoptopenjdk/openjdk8-openj9:jdk8u202-b08_openj9-0.12.1',
+      'MEMORY_LIMIT': '2048m',
+      'REQUESTS_PROCESSED': '492784',
+      'AVERAGE_PROCESSING_TIME_MS': '1.82077',
+      'STANDARD_DEVIATION_MS': '0.849052',
+      'JAVA_VERSION': '8',
+      'GC_ALGORITHM': 'Gencon'
+    }
+  },
+  {
+    'jvm_code': 'openj9',
+    'jvm_descr': 'OpenJ9',
+    'framework_code': 'vertx',
+    'framework_descr': 'Vert.x',
+    'data': {
+      'PROM_REQUESTS': '567474.0',
+      'PROM_TOTALTIME_S': '11.163033417',
+      'PROM_AVERAGE_MS': '0.01967',
+      'CPUTIME_MS': '6098 3421 0 0',
+      'BASE_IMAGE': 'adoptopenjdk/openjdk8-openj9:jdk8u202-b08_openj9-0.12.1',
+      'MEMORY_LIMIT': '2048m',
+      'REQUESTS_PROCESSED': '567473',
+      'AVERAGE_PROCESSING_TIME_MS': '1.58053',
+      'STANDARD_DEVIATION_MS': '0.694493',
+      'JAVA_VERSION': '8',
+      'GC_ALGORITHM': 'Gencon'
+    }
+  },
+  {
+    'jvm_code': 'openj9',
+    'jvm_descr': 'OpenJ9',
+    'framework_code': 'akka',
+    'framework_descr': 'Akka',
+    'data': {
+      'CPUTIME_MS': '22959 7059 0 0',
+      'BASE_IMAGE': 'adoptopenjdk/openjdk8-openj9:jdk8u202-b08_openj9-0.12.1',
+      'MEMORY_LIMIT': '2048m',
+      'REQUESTS_PROCESSED': '434307',
+      'AVERAGE_PROCESSING_TIME_MS': '2.06663',
+      'STANDARD_DEVIATION_MS': '1.06848',
+      'JAVA_VERSION': '8',
+      'GC_ALGORITHM': 'Gencon'
+    }
+  },
+  {
+    'jvm_code': 'openj9',
+    'jvm_descr': 'OpenJ9',
+    'framework_code': 'qs',
+    'framework_descr': 'Quarkus',
+    'data': {
+      'PROM_REQUESTS': '552104.0',
+      'PROM_TOTALTIME_S': '1.65552',
+      'PROM_AVERAGE_MS': '0.00300',
+      'CPUTIME_MS': '21766 6659 0 0',
+      'BASE_IMAGE': 'adoptopenjdk/openjdk8-openj9:jdk8u202-b08_openj9-0.12.1',
+      'MEMORY_LIMIT': '2048m',
+      'REQUESTS_PROCESSED': '552104',
+      'AVERAGE_PROCESSING_TIME_MS': '1.62469',
+      'STANDARD_DEVIATION_MS': '0.708753',
+      'JAVA_VERSION': '8',
+      'GC_ALGORITHM': 'Gencon'
+    }
+  },
+  {
+    'jvm_code': 'oraclejdk',
+    'jvm_descr': 'Oracle JDK',
+    'framework_code': 'hse',
+    'framework_descr': 'Helidon SE',
+    'data': {
+      'CPUTIME_MS': '5872 5126 0 0',
+      'BASE_IMAGE': 'store/oracle/serverjre:8',
+      'MEMORY_LIMIT': '2048m',
+      'REQUESTS_PROCESSED': '562509',
+      'AVERAGE_PROCESSING_TIME_MS': '1.59467',
+      'STANDARD_DEVIATION_MS': '0.249342',
+      'JAVA_VERSION': '8',
+      'GC_ALGORITHM': 'Parallel'
+    }
+  },
+  {
+    'jvm_code': 'oraclejdk',
+    'jvm_descr': 'Oracle JDK',
+    'framework_code': 'mn',
+    'framework_descr': 'Micronaut',
+    'data': {
+      'CPUTIME_MS': '8855 4653 0 0',
+      'BASE_IMAGE': 'store/oracle/serverjre:8',
+      'MEMORY_LIMIT': '2048m',
+      'REQUESTS_PROCESSED': '540748',
+      'AVERAGE_PROCESSING_TIME_MS': '1.65902',
+      'STANDARD_DEVIATION_MS': '0.354523',
+      'JAVA_VERSION': '8',
+      'GC_ALGORITHM': 'Parallel'
+    }
+  },
+  {
+    'jvm_code': 'oraclejdk',
+    'jvm_descr': 'Oracle JDK',
+    'framework_code': 'none',
+    'framework_descr': 'No framework',
+    'data': {
+      'CPUTIME_MS': '3070 4181 0 0',
+      'BASE_IMAGE': 'store/oracle/serverjre:8',
+      'MEMORY_LIMIT': '2048m',
+      'REQUESTS_PROCESSED': '576432',
+      'AVERAGE_PROCESSING_TIME_MS': '1.5559',
+      'STANDARD_DEVIATION_MS': '0.116078',
+      'JAVA_VERSION': '8',
+      'GC_ALGORITHM': 'Parallel'
+    }
+  },
+  {
+    'jvm_code': 'oraclejdk',
+    'jvm_descr': 'Oracle JDK',
+    'framework_code': 'mp',
+    'framework_descr': 'Microprofile',
+    'data': {
+      'PROM_REQUESTS': '518551',
+      'PROM_TOTALTIME_S': '1.80265',
+      'PROM_AVERAGE_MS': '0.00348',
+      'CPUTIME_MS': '13962 2822 118 3',
+      'BASE_IMAGE': 'store/oracle/serverjre:8',
+      'MEMORY_LIMIT': '2048m',
+      'REQUESTS_PROCESSED': '518551',
+      'AVERAGE_PROCESSING_TIME_MS': '1.73008',
+      'STANDARD_DEVIATION_MS': '1.35684',
+      'JAVA_VERSION': '8',
+      'GC_ALGORITHM': 'Parallel'
+    }
+  },
+  {
+    'jvm_code': 'oraclejdk',
+    'jvm_descr': 'Oracle JDK',
+    'framework_code': 'sb',
+    'framework_descr': 'Spring Boot',
+    'data': {
+      'PROM_REQUESTS': '526963.0',
+      'PROM_TOTALTIME_S': '72.058948778',
+      'PROM_AVERAGE_MS': '0.13674',
+      'CPUTIME_MS': '10647 4445 0 0',
+      'BASE_IMAGE': 'store/oracle/serverjre:8',
+      'MEMORY_LIMIT': '2048m',
+      'REQUESTS_PROCESSED': '526963',
+      'AVERAGE_PROCESSING_TIME_MS': '1.70249',
+      'STANDARD_DEVIATION_MS': '0.463416',
+      'JAVA_VERSION': '8',
+      'GC_ALGORITHM': 'Parallel'
+    }
+  },
+  {
+    'jvm_code': 'oraclejdk',
+    'jvm_descr': 'Oracle JDK',
+    'framework_code': 'sbreactive',
+    'framework_descr': 'WebFlux',
+    'data': {
+      'PROM_REQUESTS': '553007.0',
+      'PROM_TOTALTIME_S': '56.165731352',
+      'PROM_AVERAGE_MS': '0.10156',
+      'CPUTIME_MS': '8856 4259 0 0',
+      'BASE_IMAGE': 'store/oracle/serverjre:8',
+      'MEMORY_LIMIT': '2048m',
+      'REQUESTS_PROCESSED': '553006',
+      'AVERAGE_PROCESSING_TIME_MS': '1.62204',
+      'STANDARD_DEVIATION_MS': '0.437054',
+      'JAVA_VERSION': '8',
+      'GC_ALGORITHM': 'Parallel'
+    }
+  },
+  {
+    'jvm_code': 'oraclejdk',
+    'jvm_descr': 'Oracle JDK',
+    'framework_code': 'sbfu',
+    'framework_descr': 'Spring Fu',
+    'data': {
+      'CPUTIME_MS': '5581 5843 0 0',
+      'BASE_IMAGE': 'store/oracle/serverjre:8',
+      'MEMORY_LIMIT': '2048m',
+      'REQUESTS_PROCESSED': '559183',
+      'AVERAGE_PROCESSING_TIME_MS': '1.60418',
+      'STANDARD_DEVIATION_MS': '0.439164',
+      'JAVA_VERSION': '8',
+      'GC_ALGORITHM': 'Parallel'
+    }
+  },
+  {
+    'jvm_code': 'oraclejdk',
+    'jvm_descr': 'Oracle JDK',
+    'framework_code': 'vertx',
+    'framework_descr': 'Vert.x',
+    'data': {
+      'PROM_REQUESTS': '570736.0',
+      'PROM_TOTALTIME_S': '7.593753121',
+      'PROM_AVERAGE_MS': '0.01331',
+      'CPUTIME_MS': '4600 3513 0 0',
+      'BASE_IMAGE': 'store/oracle/serverjre:8',
+      'MEMORY_LIMIT': '2048m',
+      'REQUESTS_PROCESSED': '570736',
+      'AVERAGE_PROCESSING_TIME_MS': '1.57169',
+      'STANDARD_DEVIATION_MS': '0.326838',
+      'JAVA_VERSION': '8',
+      'GC_ALGORITHM': 'Parallel'
+    }
+  },
+  {
+    'jvm_code': 'oraclejdk',
+    'jvm_descr': 'Oracle JDK',
+    'framework_code': 'akka',
+    'framework_descr': 'Akka',
+    'data': {
+      'CPUTIME_MS': '13126 6805 0 0',
+      'BASE_IMAGE': 'store/oracle/serverjre:8',
+      'MEMORY_LIMIT': '2048m',
+      'REQUESTS_PROCESSED': '497494',
+      'AVERAGE_PROCESSING_TIME_MS': '1.80353',
+      'STANDARD_DEVIATION_MS': '0.743085',
+      'JAVA_VERSION': '8',
+      'GC_ALGORITHM': 'Parallel'
+    }
+  },
+  {
+    'jvm_code': 'oraclejdk',
+    'jvm_descr': 'Oracle JDK',
+    'framework_code': 'qs',
+    'framework_descr': 'Quarkus',
+    'data': {
+      'PROM_REQUESTS': '562080.0',
+      'PROM_TOTALTIME_S': '1.33006',
+      'PROM_AVERAGE_MS': '0.00237',
+      'CPUTIME_MS': '7361 6257 0 0',
+      'BASE_IMAGE': 'store/oracle/serverjre:8',
+      'MEMORY_LIMIT': '2048m',
+      'REQUESTS_PROCESSED': '562080',
+      'AVERAGE_PROCESSING_TIME_MS': '1.59577',
+      'STANDARD_DEVIATION_MS': '0.344732',
+      'JAVA_VERSION': '8',
+      'GC_ALGORITHM': 'Parallel'
+    }
+  },
+  {
+    'jvm_code': 'native',
+    'jvm_descr': 'Substrate VM',
+    'framework_code': 'hse',
+    'framework_descr': 'Helidon SE',
+    'data': {
+      'CPUTIME_MS': '33897 2539 0 0',
+      'BASE_IMAGE': 'registry.fedoraproject.org/fedora-minimal',
+      'MEMORY_LIMIT': '25m',
+      'REQUESTS_PROCESSED': '362609',
+      'AVERAGE_PROCESSING_TIME_MS': '2.47644',
+      'STANDARD_DEVIATION_MS': '1.53991',
+      'JAVA_VERSION': '8',
+      'GC_ALGORITHM': 'Substrate'
+    }
+  },
+  {
+    'jvm_code': 'native',
+    'jvm_descr': 'Substrate VM',
+    'framework_code': 'mn',
+    'framework_descr': 'Micronaut',
+    'data': {
+      'CPUTIME_MS': '68744 774 0 0',
+      'BASE_IMAGE': 'registry.fedoraproject.org/fedora-minimal',
+      'MEMORY_LIMIT': '25m',
+      'REQUESTS_PROCESSED': '131954',
+      'AVERAGE_PROCESSING_TIME_MS': '6.81423',
+      'STANDARD_DEVIATION_MS': '3.45529',
+      'JAVA_VERSION': '8',
+      'GC_ALGORITHM': 'Substrate'
+    }
+  },
+  {
+    'jvm_code': 'native',
+    'jvm_descr': 'Substrate VM',
+    'framework_code': 'none',
+    'framework_descr': 'No framework',
+    'data': {
+      'CPUTIME_MS': '5226 4462 0 0',
+      'BASE_IMAGE': 'registry.fedoraproject.org/fedora-minimal',
+      'MEMORY_LIMIT': '25m',
+      'REQUESTS_PROCESSED': '568712',
+      'AVERAGE_PROCESSING_TIME_MS': '1.57708',
+      'STANDARD_DEVIATION_MS': '0.121611',
+      'JAVA_VERSION': '8',
+      'GC_ALGORITHM': 'Substrate'
+    }
+  },
+  {
+    'jvm_code': 'native',
+    'jvm_descr': 'Substrate VM',
+    'framework_code': 'qs',
+    'framework_descr': 'Quarkus',
+    'data': {
+      'PROM_REQUESTS': '276327.0',
+      'PROM_TOTALTIME_S': '1.14788',
+      'PROM_AVERAGE_MS': '0.00415',
+      'CPUTIME_MS': '46431 3207 0 0',
+      'BASE_IMAGE': 'registry.fedoraproject.org/fedora-minimal',
+      'MEMORY_LIMIT': '25m',
+      'REQUESTS_PROCESSED': '276327',
+      'AVERAGE_PROCESSING_TIME_MS': '3.25112',
+      'STANDARD_DEVIATION_MS': '0.203606',
+      'JAVA_VERSION': '8',
+      'GC_ALGORITHM': 'Substrate'
+    }
+  },
+  {
+    'jvm_code': 'zing',
+    'jvm_descr': 'Azul Zing',
+    'framework_code': 'hse',
+    'framework_descr': 'Helidon SE',
+    'data': {
+      'CPUTIME_MS': '12110 4654 1 0',
+      'BASE_IMAGE': 'ubuntu:18.04',
+      'MEMORY_LIMIT': '1024m',
+      'REQUESTS_PROCESSED': '560829',
+      'AVERAGE_PROCESSING_TIME_MS': '1.59929',
+      'STANDARD_DEVIATION_MS': '0.67144',
+      'JAVA_VERSION': '8',
+      'GC_ALGORITHM': 'Falcon'
+    }
+  },
+  {
+    'jvm_code': 'zing',
+    'jvm_descr': 'Azul Zing',
+    'framework_code': 'mn',
+    'framework_descr': 'Micronaut',
+    'data': {
+      'CPUTIME_MS': '17412 4545 1 0',
+      'BASE_IMAGE': 'ubuntu:18.04',
+      'MEMORY_LIMIT': '1024m',
+      'REQUESTS_PROCESSED': '536983',
+      'AVERAGE_PROCESSING_TIME_MS': '1.67063',
+      'STANDARD_DEVIATION_MS': '0.469748',
+      'JAVA_VERSION': '8',
+      'GC_ALGORITHM': 'Falcon'
+    }
+  },
+  {
+    'jvm_code': 'zing',
+    'jvm_descr': 'Azul Zing',
+    'framework_code': 'none',
+    'framework_descr': 'No framework',
+    'data': {
+      'CPUTIME_MS': '5029 4009 1 0',
+      'BASE_IMAGE': 'ubuntu:18.04',
+      'MEMORY_LIMIT': '1024m',
+      'REQUESTS_PROCESSED': '576479',
+      'AVERAGE_PROCESSING_TIME_MS': '1.55579',
+      'STANDARD_DEVIATION_MS': '0.290441',
+      'JAVA_VERSION': '8',
+      'GC_ALGORITHM': 'Falcon'
+    }
+  },
+  {
+    'jvm_code': 'zing',
+    'jvm_descr': 'Azul Zing',
+    'framework_code': 'mp',
+    'framework_descr': 'Microprofile',
+    'data': {
+      'CPUTIME_MS': '19572 5506 210 2',
+      'BASE_IMAGE': 'ubuntu:18.04',
+      'MEMORY_LIMIT': '1024m',
+      'REQUESTS_PROCESSED': '515362',
+      'AVERAGE_PROCESSING_TIME_MS': '1.74081',
+      'STANDARD_DEVIATION_MS': '0.560114',
+      'JAVA_VERSION': '8',
+      'GC_ALGORITHM': 'Falcon'
+    }
+  },
+  {
+    'jvm_code': 'zing',
+    'jvm_descr': 'Azul Zing',
+    'framework_code': 'sb',
+    'framework_descr': 'Spring Boot',
+    'data': {
+      'PROM_REQUESTS': '519101.0',
+      'PROM_TOTALTIME_S': '75.897597952',
+      'PROM_AVERAGE_MS': '0.14621',
+      'CPUTIME_MS': '21067 4614 1 0',
+      'BASE_IMAGE': 'ubuntu:18.04',
+      'MEMORY_LIMIT': '1024m',
+      'REQUESTS_PROCESSED': '519101',
+      'AVERAGE_PROCESSING_TIME_MS': '1.72831',
+      'STANDARD_DEVIATION_MS': '0.581076',
+      'JAVA_VERSION': '8',
+      'GC_ALGORITHM': 'Falcon'
+    }
+  },
+  {
+    'jvm_code': 'zing',
+    'jvm_descr': 'Azul Zing',
+    'framework_code': 'sbreactive',
+    'framework_descr': 'WebFlux',
+    'data': {
+      'PROM_REQUESTS': '549901.0',
+      'PROM_TOTALTIME_S': '54.649833797',
+      'PROM_AVERAGE_MS': '0.09938',
+      'CPUTIME_MS': '18265 4821 1 0',
+      'BASE_IMAGE': 'ubuntu:18.04',
+      'MEMORY_LIMIT': '1024m',
+      'REQUESTS_PROCESSED': '549901',
+      'AVERAGE_PROCESSING_TIME_MS': '1.63132',
+      'STANDARD_DEVIATION_MS': '0.469997',
+      'JAVA_VERSION': '8',
+      'GC_ALGORITHM': 'Falcon'
+    }
+  },
+  {
+    'jvm_code': 'zing',
+    'jvm_descr': 'Azul Zing',
+    'framework_code': 'sbfu',
+    'framework_descr': 'Spring Fu',
+    'data': {
+      'CPUTIME_MS': '14642 4548 1 0',
+      'BASE_IMAGE': 'ubuntu:18.04',
+      'MEMORY_LIMIT': '1024m',
+      'REQUESTS_PROCESSED': '557624',
+      'AVERAGE_PROCESSING_TIME_MS': '1.60854',
+      'STANDARD_DEVIATION_MS': '0.465199',
+      'JAVA_VERSION': '8',
+      'GC_ALGORITHM': 'Falcon'
+    }
+  },
+  {
+    'jvm_code': 'zing',
+    'jvm_descr': 'Azul Zing',
+    'framework_code': 'vertx',
+    'framework_descr': 'Vert.x',
+    'data': {
+      'PROM_REQUESTS': '571285.0',
+      'PROM_TOTALTIME_S': '7.897109007',
+      'PROM_AVERAGE_MS': '0.01382',
+      'CPUTIME_MS': '9713 3321 1 0',
+      'BASE_IMAGE': 'ubuntu:18.04',
+      'MEMORY_LIMIT': '1024m',
+      'REQUESTS_PROCESSED': '571285',
+      'AVERAGE_PROCESSING_TIME_MS': '1.57002',
+      'STANDARD_DEVIATION_MS': '0.587506',
+      'JAVA_VERSION': '8',
+      'GC_ALGORITHM': 'Falcon'
+    }
+  },
+  {
+    'jvm_code': 'zing',
+    'jvm_descr': 'Azul Zing',
+    'framework_code': 'akka',
+    'framework_descr': 'Akka',
+    'data': {
+      'CPUTIME_MS': '23980 7034 0 0',
+      'BASE_IMAGE': 'ubuntu:18.04',
+      'MEMORY_LIMIT': '1024m',
+      'REQUESTS_PROCESSED': '484792',
+      'AVERAGE_PROCESSING_TIME_MS': '1.85095',
+      'STANDARD_DEVIATION_MS': '0.846455',
+      'JAVA_VERSION': '8',
+      'GC_ALGORITHM': 'Falcon'
+    }
+  },
+  {
+    'jvm_code': 'zing',
+    'jvm_descr': 'Azul Zing',
+    'framework_code': 'qs',
+    'framework_descr': 'Quarkus',
+    'data': {
+      'PROM_REQUESTS': '557908.0',
+      'PROM_TOTALTIME_S': '1.38515',
+      'PROM_AVERAGE_MS': '0.00248',
+      'CPUTIME_MS': '15453 5225 1 0',
+      'BASE_IMAGE': 'ubuntu:18.04',
+      'MEMORY_LIMIT': '1024m',
+      'REQUESTS_PROCESSED': '557908',
+      'AVERAGE_PROCESSING_TIME_MS': '1.60796',
+      'STANDARD_DEVIATION_MS': '0.431511',
+      'JAVA_VERSION': '8',
+      'GC_ALGORITHM': 'Falcon'
+    }
+  },
+  {
+    'jvm_code': 'adoptopenjdk',
+    'jvm_descr': 'AdoptOpenJDK',
+    'framework_code': 'hse',
+    'framework_descr': 'Helidon SE',
+    'data': {
+      'CPUTIME_MS': '7110 5748 0 0',
+      'BASE_IMAGE': 'adoptopenjdk/openjdk8:jdk8u202-b08',
+      'MEMORY_LIMIT': '25m',
+      'REQUESTS_PROCESSED': '553170',
+      'AVERAGE_PROCESSING_TIME_MS': '1.62151',
+      'STANDARD_DEVIATION_MS': '0.620517',
+      'JAVA_VERSION': '8',
+      'GC_ALGORITHM': 'Parallel'
+    }
+  },
+  {
+    'jvm_code': 'adoptopenjdk',
+    'jvm_descr': 'AdoptOpenJDK',
+    'framework_code': 'mn',
+    'framework_descr': 'Micronaut',
+    'data': {
+      'CPUTIME_MS': '10344 5309 0 0',
+      'BASE_IMAGE': 'adoptopenjdk/openjdk8:jdk8u202-b08',
+      'MEMORY_LIMIT': '25m',
+      'REQUESTS_PROCESSED': '525090',
+      'AVERAGE_PROCESSING_TIME_MS': '1.70863',
+      'STANDARD_DEVIATION_MS': '0.727511',
+      'JAVA_VERSION': '8',
+      'GC_ALGORITHM': 'Parallel'
+    }
+  },
+  {
+    'jvm_code': 'adoptopenjdk',
+    'jvm_descr': 'AdoptOpenJDK',
+    'framework_code': 'none',
+    'framework_descr': 'No framework',
+    'data': {
+      'CPUTIME_MS': '3896 4035 0 0',
+      'BASE_IMAGE': 'adoptopenjdk/openjdk8:jdk8u202-b08',
+      'MEMORY_LIMIT': '25m',
+      'REQUESTS_PROCESSED': '576155',
+      'AVERAGE_PROCESSING_TIME_MS': '1.55664',
+      'STANDARD_DEVIATION_MS': '0.169425',
+      'JAVA_VERSION': '8',
+      'GC_ALGORITHM': 'Parallel'
+    }
+  },
+  {
+    'jvm_code': 'adoptopenjdk',
+    'jvm_descr': 'AdoptOpenJDK',
+    'framework_code': 'mp',
+    'framework_descr': 'Microprofile',
+    'data': {
+      'CPUTIME_MS': '7098 164 84 1',
+      'BASE_IMAGE': 'adoptopenjdk/openjdk8:jdk8u202-b08',
+      'MEMORY_LIMIT': '25m',
+      'REQUESTS_PROCESSED': '0',
+      'JAVA_VERSION': '8',
+      'GC_ALGORITHM': 'Parallel'
+    }
+  },
+  {
+    'jvm_code': 'adoptopenjdk',
+    'jvm_descr': 'AdoptOpenJDK',
+    'framework_code': 'sb',
+    'framework_descr': 'Spring Boot',
+    'data': {
+      'PROM_REQUESTS': '499502.0',
+      'PROM_TOTALTIME_S': '108.881641286',
+      'PROM_AVERAGE_MS': '0.21798',
+      'CPUTIME_MS': '14206 5138 0 0',
+      'BASE_IMAGE': 'adoptopenjdk/openjdk8:jdk8u202-b08',
+      'MEMORY_LIMIT': '25m',
+      'REQUESTS_PROCESSED': '499501',
+      'AVERAGE_PROCESSING_TIME_MS': '1.79632',
+      'STANDARD_DEVIATION_MS': '1.21468',
+      'JAVA_VERSION': '8',
+      'GC_ALGORITHM': 'Parallel'
+    }
+  },
+  {
+    'jvm_code': 'adoptopenjdk',
+    'jvm_descr': 'AdoptOpenJDK',
+    'framework_code': 'sbreactive',
+    'framework_descr': 'WebFlux',
+    'data': {
+      'PROM_REQUESTS': '539804.0',
+      'PROM_TOTALTIME_S': '71.872806837',
+      'PROM_AVERAGE_MS': '0.13315',
+      'CPUTIME_MS': '10703 4031 0 0',
+      'BASE_IMAGE': 'adoptopenjdk/openjdk8:jdk8u202-b08',
+      'MEMORY_LIMIT': '25m',
+      'REQUESTS_PROCESSED': '539804',
+      'AVERAGE_PROCESSING_TIME_MS': '1.66192',
+      'STANDARD_DEVIATION_MS': '0.592037',
+      'JAVA_VERSION': '8',
+      'GC_ALGORITHM': 'Parallel'
+    }
+  },
+  {
+    'jvm_code': 'adoptopenjdk',
+    'jvm_descr': 'AdoptOpenJDK',
+    'framework_code': 'sbfu',
+    'framework_descr': 'Spring Fu',
+    'data': {
+      'CPUTIME_MS': '7790 5710 0 0',
+      'BASE_IMAGE': 'adoptopenjdk/openjdk8:jdk8u202-b08',
+      'MEMORY_LIMIT': '25m',
+      'REQUESTS_PROCESSED': '548120',
+      'AVERAGE_PROCESSING_TIME_MS': '1.63646',
+      'STANDARD_DEVIATION_MS': '0.782852',
+      'JAVA_VERSION': '8',
+      'GC_ALGORITHM': 'Parallel'
+    }
+  },
+  {
+    'jvm_code': 'adoptopenjdk',
+    'jvm_descr': 'AdoptOpenJDK',
+    'framework_code': 'vertx',
+    'framework_descr': 'Vert.x',
+    'data': {
+      'PROM_REQUESTS': '572687.0',
+      'PROM_TOTALTIME_S': '8.99339088',
+      'PROM_AVERAGE_MS': '0.01570',
+      'CPUTIME_MS': '4843 3527 0 0',
+      'BASE_IMAGE': 'adoptopenjdk/openjdk8:jdk8u202-b08',
+      'MEMORY_LIMIT': '25m',
+      'REQUESTS_PROCESSED': '572687',
+      'AVERAGE_PROCESSING_TIME_MS': '1.56605',
+      'STANDARD_DEVIATION_MS': '0.328737',
+      'JAVA_VERSION': '8',
+      'GC_ALGORITHM': 'Parallel'
+    }
+  },
+  {
+    'jvm_code': 'adoptopenjdk',
+    'jvm_descr': 'AdoptOpenJDK',
+    'framework_code': 'akka',
+    'framework_descr': 'Akka',
+    'data': {
+      'CPUTIME_MS': '14465 6706 0 0',
+      'BASE_IMAGE': 'adoptopenjdk/openjdk8:jdk8u202-b08',
+      'MEMORY_LIMIT': '25m',
+      'REQUESTS_PROCESSED': '492155',
+      'AVERAGE_PROCESSING_TIME_MS': '1.8231',
+      'STANDARD_DEVIATION_MS': '0.867292',
+      'JAVA_VERSION': '8',
+      'GC_ALGORITHM': 'Parallel'
+    }
+  },
+  {
+    'jvm_code': 'adoptopenjdk',
+    'jvm_descr': 'AdoptOpenJDK',
+    'framework_code': 'qs',
+    'framework_descr': 'Quarkus',
+    'data': {
+      'PROM_REQUESTS': '558768.0',
+      'PROM_TOTALTIME_S': '1.52044',
+      'PROM_AVERAGE_MS': '0.00272',
+      'CPUTIME_MS': '8261 6207 0 0',
+      'BASE_IMAGE': 'adoptopenjdk/openjdk8:jdk8u202-b08',
+      'MEMORY_LIMIT': '25m',
+      'REQUESTS_PROCESSED': '558768',
+      'AVERAGE_PROCESSING_TIME_MS': '1.60539',
+      'STANDARD_DEVIATION_MS': '0.3745',
+      'JAVA_VERSION': '8',
+      'GC_ALGORITHM': 'Parallel'
+    }
+  },
+  {
+    'jvm_code': 'openj9',
+    'jvm_descr': 'OpenJ9',
+    'framework_code': 'hse',
+    'framework_descr': 'Helidon SE',
+    'data': {
+      'CPUTIME_MS': '21449 3370 0 0',
+      'BASE_IMAGE': 'adoptopenjdk/openjdk8-openj9:jdk8u202-b08_openj9-0.12.1',
+      'MEMORY_LIMIT': '25m',
+      'REQUESTS_PROCESSED': '456229',
+      'AVERAGE_PROCESSING_TIME_MS': '1.96719',
+      'STANDARD_DEVIATION_MS': '0.585097',
+      'JAVA_VERSION': '8',
+      'GC_ALGORITHM': 'Gencon'
+    }
+  },
+  {
+    'jvm_code': 'openj9',
+    'jvm_descr': 'OpenJ9',
+    'framework_code': 'mn',
+    'framework_descr': 'Micronaut',
+    'data': {
+      'CPUTIME_MS': '23595 3990 0 0',
+      'BASE_IMAGE': 'adoptopenjdk/openjdk8-openj9:jdk8u202-b08_openj9-0.12.1',
+      'MEMORY_LIMIT': '25m',
+      'REQUESTS_PROCESSED': '430248',
+      'AVERAGE_PROCESSING_TIME_MS': '2.08605',
+      'STANDARD_DEVIATION_MS': '0.655873',
+      'JAVA_VERSION': '8',
+      'GC_ALGORITHM': 'Gencon'
+    }
+  },
+  {
+    'jvm_code': 'openj9',
+    'jvm_descr': 'OpenJ9',
+    'framework_code': 'none',
+    'framework_descr': 'No framework',
+    'data': {
+      'CPUTIME_MS': '6076 4347 0 0',
+      'BASE_IMAGE': 'adoptopenjdk/openjdk8-openj9:jdk8u202-b08_openj9-0.12.1',
+      'MEMORY_LIMIT': '25m',
+      'REQUESTS_PROCESSED': '565589',
+      'AVERAGE_PROCESSING_TIME_MS': '1.5858',
+      'STANDARD_DEVIATION_MS': '0.263423',
+      'JAVA_VERSION': '8',
+      'GC_ALGORITHM': 'Gencon'
+    }
+  },
+  {
+    'jvm_code': 'openj9',
+    'jvm_descr': 'OpenJ9',
+    'framework_code': 'mp',
+    'framework_descr': 'Microprofile',
+    'data': {
+      'CPUTIME_MS': '34462 3841 205 16',
+      'BASE_IMAGE': 'adoptopenjdk/openjdk8-openj9:jdk8u202-b08_openj9-0.12.1',
+      'MEMORY_LIMIT': '25m',
+      'REQUESTS_PROCESSED': '452260',
+      'AVERAGE_PROCESSING_TIME_MS': '1.98458',
+      'STANDARD_DEVIATION_MS': '3.46355',
+      'JAVA_VERSION': '8',
+      'GC_ALGORITHM': 'Gencon'
+    }
+  },
+  {
+    'jvm_code': 'openj9',
+    'jvm_descr': 'OpenJ9',
+    'framework_code': 'sb',
+    'framework_descr': 'Spring Boot',
+    'data': {
+      'PROM_REQUESTS': '417963.0',
+      'PROM_TOTALTIME_S': '119.833603552',
+      'PROM_AVERAGE_MS': '0.28671',
+      'CPUTIME_MS': '26524 4803 0 0',
+      'BASE_IMAGE': 'adoptopenjdk/openjdk8-openj9:jdk8u202-b08_openj9-0.12.1',
+      'MEMORY_LIMIT': '25m',
+      'REQUESTS_PROCESSED': '417962',
+      'AVERAGE_PROCESSING_TIME_MS': '2.1476',
+      'STANDARD_DEVIATION_MS': '0.853665',
+      'JAVA_VERSION': '8',
+      'GC_ALGORITHM': 'Gencon'
+    }
+  },
+  {
+    'jvm_code': 'openj9',
+    'jvm_descr': 'OpenJ9',
+    'framework_code': 'sbreactive',
+    'framework_descr': 'WebFlux',
+    'data': {
+      'PROM_REQUESTS': '532217.0',
+      'PROM_TOTALTIME_S': '74.501672875',
+      'PROM_AVERAGE_MS': '0.13998',
+      'CPUTIME_MS': '12060 4130 0 0',
+      'BASE_IMAGE': 'adoptopenjdk/openjdk8-openj9:jdk8u202-b08_openj9-0.12.1',
+      'MEMORY_LIMIT': '25m',
+      'REQUESTS_PROCESSED': '532217',
+      'AVERAGE_PROCESSING_TIME_MS': '1.68564',
+      'STANDARD_DEVIATION_MS': '0.824428',
+      'JAVA_VERSION': '8',
+      'GC_ALGORITHM': 'Gencon'
+    }
+  },
+  {
+    'jvm_code': 'openj9',
+    'jvm_descr': 'OpenJ9',
+    'framework_code': 'sbfu',
+    'framework_descr': 'Spring Fu',
+    'data': {
+      'CPUTIME_MS': '15551 4314 0 0',
+      'BASE_IMAGE': 'adoptopenjdk/openjdk8-openj9:jdk8u202-b08_openj9-0.12.1',
+      'MEMORY_LIMIT': '25m',
+      'REQUESTS_PROCESSED': '487796',
+      'AVERAGE_PROCESSING_TIME_MS': '1.83942',
+      'STANDARD_DEVIATION_MS': '0.77506',
+      'JAVA_VERSION': '8',
+      'GC_ALGORITHM': 'Gencon'
+    }
+  },
+  {
+    'jvm_code': 'openj9',
+    'jvm_descr': 'OpenJ9',
+    'framework_code': 'vertx',
+    'framework_descr': 'Vert.x',
+    'data': {
+      'PROM_REQUESTS': '564204.0',
+      'PROM_TOTALTIME_S': '12.97896856',
+      'PROM_AVERAGE_MS': '0.02300',
+      'CPUTIME_MS': '6344 3544 0 0',
+      'BASE_IMAGE': 'adoptopenjdk/openjdk8-openj9:jdk8u202-b08_openj9-0.12.1',
+      'MEMORY_LIMIT': '25m',
+      'REQUESTS_PROCESSED': '564204',
+      'AVERAGE_PROCESSING_TIME_MS': '1.58984',
+      'STANDARD_DEVIATION_MS': '0.729245',
+      'JAVA_VERSION': '8',
+      'GC_ALGORITHM': 'Gencon'
+    }
+  },
+  {
+    'jvm_code': 'openj9',
+    'jvm_descr': 'OpenJ9',
+    'framework_code': 'akka',
+    'framework_descr': 'Akka',
+    'data': {
+      'CPUTIME_MS': '24000 7271 0 0',
+      'BASE_IMAGE': 'adoptopenjdk/openjdk8-openj9:jdk8u202-b08_openj9-0.12.1',
+      'MEMORY_LIMIT': '25m',
+      'REQUESTS_PROCESSED': '428145',
+      'AVERAGE_PROCESSING_TIME_MS': '2.09634',
+      'STANDARD_DEVIATION_MS': '1.05798',
+      'JAVA_VERSION': '8',
+      'GC_ALGORITHM': 'Gencon'
+    }
+  },
+  {
+    'jvm_code': 'openj9',
+    'jvm_descr': 'OpenJ9',
+    'framework_code': 'qs',
+    'framework_descr': 'Quarkus',
+    'data': {
+      'PROM_REQUESTS': '549582.0',
+      'PROM_TOTALTIME_S': '5.06663',
+      'PROM_AVERAGE_MS': '0.00922',
+      'CPUTIME_MS': '21527 6481 0 0',
+      'BASE_IMAGE': 'adoptopenjdk/openjdk8-openj9:jdk8u202-b08_openj9-0.12.1',
+      'MEMORY_LIMIT': '25m',
+      'REQUESTS_PROCESSED': '549582',
+      'AVERAGE_PROCESSING_TIME_MS': '1.63224',
+      'STANDARD_DEVIATION_MS': '0.934519',
+      'JAVA_VERSION': '8',
+      'GC_ALGORITHM': 'Gencon'
+    }
+  },
+  {
+    'jvm_code': 'oraclejdk',
+    'jvm_descr': 'Oracle JDK',
+    'framework_code': 'hse',
+    'framework_descr': 'Helidon SE',
+    'data': {
+      'CPUTIME_MS': '7336 5676 0 0',
+      'BASE_IMAGE': 'store/oracle/serverjre:8',
+      'MEMORY_LIMIT': '25m',
+      'REQUESTS_PROCESSED': '550304',
+      'AVERAGE_PROCESSING_TIME_MS': '1.62993',
+      'STANDARD_DEVIATION_MS': '0.632207',
+      'JAVA_VERSION': '8',
+      'GC_ALGORITHM': 'Parallel'
+    }
+  },
+  {
+    'jvm_code': 'oraclejdk',
+    'jvm_descr': 'Oracle JDK',
+    'framework_code': 'mn',
+    'framework_descr': 'Micronaut',
+    'data': {
+      'CPUTIME_MS': '10370 5267 0 0',
+      'BASE_IMAGE': 'store/oracle/serverjre:8',
+      'MEMORY_LIMIT': '25m',
+      'REQUESTS_PROCESSED': '526127',
+      'AVERAGE_PROCESSING_TIME_MS': '1.70518',
+      'STANDARD_DEVIATION_MS': '0.732837',
+      'JAVA_VERSION': '8',
+      'GC_ALGORITHM': 'Parallel'
+    }
+  },
+  {
+    'jvm_code': 'oraclejdk',
+    'jvm_descr': 'Oracle JDK',
+    'framework_code': 'none',
+    'framework_descr': 'No framework',
+    'data': {
+      'CPUTIME_MS': '3851 4141 0 0',
+      'BASE_IMAGE': 'store/oracle/serverjre:8',
+      'MEMORY_LIMIT': '25m',
+      'REQUESTS_PROCESSED': '577577',
+      'AVERAGE_PROCESSING_TIME_MS': '1.5528',
+      'STANDARD_DEVIATION_MS': '0.16942',
+      'JAVA_VERSION': '8',
+      'GC_ALGORITHM': 'Parallel'
+    }
+  },
+  {
+    'jvm_code': 'oraclejdk',
+    'jvm_descr': 'Oracle JDK',
+    'framework_code': 'mp',
+    'framework_descr': 'Microprofile',
+    'data': {
+      'CPUTIME_MS': '8222 165 134 4',
+      'BASE_IMAGE': 'store/oracle/serverjre:8',
+      'MEMORY_LIMIT': '25m',
+      'REQUESTS_PROCESSED': '0',
+      'JAVA_VERSION': '8',
+      'GC_ALGORITHM': 'Parallel'
+    }
+  },
+  {
+    'jvm_code': 'oraclejdk',
+    'jvm_descr': 'Oracle JDK',
+    'framework_code': 'sb',
+    'framework_descr': 'Spring Boot',
+    'data': {
+      'PROM_REQUESTS': '498693.0',
+      'PROM_TOTALTIME_S': '111.199113875',
+      'PROM_AVERAGE_MS': '0.22298',
+      'CPUTIME_MS': '14523 4700 0 0',
+      'BASE_IMAGE': 'store/oracle/serverjre:8',
+      'MEMORY_LIMIT': '25m',
+      'REQUESTS_PROCESSED': '498693',
+      'AVERAGE_PROCESSING_TIME_MS': '1.79928',
+      'STANDARD_DEVIATION_MS': '1.25023',
+      'JAVA_VERSION': '8',
+      'GC_ALGORITHM': 'Parallel'
+    }
+  },
+  {
+    'jvm_code': 'oraclejdk',
+    'jvm_descr': 'Oracle JDK',
+    'framework_code': 'sbreactive',
+    'framework_descr': 'WebFlux',
+    'data': {
+      'PROM_REQUESTS': '542446.0',
+      'PROM_TOTALTIME_S': '74.093417997',
+      'PROM_AVERAGE_MS': '0.13659',
+      'CPUTIME_MS': '11034 3930 0 0',
+      'BASE_IMAGE': 'store/oracle/serverjre:8',
+      'MEMORY_LIMIT': '25m',
+      'REQUESTS_PROCESSED': '542446',
+      'AVERAGE_PROCESSING_TIME_MS': '1.65378',
+      'STANDARD_DEVIATION_MS': '0.554014',
+      'JAVA_VERSION': '8',
+      'GC_ALGORITHM': 'Parallel'
+    }
+  },
+  {
+    'jvm_code': 'oraclejdk',
+    'jvm_descr': 'Oracle JDK',
+    'framework_code': 'sbfu',
+    'framework_descr': 'Spring Fu',
+    'data': {
+      'CPUTIME_MS': '7833 5698 0 0',
+      'BASE_IMAGE': 'store/oracle/serverjre:8',
+      'MEMORY_LIMIT': '25m',
+      'REQUESTS_PROCESSED': '549452',
+      'AVERAGE_PROCESSING_TIME_MS': '1.63252',
+      'STANDARD_DEVIATION_MS': '0.749321',
+      'JAVA_VERSION': '8',
+      'GC_ALGORITHM': 'Parallel'
+    }
+  },
+  {
+    'jvm_code': 'oraclejdk',
+    'jvm_descr': 'Oracle JDK',
+    'framework_code': 'vertx',
+    'framework_descr': 'Vert.x',
+    'data': {
+      'PROM_REQUESTS': '568723.0',
+      'PROM_TOTALTIME_S': '8.37281789',
+      'PROM_AVERAGE_MS': '0.01472',
+      'CPUTIME_MS': '5009 3344 0 0',
+      'BASE_IMAGE': 'store/oracle/serverjre:8',
+      'MEMORY_LIMIT': '25m',
+      'REQUESTS_PROCESSED': '568722',
+      'AVERAGE_PROCESSING_TIME_MS': '1.57707',
+      'STANDARD_DEVIATION_MS': '0.327275',
+      'JAVA_VERSION': '8',
+      'GC_ALGORITHM': 'Parallel'
+    }
+  },
+  {
+    'jvm_code': 'oraclejdk',
+    'jvm_descr': 'Oracle JDK',
+    'framework_code': 'akka',
+    'framework_descr': 'Akka',
+    'data': {
+      'CPUTIME_MS': '14356 6655 0 0',
+      'BASE_IMAGE': 'store/oracle/serverjre:8',
+      'MEMORY_LIMIT': '25m',
+      'REQUESTS_PROCESSED': '489020',
+      'AVERAGE_PROCESSING_TIME_MS': '1.83472',
+      'STANDARD_DEVIATION_MS': '0.849696',
+      'JAVA_VERSION': '8',
+      'GC_ALGORITHM': 'Parallel'
+    }
+  },
+  {
+    'jvm_code': 'oraclejdk',
+    'jvm_descr': 'Oracle JDK',
+    'framework_code': 'qs',
+    'framework_descr': 'Quarkus',
+    'data': {
+      'PROM_REQUESTS': '558013.0',
+      'PROM_TOTALTIME_S': '1.53174',
+      'PROM_AVERAGE_MS': '0.00274',
+      'CPUTIME_MS': '8122 6290 0 0',
+      'BASE_IMAGE': 'store/oracle/serverjre:8',
+      'MEMORY_LIMIT': '25m',
+      'REQUESTS_PROCESSED': '558013',
+      'AVERAGE_PROCESSING_TIME_MS': '1.60756',
+      'STANDARD_DEVIATION_MS': '0.398379',
+      'JAVA_VERSION': '8',
+      'GC_ALGORITHM': 'Parallel'
+    }
+  }
+]
