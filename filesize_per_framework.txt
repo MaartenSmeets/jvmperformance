@@ -1,0 +1,15 @@
+Size,Framework
+4890,No framework
+5777891,Helidon SE
+7375719,Vert.x
+8518232,Quarkus
+12323804,Micronaut
+18338149,Spring Boot
+19834331,Spring Boot WebFLux
+20552856,Spring Fu
+23654453,Akka
+132924089,Microprofile
+7371344,No framework native
+22187728,Helidon SE native
+23461960,Quarkus native
+55442408,Micronaut native
