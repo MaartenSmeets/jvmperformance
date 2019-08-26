@@ -3,6 +3,8 @@
 
 java8cmd="/usr/lib/jvm/java-8-openjdk-amd64/bin/java -Xmx1024m -Xms1024m -XX:+UseG1GC -XX:+UseStringDeduplication -jar"
 java11cmd="/usr/lib/jvm/java-11-openjdk-amd64/bin/java -Xmx1024m -Xms1024m -XX:+UseG1GC -XX:+UseStringDeduplication -jar"
+javaopenj9222="/home/maarten/Downloads/jdk8u222-b10/bin/java -Xmx1024m -Xms1024m -Xshareclasses:name=Cache1 -jar"
+javaoracle8221="/home/maarten/Downloads/jdk1.8.0_221/bin/java -Xmx1024m -Xms1024m -XX:+UseG1GC -XX:+UseStringDeduplication -jar"
 
 stopcommand=("WEB server is up!" "Startup completed in" "server is ready to run a smarter planet" "JVM running for" "JVM running for" "JVM running for" "Succeeded in deploying verticle" "Server online at" "started in")
 
@@ -15,7 +17,7 @@ nativeprefix=("hse" "mn" "qs")
 nativestopcommand=("WEB server is up!" "Startup completed in" "started in")
 
 test_outputfile=starttime_`date +"%Y%m%d%H%M%S"`.log
-runsize=100
+runsize=10
 
 function check_files() {
     combined=( "${jarlist8[@]}" "${jarlist11[@]}" "${nativefilelist[@]}")
@@ -33,6 +35,7 @@ function execute_test() {
     #first parameter is the java command, second the java version, third the jar and fourth the stop command, fifth the prefix
     for (( c=1; c<=$runsize; c++ ))
     do
+    rm -rf ~/wlpExtract
     ts=$(date +%s%N)
     #Based on https://superuser.com/questions/402979/kill-program-after-it-outputs-a-given-line-from-a-shell-script
     expect -c "spawn $1 -jar $3; expect \"$4\" { close }" > /dev/null 2>&1
@@ -44,6 +47,7 @@ function execute_test_native() {
     #first parameter is the command, second the java version, third the stop command, fourth the prefix
     for (( c=1; c<=$runsize; c++ ))
     do
+    rm -rf ~/wlpExtract
     ts=$(date +%s%N)
     #Based on https://superuser.com/questions/402979/kill-program-after-it-outputs-a-given-line-from-a-shell-script
     expect -c "spawn $1; expect \"$3\" { close }" > /dev/null 2>&1
@@ -63,7 +67,29 @@ echo Processing $jarfilename
 counter=$(( $counter + 1 ))
 ind=${prefix[$counter]}
 scmd=${stopcommand[$counter]}
-execute_test "$java8cmd" 8 $jarfilename "$scmd" $ind
+execute_test "$java8cmd" 8openjdk $jarfilename "$scmd" $ind
+done
+
+echo Executing test for Java 8 OpenJ9
+counter=-1
+for jarfilename in ${jarlist8[@]}
+do
+echo Processing $jarfilename
+counter=$(( $counter + 1 ))
+ind=${prefix[$counter]}
+scmd=${stopcommand[$counter]}
+execute_test "$javaopenj9222" 8openj9 $jarfilename "$scmd" $ind
+done
+
+echo Executing test for Java 8 Oracle
+counter=-1
+for jarfilename in ${jarlist8[@]}
+do
+echo Processing $jarfilename
+counter=$(( $counter + 1 ))
+ind=${prefix[$counter]}
+scmd=${stopcommand[$counter]}
+execute_test "$javaoracle8221" 8oracle $jarfilename "$scmd" $ind
 done
 
 echo Executing test for Java 11
@@ -85,6 +111,6 @@ echo Processing $execcmd
 counter=$(( $counter + 1 ))
 ind=${nativeprefix[$counter]}
 scmd=${nativestopcommand[$counter]}
-execute_test_native $execcmd "svm" "$scmd" $ind
+execute_test_native "$execcmd" "svm" "$scmd" $ind
 done
 
