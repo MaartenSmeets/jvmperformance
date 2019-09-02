@@ -41,7 +41,7 @@ function execute_test() {
     rm -rf ~/wlpExtract
     ts=$(date +%s%N)
     #Based on https://superuser.com/questions/402979/kill-program-after-it-outputs-a-given-line-from-a-shell-script
-    timelimit -t100 expect -c "spawn $1 -jar $3; expect \"$4\" { close }" > /dev/null 2>&1
+    timelimit -t30 -T30 expect -c "spawn $1 -jar $3; expect \"$4\" { close }" > /dev/null 2>&1
     echo $5,$2,$((($(date +%s%N) - $ts)/1000000)) >> $test_outputfile
     killall -9 java
     done
@@ -54,8 +54,9 @@ function execute_test_native() {
     rm -rf ~/wlpExtract
     ts=$(date +%s%N)
     #Based on https://superuser.com/questions/402979/kill-program-after-it-outputs-a-given-line-from-a-shell-script
-    timelimit -t100 expect -c "spawn $1; expect \"$3\" { close }" > /dev/null 2>&1
+    timelimit -t30 -T30 expect -c "spawn $1; expect \"$3\" { close }" > /dev/null 2>&1
     echo $4,$2,$((($(date +%s%N) - $ts)/1000000)) >> $test_outputfile
+    killall -9 java
     done
 }
 
