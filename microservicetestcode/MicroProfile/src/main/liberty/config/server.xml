@@ -1,11 +1,9 @@
 <server description="Sample Liberty server">
 
     <featureManager>
-        <feature>microProfile-2.1</feature>
+        <feature>jaxrs-2.1</feature>
         <feature>mpMetrics-1.1</feature>
     </featureManager>
-
-    <applicationManager autoExpand="true" />
 
     <mpMetrics authentication="false" />
 
