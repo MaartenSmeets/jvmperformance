@@ -1,4 +1,28 @@
 import os.path
+import logging
+import subprocess
+import os, signal
+import time
+
+test_duration=10
+primer_duration=20
+wait_to_start=10
+wait_after_kill=5
+
+logger = logging.getLogger('run_test')
+logger.setLevel(logging.DEBUG)
+# create console handler and set level to debug
+ch = logging.StreamHandler()
+ch.setLevel(logging.DEBUG)
+
+# create formatter
+formatter = logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(message)s')
+
+# add formatter to ch
+ch.setFormatter(formatter)
+
+# add ch to logger
+logger.addHandler(ch)
 
 # GC algorithms
 gc_openj9 = [
@@ -40,12 +64,12 @@ gc_openjdk_12 = gc_openjdk_11 + [
 # Additional options
 openj9_opt = '‑Xshareclasses:name=Cache1'
 
-#Configurations to test
+# Configurations to test
 memory_conf = ['-Xmx1G -Xms1G', '-Xmx256m -Xms256m', '-Xmx50m -Xms50m']
 cpuset_conf = ['4', '4,6', '4,6,8,12']
 concurrency_conf = ['1', '2', '4']
 
-#JAR files to test with
+# JAR files to test with
 jarfiles = [{'filename': 'akka-rest-service-8.jar', 'description': 'Akka'},
             {'filename': 'quarkus-rest-service-8.jar', 'description': 'Quarkus'},
             {'filename': 'helidon-rest-service-8.jar', 'description': 'Helidon SE'},
@@ -57,39 +81,102 @@ jarfiles = [{'filename': 'akka-rest-service-8.jar', 'description': 'Akka'},
             {'filename': 'noframework-rest-service-8.jar', 'description': 'No framework'},
             {'filename': 'vertx-rest-service-8.jar', 'description': 'Vert.x'}]
 
-#JVMs to test
-jvms = [{'shortname':'openj9_8_222','description':'OpenJ9 8','location': '/home/maarten/Downloads/jdk8u222-b10/bin/java', 'version_major': 8,
-                         'version_minor': '222', 'gc': gc_openj9, 'additional': openj9_opt},
-        {'shortname':'openj9_11_04','description':'OpenJ9 11','location': '/home/maarten/Downloads/jdk-11.0.4+11/bin/java', 'version_major': 11,
-                         'version_minor': '04', 'gc': gc_openj9, 'additional': openj9_opt},
-        {'shortname':'openj9_12_02','description':'OpenJ9 12','location': '/home/maarten/Downloads/jdk-12.0.2+10/bin/java', 'version_major': 12,
-                         'version_minor': '02', 'gc': gc_openj9, 'additional': openj9_opt},
-        {'shortname':'openjdk_8_222','description':'OpenJDK 8','location': '/usr/lib/jvm/java-8-openjdk-amd64/bin/java', 'version_major': 8,
-                          'version_minor': '222', 'gc': gc_openjdk_8, 'additional': ''},
-        {'shortname':'openjdk_12_02','description':'OpenJDK 12','location': '/usr/lib/jvm/zulu-12-amd64/bin/java', 'version_major': 12,
-                          'version_minor': '0.2', 'gc': gc_openjdk_12, 'additional': ''},
-        {'shortname':'oraclejdk_12_02','description':'OracleJDK 12','location': '/usr/lib/jvm/jdk-12.0.2/bin/java', 'version_major': 12,
-                            'version_minor': '0.2', 'gc': gc_openjdk_12, 'additional': ''},
-        {'shortname':'oraclejdk_11_03','description':'Oracle JDK 11','location': '/usr/lib/jvm/jdk-11.0.3/bin/java', 'version_major': 11,
-                            'version_minor': '0.3', 'gc': gc_openjdk_11, 'additional': ''},
-        {'shortname':'openjdk_11_04','description':'OpenJDK 11','location': '/usr/lib/jvm/java-11-openjdk-amd64/bin/java', 'version_major': 11,
-                          'version_minor': '0.4', 'gc': gc_openjdk_11, 'additional': ''},
-        {'shortname':'zing_8_1908','description':'Zing 8','location': '/opt/zing/zing-jdk1.8.0-19.08.0.0-5/bin/java', 'version_major': 8,
-                        'version_minor': '19.08', 'gc': gc_zing_8, 'additional': ''},
-        {'shortname':'zing_11_1908','description':'Zing 11','location': '/opt/zing/zing-jdk11.0.0-19.08.0.0-5/bin/java', 'version_major': 11,
-                         'version_minor': '00', 'gc': gc_zing_11, 'additional': ''}
+# JVMs to test
+jvms = [{'shortname': 'openj9_8_222', 'description': 'OpenJ9 8',
+         'location': '/home/maarten/Downloads/jdk8u222-b10/bin/java', 'version_major': 8,
+         'version_minor': '222', 'gc': gc_openj9, 'additional': openj9_opt},
+        {'shortname': 'openj9_11_04', 'description': 'OpenJ9 11',
+         'location': '/home/maarten/Downloads/jdk-11.0.4+11/bin/java', 'version_major': 11,
+         'version_minor': '04', 'gc': gc_openj9, 'additional': openj9_opt},
+        {'shortname': 'openj9_12_02', 'description': 'OpenJ9 12',
+         'location': '/home/maarten/Downloads/jdk-12.0.2+10/bin/java', 'version_major': 12,
+         'version_minor': '02', 'gc': gc_openj9, 'additional': openj9_opt},
+        {'shortname': 'openjdk_8_222', 'description': 'OpenJDK 8',
+         'location': '/usr/lib/jvm/java-8-openjdk-amd64/bin/java', 'version_major': 8,
+         'version_minor': '222', 'gc': gc_openjdk_8, 'additional': ''},
+        {'shortname': 'openjdk_12_02', 'description': 'OpenJDK 12', 'location': '/usr/lib/jvm/zulu-12-amd64/bin/java',
+         'version_major': 12,
+         'version_minor': '0.2', 'gc': gc_openjdk_12, 'additional': ''},
+        {'shortname': 'oraclejdk_12_02', 'description': 'OracleJDK 12', 'location': '/usr/lib/jvm/jdk-12.0.2/bin/java',
+         'version_major': 12,
+         'version_minor': '0.2', 'gc': gc_openjdk_12, 'additional': ''},
+        {'shortname': 'oraclejdk_11_03', 'description': 'Oracle JDK 11', 'location': '/usr/lib/jvm/jdk-11.0.3/bin/java',
+         'version_major': 11,
+         'version_minor': '0.3', 'gc': gc_openjdk_11, 'additional': ''},
+        {'shortname': 'openjdk_11_04', 'description': 'OpenJDK 11',
+         'location': '/usr/lib/jvm/java-11-openjdk-amd64/bin/java', 'version_major': 11,
+         'version_minor': '0.4', 'gc': gc_openjdk_11, 'additional': ''},
+        {'shortname': 'zing_8_1908', 'description': 'Zing 8',
+         'location': '/opt/zing/zing-jdk1.8.0-19.08.0.0-5/bin/java', 'version_major': 8,
+         'version_minor': '19.08', 'gc': gc_zing_8, 'additional': ''},
+        {'shortname': 'zing_11_1908', 'description': 'Zing 11',
+         'location': '/opt/zing/zing-jdk11.0.0-19.08.0.0-5/bin/java', 'version_major': 11,
+         'version_minor': '00', 'gc': gc_zing_11, 'additional': ''}
         ]
 
 def check_prereqs():
-   resval=True;
-   for jarfile in jarfiles:
-       if not os.path.isfile(jarfile.get('filename')):
-           print ('File not found: '+jarfile.get('filename'))
-           resval=False
-   for jvm in jvms:
+    resval = True;
+    for jarfile in jarfiles:
+        if not os.path.isfile(jarfile.get('filename')):
+            print('File not found: ' + jarfile.get('filename'))
+            resval = False
+    for jvm in jvms:
         if not os.path.isfile(jvm.get('location')):
-           print ('File not found: '+jvm.get('location'))
-           resval=False
-   return resval
+            print('File not found: ' + jvm.get('location'))
+            resval = False
+    return resval
 
-check_prereqs()
+def build_jvmcmd(jvmloc, gc, mem, opt, jar):
+    return jvmloc + ' ' + gc + ' ' + opt + ' ' + mem + ' ' + '-jar ' + jar
+
+def exec_all_tests():
+    pid=start_java_process('/home/maarten/Downloads/jdk8u222-b10/bin/java -jar sb-rest-service-8.jar','1')
+    logger.info('Java process PID is: ' + pid)
+    time.sleep(wait_to_start)
+    logger.info(execute_test_single(1, primer_duration))
+    logger.info(execute_test_single(1, test_duration))
+    kill_process(pid)
+    return
+
+def get_java_process_pid():
+    cmd='ps -o pid,sess,cmd afx | egrep "( |/)java.*service*-8.jar.*( -f)?$" | awk \'{print $1}\''
+    output = subprocess.getoutput(cmd)
+    return output
+
+def start_java_process(java_cmd,cpuset):
+    oldpid=get_java_process_pid()
+    if (oldpid.isdecimal()):
+        logger.info('Old Java process found with PID: ' + oldpid+'. Killing it')
+        kill_process(oldpid)
+    cmd='taskset -c '+cpuset+' '+java_cmd
+    subprocess.Popen(cmd.split(' '), stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+    return get_java_process_pid()
+
+def execute_test_single(concurrency,duration):
+    cmd = 'ab -l -q -t ' + str(duration) + ' -n 100000000000000 -c ' + str(concurrency) + ' http://localhost:8080/greeting?name=Maarten'
+    process = subprocess.run(cmd.split(), check=True, stdout=subprocess.PIPE, universal_newlines=True)
+    output = process.stdout
+    return output
+
+def kill_process(pid):
+    logger.info('Killing process with PID: '+pid)
+    os.kill(int(pid), signal.SIGKILL)
+    try:
+        #this will fail if the process is not a childprocess
+        os.waitpid(int(pid), 0)
+    except:
+        #Just to be sure the process is really gone
+        time.sleep(wait_after_kill)
+    return
+
+def main():
+    if (not check_prereqs()):
+        logger.error('Prerequisites not satisfied. Exiting')
+        exit(1)
+    else:
+        logger.info('Prerequisites satisfied')
+    print(exec_all_tests())
+    logger.info('Test execution finished')
+
+if __name__ == '__main__':
+    main()
