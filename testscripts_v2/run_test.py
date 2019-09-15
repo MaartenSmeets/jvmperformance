@@ -7,9 +7,9 @@ import re
 from datetime import datetime
 
 test_duration=10
-primer_duration=2
+primer_duration=1
 wait_after_primer=1
-wait_to_start=20
+wait_to_start=17
 wait_after_kill=5
 now = datetime.now()
 outputfile='results_'+now.strftime("%Y%m%d_%H%M%S")+'.log'
@@ -182,9 +182,9 @@ def exec_all_tests():
                                 pid=get_java_process_pid()
                                 logger.info('Setting new PID to '+pid)
                             try:
-                                output_primer=execute_test_single(1, primer_duration)
+                                output_primer=execute_test_single(concurrency, primer_duration)
                                 time.sleep(wait_after_primer)
-                                output_test=execute_test_single(1, test_duration)
+                                output_test=execute_test_single(concurrency, test_duration)
                                 ab_output=parse_ab_output(output_test)
                                 outputline=jvm_outputline+','+ab_output.get('compl_req')+','+ab_output.get('failed_req')+','+ab_output.get('req_per_sec')+','+ab_output.get('time_per_req_avg')+','+cpunum+','+concurrency
                             except:
@@ -192,7 +192,9 @@ def exec_all_tests():
                                 logger.info('Executing retry')
                                 time.sleep(wait_to_start)
                                 try:
-                                     output_test=execute_test_single(1, test_duration)
+                                     output_primer=execute_test_single(concurrency, primer_duration)
+                                     time.sleep(wait_after_primer)
+                                     output_test=execute_test_single(concurrency, test_duration)
                                      ab_output=parse_ab_output(output_test)
                                      outputline=jvm_outputline+','+ab_output.get('compl_req')+','+ab_output.get('failed_req')+','+ab_output.get('req_per_sec')+','+ab_output.get('time_per_req_avg')+','+cpunum+','+concurrency
                                 except:
