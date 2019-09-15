@@ -172,13 +172,21 @@ def exec_all_tests():
                             pid=start_java_process(jvmcmd,concurrency)
                             logger.info('Java process PID is: ' + pid)
                             time.sleep(wait_to_start)
-                            output_primer=execute_test_single(1, primer_duration)
-                            output_test=execute_test_single(1, test_duration)
                             try:
+                                output_primer=execute_test_single(1, primer_duration)
+                                output_test=execute_test_single(1, test_duration)
                                 ab_output=parse_ab_output(output_test)
                                 outputline=jvm_outputline+','+ab_output.get('compl_req')+','+ab_output.get('failed_req')+','+ab_output.get('req_per_sec')+','+ab_output.get('time_per_req_avg')+','+cpunum+','+concurrency
                             except:
-                                outputline = jvm_outputline + ',FAILED,FAILED,FAILED,FAILED' + cpunum + ',' + concurrency
+                                #Retry
+                                logger.info('Executing retry')
+                                time.sleep(wait_to_start)
+                                try:
+                                     output_test=execute_test_single(1, test_duration)
+                                     ab_output=parse_ab_output(output_test)
+                                     outputline=jvm_outputline+','+ab_output.get('compl_req')+','+ab_output.get('failed_req')+','+ab_output.get('req_per_sec')+','+ab_output.get('time_per_req_avg')+','+cpunum+','+concurrency
+                                except:
+                                     outputline = jvm_outputline + ',FAILED,FAILED,FAILED,FAILED' + cpunum + ',' + concurrency
                             outputline=outputline+','+str(test_duration)
                             with open(outputfile, 'a') as the_file:
                                 the_file.write(outputline+'\n')
