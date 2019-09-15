@@ -226,11 +226,11 @@ def get_java_process_pid():
 def start_java_process(java_cmd,cpuset):
     cmd='rm -rf ~/wlpExtract'
     subprocess.Popen(cmd.split(' '), stdout=subprocess.PIPE, stderr=subprocess.PIPE)
-    cmd='rm -f ./jitdump*.*'
+    cmd='rm -f ./jitdump.*'
     subprocess.Popen(cmd.split(' '), stdout=subprocess.PIPE, stderr=subprocess.PIPE)
-    cmd='rm -f ./javacore*.*'
+    cmd='rm -f ./javacore.*'
     subprocess.Popen(cmd.split(' '), stdout=subprocess.PIPE, stderr=subprocess.PIPE)
-    cmd='rm -f ./Snap*.*'
+    cmd='rm -f ./Snap.*'
     subprocess.Popen(cmd.split(' '), stdout=subprocess.PIPE, stderr=subprocess.PIPE)
 
     oldpid=get_java_process_pid()
