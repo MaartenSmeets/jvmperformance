@@ -217,6 +217,15 @@ def get_java_process_pid():
     return output
 
 def start_java_process(java_cmd,cpuset):
+    cmd='rm -rf ~/wlpExtract'
+    subprocess.Popen(cmd.split(' '), stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+    cmd='rm -f ./jitdump*.*'
+    subprocess.Popen(cmd.split(' '), stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+    cmd='rm -f ./javacore*.*'
+    subprocess.Popen(cmd.split(' '), stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+    cmd='rm -f ./Snap*.*'
+    subprocess.Popen(cmd.split(' '), stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+
     oldpid=get_java_process_pid()
     if (oldpid.isdecimal()):
         logger.info('Old Java process found with PID: ' + oldpid+'. Killing it')
