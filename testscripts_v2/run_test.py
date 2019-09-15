@@ -7,8 +7,9 @@ import re
 from datetime import datetime
 
 test_duration=10
-primer_duration=5
-wait_to_start=15
+primer_duration=2
+wait_after_primer=1
+wait_to_start=20
 wait_after_kill=5
 now = datetime.now()
 outputfile='results_'+now.strftime("%Y%m%d_%H%M%S")+'.log'
@@ -70,7 +71,7 @@ openj9_opt = '‑Xshareclasses:name=Cache1'
 
 # Configurations to test
 memory_conf = ['-Xmx256m -Xms256m', '-Xmx50m -Xms50m']
-cpuset_conf = ['4', '4,6,8,12']
+cpuset_conf = ['3', '5,7,9,11']
 concurrency_conf = ['1', '4']
 
 # JAR files to test with
@@ -145,7 +146,7 @@ def estimate_duration():
                 for jarfile in jarfiles:
                     for cpuset in cpuset_conf:
                         for concurrency in concurrency_conf:
-                            total=total+test_duration+primer_duration+wait_to_start
+                            total=total+test_duration+primer_duration+wait_after_primer+wait_to_start
     return total/60/60
 
 #counts from a comma separated list the number of cpus
@@ -171,16 +172,18 @@ def exec_all_tests():
                             logger.info('Number of concurrent requests ' + concurrency)
                             pid=start_java_process(jvmcmd,concurrency)
                             logger.info('Java process PID is: ' + pid)
-                            time.sleep(wait_to_start)
-                            if (len(str(get_java_process_pid()))==0):
+                            if (len(str(pid))==0):
                                 pid=start_java_process(jvmcmd,concurrency)
                                 logger.info('Retry startup. Java process PID is: ' + pid)
-                                time.sleep(wait_to_start)
+                                if (len(str(pid))==0):
+                                    pid=start_java_process(jvmcmd,concurrency)
+                                    logger.info('Second retry startup. Java process PID is: ' + pid)
                             if (len(str(pid))==0 and len(str(get_java_process_pid()))>0):
                                 pid=get_java_process_pid()
                                 logger.info('Setting new PID to '+pid)
                             try:
                                 output_primer=execute_test_single(1, primer_duration)
+                                time.sleep(wait_after_primer)
                                 output_test=execute_test_single(1, test_duration)
                                 ab_output=parse_ab_output(output_test)
                                 outputline=jvm_outputline+','+ab_output.get('compl_req')+','+ab_output.get('failed_req')+','+ab_output.get('req_per_sec')+','+ab_output.get('time_per_req_avg')+','+cpunum+','+concurrency
@@ -227,11 +230,11 @@ def start_java_process(java_cmd,cpuset):
     cmd='rm -rf ~/wlpExtract'
     subprocess.Popen(cmd.split(' '), stdout=subprocess.PIPE, stderr=subprocess.PIPE)
     cmd='rm -f ./jitdump.*'
-    subprocess.Popen(cmd.split(' '), stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+    subprocess.Popen(cmd.split(' '), shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
     cmd='rm -f ./javacore.*'
-    subprocess.Popen(cmd.split(' '), stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+    subprocess.Popen(cmd.split(' '), shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
     cmd='rm -f ./Snap.*'
-    subprocess.Popen(cmd.split(' '), stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+    subprocess.Popen(cmd.split(' '), shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
 
     oldpid=get_java_process_pid()
     if (oldpid.isdecimal()):
@@ -239,6 +242,7 @@ def start_java_process(java_cmd,cpuset):
         kill_process(oldpid)
     cmd='taskset -c '+cpuset+' '+java_cmd
     subprocess.Popen(cmd.split(' '), stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+    time.sleep(wait_to_start)
     return get_java_process_pid()
 
 def execute_test_single(concurrency,duration):
