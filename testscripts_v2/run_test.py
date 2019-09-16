@@ -212,7 +212,7 @@ def exec_all_tests():
                                 subprocess.Popen(cmd.split(' '), shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
                                 cmd='rm -f ./Snap.*'
                                 subprocess.Popen(cmd.split(' '), shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
-                             except:
+                            except:
                                 None
     return
 
