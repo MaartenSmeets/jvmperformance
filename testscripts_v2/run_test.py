@@ -235,11 +235,15 @@ def parse_ab_output(ab_output):
     return retval
 
 def get_java_process_pid():
-    cmd='ps -o pid,sess,cmd afx | egrep "( |/)java.*service*-8.jar.*( -f)?$" | awk \'{print $1}\''
+    cmd='ps -o pid,sess,cmd afx | egrep "( |/)java.*service.*-8.jar.*( -f)?$" | awk \'{print $1}\''
     output = subprocess.getoutput(cmd)
     return output
 
 def start_java_process(java_cmd,cpuset):
+    oldpid=get_java_process_pid()
+    if (oldpid.isdecimal()):
+        logger.info('Old Java process found with PID: ' + oldpid+'. Killing it')
+        kill_process(oldpid)
     cmd='rm -rf ~/wlpExtract'
     subprocess.getoutput(cmd)
     cmd='rm -f ./jitdump.*'
@@ -248,13 +252,10 @@ def start_java_process(java_cmd,cpuset):
     subprocess.Popen(cmd.split(' '), shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
     cmd='rm -f ./Snap.*'
     subprocess.Popen(cmd.split(' '), shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
-
-    oldpid=get_java_process_pid()
-    if (oldpid.isdecimal()):
-        logger.info('Old Java process found with PID: ' + oldpid+'. Killing it')
-        kill_process(oldpid)
+    
     cmd='taskset -c '+cpuset+' '+java_cmd
     subprocess.Popen(cmd.split(' '), stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+    
     time.sleep(wait_to_start)
     return get_java_process_pid()
 
