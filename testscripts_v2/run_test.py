@@ -203,6 +203,14 @@ def exec_all_tests():
                             with open(outputfile, 'a') as the_file:
                                 the_file.write(outputline+'\n')
                             kill_process(pid)
+                            cmd='rm -rf ~/wlpExtract'
+                            subprocess.getoutput(cmd)
+                            cmd='rm -f ./jitdump.*'
+                            subprocess.Popen(cmd.split(' '), shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+                            cmd='rm -f ./javacore.*'
+                            subprocess.Popen(cmd.split(' '), shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+                            cmd='rm -f ./Snap.*'
+                            subprocess.Popen(cmd.split(' '), shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
     return
 
 def parse_ab_output(ab_output):
@@ -230,7 +238,7 @@ def get_java_process_pid():
 
 def start_java_process(java_cmd,cpuset):
     cmd='rm -rf ~/wlpExtract'
-    subprocess.Popen(cmd.split(' '), shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+    subprocess.getoutput(cmd)
     cmd='rm -f ./jitdump.*'
     subprocess.Popen(cmd.split(' '), shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
     cmd='rm -f ./javacore.*'
