@@ -82,7 +82,7 @@ jarfiles = [{'filename': 'akka-rest-service-8.jar', 'description': 'Akka'},
             {'filename': 'micronaut-rest-service-8.jar', 'description': 'Micronaut'},
 #            {'filename': 'sb-rest-service-fu-8.jar', 'description': 'Spring Fu'},
             {'filename': 'mp-rest-service-8.jar', 'description': 'Open Liberty'},
-#            {'filename': 'sb-rest-service-reactive-8.jar', 'description': 'Spring Boot WebFlux'},
+            {'filename': 'sb-rest-service-reactive-8.jar', 'description': 'Spring Boot WebFlux'},
             {'filename': 'noframework-rest-service-8.jar', 'description': 'No framework'},
             {'filename': 'vertx-rest-service-8.jar', 'description': 'Vert.x'}]
 
@@ -230,7 +230,7 @@ def get_java_process_pid():
 
 def start_java_process(java_cmd,cpuset):
     cmd='rm -rf ~/wlpExtract'
-    subprocess.Popen(cmd.split(' '), stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+    subprocess.Popen(cmd.split(' '), shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
     cmd='rm -f ./jitdump.*'
     subprocess.Popen(cmd.split(' '), shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
     cmd='rm -f ./javacore.*'
