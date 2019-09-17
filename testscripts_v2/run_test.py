@@ -9,8 +9,8 @@ from datetime import datetime
 test_duration=10
 primer_duration=1
 wait_after_primer=1
-wait_to_start=17
-wait_after_kill=5
+wait_to_start=12
+wait_after_kill=2
 now = datetime.now()
 outputfile='results_'+now.strftime("%Y%m%d_%H%M%S")+'.log'
 
