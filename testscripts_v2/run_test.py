@@ -50,7 +50,7 @@ gc_openjdk_8 = [
     {'gc_descr': 'Serial GC', 'gc_descr_short': 'Serial', 'gc_switch': '-XX:+UseSerialGC'},
     {'gc_descr': 'Concurrent Mark Sweep', 'gc_descr_short': 'CMS', 'gc_switch': '-XX:+UseConcMarkSweepGC'}
 ]
-gc_zing_8 = gc_openjdk_8 + [
+gc_zing_8 = [
     {'gc_descr': 'Continuously Concurrent Compacting Collector', 'gc_descr_short': 'C4', 'gc_switch': ''}
 ]
 
@@ -58,7 +58,7 @@ gc_openjdk_11 = gc_openjdk_8 + [
     {'gc_descr': 'Z Garbage Collector', 'gc_descr_short': 'ZGC', 'gc_switch': '-XX:+UnlockExperimentalVMOptions -XX:+UseZGC'}
 ]
 
-gc_zing_11 = gc_openjdk_11 + [
+gc_zing_11 = [
     {'gc_descr': 'Continuously Concurrent Compacting Collector', 'gc_descr_short': 'C4', 'gc_switch': ''}
 ]
 
@@ -68,7 +68,7 @@ gc_openjdk_12 = gc_openjdk_11 + [
 
 # Additional options
 openj9_opt = '‑Xshareclasses:name=Cache1'
-
+zing_opt='-XX:-AutoTuneResourceDefaultsBasedOnXmx'
 # Configurations to test
 memory_conf = ['-Xmx256m -Xms256m', '-Xmx50m -Xms50m']
 cpuset_conf = ['3', '5,7,9,11']
@@ -116,10 +116,10 @@ jvms = [{'shortname': 'openj9_8_222', 'description': 'OpenJ9 8',
          'version_minor': '0.4', 'gc': gc_openjdk_11, 'additional': ''},
         {'shortname': 'zing_8_1908', 'description': 'Zing 8',
          'location': '/opt/zing/zing-jdk1.8.0-19.08.0.0-5/bin/java', 'version_major': '8',
-         'version_minor': '19.08', 'gc': gc_zing_8, 'additional': ''},
+         'version_minor': '19.08', 'gc': gc_zing_8, 'additional': zing_opt},
         {'shortname': 'zing_11_1908', 'description': 'Zing 11',
          'location': '/opt/zing/zing-jdk11.0.0-19.08.0.0-5/bin/java', 'version_major': '11',
-         'version_minor': '00', 'gc': gc_zing_11, 'additional': ''}
+         'version_minor': '00', 'gc': gc_zing_11, 'additional': zing_opt}
         ]
 
 def check_prereqs():
