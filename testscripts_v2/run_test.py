@@ -55,7 +55,7 @@ gc_zing_8 = gc_openjdk_8 + [
 ]
 
 gc_openjdk_11 = gc_openjdk_8 + [
-    {'gc_descr': 'Z Garbage Collector', 'gc_descr_short': 'ZGC', 'gc_switch': '-XX:+UseZGC'}
+    {'gc_descr': 'Z Garbage Collector', 'gc_descr_short': 'ZGC', 'gc_switch': '-XX:+UnlockExperimentalVMOptions -XX:+UseZGC'}
 ]
 
 gc_zing_11 = gc_openjdk_11 + [
@@ -104,7 +104,7 @@ jvms = [{'shortname': 'openj9_8_222', 'description': 'OpenJ9 8',
          'version_minor': '0.2', 'gc': gc_openjdk_12, 'additional': ''},
         {'shortname': 'oraclejdk_12_02', 'description': 'OracleJDK 12', 'location': '/usr/lib/jvm/jdk-12.0.2/bin/java',
          'version_major': '12',
-         'version_minor': '0.2', 'gc': gc_openjdk_12, 'additional': ''},
+         'version_minor': '0.2', 'gc': gc_openjdk_11, 'additional': ''},
         {'shortname': 'oraclejdk_11_03', 'description': 'Oracle JDK 11', 'location': '/usr/lib/jvm/jdk-11.0.3/bin/java',
          'version_major': '11',
          'version_minor': '0.3', 'gc': gc_openjdk_11, 'additional': ''},
