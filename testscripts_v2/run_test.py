@@ -67,10 +67,10 @@ gc_openjdk_12 = gc_openjdk_11 + [
 ]
 
 # Additional options
-openj9_opt = '‑Xshareclasses:name=Cache1'
+openj9_opt = '‑Xshareclasses:name=Cache1 -Xdump:none'
 zing_opt='-XX:-AutoTuneResourceDefaultsBasedOnXmx'
 # Configurations to test
-memory_conf = ['-Xmx256m -Xms256m', '-Xmx50m -Xms50m']
+memory_conf = ['-Xmx256m -Xms256m', '-Xmx128m -Xms128m']
 cpuset_conf = ['3', '5,7,9,11']
 concurrency_conf = ['1', '4']
 
@@ -174,10 +174,10 @@ def exec_all_tests():
                             logger.info('Java process PID is: ' + pid)
                             if (len(str(pid))==0):
                                 pid=start_java_process(jvmcmd,concurrency)
-                                logger.info('Retry startup. Java process PID is: ' + pid)
+                                logger.warning('Retry startup. Java process PID is: ' + pid)
                                 if (len(str(pid))==0):
                                     pid=start_java_process(jvmcmd,concurrency)
-                                    logger.info('Second retry startup. Java process PID is: ' + pid)
+                                    logger.warning('Second retry startup. Java process PID is: ' + pid)
                             if (len(str(pid))==0 and len(str(get_java_process_pid()))>0):
                                 pid=get_java_process_pid()
                                 logger.info('Setting new PID to '+pid)
@@ -189,7 +189,7 @@ def exec_all_tests():
                                 outputline=jvm_outputline+','+ab_output.get('compl_req')+','+ab_output.get('failed_req')+','+ab_output.get('req_per_sec')+','+ab_output.get('time_per_req_avg')+','+cpunum+','+concurrency
                             except:
                                 #Retry
-                                logger.info('Executing retry')
+                                logger.warning('Executing retry')
                                 time.sleep(wait_to_start)
                                 try:
                                      output_primer=execute_test_single(concurrency, primer_duration)
@@ -198,22 +198,27 @@ def exec_all_tests():
                                      ab_output=parse_ab_output(output_test)
                                      outputline=jvm_outputline+','+ab_output.get('compl_req')+','+ab_output.get('failed_req')+','+ab_output.get('req_per_sec')+','+ab_output.get('time_per_req_avg')+','+cpunum+','+concurrency
                                 except:
+                                     logger.warning("Giving up. Test failed. Writing FAILED to results file")
                                      outputline = jvm_outputline + ',FAILED,FAILED,FAILED,FAILED,' + cpunum + ',' + concurrency
                             outputline=outputline+','+str(test_duration)
                             with open(outputfile, 'a') as the_file:
                                 the_file.write(outputline+'\n')
                             kill_process(pid)
-                            try:  
-                                cmd='rm -rf ~/wlpExtract'
-                                subprocess.getoutput(cmd)
-                                cmd='rm -f ./jitdump.*'
-                                subprocess.Popen(cmd.split(' '), shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
-                                cmd='rm -f ./javacore.*'
-                                subprocess.Popen(cmd.split(' '), shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
-                                cmd='rm -f ./Snap.*'
-                                subprocess.Popen(cmd.split(' '), shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
-                            except:
-                                None
+                            clean_tmpfiles()
+    return
+
+def clean_tmpfiles():
+    try: 
+        cmd='rm -rf ~/wlpExtract'
+        subprocess.getoutput(cmd)
+        cmd='rm -f jitdump.*'
+        subprocess.getoutput(cmd)
+        cmd='rm -f javacore.*'
+        subprocess.getoutput(cmd)
+        cmd='rm -f Snap.*'
+        subprocess.getoutput(cmd)
+    except:
+        None
     return
 
 def parse_ab_output(ab_output):
@@ -244,15 +249,7 @@ def start_java_process(java_cmd,cpuset):
     if (oldpid.isdecimal()):
         logger.info('Old Java process found with PID: ' + oldpid+'. Killing it')
         kill_process(oldpid)
-    cmd='rm -rf ~/wlpExtract'
-    subprocess.getoutput(cmd)
-    cmd='rm -f ./jitdump.*'
-    subprocess.Popen(cmd.split(' '), shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
-    cmd='rm -f ./javacore.*'
-    subprocess.Popen(cmd.split(' '), shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
-    cmd='rm -f ./Snap.*'
-    subprocess.Popen(cmd.split(' '), shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
-    
+    clean_tmpfiles()
     cmd='taskset -c '+cpuset+' '+java_cmd
     subprocess.Popen(cmd.split(' '), stdout=subprocess.PIPE, stderr=subprocess.PIPE)
     
