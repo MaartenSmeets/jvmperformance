@@ -257,9 +257,11 @@ def start_java_process(java_cmd,cpuset):
     return get_java_process_pid()
 
 def execute_test_single(concurrency,duration):
+    logger.info('Executing test with concurrency: '+str(concurrency)+' and duration '+str(duration))
     cmd = 'ab -l -q -t ' + str(duration) + ' -n 100000000000000 -c ' + str(concurrency) + ' http://localhost:8080/greeting?name=Maarten'
     process = subprocess.run(cmd.split(), check=True, stdout=subprocess.PIPE, universal_newlines=True)
     output = process.stdout
+    logger.info('Executing test done')
     return output
 
 def kill_process(pid):
