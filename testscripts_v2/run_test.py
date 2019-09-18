@@ -12,14 +12,16 @@ wait_after_primer=1
 wait_to_start=12
 wait_after_kill=2
 now = datetime.now()
-outputfile='results_'+now.strftime("%Y%m%d_%H%M%S")+'.log'
+datestring=now.strftime("%Y%m%d_%H%M%S")
+resultsfile='results_'+datestring+'.log'
+outputfile='output_'+datestring+'.log'
 
 logger = logging.getLogger('run_test')
 logger.setLevel(logging.DEBUG)
 # create console handler and set level to debug
 ch = logging.StreamHandler()
 ch.setLevel(logging.DEBUG)
-fh = logging.FileHandler('output.log')
+fh = logging.FileHandler(outputfile)
 fh.setLevel(logging.DEBUG)
 # create formatter
 formatter = logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(message)s')
@@ -166,8 +168,8 @@ def get_cpu_num(cpuset):
 
 def exec_all_tests():
     logger.info('Estimated duration: '+str(estimate_duration())+' hours')
-    logger.info('Using logfile: '+outputfile)
-    with open(outputfile, 'a') as the_file:
+    logger.info('Using logfile: '+resultsfile)
+    with open(resultsfile, 'a') as the_file:
         the_file.write('jvm_short,jvm_descr,jvm_major_version,gc_descr,gc_short,framework,memflag,compl_req,failed_req,req_per_sec,time_per_req_avg,cpus,concurrency,duration\n')
     for jvm in jvms:
         for gc in jvm.get('gc'):
@@ -212,7 +214,7 @@ def exec_all_tests():
                                      logger.warning("Giving up. Test failed. Writing FAILED to results file")
                                      outputline = jvm_outputline + ',FAILED,FAILED,FAILED,FAILED,' + cpunum + ',' + concurrency
                             outputline=outputline+','+str(test_duration)
-                            with open(outputfile, 'a') as the_file:
+                            with open(resultsfile, 'a') as the_file:
                                 the_file.write(outputline+'\n')
                             kill_process(pid)
                             clean_tmpfiles()
