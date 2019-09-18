@@ -72,8 +72,8 @@ gc_openjdk_12 = gc_openjdk_11 + [
 openj9_opt = '‑Xshareclasses:name=Cache1 -Xdump:none'
 zing_opt='-XX:-AutoTuneResourceDefaultsBasedOnXmx'
 # Configurations to test
-memory_conf = ['-Xmx515m -Xms515m', '-Xmx128m -Xms128m']
-memory_conf_zing = ['-Xmx515m -Xms515m']
+memory_conf = ['-Xmx512m -Xms512m', '-Xmx128m -Xms128m']
+memory_conf_zing = ['-Xmx512m -Xms512m']
 
 cpuset_conf = ['3', '5,7,9,11']
 concurrency_conf = ['1', '4']
