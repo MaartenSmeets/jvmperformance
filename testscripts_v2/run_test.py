@@ -6,7 +6,7 @@ import time
 import re
 from datetime import datetime
 
-test_duration=10
+test_duration=20
 primer_duration=1
 wait_after_primer=1
 wait_to_start=12
@@ -72,11 +72,11 @@ gc_openjdk_12 = gc_openjdk_11 + [
 openj9_opt = '‑Xshareclasses:name=Cache1 -Xdump:none'
 zing_opt='-XX:-AutoTuneResourceDefaultsBasedOnXmx'
 # Configurations to test
-memory_conf = ['-Xmx512m -Xms512m', '-Xmx128m -Xms128m']
+memory_conf = ['-Xmx512m -Xms512m', '-Xmx128m -Xms128m','-Xmx50m -Xms50m']
 memory_conf_zing = ['-Xmx512m -Xms512m']
 
-cpuset_conf = ['3', '5,7,9,11']
-concurrency_conf = ['1', '4']
+cpuset_conf = ['3', '5,7,9,11','4,5,6,7,8,9,10,11']
+concurrency_conf = ['1', '4', '8']
 
 # JAR files to test with
 jarfiles = [{'filename': 'akka-rest-service-8.jar', 'description': 'Akka'},
@@ -91,46 +91,49 @@ jarfiles = [{'filename': 'akka-rest-service-8.jar', 'description': 'Akka'},
             {'filename': 'vertx-rest-service-8.jar', 'description': 'Vert.x'}]
 
 # JVMs to test
-jvms = [{'shortname': 'openj9_8_222', 'description': 'OpenJ9 8',
+jvms = [{'shortname': 'openj9_8_222', 'description': 'OpenJ9 8','vendor':'OpenJ9',
          'location': '/home/maarten/Downloads/jdk8u222-b10/bin/java', 'version_major': '8',
          'version_minor': '222', 'gc': gc_openj9, 'additional': openj9_opt,'mem_conf':memory_conf},
-        {'shortname': 'openj9_11_04', 'description': 'OpenJ9 11',
+        {'shortname': 'openj9_11_04', 'description': 'OpenJ9 11','vendor':'OpenJ9',
          'location': '/home/maarten/Downloads/jdk-11.0.4+11/bin/java', 'version_major': '11',
          'version_minor': '04', 'gc': gc_openj9, 'additional': openj9_opt,'mem_conf':memory_conf},
-        {'shortname': 'openj9_12_02', 'description': 'OpenJ9 12',
+        {'shortname': 'openj9_12_02', 'description': 'OpenJ9 12','vendor':'OpenJ9',
          'location': '/home/maarten/Downloads/jdk-12.0.2+10/bin/java', 'version_major': '12',
          'version_minor': '02', 'gc': gc_openj9, 'additional': openj9_opt,'mem_conf':memory_conf},
-        {'shortname': 'openj9_13_00', 'description': 'OpenJ9 13',
+        {'shortname': 'openj9_13_00', 'description': 'OpenJ9 13','vendor':'OpenJ9',
          'location': '/home/maarten/Downloads/jdk-13+33/bin/java', 'version_major': '13',
          'version_minor': '00', 'gc': gc_openj9, 'additional': openj9_opt,'mem_conf':memory_conf},
-        {'shortname': 'openjdk_8_222', 'description': 'OpenJDK 8',
+        {'shortname': 'openjdk_8_222', 'description': 'OpenJDK 8','vendor':'OpenJDK',
          'location': '/usr/lib/jvm/java-8-openjdk-amd64/bin/java', 'version_major': '8',
          'version_minor': '222', 'gc': gc_openjdk_8, 'additional': '','mem_conf':memory_conf},
         {'shortname': 'openjdk_12_02', 'description': 'OpenJDK 12', 'location': '/usr/lib/jvm/zulu-12-amd64/bin/java',
-         'version_major': '12',
+         'version_major': '12','vendor':'OpenJDK',
          'version_minor': '0.2', 'gc': gc_openjdk_12, 'additional': '','mem_conf':memory_conf},
         {'shortname': 'openjdk_13_00', 'description': 'OpenJDK 13', 'location': '/home/maarten/Downloads/jdk-13/bin/java',
-         'version_major': '13',
-         'version_minor': '00', 'gc': gc_openjdk_12, 'additional': '','mem_conf':memory_conf},
+         'version_major': '13','vendor':'OpenJDK',
+         'version_minor': '00', 'gc': gc_openjdk_11, 'additional': '','mem_conf':memory_conf},
         {'shortname': 'oraclejdk_12_02', 'description': 'OracleJDK 12', 'location': '/usr/lib/jvm/jdk-12.0.2/bin/java',
-         'version_major': '12',
+         'version_major': '12','vendor':'Oracle',
          'version_minor': '0.2', 'gc': gc_openjdk_11, 'additional': '','mem_conf':memory_conf},
         {'shortname': 'oraclejdk_11_03', 'description': 'Oracle JDK 11', 'location': '/usr/lib/jvm/jdk-11.0.3/bin/java',
-         'version_major': '11',
+         'version_major': '11','vendor':'Oracle',
          'version_minor': '0.3', 'gc': gc_openjdk_11, 'additional': '','mem_conf':memory_conf},
         {'shortname': 'oraclejdk_8_221', 'description': 'Oracle JDK 8', 'location': '/home/maarten/Downloads/jdk1.8.0_221/bin/java',
-         'version_major': '8',
+         'version_major': '8','vendor':'Oracle',
          'version_minor': '221', 'gc': gc_openjdk_8, 'additional': '','mem_conf':memory_conf},
-        {'shortname': 'openjdk_11_04', 'description': 'OpenJDK 11',
+        {'shortname': 'oraclejdk_13_33', 'description': 'Oracle JDK 13', 'location': '/usr/lib/jvm/jdk-13/bin/java',
+         'version_major': '13','vendor':'Oracle',
+         'version_minor': '33', 'gc': gc_openjdk_11, 'additional': '','mem_conf':memory_conf},
+        {'shortname': 'openjdk_11_04', 'description': 'OpenJDK 11','vendor':'OpenJDK',
          'location': '/usr/lib/jvm/java-11-openjdk-amd64/bin/java', 'version_major': '11',
          'version_minor': '0.4', 'gc': gc_openjdk_11, 'additional': '','mem_conf':memory_conf},
-        {'shortname': 'zing_8_1908', 'description': 'Zing 8',
+        {'shortname': 'zing_8_1908', 'description': 'Zing 8','vendor':'Zing',
          'location': '/opt/zing/zing-jdk1.8.0-19.08.0.0-5/bin/java', 'version_major': '8',
          'version_minor': '19.08', 'gc': gc_zing_8, 'additional': zing_opt,'mem_conf':memory_conf_zing},
-        {'shortname': 'zing_11_1908', 'description': 'Zing 11',
+        {'shortname': 'zing_11_1908', 'description': 'Zing 11','vendor':'Zing',
          'location': '/opt/zing/zing-jdk11.0.0-19.08.0.0-5/bin/java', 'version_major': '11',
          'version_minor': '00', 'gc': gc_zing_11, 'additional': zing_opt,'mem_conf':memory_conf_zing},
-        {'shortname': 'graalvm_8_19201', 'description': 'GraalVM 8',
+        {'shortname': 'graalvm_8_19201', 'description': 'GraalVM 8','vendor':'GraalVM',
          'location': '/home/maarten/Downloads/graalvm-ce-19.2.0.1/bin/java', 'version_major': '8',
          'version_minor': '201', 'gc': gc_openjdk_8, 'additional': '','mem_conf':memory_conf}
         ]
@@ -170,13 +173,13 @@ def exec_all_tests():
     logger.info('Estimated duration: '+str(estimate_duration())+' hours')
     logger.info('Using logfile: '+resultsfile)
     with open(resultsfile, 'a') as the_file:
-        the_file.write('jvm_short,jvm_descr,jvm_major_version,gc_descr,gc_short,framework,memflag,compl_req,failed_req,req_per_sec,time_per_req_avg,cpus,concurrency,duration\n')
+        the_file.write('jvm_short,jvm_descr,jvm_vendor,jvm_major_version,gc_descr,gc_short,framework,memflag,compl_req,failed_req,req_per_sec,time_per_req_avg,cpus,concurrency,duration\n')
     for jvm in jvms:
         for gc in jvm.get('gc'):
             for mem in jvm.get('mem_conf'):
                 for jarfile in jarfiles:
                     jvmcmd=build_jvmcmd(jvm.get('location'),gc.get('gc_switch'),mem,jvm.get('additional'),jarfile.get('filename'))
-                    jvm_outputline=jvm.get('shortname')+','+jvm.get('description')+','+jvm.get('version_major')+','+gc.get('gc_descr')+','+gc.get('gc_descr_short')+','+jarfile.get('description')+','+mem
+                    jvm_outputline=jvm.get('shortname')+','+jvm.get('description')+','+jvm.get('vendor')+','+jvm.get('version_major')+','+gc.get('gc_descr')+','+gc.get('gc_descr_short')+','+jarfile.get('description')+','+mem
                     logger.info('Processing: ' + jvm_outputline + ' using command: ' + jvmcmd)
                     for cpuset in cpuset_conf:
                         cpunum=str(get_cpu_num(cpuset))
