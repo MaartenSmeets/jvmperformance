@@ -158,7 +158,7 @@ def estimate_duration():
     total=0
     for jvm in jvms:
         for gc in jvm.get('gc'):
-            for mem in memory_conf:
+            for mem in jvm.get('mem_conf'):
                 for jarfile in jarfiles:
                     for cpuset in cpuset_conf:
                         for concurrency in concurrency_conf:
