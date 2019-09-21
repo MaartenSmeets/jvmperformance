@@ -6,10 +6,10 @@ import time
 import re
 from datetime import datetime
 
-test_duration=20
+test_duration=10
 primer_duration=1
 wait_after_primer=1
-wait_to_start=12
+wait_to_start=10
 wait_after_kill=2
 now = datetime.now()
 datestring=now.strftime("%Y%m%d_%H%M%S")
@@ -101,7 +101,7 @@ jvms = [{'shortname': 'openj9_8_222', 'description': 'OpenJ9 8','vendor':'OpenJ9
          'location': '/home/maarten/Downloads/jdk-12.0.2+10/bin/java', 'version_major': '12',
          'version_minor': '02', 'gc': gc_openj9, 'additional': openj9_opt,'mem_conf':memory_conf},
         {'shortname': 'openj9_13_00', 'description': 'OpenJ9 13','vendor':'OpenJ9',
-         'location': '/home/maarten/Downloads/jdk-13+33/bin/java', 'version_major': '13',
+         'location': '/home/maarten/Downloads/jdk13openj9/bin/java', 'version_major': '13',
          'version_minor': '00', 'gc': gc_openj9, 'additional': openj9_opt,'mem_conf':memory_conf},
         {'shortname': 'openjdk_8_222', 'description': 'OpenJDK 8','vendor':'OpenJDK',
          'location': '/usr/lib/jvm/java-8-openjdk-amd64/bin/java', 'version_major': '8',
