@@ -14579,168 +14579,6 @@ openjdk_11_04,OpenJDK 11,OpenJDK,11,Z Garbage Collector,ZGC,Vert.x,-Xmx50m -Xms5
 openjdk_11_04,OpenJDK 11,OpenJDK,11,Z Garbage Collector,ZGC,Vert.x,-Xmx50m -Xms50m,FAILED,FAILED,FAILED,FAILED,8,1,20
 openjdk_11_04,OpenJDK 11,OpenJDK,11,Z Garbage Collector,ZGC,Vert.x,-Xmx50m -Xms50m,FAILED,FAILED,FAILED,FAILED,8,4,20
 openjdk_11_04,OpenJDK 11,OpenJDK,11,Z Garbage Collector,ZGC,Vert.x,-Xmx50m -Xms50m,FAILED,FAILED,FAILED,FAILED,8,8,20
-zing_8_1908,Zing 8,Zing,8,Continuously Concurrent Compacting Collector,C4,Akka,-Xmx512m -Xms512m,FAILED,FAILED,FAILED,FAILED,1,1,20
-zing_8_1908,Zing 8,Zing,8,Continuously Concurrent Compacting Collector,C4,Akka,-Xmx512m -Xms512m,FAILED,FAILED,FAILED,FAILED,1,4,20
-zing_8_1908,Zing 8,Zing,8,Continuously Concurrent Compacting Collector,C4,Akka,-Xmx512m -Xms512m,FAILED,FAILED,FAILED,FAILED,1,8,20
-zing_8_1908,Zing 8,Zing,8,Continuously Concurrent Compacting Collector,C4,Akka,-Xmx512m -Xms512m,FAILED,FAILED,FAILED,FAILED,4,1,20
-zing_8_1908,Zing 8,Zing,8,Continuously Concurrent Compacting Collector,C4,Akka,-Xmx512m -Xms512m,FAILED,FAILED,FAILED,FAILED,4,4,20
-zing_8_1908,Zing 8,Zing,8,Continuously Concurrent Compacting Collector,C4,Akka,-Xmx512m -Xms512m,FAILED,FAILED,FAILED,FAILED,4,8,20
-zing_8_1908,Zing 8,Zing,8,Continuously Concurrent Compacting Collector,C4,Akka,-Xmx512m -Xms512m,FAILED,FAILED,FAILED,FAILED,8,1,20
-zing_8_1908,Zing 8,Zing,8,Continuously Concurrent Compacting Collector,C4,Akka,-Xmx512m -Xms512m,FAILED,FAILED,FAILED,FAILED,8,4,20
-zing_8_1908,Zing 8,Zing,8,Continuously Concurrent Compacting Collector,C4,Akka,-Xmx512m -Xms512m,FAILED,FAILED,FAILED,FAILED,8,8,20
-zing_8_1908,Zing 8,Zing,8,Continuously Concurrent Compacting Collector,C4,Quarkus,-Xmx512m -Xms512m,FAILED,FAILED,FAILED,FAILED,1,1,20
-zing_8_1908,Zing 8,Zing,8,Continuously Concurrent Compacting Collector,C4,Quarkus,-Xmx512m -Xms512m,FAILED,FAILED,FAILED,FAILED,1,4,20
-zing_8_1908,Zing 8,Zing,8,Continuously Concurrent Compacting Collector,C4,Quarkus,-Xmx512m -Xms512m,FAILED,FAILED,FAILED,FAILED,1,8,20
-zing_8_1908,Zing 8,Zing,8,Continuously Concurrent Compacting Collector,C4,Quarkus,-Xmx512m -Xms512m,FAILED,FAILED,FAILED,FAILED,4,1,20
-zing_8_1908,Zing 8,Zing,8,Continuously Concurrent Compacting Collector,C4,Quarkus,-Xmx512m -Xms512m,FAILED,FAILED,FAILED,FAILED,4,4,20
-zing_8_1908,Zing 8,Zing,8,Continuously Concurrent Compacting Collector,C4,Quarkus,-Xmx512m -Xms512m,FAILED,FAILED,FAILED,FAILED,4,8,20
-zing_8_1908,Zing 8,Zing,8,Continuously Concurrent Compacting Collector,C4,Quarkus,-Xmx512m -Xms512m,FAILED,FAILED,FAILED,FAILED,8,1,20
-zing_8_1908,Zing 8,Zing,8,Continuously Concurrent Compacting Collector,C4,Quarkus,-Xmx512m -Xms512m,FAILED,FAILED,FAILED,FAILED,8,4,20
-zing_8_1908,Zing 8,Zing,8,Continuously Concurrent Compacting Collector,C4,Quarkus,-Xmx512m -Xms512m,FAILED,FAILED,FAILED,FAILED,8,8,20
-zing_8_1908,Zing 8,Zing,8,Continuously Concurrent Compacting Collector,C4,Helidon SE,-Xmx512m -Xms512m,FAILED,FAILED,FAILED,FAILED,1,1,20
-zing_8_1908,Zing 8,Zing,8,Continuously Concurrent Compacting Collector,C4,Helidon SE,-Xmx512m -Xms512m,FAILED,FAILED,FAILED,FAILED,1,4,20
-zing_8_1908,Zing 8,Zing,8,Continuously Concurrent Compacting Collector,C4,Helidon SE,-Xmx512m -Xms512m,FAILED,FAILED,FAILED,FAILED,1,8,20
-zing_8_1908,Zing 8,Zing,8,Continuously Concurrent Compacting Collector,C4,Helidon SE,-Xmx512m -Xms512m,FAILED,FAILED,FAILED,FAILED,4,1,20
-zing_8_1908,Zing 8,Zing,8,Continuously Concurrent Compacting Collector,C4,Helidon SE,-Xmx512m -Xms512m,FAILED,FAILED,FAILED,FAILED,4,4,20
-zing_8_1908,Zing 8,Zing,8,Continuously Concurrent Compacting Collector,C4,Helidon SE,-Xmx512m -Xms512m,FAILED,FAILED,FAILED,FAILED,4,8,20
-zing_8_1908,Zing 8,Zing,8,Continuously Concurrent Compacting Collector,C4,Helidon SE,-Xmx512m -Xms512m,FAILED,FAILED,FAILED,FAILED,8,1,20
-zing_8_1908,Zing 8,Zing,8,Continuously Concurrent Compacting Collector,C4,Helidon SE,-Xmx512m -Xms512m,FAILED,FAILED,FAILED,FAILED,8,4,20
-zing_8_1908,Zing 8,Zing,8,Continuously Concurrent Compacting Collector,C4,Helidon SE,-Xmx512m -Xms512m,FAILED,FAILED,FAILED,FAILED,8,8,20
-zing_8_1908,Zing 8,Zing,8,Continuously Concurrent Compacting Collector,C4,Spring Boot,-Xmx512m -Xms512m,FAILED,FAILED,FAILED,FAILED,1,1,20
-zing_8_1908,Zing 8,Zing,8,Continuously Concurrent Compacting Collector,C4,Spring Boot,-Xmx512m -Xms512m,FAILED,FAILED,FAILED,FAILED,1,4,20
-zing_8_1908,Zing 8,Zing,8,Continuously Concurrent Compacting Collector,C4,Spring Boot,-Xmx512m -Xms512m,FAILED,FAILED,FAILED,FAILED,1,8,20
-zing_8_1908,Zing 8,Zing,8,Continuously Concurrent Compacting Collector,C4,Spring Boot,-Xmx512m -Xms512m,FAILED,FAILED,FAILED,FAILED,4,1,20
-zing_8_1908,Zing 8,Zing,8,Continuously Concurrent Compacting Collector,C4,Spring Boot,-Xmx512m -Xms512m,FAILED,FAILED,FAILED,FAILED,4,4,20
-zing_8_1908,Zing 8,Zing,8,Continuously Concurrent Compacting Collector,C4,Spring Boot,-Xmx512m -Xms512m,FAILED,FAILED,FAILED,FAILED,4,8,20
-zing_8_1908,Zing 8,Zing,8,Continuously Concurrent Compacting Collector,C4,Spring Boot,-Xmx512m -Xms512m,FAILED,FAILED,FAILED,FAILED,8,1,20
-zing_8_1908,Zing 8,Zing,8,Continuously Concurrent Compacting Collector,C4,Spring Boot,-Xmx512m -Xms512m,FAILED,FAILED,FAILED,FAILED,8,4,20
-zing_8_1908,Zing 8,Zing,8,Continuously Concurrent Compacting Collector,C4,Spring Boot,-Xmx512m -Xms512m,FAILED,FAILED,FAILED,FAILED,8,8,20
-zing_8_1908,Zing 8,Zing,8,Continuously Concurrent Compacting Collector,C4,Micronaut,-Xmx512m -Xms512m,FAILED,FAILED,FAILED,FAILED,1,1,20
-zing_8_1908,Zing 8,Zing,8,Continuously Concurrent Compacting Collector,C4,Micronaut,-Xmx512m -Xms512m,FAILED,FAILED,FAILED,FAILED,1,4,20
-zing_8_1908,Zing 8,Zing,8,Continuously Concurrent Compacting Collector,C4,Micronaut,-Xmx512m -Xms512m,FAILED,FAILED,FAILED,FAILED,1,8,20
-zing_8_1908,Zing 8,Zing,8,Continuously Concurrent Compacting Collector,C4,Micronaut,-Xmx512m -Xms512m,FAILED,FAILED,FAILED,FAILED,4,1,20
-zing_8_1908,Zing 8,Zing,8,Continuously Concurrent Compacting Collector,C4,Micronaut,-Xmx512m -Xms512m,FAILED,FAILED,FAILED,FAILED,4,4,20
-zing_8_1908,Zing 8,Zing,8,Continuously Concurrent Compacting Collector,C4,Micronaut,-Xmx512m -Xms512m,FAILED,FAILED,FAILED,FAILED,4,8,20
-zing_8_1908,Zing 8,Zing,8,Continuously Concurrent Compacting Collector,C4,Micronaut,-Xmx512m -Xms512m,FAILED,FAILED,FAILED,FAILED,8,1,20
-zing_8_1908,Zing 8,Zing,8,Continuously Concurrent Compacting Collector,C4,Micronaut,-Xmx512m -Xms512m,FAILED,FAILED,FAILED,FAILED,8,4,20
-zing_8_1908,Zing 8,Zing,8,Continuously Concurrent Compacting Collector,C4,Micronaut,-Xmx512m -Xms512m,FAILED,FAILED,FAILED,FAILED,8,8,20
-zing_8_1908,Zing 8,Zing,8,Continuously Concurrent Compacting Collector,C4,Open Liberty,-Xmx512m -Xms512m,FAILED,FAILED,FAILED,FAILED,1,1,20
-zing_8_1908,Zing 8,Zing,8,Continuously Concurrent Compacting Collector,C4,Open Liberty,-Xmx512m -Xms512m,FAILED,FAILED,FAILED,FAILED,1,4,20
-zing_8_1908,Zing 8,Zing,8,Continuously Concurrent Compacting Collector,C4,Open Liberty,-Xmx512m -Xms512m,FAILED,FAILED,FAILED,FAILED,1,8,20
-zing_8_1908,Zing 8,Zing,8,Continuously Concurrent Compacting Collector,C4,Open Liberty,-Xmx512m -Xms512m,FAILED,FAILED,FAILED,FAILED,4,1,20
-zing_8_1908,Zing 8,Zing,8,Continuously Concurrent Compacting Collector,C4,Open Liberty,-Xmx512m -Xms512m,FAILED,FAILED,FAILED,FAILED,4,4,20
-zing_8_1908,Zing 8,Zing,8,Continuously Concurrent Compacting Collector,C4,Open Liberty,-Xmx512m -Xms512m,FAILED,FAILED,FAILED,FAILED,4,8,20
-zing_8_1908,Zing 8,Zing,8,Continuously Concurrent Compacting Collector,C4,Open Liberty,-Xmx512m -Xms512m,FAILED,FAILED,FAILED,FAILED,8,1,20
-zing_8_1908,Zing 8,Zing,8,Continuously Concurrent Compacting Collector,C4,Open Liberty,-Xmx512m -Xms512m,FAILED,FAILED,FAILED,FAILED,8,4,20
-zing_8_1908,Zing 8,Zing,8,Continuously Concurrent Compacting Collector,C4,Open Liberty,-Xmx512m -Xms512m,FAILED,FAILED,FAILED,FAILED,8,8,20
-zing_8_1908,Zing 8,Zing,8,Continuously Concurrent Compacting Collector,C4,Spring Boot WebFlux,-Xmx512m -Xms512m,FAILED,FAILED,FAILED,FAILED,1,1,20
-zing_8_1908,Zing 8,Zing,8,Continuously Concurrent Compacting Collector,C4,Spring Boot WebFlux,-Xmx512m -Xms512m,FAILED,FAILED,FAILED,FAILED,1,4,20
-zing_8_1908,Zing 8,Zing,8,Continuously Concurrent Compacting Collector,C4,Spring Boot WebFlux,-Xmx512m -Xms512m,FAILED,FAILED,FAILED,FAILED,1,8,20
-zing_8_1908,Zing 8,Zing,8,Continuously Concurrent Compacting Collector,C4,Spring Boot WebFlux,-Xmx512m -Xms512m,FAILED,FAILED,FAILED,FAILED,4,1,20
-zing_8_1908,Zing 8,Zing,8,Continuously Concurrent Compacting Collector,C4,Spring Boot WebFlux,-Xmx512m -Xms512m,FAILED,FAILED,FAILED,FAILED,4,4,20
-zing_8_1908,Zing 8,Zing,8,Continuously Concurrent Compacting Collector,C4,Spring Boot WebFlux,-Xmx512m -Xms512m,FAILED,FAILED,FAILED,FAILED,4,8,20
-zing_8_1908,Zing 8,Zing,8,Continuously Concurrent Compacting Collector,C4,Spring Boot WebFlux,-Xmx512m -Xms512m,FAILED,FAILED,FAILED,FAILED,8,1,20
-zing_8_1908,Zing 8,Zing,8,Continuously Concurrent Compacting Collector,C4,Spring Boot WebFlux,-Xmx512m -Xms512m,FAILED,FAILED,FAILED,FAILED,8,4,20
-zing_8_1908,Zing 8,Zing,8,Continuously Concurrent Compacting Collector,C4,Spring Boot WebFlux,-Xmx512m -Xms512m,FAILED,FAILED,FAILED,FAILED,8,8,20
-zing_8_1908,Zing 8,Zing,8,Continuously Concurrent Compacting Collector,C4,No framework,-Xmx512m -Xms512m,FAILED,FAILED,FAILED,FAILED,1,1,20
-zing_8_1908,Zing 8,Zing,8,Continuously Concurrent Compacting Collector,C4,No framework,-Xmx512m -Xms512m,FAILED,FAILED,FAILED,FAILED,1,4,20
-zing_8_1908,Zing 8,Zing,8,Continuously Concurrent Compacting Collector,C4,No framework,-Xmx512m -Xms512m,FAILED,FAILED,FAILED,FAILED,1,8,20
-zing_8_1908,Zing 8,Zing,8,Continuously Concurrent Compacting Collector,C4,No framework,-Xmx512m -Xms512m,FAILED,FAILED,FAILED,FAILED,4,1,20
-zing_8_1908,Zing 8,Zing,8,Continuously Concurrent Compacting Collector,C4,No framework,-Xmx512m -Xms512m,FAILED,FAILED,FAILED,FAILED,4,4,20
-zing_8_1908,Zing 8,Zing,8,Continuously Concurrent Compacting Collector,C4,No framework,-Xmx512m -Xms512m,FAILED,FAILED,FAILED,FAILED,4,8,20
-zing_8_1908,Zing 8,Zing,8,Continuously Concurrent Compacting Collector,C4,No framework,-Xmx512m -Xms512m,FAILED,FAILED,FAILED,FAILED,8,1,20
-zing_8_1908,Zing 8,Zing,8,Continuously Concurrent Compacting Collector,C4,No framework,-Xmx512m -Xms512m,FAILED,FAILED,FAILED,FAILED,8,4,20
-zing_8_1908,Zing 8,Zing,8,Continuously Concurrent Compacting Collector,C4,No framework,-Xmx512m -Xms512m,FAILED,FAILED,FAILED,FAILED,8,8,20
-zing_8_1908,Zing 8,Zing,8,Continuously Concurrent Compacting Collector,C4,Vert.x,-Xmx512m -Xms512m,FAILED,FAILED,FAILED,FAILED,1,1,20
-zing_8_1908,Zing 8,Zing,8,Continuously Concurrent Compacting Collector,C4,Vert.x,-Xmx512m -Xms512m,FAILED,FAILED,FAILED,FAILED,1,4,20
-zing_8_1908,Zing 8,Zing,8,Continuously Concurrent Compacting Collector,C4,Vert.x,-Xmx512m -Xms512m,FAILED,FAILED,FAILED,FAILED,1,8,20
-zing_8_1908,Zing 8,Zing,8,Continuously Concurrent Compacting Collector,C4,Vert.x,-Xmx512m -Xms512m,FAILED,FAILED,FAILED,FAILED,4,1,20
-zing_8_1908,Zing 8,Zing,8,Continuously Concurrent Compacting Collector,C4,Vert.x,-Xmx512m -Xms512m,FAILED,FAILED,FAILED,FAILED,4,4,20
-zing_8_1908,Zing 8,Zing,8,Continuously Concurrent Compacting Collector,C4,Vert.x,-Xmx512m -Xms512m,FAILED,FAILED,FAILED,FAILED,4,8,20
-zing_8_1908,Zing 8,Zing,8,Continuously Concurrent Compacting Collector,C4,Vert.x,-Xmx512m -Xms512m,FAILED,FAILED,FAILED,FAILED,8,1,20
-zing_8_1908,Zing 8,Zing,8,Continuously Concurrent Compacting Collector,C4,Vert.x,-Xmx512m -Xms512m,FAILED,FAILED,FAILED,FAILED,8,4,20
-zing_8_1908,Zing 8,Zing,8,Continuously Concurrent Compacting Collector,C4,Vert.x,-Xmx512m -Xms512m,FAILED,FAILED,FAILED,FAILED,8,8,20
-zing_11_1908,Zing 11,Zing,11,Continuously Concurrent Compacting Collector,C4,Akka,-Xmx512m -Xms512m,FAILED,FAILED,FAILED,FAILED,1,1,20
-zing_11_1908,Zing 11,Zing,11,Continuously Concurrent Compacting Collector,C4,Akka,-Xmx512m -Xms512m,FAILED,FAILED,FAILED,FAILED,1,4,20
-zing_11_1908,Zing 11,Zing,11,Continuously Concurrent Compacting Collector,C4,Akka,-Xmx512m -Xms512m,FAILED,FAILED,FAILED,FAILED,1,8,20
-zing_11_1908,Zing 11,Zing,11,Continuously Concurrent Compacting Collector,C4,Akka,-Xmx512m -Xms512m,FAILED,FAILED,FAILED,FAILED,4,1,20
-zing_11_1908,Zing 11,Zing,11,Continuously Concurrent Compacting Collector,C4,Akka,-Xmx512m -Xms512m,FAILED,FAILED,FAILED,FAILED,4,4,20
-zing_11_1908,Zing 11,Zing,11,Continuously Concurrent Compacting Collector,C4,Akka,-Xmx512m -Xms512m,FAILED,FAILED,FAILED,FAILED,4,8,20
-zing_11_1908,Zing 11,Zing,11,Continuously Concurrent Compacting Collector,C4,Akka,-Xmx512m -Xms512m,FAILED,FAILED,FAILED,FAILED,8,1,20
-zing_11_1908,Zing 11,Zing,11,Continuously Concurrent Compacting Collector,C4,Akka,-Xmx512m -Xms512m,FAILED,FAILED,FAILED,FAILED,8,4,20
-zing_11_1908,Zing 11,Zing,11,Continuously Concurrent Compacting Collector,C4,Akka,-Xmx512m -Xms512m,FAILED,FAILED,FAILED,FAILED,8,8,20
-zing_11_1908,Zing 11,Zing,11,Continuously Concurrent Compacting Collector,C4,Quarkus,-Xmx512m -Xms512m,FAILED,FAILED,FAILED,FAILED,1,1,20
-zing_11_1908,Zing 11,Zing,11,Continuously Concurrent Compacting Collector,C4,Quarkus,-Xmx512m -Xms512m,FAILED,FAILED,FAILED,FAILED,1,4,20
-zing_11_1908,Zing 11,Zing,11,Continuously Concurrent Compacting Collector,C4,Quarkus,-Xmx512m -Xms512m,FAILED,FAILED,FAILED,FAILED,1,8,20
-zing_11_1908,Zing 11,Zing,11,Continuously Concurrent Compacting Collector,C4,Quarkus,-Xmx512m -Xms512m,FAILED,FAILED,FAILED,FAILED,4,1,20
-zing_11_1908,Zing 11,Zing,11,Continuously Concurrent Compacting Collector,C4,Quarkus,-Xmx512m -Xms512m,FAILED,FAILED,FAILED,FAILED,4,4,20
-zing_11_1908,Zing 11,Zing,11,Continuously Concurrent Compacting Collector,C4,Quarkus,-Xmx512m -Xms512m,FAILED,FAILED,FAILED,FAILED,4,8,20
-zing_11_1908,Zing 11,Zing,11,Continuously Concurrent Compacting Collector,C4,Quarkus,-Xmx512m -Xms512m,FAILED,FAILED,FAILED,FAILED,8,1,20
-zing_11_1908,Zing 11,Zing,11,Continuously Concurrent Compacting Collector,C4,Quarkus,-Xmx512m -Xms512m,FAILED,FAILED,FAILED,FAILED,8,4,20
-zing_11_1908,Zing 11,Zing,11,Continuously Concurrent Compacting Collector,C4,Quarkus,-Xmx512m -Xms512m,FAILED,FAILED,FAILED,FAILED,8,8,20
-zing_11_1908,Zing 11,Zing,11,Continuously Concurrent Compacting Collector,C4,Helidon SE,-Xmx512m -Xms512m,FAILED,FAILED,FAILED,FAILED,1,1,20
-zing_11_1908,Zing 11,Zing,11,Continuously Concurrent Compacting Collector,C4,Helidon SE,-Xmx512m -Xms512m,FAILED,FAILED,FAILED,FAILED,1,4,20
-zing_11_1908,Zing 11,Zing,11,Continuously Concurrent Compacting Collector,C4,Helidon SE,-Xmx512m -Xms512m,FAILED,FAILED,FAILED,FAILED,1,8,20
-zing_11_1908,Zing 11,Zing,11,Continuously Concurrent Compacting Collector,C4,Helidon SE,-Xmx512m -Xms512m,FAILED,FAILED,FAILED,FAILED,4,1,20
-zing_11_1908,Zing 11,Zing,11,Continuously Concurrent Compacting Collector,C4,Helidon SE,-Xmx512m -Xms512m,FAILED,FAILED,FAILED,FAILED,4,4,20
-zing_11_1908,Zing 11,Zing,11,Continuously Concurrent Compacting Collector,C4,Helidon SE,-Xmx512m -Xms512m,FAILED,FAILED,FAILED,FAILED,4,8,20
-zing_11_1908,Zing 11,Zing,11,Continuously Concurrent Compacting Collector,C4,Helidon SE,-Xmx512m -Xms512m,FAILED,FAILED,FAILED,FAILED,8,1,20
-zing_11_1908,Zing 11,Zing,11,Continuously Concurrent Compacting Collector,C4,Helidon SE,-Xmx512m -Xms512m,FAILED,FAILED,FAILED,FAILED,8,4,20
-zing_11_1908,Zing 11,Zing,11,Continuously Concurrent Compacting Collector,C4,Helidon SE,-Xmx512m -Xms512m,FAILED,FAILED,FAILED,FAILED,8,8,20
-zing_11_1908,Zing 11,Zing,11,Continuously Concurrent Compacting Collector,C4,Spring Boot,-Xmx512m -Xms512m,FAILED,FAILED,FAILED,FAILED,1,1,20
-zing_11_1908,Zing 11,Zing,11,Continuously Concurrent Compacting Collector,C4,Spring Boot,-Xmx512m -Xms512m,FAILED,FAILED,FAILED,FAILED,1,4,20
-zing_11_1908,Zing 11,Zing,11,Continuously Concurrent Compacting Collector,C4,Spring Boot,-Xmx512m -Xms512m,FAILED,FAILED,FAILED,FAILED,1,8,20
-zing_11_1908,Zing 11,Zing,11,Continuously Concurrent Compacting Collector,C4,Spring Boot,-Xmx512m -Xms512m,FAILED,FAILED,FAILED,FAILED,4,1,20
-zing_11_1908,Zing 11,Zing,11,Continuously Concurrent Compacting Collector,C4,Spring Boot,-Xmx512m -Xms512m,FAILED,FAILED,FAILED,FAILED,4,4,20
-zing_11_1908,Zing 11,Zing,11,Continuously Concurrent Compacting Collector,C4,Spring Boot,-Xmx512m -Xms512m,FAILED,FAILED,FAILED,FAILED,4,8,20
-zing_11_1908,Zing 11,Zing,11,Continuously Concurrent Compacting Collector,C4,Spring Boot,-Xmx512m -Xms512m,FAILED,FAILED,FAILED,FAILED,8,1,20
-zing_11_1908,Zing 11,Zing,11,Continuously Concurrent Compacting Collector,C4,Spring Boot,-Xmx512m -Xms512m,FAILED,FAILED,FAILED,FAILED,8,4,20
-zing_11_1908,Zing 11,Zing,11,Continuously Concurrent Compacting Collector,C4,Spring Boot,-Xmx512m -Xms512m,FAILED,FAILED,FAILED,FAILED,8,8,20
-zing_11_1908,Zing 11,Zing,11,Continuously Concurrent Compacting Collector,C4,Micronaut,-Xmx512m -Xms512m,FAILED,FAILED,FAILED,FAILED,1,1,20
-zing_11_1908,Zing 11,Zing,11,Continuously Concurrent Compacting Collector,C4,Micronaut,-Xmx512m -Xms512m,FAILED,FAILED,FAILED,FAILED,1,4,20
-zing_11_1908,Zing 11,Zing,11,Continuously Concurrent Compacting Collector,C4,Micronaut,-Xmx512m -Xms512m,FAILED,FAILED,FAILED,FAILED,1,8,20
-zing_11_1908,Zing 11,Zing,11,Continuously Concurrent Compacting Collector,C4,Micronaut,-Xmx512m -Xms512m,FAILED,FAILED,FAILED,FAILED,4,1,20
-zing_11_1908,Zing 11,Zing,11,Continuously Concurrent Compacting Collector,C4,Micronaut,-Xmx512m -Xms512m,FAILED,FAILED,FAILED,FAILED,4,4,20
-zing_11_1908,Zing 11,Zing,11,Continuously Concurrent Compacting Collector,C4,Micronaut,-Xmx512m -Xms512m,FAILED,FAILED,FAILED,FAILED,4,8,20
-zing_11_1908,Zing 11,Zing,11,Continuously Concurrent Compacting Collector,C4,Micronaut,-Xmx512m -Xms512m,FAILED,FAILED,FAILED,FAILED,8,1,20
-zing_11_1908,Zing 11,Zing,11,Continuously Concurrent Compacting Collector,C4,Micronaut,-Xmx512m -Xms512m,FAILED,FAILED,FAILED,FAILED,8,4,20
-zing_11_1908,Zing 11,Zing,11,Continuously Concurrent Compacting Collector,C4,Micronaut,-Xmx512m -Xms512m,FAILED,FAILED,FAILED,FAILED,8,8,20
-zing_11_1908,Zing 11,Zing,11,Continuously Concurrent Compacting Collector,C4,Open Liberty,-Xmx512m -Xms512m,FAILED,FAILED,FAILED,FAILED,1,1,20
-zing_11_1908,Zing 11,Zing,11,Continuously Concurrent Compacting Collector,C4,Open Liberty,-Xmx512m -Xms512m,FAILED,FAILED,FAILED,FAILED,1,4,20
-zing_11_1908,Zing 11,Zing,11,Continuously Concurrent Compacting Collector,C4,Open Liberty,-Xmx512m -Xms512m,FAILED,FAILED,FAILED,FAILED,1,8,20
-zing_11_1908,Zing 11,Zing,11,Continuously Concurrent Compacting Collector,C4,Open Liberty,-Xmx512m -Xms512m,FAILED,FAILED,FAILED,FAILED,4,1,20
-zing_11_1908,Zing 11,Zing,11,Continuously Concurrent Compacting Collector,C4,Open Liberty,-Xmx512m -Xms512m,FAILED,FAILED,FAILED,FAILED,4,4,20
-zing_11_1908,Zing 11,Zing,11,Continuously Concurrent Compacting Collector,C4,Open Liberty,-Xmx512m -Xms512m,FAILED,FAILED,FAILED,FAILED,4,8,20
-zing_11_1908,Zing 11,Zing,11,Continuously Concurrent Compacting Collector,C4,Open Liberty,-Xmx512m -Xms512m,FAILED,FAILED,FAILED,FAILED,8,1,20
-zing_11_1908,Zing 11,Zing,11,Continuously Concurrent Compacting Collector,C4,Open Liberty,-Xmx512m -Xms512m,FAILED,FAILED,FAILED,FAILED,8,4,20
-zing_11_1908,Zing 11,Zing,11,Continuously Concurrent Compacting Collector,C4,Open Liberty,-Xmx512m -Xms512m,FAILED,FAILED,FAILED,FAILED,8,8,20
-zing_11_1908,Zing 11,Zing,11,Continuously Concurrent Compacting Collector,C4,Spring Boot WebFlux,-Xmx512m -Xms512m,FAILED,FAILED,FAILED,FAILED,1,1,20
-zing_11_1908,Zing 11,Zing,11,Continuously Concurrent Compacting Collector,C4,Spring Boot WebFlux,-Xmx512m -Xms512m,FAILED,FAILED,FAILED,FAILED,1,4,20
-zing_11_1908,Zing 11,Zing,11,Continuously Concurrent Compacting Collector,C4,Spring Boot WebFlux,-Xmx512m -Xms512m,FAILED,FAILED,FAILED,FAILED,1,8,20
-zing_11_1908,Zing 11,Zing,11,Continuously Concurrent Compacting Collector,C4,Spring Boot WebFlux,-Xmx512m -Xms512m,FAILED,FAILED,FAILED,FAILED,4,1,20
-zing_11_1908,Zing 11,Zing,11,Continuously Concurrent Compacting Collector,C4,Spring Boot WebFlux,-Xmx512m -Xms512m,FAILED,FAILED,FAILED,FAILED,4,4,20
-zing_11_1908,Zing 11,Zing,11,Continuously Concurrent Compacting Collector,C4,Spring Boot WebFlux,-Xmx512m -Xms512m,FAILED,FAILED,FAILED,FAILED,4,8,20
-zing_11_1908,Zing 11,Zing,11,Continuously Concurrent Compacting Collector,C4,Spring Boot WebFlux,-Xmx512m -Xms512m,FAILED,FAILED,FAILED,FAILED,8,1,20
-zing_11_1908,Zing 11,Zing,11,Continuously Concurrent Compacting Collector,C4,Spring Boot WebFlux,-Xmx512m -Xms512m,FAILED,FAILED,FAILED,FAILED,8,4,20
-zing_11_1908,Zing 11,Zing,11,Continuously Concurrent Compacting Collector,C4,Spring Boot WebFlux,-Xmx512m -Xms512m,FAILED,FAILED,FAILED,FAILED,8,8,20
-zing_11_1908,Zing 11,Zing,11,Continuously Concurrent Compacting Collector,C4,No framework,-Xmx512m -Xms512m,FAILED,FAILED,FAILED,FAILED,1,1,20
-zing_11_1908,Zing 11,Zing,11,Continuously Concurrent Compacting Collector,C4,No framework,-Xmx512m -Xms512m,FAILED,FAILED,FAILED,FAILED,1,4,20
-zing_11_1908,Zing 11,Zing,11,Continuously Concurrent Compacting Collector,C4,No framework,-Xmx512m -Xms512m,FAILED,FAILED,FAILED,FAILED,1,8,20
-zing_11_1908,Zing 11,Zing,11,Continuously Concurrent Compacting Collector,C4,No framework,-Xmx512m -Xms512m,FAILED,FAILED,FAILED,FAILED,4,1,20
-zing_11_1908,Zing 11,Zing,11,Continuously Concurrent Compacting Collector,C4,No framework,-Xmx512m -Xms512m,FAILED,FAILED,FAILED,FAILED,4,4,20
-zing_11_1908,Zing 11,Zing,11,Continuously Concurrent Compacting Collector,C4,No framework,-Xmx512m -Xms512m,FAILED,FAILED,FAILED,FAILED,4,8,20
-zing_11_1908,Zing 11,Zing,11,Continuously Concurrent Compacting Collector,C4,No framework,-Xmx512m -Xms512m,FAILED,FAILED,FAILED,FAILED,8,1,20
-zing_11_1908,Zing 11,Zing,11,Continuously Concurrent Compacting Collector,C4,No framework,-Xmx512m -Xms512m,FAILED,FAILED,FAILED,FAILED,8,4,20
-zing_11_1908,Zing 11,Zing,11,Continuously Concurrent Compacting Collector,C4,No framework,-Xmx512m -Xms512m,FAILED,FAILED,FAILED,FAILED,8,8,20
-zing_11_1908,Zing 11,Zing,11,Continuously Concurrent Compacting Collector,C4,Vert.x,-Xmx512m -Xms512m,FAILED,FAILED,FAILED,FAILED,1,1,20
-zing_11_1908,Zing 11,Zing,11,Continuously Concurrent Compacting Collector,C4,Vert.x,-Xmx512m -Xms512m,FAILED,FAILED,FAILED,FAILED,1,4,20
-zing_11_1908,Zing 11,Zing,11,Continuously Concurrent Compacting Collector,C4,Vert.x,-Xmx512m -Xms512m,FAILED,FAILED,FAILED,FAILED,1,8,20
-zing_11_1908,Zing 11,Zing,11,Continuously Concurrent Compacting Collector,C4,Vert.x,-Xmx512m -Xms512m,FAILED,FAILED,FAILED,FAILED,4,1,20
-zing_11_1908,Zing 11,Zing,11,Continuously Concurrent Compacting Collector,C4,Vert.x,-Xmx512m -Xms512m,FAILED,FAILED,FAILED,FAILED,4,4,20
-zing_11_1908,Zing 11,Zing,11,Continuously Concurrent Compacting Collector,C4,Vert.x,-Xmx512m -Xms512m,FAILED,FAILED,FAILED,FAILED,4,8,20
-zing_11_1908,Zing 11,Zing,11,Continuously Concurrent Compacting Collector,C4,Vert.x,-Xmx512m -Xms512m,FAILED,FAILED,FAILED,FAILED,8,1,20
-zing_11_1908,Zing 11,Zing,11,Continuously Concurrent Compacting Collector,C4,Vert.x,-Xmx512m -Xms512m,FAILED,FAILED,FAILED,FAILED,8,4,20
-zing_11_1908,Zing 11,Zing,11,Continuously Concurrent Compacting Collector,C4,Vert.x,-Xmx512m -Xms512m,FAILED,FAILED,FAILED,FAILED,8,8,20
 graalvm_8_19201,GraalVM 8,GraalVM,8,G1GC,G1GC,Akka,-Xmx512m -Xms512m,19627,0,981.34,1.019,1,1,20
 graalvm_8_19201,GraalVM 8,GraalVM,8,G1GC,G1GC,Akka,-Xmx512m -Xms512m,19794,0,989.70,1.010,1,4,20
 graalvm_8_19201,GraalVM 8,GraalVM,8,G1GC,G1GC,Akka,-Xmx512m -Xms512m,19525,0,976.20,1.024,1,8,20
@@ -15713,3 +15551,165 @@ graalvm_8_19201,GraalVM 8,GraalVM,8,Concurrent Mark Sweep,CMS,Vert.x,-Xmx50m -Xm
 graalvm_8_19201,GraalVM 8,GraalVM,8,Concurrent Mark Sweep,CMS,Vert.x,-Xmx50m -Xms50m,87544,0,4376.33,0.229,8,1,20
 graalvm_8_19201,GraalVM 8,GraalVM,8,Concurrent Mark Sweep,CMS,Vert.x,-Xmx50m -Xms50m,105632,0,5279.75,0.189,8,4,20
 graalvm_8_19201,GraalVM 8,GraalVM,8,Concurrent Mark Sweep,CMS,Vert.x,-Xmx50m -Xms50m,106229,0,5311.45,0.188,8,8,20
+zing_8_1908,Zing 8,Zing,8,Continuously Concurrent Compacting Collector,C4,Akka,-Xmx512m -Xms512m,18078,0,903.88,1.106,1,1,20
+zing_8_1908,Zing 8,Zing,8,Continuously Concurrent Compacting Collector,C4,Akka,-Xmx512m -Xms512m,18769,0,938.38,1.066,1,4,20
+zing_8_1908,Zing 8,Zing,8,Continuously Concurrent Compacting Collector,C4,Akka,-Xmx512m -Xms512m,19165,0,958.25,1.044,1,8,20
+zing_8_1908,Zing 8,Zing,8,Continuously Concurrent Compacting Collector,C4,Akka,-Xmx512m -Xms512m,17862,0,893.09,1.120,4,1,20
+zing_8_1908,Zing 8,Zing,8,Continuously Concurrent Compacting Collector,C4,Akka,-Xmx512m -Xms512m,18844,0,942.19,1.061,4,4,20
+zing_8_1908,Zing 8,Zing,8,Continuously Concurrent Compacting Collector,C4,Akka,-Xmx512m -Xms512m,19067,0,953.29,1.049,4,8,20
+zing_8_1908,Zing 8,Zing,8,Continuously Concurrent Compacting Collector,C4,Akka,-Xmx512m -Xms512m,18114,0,905.67,1.104,8,1,20
+zing_8_1908,Zing 8,Zing,8,Continuously Concurrent Compacting Collector,C4,Akka,-Xmx512m -Xms512m,18263,0,913.12,1.095,8,4,20
+zing_8_1908,Zing 8,Zing,8,Continuously Concurrent Compacting Collector,C4,Akka,-Xmx512m -Xms512m,19157,0,957.85,1.044,8,8,20
+zing_8_1908,Zing 8,Zing,8,Continuously Concurrent Compacting Collector,C4,Quarkus,-Xmx512m -Xms512m,61165,0,3058.21,0.327,1,1,20
+zing_8_1908,Zing 8,Zing,8,Continuously Concurrent Compacting Collector,C4,Quarkus,-Xmx512m -Xms512m,63776,0,3188.80,0.314,1,4,20
+zing_8_1908,Zing 8,Zing,8,Continuously Concurrent Compacting Collector,C4,Quarkus,-Xmx512m -Xms512m,65205,0,3260.24,0.307,1,8,20
+zing_8_1908,Zing 8,Zing,8,Continuously Concurrent Compacting Collector,C4,Quarkus,-Xmx512m -Xms512m,61217,0,3060.83,0.327,4,1,20
+zing_8_1908,Zing 8,Zing,8,Continuously Concurrent Compacting Collector,C4,Quarkus,-Xmx512m -Xms512m,63992,0,3199.58,0.313,4,4,20
+zing_8_1908,Zing 8,Zing,8,Continuously Concurrent Compacting Collector,C4,Quarkus,-Xmx512m -Xms512m,63240,0,3161.96,0.316,4,8,20
+zing_8_1908,Zing 8,Zing,8,Continuously Concurrent Compacting Collector,C4,Quarkus,-Xmx512m -Xms512m,60535,0,3026.74,0.330,8,1,20
+zing_8_1908,Zing 8,Zing,8,Continuously Concurrent Compacting Collector,C4,Quarkus,-Xmx512m -Xms512m,61933,0,3096.62,0.323,8,4,20
+zing_8_1908,Zing 8,Zing,8,Continuously Concurrent Compacting Collector,C4,Quarkus,-Xmx512m -Xms512m,66051,0,3302.37,0.303,8,8,20
+zing_8_1908,Zing 8,Zing,8,Continuously Concurrent Compacting Collector,C4,Helidon SE,-Xmx512m -Xms512m,70254,0,3512.53,0.285,1,1,20
+zing_8_1908,Zing 8,Zing,8,Continuously Concurrent Compacting Collector,C4,Helidon SE,-Xmx512m -Xms512m,66360,0,3317.54,0.301,1,4,20
+zing_8_1908,Zing 8,Zing,8,Continuously Concurrent Compacting Collector,C4,Helidon SE,-Xmx512m -Xms512m,67599,0,3379.76,0.296,1,8,20
+zing_8_1908,Zing 8,Zing,8,Continuously Concurrent Compacting Collector,C4,Helidon SE,-Xmx512m -Xms512m,69990,0,3499.50,0.286,4,1,20
+zing_8_1908,Zing 8,Zing,8,Continuously Concurrent Compacting Collector,C4,Helidon SE,-Xmx512m -Xms512m,67457,0,3372.82,0.296,4,4,20
+zing_8_1908,Zing 8,Zing,8,Continuously Concurrent Compacting Collector,C4,Helidon SE,-Xmx512m -Xms512m,67907,0,3395.34,0.295,4,8,20
+zing_8_1908,Zing 8,Zing,8,Continuously Concurrent Compacting Collector,C4,Helidon SE,-Xmx512m -Xms512m,70159,0,3507.92,0.285,8,1,20
+zing_8_1908,Zing 8,Zing,8,Continuously Concurrent Compacting Collector,C4,Helidon SE,-Xmx512m -Xms512m,67560,0,3377.97,0.296,8,4,20
+zing_8_1908,Zing 8,Zing,8,Continuously Concurrent Compacting Collector,C4,Helidon SE,-Xmx512m -Xms512m,67613,0,3380.62,0.296,8,8,20
+zing_8_1908,Zing 8,Zing,8,Continuously Concurrent Compacting Collector,C4,Spring Boot,-Xmx512m -Xms512m,31989,0,1599.44,0.625,1,1,20
+zing_8_1908,Zing 8,Zing,8,Continuously Concurrent Compacting Collector,C4,Spring Boot,-Xmx512m -Xms512m,33745,0,1687.21,0.593,1,4,20
+zing_8_1908,Zing 8,Zing,8,Continuously Concurrent Compacting Collector,C4,Spring Boot,-Xmx512m -Xms512m,34498,0,1724.87,0.580,1,8,20
+zing_8_1908,Zing 8,Zing,8,Continuously Concurrent Compacting Collector,C4,Spring Boot,-Xmx512m -Xms512m,31803,0,1590.13,0.629,4,1,20
+zing_8_1908,Zing 8,Zing,8,Continuously Concurrent Compacting Collector,C4,Spring Boot,-Xmx512m -Xms512m,34126,0,1705.97,0.586,4,4,20
+zing_8_1908,Zing 8,Zing,8,Continuously Concurrent Compacting Collector,C4,Spring Boot,-Xmx512m -Xms512m,33565,0,1678.21,0.596,4,8,20
+zing_8_1908,Zing 8,Zing,8,Continuously Concurrent Compacting Collector,C4,Spring Boot,-Xmx512m -Xms512m,28913,0,1445.63,0.692,8,1,20
+zing_8_1908,Zing 8,Zing,8,Continuously Concurrent Compacting Collector,C4,Spring Boot,-Xmx512m -Xms512m,32700,0,1634.80,0.612,8,4,20
+zing_8_1908,Zing 8,Zing,8,Continuously Concurrent Compacting Collector,C4,Spring Boot,-Xmx512m -Xms512m,33798,0,1689.89,0.592,8,8,20
+zing_8_1908,Zing 8,Zing,8,Continuously Concurrent Compacting Collector,C4,Micronaut,-Xmx512m -Xms512m,39736,0,1986.79,0.503,1,1,20
+zing_8_1908,Zing 8,Zing,8,Continuously Concurrent Compacting Collector,C4,Micronaut,-Xmx512m -Xms512m,41514,0,2075.69,0.482,1,4,20
+zing_8_1908,Zing 8,Zing,8,Continuously Concurrent Compacting Collector,C4,Micronaut,-Xmx512m -Xms512m,43979,0,2198.94,0.455,1,8,20
+zing_8_1908,Zing 8,Zing,8,Continuously Concurrent Compacting Collector,C4,Micronaut,-Xmx512m -Xms512m,40105,0,2005.22,0.499,4,1,20
+zing_8_1908,Zing 8,Zing,8,Continuously Concurrent Compacting Collector,C4,Micronaut,-Xmx512m -Xms512m,42076,0,2103.78,0.475,4,4,20
+zing_8_1908,Zing 8,Zing,8,Continuously Concurrent Compacting Collector,C4,Micronaut,-Xmx512m -Xms512m,44305,0,2215.22,0.451,4,8,20
+zing_8_1908,Zing 8,Zing,8,Continuously Concurrent Compacting Collector,C4,Micronaut,-Xmx512m -Xms512m,39557,0,1977.82,0.506,8,1,20
+zing_8_1908,Zing 8,Zing,8,Continuously Concurrent Compacting Collector,C4,Micronaut,-Xmx512m -Xms512m,42244,0,2111.99,0.473,8,4,20
+zing_8_1908,Zing 8,Zing,8,Continuously Concurrent Compacting Collector,C4,Micronaut,-Xmx512m -Xms512m,44526,0,2226.28,0.449,8,8,20
+zing_8_1908,Zing 8,Zing,8,Continuously Concurrent Compacting Collector,C4,Open Liberty,-Xmx512m -Xms512m,47429,0,2371.44,0.422,1,1,20
+zing_8_1908,Zing 8,Zing,8,Continuously Concurrent Compacting Collector,C4,Open Liberty,-Xmx512m -Xms512m,54195,0,2709.23,0.369,1,4,20
+zing_8_1908,Zing 8,Zing,8,Continuously Concurrent Compacting Collector,C4,Open Liberty,-Xmx512m -Xms512m,58236,0,2911.79,0.343,1,8,20
+zing_8_1908,Zing 8,Zing,8,Continuously Concurrent Compacting Collector,C4,Open Liberty,-Xmx512m -Xms512m,46091,0,2304.54,0.434,4,1,20
+zing_8_1908,Zing 8,Zing,8,Continuously Concurrent Compacting Collector,C4,Open Liberty,-Xmx512m -Xms512m,61451,0,3072.53,0.325,4,4,20
+zing_8_1908,Zing 8,Zing,8,Continuously Concurrent Compacting Collector,C4,Open Liberty,-Xmx512m -Xms512m,62932,0,3146.59,0.318,4,8,20
+zing_8_1908,Zing 8,Zing,8,Continuously Concurrent Compacting Collector,C4,Open Liberty,-Xmx512m -Xms512m,46196,0,2309.77,0.433,8,1,20
+zing_8_1908,Zing 8,Zing,8,Continuously Concurrent Compacting Collector,C4,Open Liberty,-Xmx512m -Xms512m,61987,0,3099.33,0.323,8,4,20
+zing_8_1908,Zing 8,Zing,8,Continuously Concurrent Compacting Collector,C4,Open Liberty,-Xmx512m -Xms512m,54684,0,2734.20,0.366,8,8,20
+zing_8_1908,Zing 8,Zing,8,Continuously Concurrent Compacting Collector,C4,Spring Boot WebFlux,-Xmx512m -Xms512m,46583,0,2329.12,0.429,1,1,20
+zing_8_1908,Zing 8,Zing,8,Continuously Concurrent Compacting Collector,C4,Spring Boot WebFlux,-Xmx512m -Xms512m,49847,0,2492.35,0.401,1,4,20
+zing_8_1908,Zing 8,Zing,8,Continuously Concurrent Compacting Collector,C4,Spring Boot WebFlux,-Xmx512m -Xms512m,50392,0,2519.60,0.397,1,8,20
+zing_8_1908,Zing 8,Zing,8,Continuously Concurrent Compacting Collector,C4,Spring Boot WebFlux,-Xmx512m -Xms512m,46892,0,2344.59,0.427,4,1,20
+zing_8_1908,Zing 8,Zing,8,Continuously Concurrent Compacting Collector,C4,Spring Boot WebFlux,-Xmx512m -Xms512m,49399,0,2469.92,0.405,4,4,20
+zing_8_1908,Zing 8,Zing,8,Continuously Concurrent Compacting Collector,C4,Spring Boot WebFlux,-Xmx512m -Xms512m,49639,0,2481.95,0.403,4,8,20
+zing_8_1908,Zing 8,Zing,8,Continuously Concurrent Compacting Collector,C4,Spring Boot WebFlux,-Xmx512m -Xms512m,46044,0,2302.19,0.434,8,1,20
+zing_8_1908,Zing 8,Zing,8,Continuously Concurrent Compacting Collector,C4,Spring Boot WebFlux,-Xmx512m -Xms512m,48880,0,2443.99,0.409,8,4,20
+zing_8_1908,Zing 8,Zing,8,Continuously Concurrent Compacting Collector,C4,Spring Boot WebFlux,-Xmx512m -Xms512m,50006,0,2500.28,0.400,8,8,20
+zing_8_1908,Zing 8,Zing,8,Continuously Concurrent Compacting Collector,C4,No framework,-Xmx512m -Xms512m,129434,0,6466.75,0.155,1,1,20
+zing_8_1908,Zing 8,Zing,8,Continuously Concurrent Compacting Collector,C4,No framework,-Xmx512m -Xms512m,186221,0,9311.05,0.107,1,4,20
+zing_8_1908,Zing 8,Zing,8,Continuously Concurrent Compacting Collector,C4,No framework,-Xmx512m -Xms512m,184135,0,9204.96,0.109,1,8,20
+zing_8_1908,Zing 8,Zing,8,Continuously Concurrent Compacting Collector,C4,No framework,-Xmx512m -Xms512m,127681,0,6384.02,0.157,4,1,20
+zing_8_1908,Zing 8,Zing,8,Continuously Concurrent Compacting Collector,C4,No framework,-Xmx512m -Xms512m,184946,0,9247.28,0.108,4,4,20
+zing_8_1908,Zing 8,Zing,8,Continuously Concurrent Compacting Collector,C4,No framework,-Xmx512m -Xms512m,185921,0,9296.04,0.108,4,8,20
+zing_8_1908,Zing 8,Zing,8,Continuously Concurrent Compacting Collector,C4,No framework,-Xmx512m -Xms512m,125888,0,6294.38,0.159,8,1,20
+zing_8_1908,Zing 8,Zing,8,Continuously Concurrent Compacting Collector,C4,No framework,-Xmx512m -Xms512m,179195,0,8958.10,0.112,8,4,20
+zing_8_1908,Zing 8,Zing,8,Continuously Concurrent Compacting Collector,C4,No framework,-Xmx512m -Xms512m,185577,0,9278.84,0.108,8,8,20
+zing_8_1908,Zing 8,Zing,8,Continuously Concurrent Compacting Collector,C4,Vert.x,-Xmx512m -Xms512m,70602,0,3530.09,0.283,1,1,20
+zing_8_1908,Zing 8,Zing,8,Continuously Concurrent Compacting Collector,C4,Vert.x,-Xmx512m -Xms512m,83380,0,4168.52,0.240,1,4,20
+zing_8_1908,Zing 8,Zing,8,Continuously Concurrent Compacting Collector,C4,Vert.x,-Xmx512m -Xms512m,87568,0,4378.40,0.228,1,8,20
+zing_8_1908,Zing 8,Zing,8,Continuously Concurrent Compacting Collector,C4,Vert.x,-Xmx512m -Xms512m,70024,0,3500.32,0.286,4,1,20
+zing_8_1908,Zing 8,Zing,8,Continuously Concurrent Compacting Collector,C4,Vert.x,-Xmx512m -Xms512m,83539,0,4176.94,0.239,4,4,20
+zing_8_1908,Zing 8,Zing,8,Continuously Concurrent Compacting Collector,C4,Vert.x,-Xmx512m -Xms512m,83191,0,4158.92,0.240,4,8,20
+zing_8_1908,Zing 8,Zing,8,Continuously Concurrent Compacting Collector,C4,Vert.x,-Xmx512m -Xms512m,70714,0,3535.69,0.283,8,1,20
+zing_8_1908,Zing 8,Zing,8,Continuously Concurrent Compacting Collector,C4,Vert.x,-Xmx512m -Xms512m,83816,0,4190.56,0.239,8,4,20
+zing_8_1908,Zing 8,Zing,8,Continuously Concurrent Compacting Collector,C4,Vert.x,-Xmx512m -Xms512m,87703,0,4383.51,0.228,8,8,20
+zing_11_1908,Zing 11,Zing,11,Continuously Concurrent Compacting Collector,C4,Akka,-Xmx512m -Xms512m,16737,0,836.84,1.195,1,1,20
+zing_11_1908,Zing 11,Zing,11,Continuously Concurrent Compacting Collector,C4,Akka,-Xmx512m -Xms512m,16464,0,823.16,1.215,1,4,20
+zing_11_1908,Zing 11,Zing,11,Continuously Concurrent Compacting Collector,C4,Akka,-Xmx512m -Xms512m,16925,0,846.23,1.182,1,8,20
+zing_11_1908,Zing 11,Zing,11,Continuously Concurrent Compacting Collector,C4,Akka,-Xmx512m -Xms512m,17044,0,852.18,1.173,4,1,20
+zing_11_1908,Zing 11,Zing,11,Continuously Concurrent Compacting Collector,C4,Akka,-Xmx512m -Xms512m,16740,0,836.97,1.195,4,4,20
+zing_11_1908,Zing 11,Zing,11,Continuously Concurrent Compacting Collector,C4,Akka,-Xmx512m -Xms512m,16949,0,847.42,1.180,4,8,20
+zing_11_1908,Zing 11,Zing,11,Continuously Concurrent Compacting Collector,C4,Akka,-Xmx512m -Xms512m,15972,0,798.57,1.252,8,1,20
+zing_11_1908,Zing 11,Zing,11,Continuously Concurrent Compacting Collector,C4,Akka,-Xmx512m -Xms512m,16680,0,834.00,1.199,8,4,20
+zing_11_1908,Zing 11,Zing,11,Continuously Concurrent Compacting Collector,C4,Akka,-Xmx512m -Xms512m,17655,0,882.73,1.133,8,8,20
+zing_11_1908,Zing 11,Zing,11,Continuously Concurrent Compacting Collector,C4,Quarkus,-Xmx512m -Xms512m,58830,0,2941.47,0.340,1,1,20
+zing_11_1908,Zing 11,Zing,11,Continuously Concurrent Compacting Collector,C4,Quarkus,-Xmx512m -Xms512m,60734,0,3036.69,0.329,1,4,20
+zing_11_1908,Zing 11,Zing,11,Continuously Concurrent Compacting Collector,C4,Quarkus,-Xmx512m -Xms512m,63396,0,3169.79,0.315,1,8,20
+zing_11_1908,Zing 11,Zing,11,Continuously Concurrent Compacting Collector,C4,Quarkus,-Xmx512m -Xms512m,60244,0,3012.17,0.332,4,1,20
+zing_11_1908,Zing 11,Zing,11,Continuously Concurrent Compacting Collector,C4,Quarkus,-Xmx512m -Xms512m,61899,0,3094.94,0.323,4,4,20
+zing_11_1908,Zing 11,Zing,11,Continuously Concurrent Compacting Collector,C4,Quarkus,-Xmx512m -Xms512m,62472,0,3123.10,0.320,4,8,20
+zing_11_1908,Zing 11,Zing,11,Continuously Concurrent Compacting Collector,C4,Quarkus,-Xmx512m -Xms512m,59731,0,2986.48,0.335,8,1,20
+zing_11_1908,Zing 11,Zing,11,Continuously Concurrent Compacting Collector,C4,Quarkus,-Xmx512m -Xms512m,61730,0,3086.46,0.324,8,4,20
+zing_11_1908,Zing 11,Zing,11,Continuously Concurrent Compacting Collector,C4,Quarkus,-Xmx512m -Xms512m,62168,0,3107.76,0.322,8,8,20
+zing_11_1908,Zing 11,Zing,11,Continuously Concurrent Compacting Collector,C4,Helidon SE,-Xmx512m -Xms512m,66151,0,3307.22,0.302,1,1,20
+zing_11_1908,Zing 11,Zing,11,Continuously Concurrent Compacting Collector,C4,Helidon SE,-Xmx512m -Xms512m,63870,0,3193.48,0.313,1,4,20
+zing_11_1908,Zing 11,Zing,11,Continuously Concurrent Compacting Collector,C4,Helidon SE,-Xmx512m -Xms512m,64514,0,3225.68,0.310,1,8,20
+zing_11_1908,Zing 11,Zing,11,Continuously Concurrent Compacting Collector,C4,Helidon SE,-Xmx512m -Xms512m,65866,0,3293.28,0.304,4,1,20
+zing_11_1908,Zing 11,Zing,11,Continuously Concurrent Compacting Collector,C4,Helidon SE,-Xmx512m -Xms512m,63486,0,3174.30,0.315,4,4,20
+zing_11_1908,Zing 11,Zing,11,Continuously Concurrent Compacting Collector,C4,Helidon SE,-Xmx512m -Xms512m,65262,0,3262.95,0.306,4,8,20
+zing_11_1908,Zing 11,Zing,11,Continuously Concurrent Compacting Collector,C4,Helidon SE,-Xmx512m -Xms512m,66025,0,3301.21,0.303,8,1,20
+zing_11_1908,Zing 11,Zing,11,Continuously Concurrent Compacting Collector,C4,Helidon SE,-Xmx512m -Xms512m,63952,0,3197.57,0.313,8,4,20
+zing_11_1908,Zing 11,Zing,11,Continuously Concurrent Compacting Collector,C4,Helidon SE,-Xmx512m -Xms512m,64536,0,3226.80,0.310,8,8,20
+zing_11_1908,Zing 11,Zing,11,Continuously Concurrent Compacting Collector,C4,Spring Boot,-Xmx512m -Xms512m,28759,0,1437.95,0.695,1,1,20
+zing_11_1908,Zing 11,Zing,11,Continuously Concurrent Compacting Collector,C4,Spring Boot,-Xmx512m -Xms512m,31924,0,1596.16,0.627,1,4,20
+zing_11_1908,Zing 11,Zing,11,Continuously Concurrent Compacting Collector,C4,Spring Boot,-Xmx512m -Xms512m,31186,0,1559.26,0.641,1,8,20
+zing_11_1908,Zing 11,Zing,11,Continuously Concurrent Compacting Collector,C4,Spring Boot,-Xmx512m -Xms512m,28931,0,1446.55,0.691,4,1,20
+zing_11_1908,Zing 11,Zing,11,Continuously Concurrent Compacting Collector,C4,Spring Boot,-Xmx512m -Xms512m,30391,0,1519.54,0.658,4,4,20
+zing_11_1908,Zing 11,Zing,11,Continuously Concurrent Compacting Collector,C4,Spring Boot,-Xmx512m -Xms512m,31912,0,1595.60,0.627,4,8,20
+zing_11_1908,Zing 11,Zing,11,Continuously Concurrent Compacting Collector,C4,Spring Boot,-Xmx512m -Xms512m,28799,0,1439.93,0.694,8,1,20
+zing_11_1908,Zing 11,Zing,11,Continuously Concurrent Compacting Collector,C4,Spring Boot,-Xmx512m -Xms512m,30868,0,1543.38,0.648,8,4,20
+zing_11_1908,Zing 11,Zing,11,Continuously Concurrent Compacting Collector,C4,Spring Boot,-Xmx512m -Xms512m,31096,0,1554.68,0.643,8,8,20
+zing_11_1908,Zing 11,Zing,11,Continuously Concurrent Compacting Collector,C4,Micronaut,-Xmx512m -Xms512m,39430,0,1971.47,0.507,1,1,20
+zing_11_1908,Zing 11,Zing,11,Continuously Concurrent Compacting Collector,C4,Micronaut,-Xmx512m -Xms512m,41561,0,2078.02,0.481,1,4,20
+zing_11_1908,Zing 11,Zing,11,Continuously Concurrent Compacting Collector,C4,Micronaut,-Xmx512m -Xms512m,43365,0,2168.22,0.461,1,8,20
+zing_11_1908,Zing 11,Zing,11,Continuously Concurrent Compacting Collector,C4,Micronaut,-Xmx512m -Xms512m,39303,0,1965.14,0.509,4,1,20
+zing_11_1908,Zing 11,Zing,11,Continuously Concurrent Compacting Collector,C4,Micronaut,-Xmx512m -Xms512m,40045,0,2002.24,0.499,4,4,20
+zing_11_1908,Zing 11,Zing,11,Continuously Concurrent Compacting Collector,C4,Micronaut,-Xmx512m -Xms512m,40516,0,2025.78,0.494,4,8,20
+zing_11_1908,Zing 11,Zing,11,Continuously Concurrent Compacting Collector,C4,Micronaut,-Xmx512m -Xms512m,39020,0,1950.99,0.513,8,1,20
+zing_11_1908,Zing 11,Zing,11,Continuously Concurrent Compacting Collector,C4,Micronaut,-Xmx512m -Xms512m,40029,0,2001.45,0.500,8,4,20
+zing_11_1908,Zing 11,Zing,11,Continuously Concurrent Compacting Collector,C4,Micronaut,-Xmx512m -Xms512m,40521,0,2025.92,0.494,8,8,20
+zing_11_1908,Zing 11,Zing,11,Continuously Concurrent Compacting Collector,C4,Open Liberty,-Xmx512m -Xms512m,27808,0,1390.38,0.719,1,1,20
+zing_11_1908,Zing 11,Zing,11,Continuously Concurrent Compacting Collector,C4,Open Liberty,-Xmx512m -Xms512m,28517,0,1425.83,0.701,1,4,20
+zing_11_1908,Zing 11,Zing,11,Continuously Concurrent Compacting Collector,C4,Open Liberty,-Xmx512m -Xms512m,33236,0,1661.47,0.602,1,8,20
+zing_11_1908,Zing 11,Zing,11,Continuously Concurrent Compacting Collector,C4,Open Liberty,-Xmx512m -Xms512m,29813,0,1490.64,0.671,4,1,20
+zing_11_1908,Zing 11,Zing,11,Continuously Concurrent Compacting Collector,C4,Open Liberty,-Xmx512m -Xms512m,31376,0,1568.79,0.637,4,4,20
+zing_11_1908,Zing 11,Zing,11,Continuously Concurrent Compacting Collector,C4,Open Liberty,-Xmx512m -Xms512m,37350,0,1867.48,0.535,4,8,20
+zing_11_1908,Zing 11,Zing,11,Continuously Concurrent Compacting Collector,C4,Open Liberty,-Xmx512m -Xms512m,28278,0,1413.89,0.707,8,1,20
+zing_11_1908,Zing 11,Zing,11,Continuously Concurrent Compacting Collector,C4,Open Liberty,-Xmx512m -Xms512m,32217,0,1610.83,0.621,8,4,20
+zing_11_1908,Zing 11,Zing,11,Continuously Concurrent Compacting Collector,C4,Open Liberty,-Xmx512m -Xms512m,31022,0,1551.05,0.645,8,8,20
+zing_11_1908,Zing 11,Zing,11,Continuously Concurrent Compacting Collector,C4,Spring Boot WebFlux,-Xmx512m -Xms512m,44104,0,2205.17,0.453,1,1,20
+zing_11_1908,Zing 11,Zing,11,Continuously Concurrent Compacting Collector,C4,Spring Boot WebFlux,-Xmx512m -Xms512m,47845,0,2392.22,0.418,1,4,20
+zing_11_1908,Zing 11,Zing,11,Continuously Concurrent Compacting Collector,C4,Spring Boot WebFlux,-Xmx512m -Xms512m,48932,0,2446.59,0.409,1,8,20
+zing_11_1908,Zing 11,Zing,11,Continuously Concurrent Compacting Collector,C4,Spring Boot WebFlux,-Xmx512m -Xms512m,44683,0,2234.13,0.448,4,1,20
+zing_11_1908,Zing 11,Zing,11,Continuously Concurrent Compacting Collector,C4,Spring Boot WebFlux,-Xmx512m -Xms512m,47859,0,2392.93,0.418,4,4,20
+zing_11_1908,Zing 11,Zing,11,Continuously Concurrent Compacting Collector,C4,Spring Boot WebFlux,-Xmx512m -Xms512m,49311,0,2465.54,0.406,4,8,20
+zing_11_1908,Zing 11,Zing,11,Continuously Concurrent Compacting Collector,C4,Spring Boot WebFlux,-Xmx512m -Xms512m,44283,0,2213.39,0.452,8,1,20
+zing_11_1908,Zing 11,Zing,11,Continuously Concurrent Compacting Collector,C4,Spring Boot WebFlux,-Xmx512m -Xms512m,48290,0,2414.48,0.414,8,4,20
+zing_11_1908,Zing 11,Zing,11,Continuously Concurrent Compacting Collector,C4,Spring Boot WebFlux,-Xmx512m -Xms512m,49102,0,2455.08,0.407,8,8,20
+zing_11_1908,Zing 11,Zing,11,Continuously Concurrent Compacting Collector,C4,No framework,-Xmx512m -Xms512m,115926,0,5796.21,0.173,1,1,20
+zing_11_1908,Zing 11,Zing,11,Continuously Concurrent Compacting Collector,C4,No framework,-Xmx512m -Xms512m,168596,0,8429.80,0.119,1,4,20
+zing_11_1908,Zing 11,Zing,11,Continuously Concurrent Compacting Collector,C4,No framework,-Xmx512m -Xms512m,168299,0,8414.95,0.119,1,8,20
+zing_11_1908,Zing 11,Zing,11,Continuously Concurrent Compacting Collector,C4,No framework,-Xmx512m -Xms512m,119476,0,5970.73,0.167,4,1,20
+zing_11_1908,Zing 11,Zing,11,Continuously Concurrent Compacting Collector,C4,No framework,-Xmx512m -Xms512m,171631,0,8581.54,0.117,4,4,20
+zing_11_1908,Zing 11,Zing,11,Continuously Concurrent Compacting Collector,C4,No framework,-Xmx512m -Xms512m,174813,0,8740.63,0.114,4,8,20
+zing_11_1908,Zing 11,Zing,11,Continuously Concurrent Compacting Collector,C4,No framework,-Xmx512m -Xms512m,114157,0,5707.85,0.175,8,1,20
+zing_11_1908,Zing 11,Zing,11,Continuously Concurrent Compacting Collector,C4,No framework,-Xmx512m -Xms512m,166240,0,8311.01,0.120,8,4,20
+zing_11_1908,Zing 11,Zing,11,Continuously Concurrent Compacting Collector,C4,No framework,-Xmx512m -Xms512m,160974,0,8047.35,0.124,8,8,20
+zing_11_1908,Zing 11,Zing,11,Continuously Concurrent Compacting Collector,C4,Vert.x,-Xmx512m -Xms512m,67010,0,3350.48,0.298,1,1,20
+zing_11_1908,Zing 11,Zing,11,Continuously Concurrent Compacting Collector,C4,Vert.x,-Xmx512m -Xms512m,80188,0,4008.11,0.249,1,4,20
+zing_11_1908,Zing 11,Zing,11,Continuously Concurrent Compacting Collector,C4,Vert.x,-Xmx512m -Xms512m,83364,0,4168.17,0.240,1,8,20
+zing_11_1908,Zing 11,Zing,11,Continuously Concurrent Compacting Collector,C4,Vert.x,-Xmx512m -Xms512m,67273,0,3361.81,0.297,4,1,20
+zing_11_1908,Zing 11,Zing,11,Continuously Concurrent Compacting Collector,C4,Vert.x,-Xmx512m -Xms512m,80147,0,4007.16,0.250,4,4,20
+zing_11_1908,Zing 11,Zing,11,Continuously Concurrent Compacting Collector,C4,Vert.x,-Xmx512m -Xms512m,82183,0,4109.15,0.243,4,8,20
+zing_11_1908,Zing 11,Zing,11,Continuously Concurrent Compacting Collector,C4,Vert.x,-Xmx512m -Xms512m,67112,0,3355.58,0.298,8,1,20
+zing_11_1908,Zing 11,Zing,11,Continuously Concurrent Compacting Collector,C4,Vert.x,-Xmx512m -Xms512m,80186,0,4009.15,0.249,8,4,20
+zing_11_1908,Zing 11,Zing,11,Continuously Concurrent Compacting Collector,C4,Vert.x,-Xmx512m -Xms512m,83068,0,4153.40,0.241,8,8,20
